@@ -13,4 +13,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="menuTitle">Name</string>
+    <string name="MenuText">TextView</string>
+    <string name="menu">Menu</string>
 </resources>
