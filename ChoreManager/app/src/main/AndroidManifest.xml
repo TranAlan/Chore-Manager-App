@@ -29,33 +29,33 @@
         <activity
             android:name=".UserMenu"
             android:label="Users"
-            android:parentActivityName=".AppLoginActivity" />
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".MaterialsActivity"
             android:label="Materials List"
-            android:parentActivityName=".AppLoginActivity" />
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".Groceries"
             android:label="Grocery List"
-            android:parentActivityName=".AppLoginActivity" />
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".ShoppingListActivity"
             android:label="Shopping List"
-            android:parentActivityName=".AppLoginActivity" />
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="Settings"
-            android:parentActivityName=".AppLoginActivity" />
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".ChoreListActivity"
             android:label="Chores"
-            android:parentActivityName=".AppLoginActivity" />
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".SpecificChoreActivity"
             android:label="Chore_Name_Here"
-            android:parentActivityName=".AppLoginActivity" />
+            android:parentActivityName=".MenuActivity" />
         <activity android:name=".NewChoreActivity" android:label="New Chore"
-            android:parentActivityName=".AppLoginActivity"></activity>
+            android:parentActivityName=".MenuActivity"></activity>
     </application>
 
 </manifest>
