@@ -25,10 +25,20 @@
         </activity>
         <activity
             android:name=".MenuActivity"
-            android:label="Menu"></activity>
+            android:label="Menu" />
         <activity
             android:name=".UserMenu"
-            android:label="Users"></activity>
+            android:label="Users"
+            android:parentActivityName=".AppLoginActivity" />
+        <activity
+            android:name=".MaterialsActivity"
+            android:label="Materials List"
+            android:parentActivityName=".AppLoginActivity" />
+        <activity
+            android:name=".Groceries"
+            android:label="Grocery List"
+            android:parentActivityName=".AppLoginActivity" />
+        <activity android:name=".ShoppingListActivity" android:label="Shopping List"  android:parentActivityName=".AppLoginActivity" ></activity>
     </application>
 
 </manifest>

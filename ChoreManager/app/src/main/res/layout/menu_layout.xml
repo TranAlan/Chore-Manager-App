@@ -8,104 +8,95 @@
     tools:context="com.example.alan.peter.bilal.sam.choremanager.MenuActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="463dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ScrollView
-            android:id="@+id/scrollView2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="463dp"
-            tools:layout_editor_absoluteY="81dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <ImageButton
+                android:id="@+id/userButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:adjustViewBounds="false"
+                android:background="@color/colorAccent"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/user_icon" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
 
-                <ImageButton
-                    android:id="@+id/userButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="false"
-                    android:background="@color/secondaryLightColor"
-                    android:contentDescription="TODO"
-                    app:srcCompat="@drawable/user_icon" />
+            <ImageButton
+                android:id="@+id/settingsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:baselineAligned="false"
+                android:elevation="0dp"
+                app:srcCompat="@drawable/settings_icon" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
 
-                <ImageButton
-                    android:id="@+id/settingsButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/secondaryDarkColor"
-                    android:baselineAligned="false"
-                    android:elevation="0dp"
-                    app:srcCompat="@drawable/settings_icon" />
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                app:srcCompat="@drawable/materials_icon" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
 
-                <ImageButton
-                    android:id="@+id/imageButton5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/secondaryDarkColor"
-                    app:srcCompat="@drawable/materials_icon" />
+            <ImageButton
+                android:id="@+id/imageButton6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                app:srcCompat="@drawable/chore_list_icon" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
 
-                <ImageButton
-                    android:id="@+id/imageButton6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/secondaryDarkColor"
-                    app:srcCompat="@drawable/chore_list_icon" />
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                app:srcCompat="@drawable/pantry_icon" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
 
-                <ImageButton
-                    android:id="@+id/imageButton7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/secondaryDarkColor"
-                    app:srcCompat="@drawable/pantry_icon" />
+            <ImageButton
+                android:id="@+id/imageButton8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                app:srcCompat="@drawable/shopping_list_icon" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp" />
-
-                <ImageButton
-                    android:id="@+id/imageButton8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/secondaryDarkColor"
-                    app:srcCompat="@drawable/shopping_list_icon" />
-
-            </LinearLayout>
-        </ScrollView>
-
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

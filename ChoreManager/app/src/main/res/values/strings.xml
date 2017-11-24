@@ -14,6 +14,32 @@
         completions."
     </string>
     <string name="menuTitle">Name</string>
-    <string name="MenuText">TextView</string>
+    <string name="menuText">TextView</string>
     <string name="menu">Menu</string>
+    <string name="userName">userName</string>
+    <string name="roleName">RoleName</string>
+    <string name="userProfilePicture">User Profile Picture</string>
+    <string name="deleteSelected">Delete Selected</string>
+    <string name="addItem">Add Item</string>
+    <string name="item1">Item A</string>
+    <string name="item2">Item B</string>
+    <string name="item3">Item C</string>
+    <string name="item4">Item D</string>
+    <string name="g_item1">Item A</string>
+    <string name="g_item2">Item B</string>
+    <string name="g_item3">Item C</string>
+    <string name="g_item4">Item D</string>
+    <string name="materialsTitle">Materials</string>
+    <string name="groceriesTitle">Groceries</string>
+    <string name="shopping_item1">Item A</string>
+    <string name="shopping_item2">Item B</string>
+    <string name="shopping_item3">Item C</string>
+    <string name="shopping_item4">Item D</string>
+    <string name="g_shopping_item1">Item A</string>
+    <string name="g_shopping_item2">Item B</string>
+    <string name="g_shopping_item3">Item C</string>
+    <string name="g_shopping_item4">Item D</string>
+    <string name="markPurchased">Mark Purchased</string>
+    <string name="currentUser">Current User</string>
+    <string name="createNewUser">+ Create New User</string>
 </resources>
