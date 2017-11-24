@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_vertical|center_horizontal|center"
-                android:text="Chore Name:"
+                android:text="@string/chore_name"
                 android:textSize="20sp" />
 
             <EditText
@@ -105,7 +105,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/assignToInput"
+                android:id="@+id/assignToInput2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -127,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="Reapeated:"
+                android:text="@string/reapeated"
                 android:textSize="20sp" />
 
             <CheckBox
@@ -135,14 +135,14 @@
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
-                android:text="Yes" />
+                android:text="@string/yes" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
-                android:text="No" />
+                android:text="@string/no" />
 
         </LinearLayout>
 
@@ -158,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Required Materials:"
+                android:text="@string/required_materials"
                 android:textSize="20sp" />
 
             <ImageButton
@@ -220,7 +220,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
-        android:text="Save & Exit"
+        android:text="@string/save_and_exit"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout6"
         tools:layout_editor_absoluteX="0dp" />
 

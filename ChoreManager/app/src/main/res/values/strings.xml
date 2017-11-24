@@ -71,6 +71,12 @@
     <string name="edit_chore_button">Edit Chore</string>
     <string name="unassignButton">Unassign</string>
     <string name="reassignButton">Reassign</string>
+    <string name="save_and_exit">Save and Exit</string>
+    <string name="chore_name">Chore Name:</string>
+    <string name="required_materials">Required Materials:</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="reapeated">Reapeated:</string>
 
     <string-array name="themeSpinner_Options">
         <item name="Default Theme">defaultTheme</item>
