@@ -1,0 +1,163 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alan.peter.bilal.sam.choremanager.SpecificChoreActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="472dp"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/parentCommandText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/descriptionTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/secondaryDarkColor"
+            android:gravity="center"
+            android:text="@string/descriptionTitle"
+            android:textColor="@color/secondaryLightColor"
+            android:textSize="20sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="135dp">
+
+            <TextView
+                android:id="@+id/descTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/descTextView"
+                tools:text="@string/descText" />
+        </ScrollView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/noteViewText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/secondaryDarkColor"
+            android:gravity="center"
+            android:text="@string/notes"
+            android:textColor="@color/secondaryLightColor"
+            android:textSize="20sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="135dp">
+
+            <TextView
+                android:id="@+id/descTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/descTextView"
+                tools:text="@string/descText" />
+        </ScrollView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/incompleteButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="@string/mark_incomplete_button" />
+
+            <Button
+                android:id="@+id/completeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="@string/mark_complete_button"
+                android:layout_marginLeft="2dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/parentCommandText"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:background="@color/secondaryDarkColor"
+        android:gravity="center"
+        android:text="@string/parentCommandTitle"
+        android:textColor="@color/secondaryLightColor"
+        android:textSize="20sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="494dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="395dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parentCommandText">
+
+        <Button
+            android:id="@+id/editChoreButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="@string/edit_chore_button"
+            android:textColor="@color/secondaryTextColor" />
+
+        <Button
+            android:id="@+id/unassignButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="@string/unassignButton"
+            android:textColor="@color/secondaryTextColor" />
+
+        <Button
+            android:id="@+id/reassignButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="@string/reassignButton"
+            android:textColor="@color/secondaryTextColor" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

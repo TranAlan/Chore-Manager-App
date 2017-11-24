@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alan.peter.bilal.sam.choremanager.ChoreListActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/primaryLightColor"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/sortButton"
+            android:layout_width="4dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/primaryLightColor"
+            android:contentDescription="@string/sort_desc"
+            app:srcCompat="@drawable/sort_icon" />
+
+        <TextView
+            android:id="@+id/sortText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/sortButton"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/filterText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="end|center_vertical|center_horizontal"
+            android:text="@string/filterButton"
+            android:textColor="@color/secondaryTextColor"
+            android:textColorLink="@color/secondaryTextColor"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/filterButton"
+            android:layout_width="4dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/primaryLightColor"
+            android:contentDescription="@string/filter_desc"
+            app:srcCompat="@drawable/filter_icon" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/createChore"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="@string/createChore"
+            android:layout_marginLeft="5dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/choreButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryDarkColor"
+                android:text="@string/chore_button"
+                android:textColor="@color/secondaryLightColor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/choreText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryLightColor"
+                android:gravity="center_horizontal"
+                android:text="@string/chore_deadline2"
+                android:textColor="@color/secondaryTextColor" />
+
+            <Button
+                android:id="@+id/choreButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryDarkColor"
+                android:text="@string/chore_button1"
+                android:textColor="@color/secondaryLightColor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/choreText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryLightColor"
+                android:gravity="center_horizontal"
+                android:text="@string/chore_deadline1"
+                android:textColor="@color/secondaryTextColor" />
+
+            <Button
+                android:id="@+id/choreButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryDarkColor"
+                android:text="@string/chore_button2"
+                android:textColor="@color/secondaryLightColor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/choreText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryLightColor"
+                android:gravity="center_horizontal"
+                android:text="@string/chore_deadline2"
+                android:textColor="@color/secondaryTextColor" />
+
+            <Button
+                android:id="@+id/choreButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryDarkColor"
+                android:text="@string/chore_button3"
+                android:textColor="@color/secondaryLightColor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/choreText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryLightColor"
+                android:gravity="center_horizontal"
+                android:text="@string/chore_deadline2"
+                android:textColor="@color/secondaryTextColor" />
+
+            <Button
+                android:id="@+id/choreButton4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryDarkColor"
+                android:text="@string/chore_button4"
+                android:textColor="@color/secondaryLightColor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/choreText4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryLightColor"
+                android:gravity="center_horizontal"
+                android:text="@string/chore_deadline2"
+                android:textColor="@color/secondaryTextColor" />
+
+            <Button
+                android:id="@+id/choreButton5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryDarkColor"
+                android:text="@string/chore_button5"
+                android:textColor="@color/secondaryLightColor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/choreText5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryLightColor"
+                android:gravity="center_horizontal"
+                android:text="@string/chore_deadline2"
+                android:textColor="@color/secondaryTextColor" />
+
+            <Button
+                android:id="@+id/choreButton6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryDarkColor"
+                android:text="@string/chore_button6"
+                android:textColor="@color/secondaryLightColor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/choreText6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryLightColor"
+                android:gravity="center_horizontal"
+                android:text="@string/chore_deadline2"
+                android:textColor="@color/secondaryTextColor" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

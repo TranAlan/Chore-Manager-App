@@ -42,4 +42,53 @@
     <string name="markPurchased">Mark Purchased</string>
     <string name="currentUser">Current User</string>
     <string name="createNewUser">+ Create New User</string>
+    <string name="changeTheme">Change Theme</string>
+    <string name="switchUser">Switch User</string>
+    <string name="createChore">+ Create New Chore</string>
+    <string name="sort_desc">sort list of chores</string>
+    <string name="sortButton">Sort</string>
+    <string name="filterButton">Filter</string>
+    <string name="filter_desc">filter chore list</string>
+    <string name="chore_button1">Wash Car</string>
+    <string name="chore_deadline1">Deadline: 10/21/17 @12:59</string>
+    <string name="chore_button2">Wash The Dog</string>
+    <string name="chore_deadline2">Deadline: 10/21/17 @12:59</string>
+    <string name="chore_button">Clean Bathroom Mirror</string>
+    <string name="chore_button3">Make Grocery List</string>
+    <string name="chore_button4">Mow The Lawn</string>
+    <string name="chore_button5">Create New Cores</string>
+    <string name="chore_button6">Drop Tables</string>
+    <string name="descText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dictum ante nisl, vitae convallis quam tristique nec. Vivamus a turpis ut sem ultrices ultricies eu sed nunc. Praesent laoreet eros et dignissim faucibus. Etiam id nunc suscipit nibh lacinia tempor. Ut pulvinar, orci at egestas tincidunt, odio lectus gravida tortor, ac vehicula lorem quam non lectus. Etiam accumsan iaculis est non ultricies. Curabitur quis fringilla risus, sit amet ornare mi. Phasellus velit nisl, tincidunt at finibus non, posuere sed arcu. Vivamus nisi nisl, auctor sit amet varius vitae, aliquam at nisi.0</string>
+    <string name="descTextView">TextView</string>
+    <string name="notes">Notes</string>
+    <string name="textview">TextView</string>
+    <string name="descriptionTitle">Description</string>
+    <string name="add">add</string>
+    <string name="parentCommandTitle">Parental Commands</string>
+    <string name="resetDataButton">Reset All Data</string>
+    <string name="mark_incomplete_button">Mark Incomplete</string>
+    <string name="mark_complete_button">Mark Complete</string>
+    <string name="edit_chore_button">Edit Chore</string>
+    <string name="unassignButton">Unassign</string>
+    <string name="reassignButton">Reassign</string>
+
+    <string-array name="themeSpinner_Options">
+        <item name="Default Theme">defaultTheme</item>
+        <item name="Not Default Theme">notDefaultTheme</item>
+        <item name="Not Not Default Theme">notNotDefaultTheme</item>
+    </string-array>
+
+    <string-array name="userSpinner_Options">
+        <item name="Peter Lam">user1</item>
+        <item name="Alan Tran">user2</item>
+        <item name="Sam Rennie">user3</item>
+        <item name="Bial Khalid">user4</item>
+    </string-array>
+
+    <string-array name="chore_list">
+        <item name="Peter Lam">user1</item>
+        <item name="Alan Tran">user2</item>
+        <item name="Sam Rennie">user3</item>
+        <item name="Bial Khalid">user4</item>
+    </string-array>
 </resources>

@@ -38,7 +38,24 @@
             android:name=".Groceries"
             android:label="Grocery List"
             android:parentActivityName=".AppLoginActivity" />
-        <activity android:name=".ShoppingListActivity" android:label="Shopping List"  android:parentActivityName=".AppLoginActivity" ></activity>
+        <activity
+            android:name=".ShoppingListActivity"
+            android:label="Shopping List"
+            android:parentActivityName=".AppLoginActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".AppLoginActivity" />
+        <activity
+            android:name=".ChoreListActivity"
+            android:label="Chores"
+            android:parentActivityName=".AppLoginActivity" />
+        <activity
+            android:name=".SpecificChoreActivity"
+            android:label="Chore_Name_Here"
+            android:parentActivityName=".AppLoginActivity" />
+        <activity android:name=".NewChoreActivity" android:label="New Chore"
+            android:parentActivityName=".AppLoginActivity"></activity>
     </application>
 
 </manifest>
