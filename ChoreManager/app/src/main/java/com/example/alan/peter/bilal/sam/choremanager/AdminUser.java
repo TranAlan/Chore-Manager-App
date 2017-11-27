@@ -21,12 +21,14 @@ public class AdminUser extends User{
     public void assignChore(User user, Chore chore){
         user.addToAssignedChores(chore);
         chore.setAssignedTo(user);
+        chore.setStatusActive();
         //Remember about ChoreManagerProfile
     }
 
     public void deAssignChore(Chore chore){
         chore.getAssignedTo().removeFromAssignedChores(chore);
         chore.setAssignedTo(null);
+        chore.setStatusUnassigned();
         //add to unassigned list?
     }
 
@@ -36,7 +38,7 @@ public class AdminUser extends User{
             deAssignChore(chore);
         }
         //remove from ChoreManagerProfile
-        
+
 
     }
 }

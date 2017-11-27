@@ -76,6 +76,22 @@ public class User {
         assignedChores.remove(chore);
     }
 
+    public int completeChore(Chore chore){
+        chore.setStatusComplete();
+        assignedChores.remove(chore);
+        totalPoints =  totalPoints + chore.getRewardPoints();
+        return chore.getRewardPoints();
+    }
+    /*
+    public void sortChoresByDeadline(){
+
+    }
+
+    public void sortChoresByAlphabetical(){
+
+    }
+    */
+    //sort by categorie?
 
 
 }

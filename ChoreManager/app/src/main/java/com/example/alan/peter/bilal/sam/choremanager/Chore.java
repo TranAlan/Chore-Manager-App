@@ -7,11 +7,12 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
 import java.util.Date;
+import java.lang.Enum;
 
 public class Chore {
 
     //status' the chore can hold
-    private enum status {COMPLETE,INCOMPLETE,PARTIALLY_COMPLETE,UNASSIGNED,ACTIVE,LATE_COMPLETION};
+    private enum Status {COMPLETE,INCOMPLETE,PARTIALLY_COMPLETE,UNASSIGNED,ACTIVE,LATE_COMPLETION};
 
 
     //Instance variables
@@ -20,7 +21,7 @@ public class Chore {
     private String notes;
     private int rewardPoints;
     private Repeated repeat;
-    private status completionStatus;
+    private Status completionStatus;
     private Date deadline;
     private User assignedTo;
 
@@ -33,7 +34,7 @@ public class Chore {
         this.repeat=isRepeated;
         this.assignedTo=null;
         this.deadline=deadline;
-        this.completionStatus= status.ACTIVE;
+        this.completionStatus= Status.ACTIVE;
     }
 
     //constructor 2 - user specified
@@ -45,7 +46,7 @@ public class Chore {
         this.repeat=isRepeated;
         this.assignedTo=assigned;
         this.deadline=deadline;
-        this.completionStatus= status.ACTIVE;
+        this.completionStatus= Status.ACTIVE;
     }
 
     //Getters and Setters
@@ -89,13 +90,10 @@ public class Chore {
         this.repeat = repeat;
     }
 
-    public status getCompletionStatus() {
+    public Status getCompletionStatus() {
         return completionStatus;
     }
 
-    public void setCompletionStatus(status completionStatus) {
-        this.completionStatus = completionStatus;
-    }
 
     public Date getDeadline() {
         return deadline;
@@ -113,6 +111,28 @@ public class Chore {
         this.assignedTo = assignedTo;
     }
 
+    public void setStatusComplete(){
+        completionStatus = Status.COMPLETE;
+    }
 
+    public void setStatusInComplete(){
+        completionStatus = Status.INCOMPLETE;
+    }
+
+    public void setStatusPartial(){
+        completionStatus = Status.PARTIALLY_COMPLETE;
+    }
+
+    public void setStatusUnassigned(){
+        completionStatus = Status.UNASSIGNED;
+    }
+
+    public void setStatusActive(){
+        completionStatus = Status.ACTIVE;
+    }
+
+    public void setStatusLate(){
+        completionStatus = Status.LATE_COMPLETION;
+    }
 
 }
