@@ -220,6 +220,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
+        android:onClick="saveExitOnClick"
         android:text="@string/save_and_exit"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout6"
         tools:layout_editor_absoluteX="0dp" />

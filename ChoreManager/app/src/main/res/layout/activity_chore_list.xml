@@ -75,11 +75,12 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:text="@string/createChore"
-            android:layout_marginLeft="5dp" />
+            android:onClick="createNewChoreButton"
+            android:text="@string/createChore" />
     </LinearLayout>
 
     <ScrollView

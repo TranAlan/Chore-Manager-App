@@ -53,7 +53,8 @@
         <activity
             android:name=".SpecificChoreActivity"
             android:label="Chore_Name_Here"
-            android:parentActivityName=".MenuActivity" />
+            android:parentActivityName=".MenuActivity" />\
+
         <activity android:name=".NewChoreActivity" android:label="New Chore"
             android:parentActivityName=".MenuActivity"></activity>
         <!-- The meta-data tag is required if you support API level 15 and lower -->
