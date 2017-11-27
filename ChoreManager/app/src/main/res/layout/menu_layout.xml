@@ -37,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="false"
                 android:background="@color/colorAccent"
-                android:contentDescription="TODO"
+                android:contentDescription="@string TODO"
+                android:onClick="userImageOnClick"
                 app:srcCompat="@drawable/user_icon" />
 
             <Space
@@ -51,6 +52,7 @@
                 android:background="@color/colorAccent"
                 android:baselineAligned="false"
                 android:elevation="0dp"
+                android:onClick="settingImageOnClick"
                 app:srcCompat="@drawable/settings_icon" />
 
             <Space
@@ -58,10 +60,11 @@
                 android:layout_height="5dp" />
 
             <ImageButton
-                android:id="@+id/imageButton5"
+                android:id="@+id/materialsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
+                android:onClick="materialsImageOnClick"
                 app:srcCompat="@drawable/materials_icon" />
 
             <Space
@@ -69,10 +72,11 @@
                 android:layout_height="5dp" />
 
             <ImageButton
-                android:id="@+id/imageButton6"
+                android:id="@+id/choreListButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
+                android:onClick="choreListImageOnClick"
                 app:srcCompat="@drawable/chore_list_icon" />
 
             <Space
@@ -80,10 +84,11 @@
                 android:layout_height="5dp" />
 
             <ImageButton
-                android:id="@+id/imageButton7"
+                android:id="@+id/groceriesButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
+                android:onClick="groceriesImageOnClick"
                 app:srcCompat="@drawable/pantry_icon" />
 
             <Space
@@ -91,10 +96,11 @@
                 android:layout_height="5dp" />
 
             <ImageButton
-                android:id="@+id/imageButton8"
+                android:id="@+id/shoppingListButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
+                android:onClick="shoppingImageOnClick"
                 app:srcCompat="@drawable/shopping_list_icon" />
 
         </LinearLayout>

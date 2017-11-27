@@ -56,6 +56,10 @@
             android:parentActivityName=".MenuActivity" />
         <activity android:name=".NewChoreActivity" android:label="New Chore"
             android:parentActivityName=".MenuActivity"></activity>
+        <!-- The meta-data tag is required if you support API level 15 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MenuActivity" />
     </application>
 
 </manifest>
