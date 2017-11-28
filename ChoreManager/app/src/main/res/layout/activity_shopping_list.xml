@@ -131,7 +131,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -147,33 +147,33 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:text="@string/deleteSelected"
-            android:layout_marginLeft="5dp" />
+            android:text="@string/deleteSelected" />
 
         <Button
             android:id="@+id/purchasedButton"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:text="@string/markPurchased"
-            android:layout_marginLeft="5dp" />
+            android:text="@string/markPurchased" />
 
         <Button
             android:id="@+id/addItem"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:text="@string/addItem"
-            android:layout_marginLeft="5dp" />
+            android:text="@string/addItem" />
     </LinearLayout>
 
     <TextView

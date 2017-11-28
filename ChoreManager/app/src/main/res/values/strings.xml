@@ -77,6 +77,19 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="reapeated">Reapeated:</string>
+    <string name="user_desc">opens menu of users</string>
+    <string name="desc_reqmaterials_button">button to select required materials in new chore activity</string>
+    <string name="descTitle">Desciprtion</string>
+    <string name="string_assign_to">Assign To:</string>
+    <string name="string_deadline">Deadline:</string>
+    <string name="string_chore_type">Chore Type:</string>
+    <string name="settings_buttons_desc">button for settings activity</string>
+    <string name="materials_buttons_desc">button for list of mateirals activity</string>
+    <string name="chores_buttons_desc">button for list of all chores activity</string>
+    <string name="groceries_buttons_desc">button for current groceries at home</string>
+    <string name="shoppinglist_buttons_desc">button for shopping list activity</string>
+    <string name="stirng_current_user">Current User:</string>
+    <string name="string_Peter">Peter Lam</string>
 
     <string-array name="themeSpinner_Options">
         <item name="Default Theme">defaultTheme</item>

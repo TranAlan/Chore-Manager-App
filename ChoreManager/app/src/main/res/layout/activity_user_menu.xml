@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Current User:" />
+            android:text="@string/stirng_current_user" />
 
         <TextView
             android:id="@+id/textView11"
@@ -35,7 +35,8 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Peter Lam" />
+            android:text="@string/string_Peter"
+            android:layout_marginLeft="5dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -55,8 +56,9 @@
         <Button
             android:id="@+id/createNewUser"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
@@ -106,7 +108,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/textView0"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
@@ -116,7 +118,7 @@
                         tools:text="Peter Lam" />
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/textView1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"

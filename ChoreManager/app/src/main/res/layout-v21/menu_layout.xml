@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
                 android:baselineAligned="false"
-                android:contentDescription="@string/settings_buttons_desc"
+                android:elevation="0dp"
                 android:onClick="settingImageOnClick"
                 app:srcCompat="@drawable/settings_icon" />
 
@@ -64,7 +64,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
-                android:contentDescription="@string/materials_buttons_desc"
                 android:onClick="materialsImageOnClick"
                 app:srcCompat="@drawable/materials_icon" />
 
@@ -77,7 +76,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
-                android:contentDescription="@string/chores_buttons_desc"
                 android:onClick="choreListImageOnClick"
                 app:srcCompat="@drawable/chore_list_icon" />
 
@@ -90,7 +88,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
-                android:contentDescription="@string/groceries_buttons_desc"
                 android:onClick="groceriesImageOnClick"
                 app:srcCompat="@drawable/pantry_icon" />
 
@@ -103,7 +100,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
-                android:contentDescription="@string/shoppinglist_buttons_desc"
                 android:onClick="shoppingImageOnClick"
                 app:srcCompat="@drawable/shopping_list_icon" />
 
