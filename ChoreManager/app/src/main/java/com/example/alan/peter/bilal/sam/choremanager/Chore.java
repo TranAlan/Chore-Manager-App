@@ -7,7 +7,6 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
 import java.util.Date;
-import java.lang.Enum;
 
 public class Chore {
 
