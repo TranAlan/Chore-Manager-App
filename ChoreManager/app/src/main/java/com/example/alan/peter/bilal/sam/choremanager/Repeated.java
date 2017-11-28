@@ -11,23 +11,27 @@ package com.example.alan.peter.bilal.sam.choremanager;
 public class Repeated {
 
     //defines when the chore is to be repeated
-    public enum repeatType{DAILY,WEEKLY,MONTHLY};
+    public enum RepeatType{DAILY,WEEKLY,MONTHLY};
 
     //instance variables
     private int numRepeats;
-    private repeatType repeatStatus;
+    private RepeatType repeatStatus;
 
     //constructor
-    public Repeated(int repeat) {
-        this.numRepeats=repeat;
+    public Repeated(int numRepeats) {
+        this.numRepeats=numRepeats;
     }
 
     //getters and setters
-    public void setStatus(repeatType status) {
-        this.repeatStatus = status;
+    public void setTypeDaily() {
+        repeatStatus = RepeatType.DAILY;
     }
 
-    public void setRepeats(int repeat) {
+    public void setTypeWeekly(){ repeatStatus = RepeatType.WEEKLY;}
+
+    public void setTypeMonthly(){ repeatStatus = RepeatType.MONTHLY; }
+
+    public void setNumRepeats(int repeat) {
         this.numRepeats=repeat;
     }
 
@@ -35,7 +39,7 @@ public class Repeated {
         return this.numRepeats;
     }
 
-    public repeatType getType() {
+    public RepeatType getType() {
         return this.repeatStatus;
     }
 }

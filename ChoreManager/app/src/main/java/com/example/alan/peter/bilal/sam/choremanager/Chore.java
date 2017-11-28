@@ -134,4 +134,20 @@ public class Chore {
         completionStatus = Status.LATE_COMPLETION;
     }
 
+    	//rewards full points if the chore is completed before the deadline and 
+		//half points if completed afterwards
+	/*public int calcRewardPoints() {
+		int points=0;
+		int possible = this.getRewardPoints();
+		Date toCompare = this.getDeadline();
+		if(toCompare.before(main.getDate())) {
+			points = possible;
+		}
+		else if(toCompare.after(main.getDate())) {
+			points = possible/2;
+		}
+		return points;
+	}
+    */
+
 }
