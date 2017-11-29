@@ -6,12 +6,14 @@
  */
 package com.example.alan.peter.bilal.sam.choremanager;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Chore {
 
     //status' the chore can hold
     private enum Status {COMPLETE,INCOMPLETE,PARTIALLY_COMPLETE,UNASSIGNED,ACTIVE,LATE_COMPLETION};
+    public enum type {CLEANING, COOKING, MISC};
 
 
     //Instance variables
@@ -21,31 +23,40 @@ public class Chore {
     private int rewardPoints;
     private Repeated repeat;
     private Status completionStatus;
+    public type choreType;
     private Date deadline;
     private User assignedTo;
+    private ArrayList reqMat;
+    private ArrayList reqGroc;
 
-    //constructor 1 - user not specified during chore creation, is repeated
-    public Chore(String name, String description, String note, int pointsWorth, Repeated isRepeated, Date deadline) {
+
+    //constructor 1 - not assigned to user
+    public Chore(String name, String desc, String note, int points, Repeated repeat, type choreType, Date due, ArrayList materials, ArrayList groceries) {
         this.name=name;
-        this.description=description;
+        this.description=desc;
         this.notes=note;
-        this.rewardPoints=pointsWorth;
-        this.repeat=isRepeated;
-        this.assignedTo=null;
-        this.deadline=deadline;
-        this.completionStatus= Status.ACTIVE;
+        this.rewardPoints=points;
+        this.repeat=repeat;
+        this.choreType=choreType;
+        this.deadline=due;
+        this.reqMat=materials;
+        this.reqGroc=groceries;
+        this.completionStatus=Status.UNASSIGNED;
     }
 
-    //constructor 2 - user specified
-    public Chore(String name, String description, String note, int pointsWorth, Repeated isRepeated, Date deadline, User assigned) {
+    //constructor 2 -  assigned to user
+    public Chore(String name, String desc, String note, int points, Repeated repeat, type choreType, Date due, ArrayList materials, ArrayList groceries, User assigned) {
         this.name=name;
-        this.description=description;
+        this.description=desc;
         this.notes=note;
-        this.rewardPoints=pointsWorth;
-        this.repeat=isRepeated;
+        this.rewardPoints=points;
+        this.repeat=repeat;
+        this.choreType=choreType;
+        this.deadline=due;
+        this.reqMat=materials;
+        this.reqGroc=groceries;
         this.assignedTo=assigned;
-        this.deadline=deadline;
-        this.completionStatus= Status.ACTIVE;
+        this.completionStatus=Status.ACTIVE;
     }
 
     //Getters and Setters
@@ -55,6 +66,14 @@ public class Chore {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public type getType() {
+        return this.choreType;
+    }
+
+    public void setType(type newType) {
+        this.choreType=newType;
     }
 
     public String getDescription() {
@@ -134,20 +153,20 @@ public class Chore {
         completionStatus = Status.LATE_COMPLETION;
     }
 
-    	//rewards full points if the chore is completed before the deadline and 
-		//half points if completed afterwards
-	/*public int calcRewardPoints() {
-		int points=0;
-		int possible = this.getRewardPoints();
-		Date toCompare = this.getDeadline();
-		if(toCompare.before(main.getDate())) {
-			points = possible;
-		}
-		else if(toCompare.after(main.getDate())) {
-			points = possible/2;
-		}
-		return points;
-	}
-    */
+        //rewards full points if the chore is completed before the deadline and
+        //half points if completed afterwards
+        public int calcRewardPoints() {
+            Date current = new Date();
+            int points=0;
+            int possible = this.getRewardPoints();
+            Date toCompare = this.getDeadline();
+            if(toCompare.before(current)) {
+                points = possible;
+            }
+            else if(toCompare.after(current)) {
+                points = possible/2;
+            }
+            return points;
+        }
 
 }
