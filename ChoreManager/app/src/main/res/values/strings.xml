@@ -112,17 +112,4 @@
         <item name="user3">Bilal Khalid</item>
     </string-array>
 
-    <string-array name="filterSpinner_Options">
-        <item name=""></item>
-        <item name=""></item>
-        <item name=""></item>
-        <item name=""></item>
-    </string-array>
-
-    <string-array name="sortSpinner_Options">
-        <item name=""></item>
-        <item name=""></item>
-        <item name=""></item>
-        <item name=""></item>
-    </string-array>
 </resources>

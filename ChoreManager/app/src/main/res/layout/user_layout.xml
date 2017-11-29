@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="2">
+
+    <ImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:background="@color/secondaryDarkColor"
+        android:contentDescription="@string/userProfilePicture"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical|fill_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/userNameTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/userName"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/roleNameTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/roleName"
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
+
+</LinearLayout>

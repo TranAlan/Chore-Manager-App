@@ -153,8 +153,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="20sp"
-                tools:text="@string/repeatable_text" />
+                android:text="@string/repeatable_text"
+                android:textSize="20sp" />
 
             <Switch
                 android:id="@+id/repeatableSwitch"
