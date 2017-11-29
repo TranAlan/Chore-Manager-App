@@ -58,7 +58,6 @@
     <string name="chore_button4">Mow The Lawn</string>
     <string name="chore_button5">Create New Cores</string>
     <string name="chore_button6">Drop Tables</string>
-    <string name="descText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dictum ante nisl, vitae convallis quam tristique nec. Vivamus a turpis ut sem ultrices ultricies eu sed nunc. Praesent laoreet eros et dignissim faucibus. Etiam id nunc suscipit nibh lacinia tempor. Ut pulvinar, orci at egestas tincidunt, odio lectus gravida tortor, ac vehicula lorem quam non lectus. Etiam accumsan iaculis est non ultricies. Curabitur quis fringilla risus, sit amet ornare mi. Phasellus velit nisl, tincidunt at finibus non, posuere sed arcu. Vivamus nisi nisl, auctor sit amet varius vitae, aliquam at nisi.0</string>
     <string name="descTextView">TextView</string>
     <string name="notes">Notes</string>
     <string name="textview">TextView</string>
@@ -79,7 +78,7 @@
     <string name="reapeated">Reapeated:</string>
     <string name="user_desc">opens menu of users</string>
     <string name="desc_reqmaterials_button">button to select required materials in new chore activity</string>
-    <string name="descTitle">Desciprtion</string>
+    <string name="descTitle">Description</string>
     <string name="string_assign_to">Assign To:</string>
     <string name="string_deadline">Deadline:</string>
     <string name="string_chore_type">Chore Type:</string>
@@ -90,6 +89,8 @@
     <string name="shoppinglist_buttons_desc">button for shopping list activity</string>
     <string name="stirng_current_user">Current User:</string>
     <string name="string_Peter">Peter Lam</string>
+    <string name="desc_hint">Please Enter A Description of The Task</string>
+    <string name="note_hint">Please Enter A Note</string>
 
     <string-array name="themeSpinner_Options">
         <item name="Default Theme">defaultTheme</item>
