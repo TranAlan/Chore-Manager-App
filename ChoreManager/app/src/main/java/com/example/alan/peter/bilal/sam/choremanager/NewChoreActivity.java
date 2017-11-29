@@ -10,12 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 public class NewChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     // creating spinner for choretpye and adapter
     Spinner choreTypeSpinner;
     ArrayAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,15 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     // listening if Save and Exit button is clicked
     protected void saveExitOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
+        /*
+        if (not assigned){
+
+            currentUser.createChore(name, desc, note, points, repeat, due, materials, groceries);
+        }
+        else{
+
+        }
+        */
         startActivity(intent);
     }
 }

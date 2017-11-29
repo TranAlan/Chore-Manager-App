@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "833740887086",
+    "firebase_url": "https://chore-manager-app.firebaseio.com",
+    "project_id": "chore-manager-app",
+    "storage_bucket": "chore-manager-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833740887086:android:713cca52439502f5",
+        "android_client_info": {
+          "package_name": "com.example.alan.peter.bilal.sam.choremanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833740887086-35qvdt931mp9du4gavg88ch2rjmoecbe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alan.peter.bilal.sam.choremanager",
+            "certificate_hash": "a593f39da2f87bad409a62aa9bb67d50690dfa60"
+          }
+        },
+        {
+          "client_id": "833740887086-f52rrnjfvc9mq3dpa4r8ttsb82jsmmcg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWjqKfOfUzipzWrENyhe057uNvH-YODiA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833740887086-f52rrnjfvc9mq3dpa4r8ttsb82jsmmcg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,12 +9,13 @@ package com.example.alan.peter.bilal.sam.choremanager;
  * email: 8881891
  **/
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Collections;
 
 
-public class ChoreManagerProfile {
+public class ChoreManagerProfile implements Serializable {
 
     //instance Variables
     private ArrayList<String> materials;
@@ -24,6 +25,7 @@ public class ChoreManagerProfile {
     private ArrayList<Chore> unassignedChores;
     private ArrayList<Chore> finishedChores;
     private Date currentDate;
+    private User currentUser;
 
 
     //Constructor
@@ -136,5 +138,17 @@ public class ChoreManagerProfile {
 
     public void resetAppData() {
         //TO BE IMPLEMENTED
+    }
+
+    public void setCurrentUser(User user){
+        currentUser = user;
+    }
+
+    public User getCurrentUser(){
+        return currentUser;
+    }
+
+    public boolean isUserAdmin(){
+        return currentUser instanceof AdminUser;
     }
 }

@@ -6,10 +6,11 @@
  */
 package com.example.alan.peter.bilal.sam.choremanager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Chore {
+public class Chore implements Serializable {
 
     //status' the chore can hold
     private enum Status {COMPLETE,INCOMPLETE,PARTIALLY_COMPLETE,UNASSIGNED,ACTIVE,LATE_COMPLETION};
@@ -31,13 +32,13 @@ public class Chore {
 
 
     //constructor 1 - not assigned to user
-    public Chore(String name, String desc, String note, int points, Repeated repeat, Type choreType, Date due, ArrayList materials, ArrayList groceries) {
+    public Chore(String name, String desc, String note, int points, Repeated repeat, Date due, ArrayList materials, ArrayList groceries) {
         this.name=name;
         this.description=desc;
         this.notes=note;
         this.rewardPoints=points;
         this.repeat=repeat;
-        this.choreType=choreType;
+        this.choreType=Type.MISC;
         this.deadline=due;
         this.reqMat=materials;
         this.reqGroc=groceries;
@@ -45,13 +46,13 @@ public class Chore {
     }
 
     //constructor 2 -  assigned to user
-    public Chore(String name, String desc, String note, int points, Repeated repeat, Type choreType, Date due, ArrayList materials, ArrayList groceries, User assigned) {
+    public Chore(String name, String desc, String note, int points, Repeated repeat, Date due, ArrayList materials, ArrayList groceries, User assigned) {
         this.name=name;
         this.description=desc;
         this.notes=note;
         this.rewardPoints=points;
         this.repeat=repeat;
-        this.choreType=choreType;
+        this.choreType=Type.MISC;
         this.deadline=due;
         this.reqMat=materials;
         this.reqGroc=groceries;

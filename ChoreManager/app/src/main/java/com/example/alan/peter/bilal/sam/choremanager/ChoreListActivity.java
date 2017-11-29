@@ -3,6 +3,7 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -59,11 +60,15 @@ public class ChoreListActivity extends AppCompatActivity {
         }
 
         choreListView.setAdapter(adapter);
-
+        // To retrieve object in second Activity
+        Intent i = getIntent();
+        ChoreManagerProfile s = (ChoreManagerProfile) i.getSerializableExtra("Manager");
+        Log.d("Testtag",s.getCurrentUser().getUsername());
     }
 
     protected void createNewChoreButton(View view){
         Intent intent = new Intent(this, NewChoreActivity.class);
         startActivity(intent);
+
     }
 }
