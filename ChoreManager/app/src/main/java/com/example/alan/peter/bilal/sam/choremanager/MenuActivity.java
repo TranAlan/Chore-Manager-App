@@ -44,6 +44,10 @@ public static ChoreManagerProfile manager = new ChoreManagerProfile();
 
     }
 
+    public static ChoreManagerProfile getManager(){
+        return manager;
+    }
+
     protected void groceriesImageOnClick(View view){
         Intent intent = new Intent(this, Groceries.class);
         startActivity(intent);
