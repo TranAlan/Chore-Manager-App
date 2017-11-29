@@ -51,9 +51,12 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
             currentUser.createChore(name, desc, note, points, repeat, due, materials, groceries);
         }
         else{
-
+            AdminUser user = (AdminUser) MenuActivity.getManager().getCurrentUser();
+            user.createChore()
         }
+
         */
+
         startActivity(intent);
     }
 }
