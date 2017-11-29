@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class NewChoreActivity extends AppCompatActivity {
 
     @Override
@@ -15,6 +18,15 @@ public class NewChoreActivity extends AppCompatActivity {
 
     protected void saveExitOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
+        /*
+        if (not assigned){
+
+            currentUser.createChore(name, desc, note, points, repeat, due, materials, groceries);
+        }
+        else{
+
+        }
+        */
         startActivity(intent);
     }
 }
