@@ -13,7 +13,7 @@ public class Chore {
 
     //status' the chore can hold
     private enum Status {COMPLETE,INCOMPLETE,PARTIALLY_COMPLETE,UNASSIGNED,ACTIVE,LATE_COMPLETION};
-    public enum type {CLEANING, COOKING, MISC};
+    public enum Type {CLEANING, COOKING, MISC};
 
 
     //Instance variables
@@ -23,7 +23,7 @@ public class Chore {
     private int rewardPoints;
     private Repeated repeat;
     private Status completionStatus;
-    public type choreType;
+    public Type choreType;
     private Date deadline;
     private User assignedTo;
     private ArrayList reqMat;
@@ -31,7 +31,7 @@ public class Chore {
 
 
     //constructor 1 - not assigned to user
-    public Chore(String name, String desc, String note, int points, Repeated repeat, type choreType, Date due, ArrayList materials, ArrayList groceries) {
+    public Chore(String name, String desc, String note, int points, Repeated repeat, Type choreType, Date due, ArrayList materials, ArrayList groceries) {
         this.name=name;
         this.description=desc;
         this.notes=note;
@@ -45,7 +45,7 @@ public class Chore {
     }
 
     //constructor 2 -  assigned to user
-    public Chore(String name, String desc, String note, int points, Repeated repeat, type choreType, Date due, ArrayList materials, ArrayList groceries, User assigned) {
+    public Chore(String name, String desc, String note, int points, Repeated repeat, Type choreType, Date due, ArrayList materials, ArrayList groceries, User assigned) {
         this.name=name;
         this.description=desc;
         this.notes=note;
@@ -68,12 +68,8 @@ public class Chore {
         this.name = name;
     }
 
-    public type getType() {
+    public Type getType() {
         return this.choreType;
-    }
-
-    public void setType(type newType) {
-        this.choreType=newType;
     }
 
     public String getDescription() {
@@ -151,6 +147,18 @@ public class Chore {
 
     public void setStatusLate(){
         completionStatus = Status.LATE_COMPLETION;
+    }
+
+    public void setTypeCleaning(){
+        choreType = Type.CLEANING;
+    }
+
+    public void setTypeCooking(){
+        choreType = Type.COOKING;
+    }
+
+    public void setTypeMisc(){
+        choreType = Type.MISC;
     }
 
         //rewards full points if the chore is completed before the deadline and
