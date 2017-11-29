@@ -1,6 +1,8 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.media.Image;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 

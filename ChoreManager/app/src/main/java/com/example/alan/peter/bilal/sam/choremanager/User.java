@@ -1,5 +1,6 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import android.media.Image;
 
@@ -7,7 +8,7 @@ import android.media.Image;
  * Created by Alan on 11/27/2017.
  */
 
-public class User {
+public class User implements Serializable {
     private String username;
     private String password;
     private int totalPoints;

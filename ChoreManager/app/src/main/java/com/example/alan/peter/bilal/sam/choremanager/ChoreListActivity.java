@@ -61,11 +61,9 @@ public class ChoreListActivity extends AppCompatActivity {
 
         choreListView.setAdapter(adapter);
         // To retrieve object in second Activity
-        //Intent i = getIntent();
-       // ChoreManagerProfile s = (ChoreManagerProfile) i.getSerializableExtra("MyManager");
-        //s.setCurrentUser(new User());
-        //s.getCurrentUser().setUsername("Alan");
-        //Log.d("cooltag",s.getCurrentUser().getUsername());
+        Intent i = getIntent();
+        ChoreManagerProfile s = (ChoreManagerProfile) i.getSerializableExtra("Manager");
+        Log.d("Testtag",s.getCurrentUser().getUsername());
     }
 
     protected void createNewChoreButton(View view){

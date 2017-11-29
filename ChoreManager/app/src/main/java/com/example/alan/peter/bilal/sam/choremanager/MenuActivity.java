@@ -7,14 +7,14 @@ import android.view.View;
 
 public class MenuActivity extends AppCompatActivity {
     //https://stackoverflow.com/questions/2736389/how-to-pass-an-object-from-one-activity-to-another-on-android
-//public ChoreManagerProfile cool = new ChoreManagerProfile();
+public static ChoreManagerProfile manager = new ChoreManagerProfile();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
-        //cool = new ChoreManagerProfile();
-        //cool.setCurrentUser(new User());
-        //cool.getCurrentUser().setUsername("Alan");
+        manager = new ChoreManagerProfile();
+        manager.setCurrentUser(new User());
+        manager.getCurrentUser().setUsername("Alan");
        // Log.d("cooltag",cool.getCurrentUser().getUsername());
     }
 
@@ -36,7 +36,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void choreListImageOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
         //To pass:
-        //intent = intent.putExtra("MyManager", cool);
+        intent = intent.putExtra("Manager", manager);
 
         // To retrieve object in second Activity
         //getIntent().getSerializableExtra("MyClass");

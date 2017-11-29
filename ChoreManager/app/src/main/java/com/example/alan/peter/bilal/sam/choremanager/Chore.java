@@ -6,10 +6,11 @@
  */
 package com.example.alan.peter.bilal.sam.choremanager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Chore {
+public class Chore implements Serializable {
 
     //status' the chore can hold
     private enum Status {COMPLETE,INCOMPLETE,PARTIALLY_COMPLETE,UNASSIGNED,ACTIVE,LATE_COMPLETION};
