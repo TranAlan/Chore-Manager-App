@@ -91,13 +91,19 @@
     <string name="string_Peter">Peter Lam</string>
     <string name="desc_hint">Please Enter A Description of The Task</string>
     <string name="note_hint">Please Enter A Note</string>
+    <string name="repeatable_text">Repeatable</string>
 
     <string-array name="themeSpinner_Options">
-        <item name="Default Theme">defaultTheme</item>
-        <item name="Not Default Theme">notDefaultTheme</item>
-        <item name="Not Not Default Theme">notNotDefaultTheme</item>
+        <item name="defaultTheme">Default Theme</item>
+        <item name="notDefaultTheme">Not Default Theme</item>
+        <item name="notNotDefaultTheme">Not Not Default Theme</item>
     </string-array>
 
+    <string-array name="choreTypeSpinner_Options">
+        <item name="miscOption">Misc</item>
+        <item name="cleaningOption">Cleaning</item>
+        <item name="cookingOption">Cooking</item>
+    </string-array>
     <string-array name="userSpinner_Options">
         <item name="Peter Lam">user1</item>
         <item name="Alan Tran">user2</item>

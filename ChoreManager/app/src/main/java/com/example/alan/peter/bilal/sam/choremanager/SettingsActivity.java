@@ -13,19 +13,20 @@ import android.widget.Toast;
 public class SettingsActivity extends AppCompatActivity implements OnItemSelectedListener {
 
     Spinner spinnerDropdownTheme, spinnerDropDownUsers;
-    ArrayAdapter adapter;
+    ArrayAdapter themeAdapter, userAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        adapter = ArrayAdapter.createFromResource(this,R.array.themeSpinner_Options,android.R.layout.simple_spinner_item);
+        themeAdapter = ArrayAdapter.createFromResource(this,R.array.themeSpinner_Options,android.R.layout.simple_spinner_item);
         spinnerDropdownTheme =(Spinner) findViewById(R.id.themeSpinner);
-        spinnerDropdownTheme.setAdapter(adapter);
+        spinnerDropdownTheme.setAdapter(themeAdapter);
         spinnerDropdownTheme.setOnItemSelectedListener(SettingsActivity.this);
 
+        userAdapter = ArrayAdapter.createFromResource(this,R.array.userSpinner_Options,android.R.layout.simple_spinner_item);
         spinnerDropDownUsers =(Spinner) findViewById(R.id.userSpinner);
-        spinnerDropDownUsers.setAdapter(adapter);
+        spinnerDropDownUsers.setAdapter(userAdapter);
         spinnerDropDownUsers.setOnItemSelectedListener(SettingsActivity.this);
 
     }
@@ -33,7 +34,7 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         TextView spinnerDialogText = (TextView) view;
-        Toast.makeText(this,"You Selected"+ spinnerDialogText.getText(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"You Selected: "+ spinnerDialogText.getText(),Toast.LENGTH_SHORT).show();
     }
 
     @Override
