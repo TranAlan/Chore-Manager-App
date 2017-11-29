@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +39,13 @@ public class ChoreListActivity extends AppCompatActivity {
                 PopupMenu popup = new PopupMenu(ChoreListActivity.this, sortButton);
                 //Inflating the Popup using xml file
                 popup.getMenuInflater().inflate(R.menu.sort_popup, popup.getMenu());
-
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(ChoreListActivity.this,"Sorted by: " + item.getTitle(),Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
                 popup.show(); //showing popup menu
             }
         }
@@ -46,16 +54,24 @@ public class ChoreListActivity extends AppCompatActivity {
         filterButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 //Creating the instance of PopupMenu
                 PopupMenu popup = new PopupMenu(ChoreListActivity.this, filterButton);
                 //Inflating the Popup using xml file
                 popup.getMenuInflater().inflate(R.menu.filter_popup, popup.getMenu());
-
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(ChoreListActivity.this,"Filtered by: " + item.getTitle(),Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
                 popup.show(); //showing popup menu
             }
-        }
-        ); //closing the setOnClickListener method
+
+
+        }); //closing the setOnClickListener method
 
 
         //  ---- List View Code ---
