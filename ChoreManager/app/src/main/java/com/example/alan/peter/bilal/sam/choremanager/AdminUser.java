@@ -1,9 +1,9 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.media.Image;
-
 import java.util.ArrayList;
 import java.util.Date;
+
 
 /**
  * Created by Alan on 11/27/2017.
@@ -15,9 +15,11 @@ public class AdminUser extends User{
         super(username, password, totalPoints, profilePic);
     }
 
+
     public Chore createChore(String name, String desc, String note, int points, Repeated repeat, Date due, ArrayList materials, ArrayList groceries){
         return new Chore(name, desc, note, points, repeat, due, materials, groceries);
     }
+
 
     public void assignChore(User user, Chore chore){
         user.addToAssignedChores(chore);
