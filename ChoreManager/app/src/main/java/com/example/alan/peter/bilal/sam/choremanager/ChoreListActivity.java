@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
@@ -16,11 +18,47 @@ import java.util.Map;
 
 public class ChoreListActivity extends AppCompatActivity {
 
+    private ImageButton sortButton,filterButton;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chore_list);
+
+        // link buttons to the ones in XML
+        filterButton = (ImageButton) findViewById(R.id.filterButton);
+        sortButton = (ImageButton) findViewById(R.id.sortButton);
+        // set and create OnClickListener for Fitler and Sort buttons
+        sortButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(ChoreListActivity.this, sortButton);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater().inflate(R.menu.sort_popup, popup.getMenu());
+
+                popup.show(); //showing popup menu
+            }
+        }
+        ); //closing the setOnClickListener method
+
+        filterButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(ChoreListActivity.this, filterButton);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater().inflate(R.menu.filter_popup, popup.getMenu());
+
+                popup.show(); //showing popup menu
+            }
+        }
+        ); //closing the setOnClickListener method
+
+
+        //  ---- List View Code ---
         ListView choreListView = (ListView) findViewById(R.id.choreListView);
         // making a hashmap for the list view
         HashMap<String, String> choresHash = new HashMap<>();

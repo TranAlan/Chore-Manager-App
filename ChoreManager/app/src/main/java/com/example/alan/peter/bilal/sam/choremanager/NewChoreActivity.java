@@ -22,6 +22,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         setContentView(R.layout.activity_new_chore);
         //allows textfields to move above keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
         // create adapter from string array in string.xml file
         adapter = ArrayAdapter.createFromResource(this,R.array.choreTypeSpinner_Options,android.R.layout.simple_spinner_item);
         // set spinner to the one the the xml

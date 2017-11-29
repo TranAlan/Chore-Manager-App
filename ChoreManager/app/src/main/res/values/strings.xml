@@ -104,17 +104,25 @@
         <item name="cleaningOption">Cleaning</item>
         <item name="cookingOption">Cooking</item>
     </string-array>
+
     <string-array name="userSpinner_Options">
-        <item name="Peter Lam">user1</item>
-        <item name="Alan Tran">user2</item>
-        <item name="Sam Rennie">user3</item>
-        <item name="Bial Khalid">user4</item>
+        <item name="user0">Peter Lam</item>
+        <item name="user1">Alan Tran</item>
+        <item name="user2">Sam Rennie</item>
+        <item name="user3">Bilal Khalid</item>
     </string-array>
 
-    <string-array name="chore_list">
-        <item name="Peter Lam">user1</item>
-        <item name="Alan Tran">user2</item>
-        <item name="Sam Rennie">user3</item>
-        <item name="Bial Khalid">user4</item>
+    <string-array name="filterSpinner_Options">
+        <item name=""></item>
+        <item name=""></item>
+        <item name=""></item>
+        <item name=""></item>
+    </string-array>
+
+    <string-array name="sortSpinner_Options">
+        <item name=""></item>
+        <item name=""></item>
+        <item name=""></item>
+        <item name=""></item>
     </string-array>
 </resources>
