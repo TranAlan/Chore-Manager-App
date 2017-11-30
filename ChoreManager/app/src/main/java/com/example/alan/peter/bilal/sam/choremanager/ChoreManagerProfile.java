@@ -151,4 +151,13 @@ public class ChoreManagerProfile implements Serializable {
     public boolean isUserAdmin(){
         return currentUser instanceof AdminUser;
     }
+
+    public User getUserFromName(String username) {
+        for (int i = 0; i < users.size(); i++){
+            if (users.get(i).getUsername().equals(username) ){
+                return users.get(i);
+            }
+        }
+        return null;
+    }
 }
