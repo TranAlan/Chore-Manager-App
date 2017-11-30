@@ -2,7 +2,10 @@ package com.example.alan.peter.bilal.sam.choremanager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
+
 import android.media.Image;
+import android.util.Log;
 
 /**
  * Created by Alan on 11/27/2017.
@@ -93,6 +96,16 @@ public class User implements Serializable {
         assignedChores.remove(chore);
         totalPoints =  totalPoints + chore.getRewardPoints();
         return chore.getRewardPoints();
+    }
+
+    public Chore getChoreFromDate(String date){
+        for(int i = 0; i < assignedChores.size(); i++){
+            if(assignedChores.get(i).getDeadline().toString() == date ){
+                return assignedChores.get(i);
+            }
+            //Log.d("Test", assignedChores.get(i).getName());
+        }
+        return null;
     }
     /*
     public void sortChoresByDeadline(){

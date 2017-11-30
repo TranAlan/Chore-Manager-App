@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -126,13 +127,7 @@ public class ChoreListActivity extends AppCompatActivity {
         choreListView.setAdapter(adapter);
 
 
-        // To retrieve object in second Activity
-        //Intent i = getIntent();
-        //ChoreManagerProfile s = (ChoreManagerProfile) i.getSerializableExtra("Manager");
-        //Log.d("Testtag",s.getCurrentUser().getUsername());
 
-       // MenuActivity.getManager();
-        //Log.d("Testtag",MenuActivity.getManager().getCurrentUser().getUsername());
     }
 
     protected void createNewChoreButton(View view){
@@ -140,5 +135,15 @@ public class ChoreListActivity extends AppCompatActivity {
         startActivity(intent);
         //finish();
 
+    }
+
+    protected void clickOnSpecificChore(View view){
+        Intent intent = new Intent(this, SpecificChoreActivity.class);
+        TextView usedView = (TextView) view;
+        intent = intent.putExtra("ChoreInfo", usedView.getText().toString());
+
+        Log.d("test", view.toString());
+        Log.d("test",usedView.getText().toString());
+        startActivity(intent);
     }
 }
