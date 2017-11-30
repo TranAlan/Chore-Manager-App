@@ -5,7 +5,6 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -20,15 +19,17 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class NewChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     // creating variables to link with xml
     DateFormat formatDateTime = DateFormat.getDateTimeInstance();
     Calendar dateTime = Calendar.getInstance();
-    private Spinner choreTypeSpinner,repeatableSpinner,repeatableTimesSpinner;
-    private ArrayAdapter choreAdapter,repeatbleAdapter, assignToAdapter;
+    private Spinner choreTypeSpinner,repeatableSpinner,totalPointsSpinner;
+    private ArrayAdapter choreAdapter,repeatbleAdapter, assignToAdapter, totalPointsAdapter;
     private NumberPicker numberPicker = null;
     private Button deadlineButton;
     private TextView actualDeadlineTextView;
@@ -60,6 +61,22 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         repeatableSpinner =(Spinner) findViewById(R.id.assignToSpiner);
         repeatableSpinner.setAdapter(assignToAdapter);
         repeatableSpinner.setOnItemSelectedListener(NewChoreActivity.this);
+
+        // create adapter from string array in string.xml file for totalPointsSpinner
+        List points = new ArrayList<Integer>();
+        for (int i = 1; i <= 10; i++) {
+            points.add(Integer.toString(i));
+        }
+        ArrayAdapter<Integer> spinnerArrayAdapter = new ArrayAdapter<Integer>(
+                this, android.R.layout.simple_spinner_item, points);
+        totalPointsAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+        // set spinner to the one the the xml
+        totalPointsSpinner =(Spinner) findViewById(R.id.totalPointsSpinner);
+        totalPointsSpinner.setAdapter(totalPointsAdapter);
+        totalPointsSpinner.setOnItemSelectedListener(NewChoreActivity.this);
+
+
+
 
         // Num Picker
         numberPicker = (NumberPicker) findViewById(R.id.numberPicker);

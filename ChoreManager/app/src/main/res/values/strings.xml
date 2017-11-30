@@ -83,7 +83,7 @@
     <string name="string_deadline">Deadline:</string>
     <string name="string_chore_type">Chore Type:</string>
     <string name="settings_buttons_desc">button for settings activity</string>
-    <string name="materials_buttons_desc">button for list of mateirals activity</string>
+    <string name="materials_buttons_desc">button for list of materials activity</string>
     <string name="chores_buttons_desc">button for list of all chores activity</string>
     <string name="groceries_buttons_desc">button for current groceries at home</string>
     <string name="shoppinglist_buttons_desc">button for shopping list activity</string>
@@ -91,9 +91,10 @@
     <string name="string_Peter">Peter Lam</string>
     <string name="desc_hint">Please Enter A Description of The Task</string>
     <string name="note_hint">Please Enter A Note</string>
-    <string name="repeatable_text">Repeatable</string>
+    <string name="repeatable_text">Repeatable:</string>
     <string name="numberOfTimes_String">Number of Times</string>
     <string name="string_pick_deadline">Pick Deadline</string>
+    <string name="string_total_points">Total Points:</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>
@@ -121,5 +122,10 @@
         <item name="monthly">Monthly</item>
     </string-array>
 
-
+    <string-array name="totalPointsSpinner_Options">
+        <item name="none">None</item>
+        <item name="daily">Daily</item>
+        <item name="weekly">Weekly</item>
+        <item name="monthly">Monthly</item>
+    </string-array>
 </resources>
