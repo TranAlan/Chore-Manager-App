@@ -111,7 +111,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+        // Check if user is signed in (non-null)
         FirebaseUser currentUser = mAuth.getCurrentUser();
         startActivityForResult(
                 AuthUI.getInstance()
@@ -119,7 +119,6 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
                         .setAvailableProviders(providers)
                         .build(),
                 RC_SIGN_IN);
-        //updateUI(currentUser);
     }
 
     @Override
