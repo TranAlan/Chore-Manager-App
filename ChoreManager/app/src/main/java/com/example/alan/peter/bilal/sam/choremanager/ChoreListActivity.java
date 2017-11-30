@@ -88,13 +88,14 @@ public class ChoreListActivity extends AppCompatActivity {
             }
         }
         // temp place holders -For real implemenation you need to take values of title, deadline and assignto and put it into the hash
+        /*
         choresHash.put("Do the Dishes", "Peter\n10/21/17 @12:59");
         choresHash.put("!Drop Tables", "Kevin\n09/21/17 @12:59");
         choresHash.put("Clean your room", "Bilal\n08/25/17 @11:59");
         choresHash.put("Finish This App", "Alan\n11/28/17 @11:59");
         choresHash.put("Boost Peter to Plat", "Sam\n11/30/17 @2:00");
         choresHash.put("Make More Chores", "Vinh\n02/12/48 @1:06");
-
+        */
         // USE THIS TO IMPLEMNET
 //        for (Chore i: ChoreList)
 //        {
@@ -136,6 +137,7 @@ public class ChoreListActivity extends AppCompatActivity {
 
     protected void createNewChoreButton(View view){
         Intent intent = new Intent(this, NewChoreActivity.class);
+        finish();
         startActivity(intent);
 
     }

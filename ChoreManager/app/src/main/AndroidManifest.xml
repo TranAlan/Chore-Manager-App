@@ -15,6 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- MAIN ACTIVITY -->
         <activity
             android:name=".AppLoginActivity"
             android:label="Login">
@@ -24,44 +26,70 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- CHILD ACITVITES OF MAIN -->
+
         <activity
             android:name=".MenuActivity"
-            android:label="Menu" />
-        <activity
-            android:name=".UserMenu"
-            android:label="Users"
-            android:parentActivityName=".MenuActivity" />
-        <activity
-            android:name=".MaterialsActivity"
-            android:label="Materials List"
-            android:parentActivityName=".MenuActivity" />
-        <activity
-            android:name=".Groceries"
-            android:label="Grocery List"
-            android:parentActivityName=".MenuActivity" />
-        <activity
-            android:name=".ShoppingListActivity"
-            android:label="Shopping List"
-            android:parentActivityName=".MenuActivity" />
-        <activity
-            android:name=".SettingsActivity"
-            android:label="Settings"
-            android:parentActivityName=".MenuActivity" />
-        <activity
-            android:name=".ChoreListActivity"
-            android:label="Chores"
-            android:parentActivityName=".MenuActivity" />
-        <activity
-            android:name=".SpecificChoreActivity"
-            android:label="Chore_Name_Here"
-            android:parentActivityName=".MenuActivity" />\
+            android:label="Menu"
+            android:parentActivityName=".AppLoginActivity" >
+        </activity>
 
-        <activity android:name=".NewChoreActivity" android:label="New Chore"
-            android:parentActivityName=".MenuActivity"></activity>
-        <!-- The meta-data tag is required if you support API level 15 and lower -->
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MenuActivity" />
+
+            <activity
+                android:name=".UserMenu"
+                android:label="Users"
+                android:parentActivityName=".MenuActivity">
+            </activity>
+
+
+            <activity
+                android:name=".MaterialsActivity"
+                android:label="Materials List"
+                android:parentActivityName=".MenuActivity">
+            </activity>
+
+
+            <activity
+                android:name=".Groceries"
+                android:label="Grocery List"
+                android:parentActivityName=".MenuActivity">
+            </activity>
+
+
+            <activity
+                android:name=".ShoppingListActivity"
+                android:label="Shopping List"
+                android:parentActivityName=".MenuActivity" >
+            </activity>
+
+
+            <activity
+                android:name=".SettingsActivity"
+                android:label="Settings"
+                android:parentActivityName=".MenuActivity" >
+            </activity>
+
+
+            <activity
+                android:name=".ChoreListActivity"
+                android:label="Chores"
+                android:parentActivityName=".MenuActivity" >
+            </activity>
+
+
+            <activity
+                android:name=".SpecificChoreActivity"
+                android:label="Chore_Name_Here"
+                android:parentActivityName=".MenuActivity" >
+            </activity>
+
+            <activity
+                android:name=".NewChoreActivity"
+                android:label="New Chore"
+                android:parentActivityName=".ChoreListActivity">
+            </activity>
+
     </application>
 
 </manifest>
