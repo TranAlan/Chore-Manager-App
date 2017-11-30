@@ -19,9 +19,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class NewChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
@@ -64,15 +62,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
 
         // create adapter from string array in string.xml file for totalPointsSpinner
 
-        List points = new ArrayList<Integer>();
-        for (int i = 1; i <= 10; i++) {
-            points.add(Integer.toString(i));
-        }
-
-        ArrayAdapter<Integer> spinnerArrayAdapter = new ArrayAdapter<Integer>(
-                this, android.R.layout.simple_spinner_item, points);
-
-       // totalPointsAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+        totalPointsAdapter = ArrayAdapter.createFromResource(this,R.array.totalPointsSpinner_Options,android.R.layout.simple_spinner_item);
         // set spinner to the one the the xml
         totalPointsSpinner =(Spinner) findViewById(R.id.totalPointsSpinner);
         totalPointsSpinner.setAdapter(totalPointsAdapter);

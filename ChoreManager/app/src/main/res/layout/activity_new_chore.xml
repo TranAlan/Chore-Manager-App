@@ -186,7 +186,8 @@
                         style="@style/Widget.AppCompat.Spinner.Underlined"
                         android:layout_width="0dp"
                         android:layout_height="45dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:foregroundGravity="center" />
 
                 </LinearLayout>
 
