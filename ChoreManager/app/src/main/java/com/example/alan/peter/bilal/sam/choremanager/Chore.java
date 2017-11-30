@@ -60,6 +60,21 @@ public class Chore implements Serializable {
         this.completionStatus=Status.ACTIVE;
     }
 
+    public Chore(){
+
+        this.name=null;
+        this.description=null;
+        this.notes=null;
+        this.rewardPoints= 0;
+        this.repeat=null;
+        this.choreType=Type.MISC;
+        this.deadline=null;
+        this.reqMat=null;
+        this.reqGroc=null;
+        this.assignedTo=null;
+        this.completionStatus=Status.ACTIVE;
+    }
+
     //Getters and Setters
     public String getName() {
         return name;

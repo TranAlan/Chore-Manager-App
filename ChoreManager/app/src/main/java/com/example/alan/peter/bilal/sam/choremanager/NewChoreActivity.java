@@ -147,65 +147,72 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         Intent intent = new Intent(this, ChoreListActivity.class);
 
         EditText grabChoreName = (EditText) findViewById(R.id.choreNameInput);
-        //EditText grabAssignedTo = (EditText) findViewById(R.id.assignToSpinner);
+        Spinner grabAssignedTo = findViewById(R.id.assignToSpiner);
         Spinner grabChoreType = findViewById(R.id.choreTypeSpinner);
+        //Spinner grabPoints = findViewById(R.id.totalPointsSpinner);
         //Requried matierals
-        //NumberPicker grabRepeatValue = findViewById(R.id.numberPicker);
+        NumberPicker grabRepeatValue = findViewById(R.id.numberPicker);
+        Spinner grabRepeatType = findViewById(R.id.repeatableSpinner);
         EditText grabDesc = (EditText) findViewById(R.id.descTextView2);
         EditText grabNote = (EditText) findViewById(R.id.notesTextView);
 
 
 
         String choreName = grabChoreName.getText().toString();
-        //String choreAssignedTo = grabAssignedTo.getText().toString();
+        String choreAssignedTo = (String) grabAssignedTo.getSelectedItem();
         String choreType = (String) grabChoreType.getSelectedItem();
-        //int choreRepeatValue = grabRepeatValue.getValue();
-        //String choreRepeatType = (String) grabRepeatType.getSelectedItem();
+        int choreRepeatValue = grabRepeatValue.getValue();
+        String choreRepeatType = (String) grabRepeatType.getSelectedItem();
         String choreDesc = grabDesc.getText().toString();
-        String choreNote = grabDesc.getText().toString();
-        //int choreTotalPoints = grabPoints.getValue();
+        String choreNote = grabNote.getText().toString();
+        //POINTS int choreTotalPoints = grabPoints.getValue();
+        Repeated repeat = new Repeated(0);
 
-        /*
         if (choreRepeatType.equals("Daily")){
-            Repeated repeat = new Repeated(choreRepeatValue);
+            repeat = new Repeated(choreRepeatValue);
             repeat.setTypeDaily();
         }
         else if(choreRepeatType.equals("Weekly")){
-            Repeated repeat = new Repeated(choreRepeatValue);
+            repeat = new Repeated(choreRepeatValue);
             repeat.setTypeMonthly();
         }
 
         else if(choreRepeatType.equals("Monthly")){
-            Repeated repeat = new Repeated(choreRepeatValue);
+            repeat = new Repeated(choreRepeatValue);
             repeat.setTypeMonthly();
         }
-        */
+
         //Log.d("testTag",test);
         //Log.d("testTag",test2);
         //Log.d("testTag",test3);
         //Log.d("testTag",test4);
+        MenuActivity.getManager().addUser(new User("Peter Lam", "password"));
+        User findUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
+        AdminUser user = (AdminUser) MenuActivity.getManager().getCurrentUser();
+        Chore newChore;
 
-        /*
-        if (not assigned){
+        if (choreAssignedTo.equals("None")){
 
-            currentUser.createChore(name, desc, note, points, repeat, due, materials, groceries);
+            newChore = user.createChore(choreName, choreDesc, choreNote, 10, repeat, dateTime.getTime(), null, null);
+            newChore.setStatusUnassigned();
+            MenuActivity.getManager().addUnassignedChores(newChore);
         }
         else{
-            AdminUser user = (AdminUser) MenuActivity.getManager().getCurrentUser();
-            user.createChore()
+            newChore = user.createChore(choreName, choreDesc, choreNote, 10, repeat, dateTime.getTime(), null, null);
+            newChore.setAssignedTo(findUser);
+            findUser.addToAssignedChores(newChore);
         }
 
-
-
-        if (choreType.equals("Misc"))
+        if (choreType.equals("Misc")){
+            newChore.setTypeMisc();
         }
         else if (choreType.equals("Cooking")){
-
+            newChore.setTypeCleaning();
         }
         else{
-
+            newChore.setTypeCleaning();
         }
-        */
+
 
         startActivity(intent);
     }
