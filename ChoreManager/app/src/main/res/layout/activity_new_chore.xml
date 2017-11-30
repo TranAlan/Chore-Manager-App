@@ -166,29 +166,20 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <Button
+                    android:id="@+id/deadlineButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:background="@color/colorAccent"
+                    android:text="@string/string_pick_deadline" />
 
-                    <TextView
-                        android:id="@+id/deadlineText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/string_deadline"
-                        android:textSize="20sp" />
-
-                    <EditText
-                        android:id="@+id/deadlineInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textSize="20sp" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/actualDeadlineTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 

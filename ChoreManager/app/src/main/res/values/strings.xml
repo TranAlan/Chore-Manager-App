@@ -93,6 +93,7 @@
     <string name="note_hint">Please Enter A Note</string>
     <string name="repeatable_text">Repeatable</string>
     <string name="numberOfTimes_String">Number of Times</string>
+    <string name="string_pick_deadline">Pick Deadline</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>
@@ -114,11 +115,10 @@
     </string-array>
 
     <string-array name="repeatableSpinner_Options">
-        <item name="no">None</item>
+        <item name="none">None</item>
         <item name="daily">Daily</item>
         <item name="weekly">Weekly</item>
         <item name="monthly">Monthly</item>
-        <item name="yearly">Yearly</item>
     </string-array>
 
 

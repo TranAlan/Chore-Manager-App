@@ -1,5 +1,7 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,19 +9,27 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.util.Calendar;
 
 public class NewChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
-    // creating spinner for choretpye and adapter
-    Spinner choreTypeSpinner,repeatableSpinner,repeatableTimesSpinner;
-    ArrayAdapter choreAdapter,repeatbleAdapter, assignToAdapter;
-    NumberPicker numberPicker = null;
-
-
+    // creating variables to link with xml
+    DateFormat formatDateTime = DateFormat.getDateTimeInstance();
+    Calendar dateTime = Calendar.getInstance();
+    private Spinner choreTypeSpinner,repeatableSpinner,repeatableTimesSpinner;
+    private ArrayAdapter choreAdapter,repeatbleAdapter, assignToAdapter;
+    private NumberPicker numberPicker = null;
+    private Button deadlineButton;
+    private TextView actualDeadlineTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +65,52 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         numberPicker.setMinValue(1);
         numberPicker.setWrapSelectorWheel(false);
 
+        // linking deadline button and text to xml
+        deadlineButton = (Button)findViewById(R.id.deadlineButton);
+        actualDeadlineTextView = (TextView)findViewById(R.id.actualDeadlineTextView);
+
+        deadlineButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                updateDate();
+            }
+        });
+        updateDeadLineText();
+
+    }
+    public void updateDate()
+    {
+        new DatePickerDialog(this,d,dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH),dateTime.get(Calendar.DAY_OF_MONTH)).show();
 
     }
 
+    public void updateTime()
+    {
+        new TimePickerDialog(this,t,dateTime.get(Calendar.HOUR_OF_DAY),dateTime.get(Calendar.MINUTE),true).show();
+
+    }
+
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthofYear, int dayOfMonth) {
+        dateTime.set(Calendar.YEAR,year);
+        dateTime.set(Calendar.MONTH,monthofYear);
+        dateTime.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+        updateDeadLineText();
+        updateTime();
+        }
+    };
+    TimePickerDialog.OnTimeSetListener t = new TimePickerDialog.OnTimeSetListener(){
+    public  void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        dateTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
+        dateTime.set(Calendar.MINUTE,minute);
+        updateDeadLineText();
+    }
+    };
+
+    public void updateDeadLineText(){
+        actualDeadlineTextView.setText(formatDateTime.format(dateTime.getTime()));
+    }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         TextView spinnerDialogText = (TextView) view;
