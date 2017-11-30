@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ChoreManager.iml" filepath="$PROJECT_DIR$/ChoreManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Bilal Khalid\Documents\University Materials\Year 2\Semester 1\SEG\Chore-Manager-App\ChoreManager\app\app.iml" filepath="C:\Users\Bilal Khalid\Documents\University Materials\Year 2\Semester 1\SEG\Chore-Manager-App\ChoreManager\app\app.iml" />
     </modules>
   </component>
 </project>
