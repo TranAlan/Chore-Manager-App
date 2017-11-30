@@ -114,13 +114,15 @@ public class ChoreListActivity extends AppCompatActivity {
         }
 
         choreListView.setAdapter(adapter);
+
+
         // To retrieve object in second Activity
         //Intent i = getIntent();
         //ChoreManagerProfile s = (ChoreManagerProfile) i.getSerializableExtra("Manager");
         //Log.d("Testtag",s.getCurrentUser().getUsername());
 
        // MenuActivity.getManager();
-        Log.d("Testtag",MenuActivity.getManager().getCurrentUser().getUsername());
+        //Log.d("Testtag",MenuActivity.getManager().getCurrentUser().getUsername());
     }
 
     protected void createNewChoreButton(View view){

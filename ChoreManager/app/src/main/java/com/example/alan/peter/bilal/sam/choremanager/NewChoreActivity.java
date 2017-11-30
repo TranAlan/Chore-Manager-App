@@ -3,10 +3,13 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +49,48 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     // listening if Save and Exit button is clicked
     protected void saveExitOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
+
+        EditText grabChoreName = (EditText) findViewById(R.id.choreNameInput);
+        //EditText grabAssignedTo = (EditText) findViewById(R.id.assignToSpinner);
+        EditText grabDeadline = (EditText) findViewById(R.id.deadlineInput);
+        Spinner grabChoreType = findViewById(R.id.choreTypeSpinner);
+        //Requried matierals
+        //NumberPicker grabRepeatValue = findViewById(R.id.numberPicker);
+        EditText grabDesc = (EditText) findViewById(R.id.descTextView2);
+        EditText grabNote = (EditText) findViewById(R.id.notesTextView);
+
+
+
+        String choreName = grabChoreName.getText().toString();
+        //String choreAssignedTo = grabAssignedTo.getText().toString();
+        String choreDeadline = grabDeadline.getText().toString();
+        String choreType = (String) grabChoreType.getSelectedItem();
+        //int choreRepeatValue = grabRepeatValue.getValue();
+        //String choreRepeatType = (String) grabRepeatType.getSelectedItem();
+        String choreDesc = grabDesc.getText().toString();
+        String choreNote = grabDesc.getText().toString();
+        //int choreTotalPoints = grabPoints.getValue();
+
+        /*
+        if (choreRepeatType.equals("Daily")){
+            Repeated repeat = new Repeated(choreRepeatValue);
+            repeat.setTypeDaily();
+        }
+        else if(choreRepeatType.equals("Weekly")){
+            Repeated repeat = new Repeated(choreRepeatValue);
+            repeat.setTypeMonthly();
+        }
+
+        else if(choreRepeatType.equals("Monthly")){
+            Repeated repeat = new Repeated(choreRepeatValue);
+            repeat.setTypeMonthly();
+        }
+        */
+        //Log.d("testTag",test);
+        //Log.d("testTag",test2);
+        //Log.d("testTag",test3);
+        //Log.d("testTag",test4);
+
         /*
         if (not assigned){
 
@@ -56,6 +101,16 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
             user.createChore()
         }
 
+
+
+        if (choreType.equals("Misc"))
+        }
+        else if (choreType.equals("Cooking")){
+
+        }
+        else{
+
+        }
         */
 
         startActivity(intent);
