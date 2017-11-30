@@ -63,20 +63,20 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         repeatableSpinner.setOnItemSelectedListener(NewChoreActivity.this);
 
         // create adapter from string array in string.xml file for totalPointsSpinner
+
         List points = new ArrayList<Integer>();
         for (int i = 1; i <= 10; i++) {
             points.add(Integer.toString(i));
         }
+
         ArrayAdapter<Integer> spinnerArrayAdapter = new ArrayAdapter<Integer>(
                 this, android.R.layout.simple_spinner_item, points);
-        totalPointsAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+
+       // totalPointsAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
         // set spinner to the one the the xml
         totalPointsSpinner =(Spinner) findViewById(R.id.totalPointsSpinner);
         totalPointsSpinner.setAdapter(totalPointsAdapter);
         totalPointsSpinner.setOnItemSelectedListener(NewChoreActivity.this);
-
-
-
 
         // Num Picker
         numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
@@ -165,7 +165,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         String choreRepeatType = (String) grabRepeatType.getSelectedItem();
         String choreDesc = grabDesc.getText().toString();
         String choreNote = grabNote.getText().toString();
-        int choreTotalPoints = grabPoints.getValue();
+        //int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
         Repeated repeat = new Repeated(0);
 
         if (choreRepeatType.equals("Daily")){
@@ -188,12 +188,12 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
 
         if (choreAssignedTo.equals("None")){
 
-            newChore = user.createChore(choreName, choreDesc, choreNote, choreTotalPoints, repeat, dateTime.getTime(), null, null);
+            newChore = user.createChore(choreName, choreDesc, choreNote, 0, repeat, dateTime.getTime(), null, null);
             newChore.setStatusUnassigned();
             MenuActivity.getManager().addUnassignedChores(newChore);
         }
         else{
-            newChore = user.createChore(choreName, choreDesc, choreNote, choreTotalPoints, repeat, dateTime.getTime(), null, null);
+            newChore = user.createChore(choreName, choreDesc, choreNote, 0, repeat, dateTime.getTime(), null, null);
             newChore.setAssignedTo(findUser);
             findUser.addToAssignedChores(newChore);
         }
@@ -210,6 +210,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
 
 
         startActivity(intent);
-        finish();
+       // finish();
     }
 }

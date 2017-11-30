@@ -137,8 +137,8 @@ public class ChoreListActivity extends AppCompatActivity {
 
     protected void createNewChoreButton(View view){
         Intent intent = new Intent(this, NewChoreActivity.class);
-        finish();
         startActivity(intent);
+        //finish();
 
     }
 }
