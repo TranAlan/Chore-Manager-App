@@ -123,9 +123,15 @@
     </string-array>
 
     <string-array name="totalPointsSpinner_Options">
-        <item name="none">None</item>
-        <item name="daily">Daily</item>
-        <item name="weekly">Weekly</item>
-        <item name="monthly">Monthly</item>
+        <item name="one">1</item>
+        <item name="two">2</item>
+        <item name="three">3</item>
+        <item name="four">4</item>
+        <item name="five">5</item>
+        <item name="six">6</item>
+        <item name="seven">7</item>
+        <item name="eight">8</item>
+        <item name="nine">9</item>
+        <item name="ten">10</item>
     </string-array>
 </resources>
