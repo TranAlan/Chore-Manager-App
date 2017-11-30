@@ -15,7 +15,6 @@ public static ChoreManagerProfile manager = new ChoreManagerProfile();
         manager = new ChoreManagerProfile();
         manager.setCurrentUser(new User());
         manager.getCurrentUser().setUsername("Alan");
-       // Log.d("cooltag",cool.getCurrentUser().getUsername());
     }
 
     protected void userImageOnClick(View view){
@@ -36,7 +35,7 @@ public static ChoreManagerProfile manager = new ChoreManagerProfile();
     protected void choreListImageOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
         //To pass:
-        intent = intent.putExtra("Manager", manager);
+        // intent = intent.putExtra("Manager", manager);
 
         // To retrieve object in second Activity
         //getIntent().getSerializableExtra("MyClass");

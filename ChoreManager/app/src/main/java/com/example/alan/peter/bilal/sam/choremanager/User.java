@@ -12,21 +12,29 @@ public class User implements Serializable {
     private String username;
     private String password;
     private int totalPoints;
-    private Image profilePic;
+   // private Image profilePic;
     private ArrayList<Chore> assignedChores;
 
     public User(){
         username = null;
         password = null;
         totalPoints = 0;
-        profilePic = null;
+       // profilePic = null;
         assignedChores = new ArrayList<Chore>();
     }
+    /*
     public User(String username, String password, int totalPoints, Image profilePic){
         this.username = username;
         this.password = password;
         this.totalPoints = 0;
         this.profilePic = profilePic;
+        assignedChores = new ArrayList<Chore>();
+    }
+    */
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+        this.totalPoints = 0;
         assignedChores = new ArrayList<Chore>();
     }
 
@@ -41,9 +49,10 @@ public class User implements Serializable {
         return totalPoints;
     }
 
-    public Image getProfilePic(){
+   /* public Image getProfilePic(){
         return profilePic;
     }
+    */
 
     public ArrayList<Chore> getAssignedChores(){
         return assignedChores;
@@ -61,9 +70,11 @@ public class User implements Serializable {
         this.totalPoints = totalPoints;
     }
 
+    /*
     public void setProfilePic(Image profilePic){
         this.profilePic = profilePic;
     }
+    */
 
     public void setAssignedChores(ArrayList<Chore> assignedChores){
         this.assignedChores = assignedChores;
@@ -94,5 +105,22 @@ public class User implements Serializable {
     */
     //sort by categorie?
 
-
 }
+
+    /*
+    EditText grabUsername = (EditText) findViewById(R.id.choreNameInput);
+    EditText grabPassword = (EditText) findViewById(R.id.deadlineInput);
+    Spinner grabUserType = findViewById(R.id.choreTypeSpinner);
+
+    String userUsername = grabUsername.getText().toString();
+    String userPassword = grabPassword.getText().toString();
+    String userUserType = (String) grabUserType.getSelectedItem();
+
+    if(userUserType.equals("Child")){
+        User newUser = new User(userUsername, userPassword)
+            }
+            else{
+                AdminUser newUser = new AdminUser(userUsername, userPassword)
+            }
+            MenuActivity.getManager().addUser(newUser);
+            */
