@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -78,6 +79,14 @@ public class ChoreListActivity extends AppCompatActivity {
         ListView choreListView = (ListView) findViewById(R.id.choreListView);
         // making a hashmap for the list view
         HashMap<String, String> choresHash = new HashMap<>();
+
+        for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++){
+            for (int j = 0; j < MenuActivity.getManager().getUsers().get(i).getAssignedChores().size(); j++){
+                choresHash.put(MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getName(),
+                        MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getAssignedTo().getUsername()+"\n "+
+                                MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getDeadline().toString());
+            }
+        }
         // temp place holders -For real implemenation you need to take values of title, deadline and assignto and put it into the hash
         choresHash.put("Do the Dishes", "Peter\n10/21/17 @12:59");
         choresHash.put("!Drop Tables", "Kevin\n09/21/17 @12:59");
