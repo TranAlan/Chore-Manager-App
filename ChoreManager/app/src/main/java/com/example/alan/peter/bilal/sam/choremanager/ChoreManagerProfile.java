@@ -10,6 +10,7 @@ package com.example.alan.peter.bilal.sam.choremanager;
  **/
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Collections;
@@ -21,6 +22,8 @@ public class ChoreManagerProfile implements Serializable {
     private ArrayList<String> materials;
     private ArrayList<String> pantry;
     private ArrayList<String> tools;
+    private ArrayList<String> shopListMat;
+    private ArrayList<String> shoplistGroc;
     private ArrayList<User> users;
     private ArrayList<Chore> unassignedChores;
     private ArrayList<Chore> finishedChores;
@@ -31,6 +34,8 @@ public class ChoreManagerProfile implements Serializable {
     //Constructor
     public ChoreManagerProfile() {
         this.materials = new ArrayList<String>();
+        this.shoplistGroc = new ArrayList<String>();
+        this.shopListMat = new ArrayList<String>();
         this.pantry = new ArrayList<String>();
         this.tools = new ArrayList<String>();
         this.unassignedChores = new ArrayList<Chore>();
@@ -41,6 +46,15 @@ public class ChoreManagerProfile implements Serializable {
 
 
     //Getters and Setters
+
+    public ArrayList<String> getShopListMat() { return this.shopListMat;}
+
+    public ArrayList<String> getShoplistGroc() { return this.shoplistGroc;}
+
+    public void addShoppingMaterial(String material){shopListMat.add(material);}
+
+    public void addShoppingGrocery(String item) { shoplistGroc.add(item);}
+
     public ArrayList<String> getMaterials() {
         return this.materials;
     }
