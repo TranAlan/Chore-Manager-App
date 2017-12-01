@@ -22,6 +22,8 @@ import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.ResultCodes;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,6 +36,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
 
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
+    private DatabaseReference databaseFamilies;
     List<AuthUI.IdpConfig> providers = Arrays.asList(
             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build());
 
@@ -45,6 +48,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        databaseFamilies = FirebaseDatabase.getInstance().getReference("families");
         setContentView(R.layout.activity_app_login);
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -52,6 +56,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
             public void onClick(View view) {
                 // Check if user is signed in (non-null)
                 FirebaseUser currentUser = mAuth.getCurrentUser();
+                // Add user to database
                 startActivityForResult(
                         AuthUI.getInstance()
                                 .createSignInIntentBuilder()
@@ -75,6 +80,11 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
             if (resultCode == ResultCodes.OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                // Add user to database
+                String email = user.getEmail();
+                String id = databaseFamilies.push().getKey();
+                databaseFamilies.child(id).setValue(email);
+
                 Intent intent = new Intent(this, MenuActivity.class);
                 startActivity(intent);
             } else {
