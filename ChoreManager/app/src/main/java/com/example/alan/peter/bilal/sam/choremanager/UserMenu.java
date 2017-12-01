@@ -20,7 +20,6 @@ public class UserMenu extends AppCompatActivity {
         userListView = (ListView) findViewById(R.id.userListView);
         CustomUserListView customUserListView = new CustomUserListView(this,userName, roleName, imageIDs);
         userListView.setAdapter(customUserListView);
-
-
     }
+
 }
