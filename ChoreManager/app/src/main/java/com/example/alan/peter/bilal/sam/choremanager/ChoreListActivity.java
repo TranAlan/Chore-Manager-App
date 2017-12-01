@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ChoreListActivity extends AppCompatActivity {
 
-    List<String[]> listOfArrayList = new ArrayList<String[]>();
+    List<Chore> listOfChores = new ArrayList<>();
     private ImageButton sortButton,filterButton;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,10 +25,22 @@ public class ChoreListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chore_list);
 
+        //  ---- List View Code ---
+        ListView choreListView = (ListView) findViewById(R.id.choreListView);
+        // making a arraylist of string arrays for the list view
+
+        // filling the arrays with title and the description aka Assign to name along with the deadline
+        for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++){
+            listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+        }
+        // calling custom chore view to display all the choews
+        CustomChoreListView customChoreListView = new CustomChoreListView(this,listOfChores);
+        choreListView.setAdapter(customChoreListView);
         // link buttons to the ones in XML
         filterButton = (ImageButton) findViewById(R.id.filterButton);
         sortButton = (ImageButton) findViewById(R.id.sortButton);
         // set and create OnClickListener for Fitler and Sort buttons
+
         sortButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -70,62 +82,6 @@ public class ChoreListActivity extends AppCompatActivity {
 
 
         }); //closing the setOnClickListener method
-
-
-        //  ---- List View Code ---
-        ListView choreListView = (ListView) findViewById(R.id.choreListView);
-        // making a arraylist of string arrays for the list view
-
-//        // filling the arrays with title and the description aka Assign to name along with the deadline
-//        for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++){
-//            for (int j = 0; j < MenuActivity.getManager().getUsers().get(i).getAssignedChores().size(); j++){
-//                listOfArrayList.add(new String[]{MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getName(),MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getAssignedTo().getUsername()+"\n "+
-//                        MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getDeadline().toString()});
-//            }
-//        }
-        listOfArrayList.add(new String[]{"ABC","123"});
-        // calling custom chore view to display all the choews
-        CustomChoreListView customChoreListView = new CustomChoreListView(this,listOfArrayList);
-        choreListView.setAdapter(customChoreListView);
-
-        // temp place holders -For real implemenation you need to take values of title, deadline and assignto and put it into the hash
-        /*
-        choresHash.put("Do the Dishes", "Peter\n10/21/17 @12:59");
-        choresHash.put("!Drop Tables", "Kevin\n09/21/17 @12:59");
-        choresHash.put("Clean your room", "Bilal\n08/25/17 @11:59");
-        choresHash.put("Finish This App", "Alan\n11/28/17 @11:59");
-        choresHash.put("Boost Peter to Plat", "Sam\n11/30/17 @2:00");
-        choresHash.put("Make More Chores", "Vinh\n02/12/48 @1:06");
-        */
-        // USE THIS TO IMPLEMNET
-//        for (Chore i: ChoreList)
-//        {
-//            choresHash.put(i.getDescription(),i.getAssignedTo()+"\n"+i.getDeadline());
-//        }
-
-//        // creating a simpleAdapter
-//        ArrayAdapter adapter = new ArrayAdapter()
-//
-//                this, listOfArrayList, R.layout.chore_list_item,
-//                // keys that adapters will looks for
-//                new String[]{"First Line", "Second Line"},
-//                //getting format from xml file
-//                new int[]{R.id.MainText, R.id.subtext});
-//        // iterate through a hashmap
-//        //loop until there aren o more values
-//        for (Object aListOfArrayList : listOfArrayList) {
-//            // creating a new hashmap
-//            HashMap<String, String> resultsMap = new HashMap<>();
-//            Map.Entry pair = (Map.Entry) aListOfArrayList;
-//            resultsMap.put("First Line", pair.getKey().toString());
-//            resultsMap.put("Second Line", pair.getValue().toString());
-//            listItems.add(resultsMap);
-//        }
-//
-//        choreListView.setAdapter(adapter);
-
-
-
     }
 
     protected void createNewChoreButton(View view){

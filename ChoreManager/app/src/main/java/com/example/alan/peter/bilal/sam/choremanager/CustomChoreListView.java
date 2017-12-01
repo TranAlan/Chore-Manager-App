@@ -14,17 +14,19 @@ import java.util.List;
  * Created by peter on 2017-11-30.
  */
 
-public class CustomChoreListView extends ArrayAdapter<String> {
+public class CustomChoreListView extends ArrayAdapter<Chore> {
 
-    private List<String[]> choreArrayList;
+    private List<Chore> choreList;
     private Activity context;
 
 
-    public CustomChoreListView(Activity context, List<String[]> choreArrayList)
+    public CustomChoreListView(Activity context, List<Chore> choreList)
     {
-        super(context,R.layout.user_layout);
+
+        super(context,R.layout.chore_list_item, choreList);
         this.context= context;
-        this.choreArrayList = choreArrayList;
+        this.choreList = choreList;
+
     }
 
     public View getView( int position,@Nullable View convertView, @Nullable ViewGroup parent)
@@ -44,8 +46,8 @@ public class CustomChoreListView extends ArrayAdapter<String> {
             viewHolder = (ViewHolder) r.getTag();
         }
 
-        viewHolder.MainText.setText(choreArrayList.get(position)[0]);
-        viewHolder.subText.setText(choreArrayList.get(position)[1]);
+        viewHolder.MainText.setText(choreList.get(position).getName());
+        viewHolder.subText.setText(choreList.get(position).getAssignedTo().getUsername()+"\n "+choreList.get(position).getDeadline().toString());
         return r;
     }
 
