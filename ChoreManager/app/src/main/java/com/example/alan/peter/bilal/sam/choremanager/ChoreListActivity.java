@@ -30,8 +30,10 @@ public class ChoreListActivity extends AppCompatActivity {
         // making a arraylist of string arrays for the list view
 
         // filling the arrays with title and the description aka Assign to name along with the deadline
-        for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++){
+        for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++)
+        {
             listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+
         }
         // calling custom chore view to display all the choews
         CustomChoreListView customChoreListView = new CustomChoreListView(this,listOfChores);

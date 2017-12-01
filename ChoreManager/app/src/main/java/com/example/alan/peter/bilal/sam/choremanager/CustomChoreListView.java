@@ -2,6 +2,7 @@ package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.app.Activity;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,9 @@ public class CustomChoreListView extends ArrayAdapter<Chore> {
         super(context,R.layout.chore_list_item, choreList);
         this.context= context;
         this.choreList = choreList;
-
     }
 
-    public View getView( int position,@Nullable View convertView, @Nullable ViewGroup parent)
+    public View getView(int position,@Nullable View convertView, @Nullable ViewGroup parent)
     {
         View r=convertView;
         CustomChoreListView.ViewHolder viewHolder=null;
@@ -48,6 +48,7 @@ public class CustomChoreListView extends ArrayAdapter<Chore> {
 
         viewHolder.MainText.setText(choreList.get(position).getName());
         viewHolder.subText.setText(choreList.get(position).getAssignedTo().getUsername()+"\n "+choreList.get(position).getDeadline().toString());
+
         return r;
     }
 
