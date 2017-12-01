@@ -137,28 +137,28 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     protected void saveExitOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
 
-        EditText grabChoreName = (EditText) findViewById(R.id.choreNameInput);
-        Spinner grabAssignedTo = findViewById(R.id.assignToSpiner);
-        Spinner grabChoreType = findViewById(R.id.choreTypeSpinner);
-        Spinner grabPoints = findViewById(R.id.totalPointsSpinner);
+        EditText grabChoreName = (EditText) findViewById(R.id.choreNameInput); //Chore Name
+        Spinner grabAssignedTo = findViewById(R.id.assignToSpiner); //Who the Chore is assigned to
+        Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore
+        Spinner grabPoints = findViewById(R.id.totalPointsSpinner); // The points the chore is worth
         //Requried matierals
-        NumberPicker grabRepeatValue = findViewById(R.id.numberPicker);
-        Spinner grabRepeatType = findViewById(R.id.repeatableSpinner);
-        EditText grabDesc = (EditText) findViewById(R.id.descTextView2);
-        EditText grabNote = (EditText) findViewById(R.id.notesTextView);
+        //NumberPicker grabRepeatValue = findViewById(R.id.numberPicker);
+        //Spinner grabRepeatType = findViewById(R.id.repeatableSpinner);
+        EditText grabDesc = (EditText) findViewById(R.id.descTextView2); //Description of Chore
+        EditText grabNote = (EditText) findViewById(R.id.notesTextView); //Note of Chore
 
 
-
+        //Simple variables from newChoreActivity
         String choreName = grabChoreName.getText().toString();
         String choreAssignedTo = (String) grabAssignedTo.getSelectedItem();
         String choreType = (String) grabChoreType.getSelectedItem();
-        int choreRepeatValue = grabRepeatValue.getValue();
-        String choreRepeatType = (String) grabRepeatType.getSelectedItem();
+        //int choreRepeatValue = grabRepeatValue.getValue();
+        //String choreRepeatType = (String) grabRepeatType.getSelectedItem();
         String choreDesc = grabDesc.getText().toString();
         String choreNote = grabNote.getText().toString();
-        //int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
-        Repeated repeat = new Repeated(0);
-
+        int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
+        //Repeated repeat = new Repeated(0);
+        /*
         if (choreRepeatType.equals("Daily")){
             repeat = new Repeated(choreRepeatValue);
             repeat.setTypeDaily();
@@ -172,21 +172,19 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
             repeat = new Repeated(choreRepeatValue);
             repeat.setTypeMonthly();
         }
-
-        User findUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
-        AdminUser user = (AdminUser) MenuActivity.getManager().getCurrentUser();
+        */
+        User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
+        AdminUser currentUser = (AdminUser) MenuActivity.getManager().getCurrentUser();
         Chore newChore;
 
-        if (choreAssignedTo.equals("None")){
+        if (assignedUser == null){
 
-            newChore = user.createChore(choreName, choreDesc, choreNote, 0, repeat, dateTime.getTime(), null, null);
-            newChore.setStatusUnassigned();
+            newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints, dateTime.getTime(), null, null);
             MenuActivity.getManager().addUnassignedChores(newChore);
         }
         else{
-            newChore = user.createChore(choreName, choreDesc, choreNote, 0, repeat, dateTime.getTime(), null, null);
-            newChore.setAssignedTo(findUser);
-            findUser.addToAssignedChores(newChore);
+            newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints, dateTime.getTime(), null, null, assignedUser);
+            assignedUser.addToAssignedChores(newChore);
         }
 
         if (choreType.equals("Misc")){
@@ -199,9 +197,8 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
             newChore.setTypeCleaning();
         }
 
-
         startActivity(intent);
-       // finish();
     }
+
 
 }

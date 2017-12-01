@@ -75,6 +75,32 @@ public class Chore implements Serializable {
         this.completionStatus=Status.ACTIVE;
     }
 
+    public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, User assigned) {
+        this.name=name;
+        this.description=desc;
+        this.notes=note;
+        this.rewardPoints=points;
+        this.choreType=Type.MISC;
+        this.deadline=due;
+        this.reqMat=materials;
+        this.reqGroc=groceries;
+        this.assignedTo=assigned;
+        this.completionStatus=Status.ACTIVE;
+    }
+
+    public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries) {
+        this.name=name;
+        this.description=desc;
+        this.notes=note;
+        this.rewardPoints=points;
+        this.choreType=Type.MISC;
+        this.deadline=due;
+        this.reqMat=materials;
+        this.reqGroc=groceries;
+        this.assignedTo= null;
+        this.completionStatus=Status.UNASSIGNED;
+    }
+
     //Getters and Setters
     public String getName() {
         return name;

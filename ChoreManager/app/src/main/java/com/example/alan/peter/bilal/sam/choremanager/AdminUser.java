@@ -23,8 +23,16 @@ public class AdminUser extends User{
     }
 
 
-    public Chore createChore(String name, String desc, String note, int points, Repeated repeat, Date due, ArrayList materials, ArrayList groceries){
-        return new Chore(name, desc, note, points, repeat, due, materials, groceries);
+    public Chore createChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, User user){
+        Chore chore = new Chore(name, desc, note, points, due, materials, groceries, user);
+        if (user!= null){
+            assignChore(user, chore);
+        }
+        return chore;
+    }
+
+    public Chore createUnAssignedChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries ){
+        return new Chore(name, desc, note, points, due, materials, groceries);
     }
 
 
