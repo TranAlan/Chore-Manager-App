@@ -189,7 +189,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:background="@color/colorAccent"
-                android:onClick="onCreateItemPress"
+                android:onClick="onAddGroceryClick"
                 android:text="Add Grocery" />
 
             <Button
@@ -201,10 +201,10 @@
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:background="@color/colorAccent"
-                android:onClick="onCreateItemPress"
+                android:onClick="onAddMaterialClick"
                 android:text="Add Material"
                 android:textAlignment="center"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
     </LinearLayout>
