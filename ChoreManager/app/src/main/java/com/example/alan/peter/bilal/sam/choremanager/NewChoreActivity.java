@@ -177,14 +177,13 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         AdminUser currentUser = (AdminUser) MenuActivity.getManager().getCurrentUser();
         Chore newChore;
 
-        if (assignedUser == null){
+        if (assignedUser.getUsername().equals("")){
 
             newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints, dateTime.getTime(), null, null);
             MenuActivity.getManager().addUnassignedChores(newChore);
         }
         else{
             newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints, dateTime.getTime(), null, null, assignedUser);
-            assignedUser.addToAssignedChores(newChore);
         }
 
         if (choreType.equals("Misc")){

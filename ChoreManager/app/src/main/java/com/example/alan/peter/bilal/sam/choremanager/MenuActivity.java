@@ -12,10 +12,9 @@ public static ChoreManagerProfile manager = new ChoreManagerProfile();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
-        AdminUser testAlan = new AdminUser("Alan Tran", "qwerty");
-        manager.setCurrentUser(testAlan);
-        manager.addUser(testAlan);
-        manager.addUser(new User("Peter Lam", "password"));
+        AdminUser peter = new AdminUser("Peter Lam", "qwerty");
+        manager.setCurrentUser(peter);
+        manager.addUser(peter);
     }
 
     protected void userImageOnClick(View view){

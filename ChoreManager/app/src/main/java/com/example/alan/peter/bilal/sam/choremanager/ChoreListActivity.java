@@ -82,7 +82,7 @@ public class ChoreListActivity extends AppCompatActivity {
 
 
         }); //closing the setOnClickListener method
-        
+
     }
 
     protected void createNewChoreButton(View view){
