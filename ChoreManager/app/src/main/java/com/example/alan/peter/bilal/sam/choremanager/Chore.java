@@ -177,6 +177,7 @@ public class Chore implements Serializable {
         choreType = Type.MISC;
     }
 
+
         //rewards full points if the chore is completed before the deadline and
         //half points if completed afterwards
         public int calcRewardPoints() {
