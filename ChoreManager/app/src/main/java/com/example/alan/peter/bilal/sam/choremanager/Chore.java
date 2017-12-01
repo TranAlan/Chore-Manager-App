@@ -97,7 +97,8 @@ public class Chore implements Serializable {
         this.deadline=due;
         this.reqMat=materials;
         this.reqGroc=groceries;
-        this.assignedTo= null;
+        User emptyUser = new User("UNASSIGNED", "");
+        this.assignedTo= emptyUser;
         this.completionStatus=Status.UNASSIGNED;
     }
 

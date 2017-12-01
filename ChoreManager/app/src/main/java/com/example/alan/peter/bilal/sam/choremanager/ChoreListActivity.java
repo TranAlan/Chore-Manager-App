@@ -88,7 +88,7 @@ public class ChoreListActivity extends AppCompatActivity {
                                 MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getDeadline().toString());
             }
         }
-        
+
         // temp place holders -For real implemenation you need to take values of title, deadline and assignto and put it into the hash
         /*
         choresHash.put("Do the Dishes", "Peter\n10/21/17 @12:59");
