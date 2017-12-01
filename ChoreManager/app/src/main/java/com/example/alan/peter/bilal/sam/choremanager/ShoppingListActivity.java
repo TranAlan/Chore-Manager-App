@@ -15,15 +15,29 @@ public class ShoppingListActivity extends AppCompatActivity {
     }
 
 
-    public Dialog onCreateItemPress() {
-        String[] choices = {"Material", "Grocery"};
+    public void onCreateItemPress() {
+        String[] choices = {"Material","Grocery"};
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("Create an item to add to the shopping list.").setItems(choices, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        alert.setPositiveButton("O0k", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //Your action here
             }
         });
-        return alert.create();
+
+        alert.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                });
+
+        alert.show();
+
     }
 }
 
