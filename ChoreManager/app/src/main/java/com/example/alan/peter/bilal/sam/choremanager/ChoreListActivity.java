@@ -3,24 +3,19 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class ChoreListActivity extends AppCompatActivity {
 
+    List<String[]> listOfArrayList = new ArrayList<String[]>();
     private ImageButton sortButton,filterButton;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -77,16 +72,20 @@ public class ChoreListActivity extends AppCompatActivity {
 
         //  ---- List View Code ---
         ListView choreListView = (ListView) findViewById(R.id.choreListView);
-        // making a hashmap for the list view
-        HashMap<String, String> choresHash = new HashMap<>();
+        // making a arraylist of string arrays for the list view
 
-        for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++){
-            for (int j = 0; j < MenuActivity.getManager().getUsers().get(i).getAssignedChores().size(); j++){
-                choresHash.put(MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getName(),
-                        MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getAssignedTo().getUsername()+"\n "+
-                                MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getDeadline().toString());
-            }
-        }
+//        // filling the arrays with title and the description aka Assign to name along with the deadline
+//        for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++){
+//            for (int j = 0; j < MenuActivity.getManager().getUsers().get(i).getAssignedChores().size(); j++){
+//                listOfArrayList.add(new String[]{MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getName(),MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getAssignedTo().getUsername()+"\n "+
+//                        MenuActivity.getManager().getUsers().get(i).getAssignedChores().get(j).getDeadline().toString()});
+//            }
+//        }
+        listOfArrayList.add(new String[]{"ABC","123"});
+        // calling custom chore view to display all the choews
+        CustomChoreListView customChoreListView = new CustomChoreListView(this,listOfArrayList);
+        choreListView.setAdapter(customChoreListView);
+
         // temp place holders -For real implemenation you need to take values of title, deadline and assignto and put it into the hash
         /*
         choresHash.put("Do the Dishes", "Peter\n10/21/17 @12:59");
@@ -102,28 +101,26 @@ public class ChoreListActivity extends AppCompatActivity {
 //            choresHash.put(i.getDescription(),i.getAssignedTo()+"\n"+i.getDeadline());
 //        }
 
-        // created Arraylist with nested hasp map
-        List<HashMap<String, String>> listItems = new ArrayList<>();
-        // creating a simpleAdapter
-        SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.chore_list_item,
-                // keys that adapters will looks for
-                new String[]{"First Line", "Second Line"},
-                //getting format from xml file
-                new int[]{R.id.MainText, R.id.subtext});
-        // iterate through a hashmap
-        Iterator it = choresHash.entrySet().iterator();
-        //loop until there aren o more values
-        while (it.hasNext())
-        {
-            // creating a new hashmap
-            HashMap<String, String> resultsMap = new HashMap<>();
-            Map.Entry pair = (Map.Entry)it.next();
-            resultsMap.put("First Line", pair.getKey().toString());
-            resultsMap.put("Second Line", pair.getValue().toString());
-            listItems.add(resultsMap);
-        }
-
-        choreListView.setAdapter(adapter);
+//        // creating a simpleAdapter
+//        ArrayAdapter adapter = new ArrayAdapter()
+//
+//                this, listOfArrayList, R.layout.chore_list_item,
+//                // keys that adapters will looks for
+//                new String[]{"First Line", "Second Line"},
+//                //getting format from xml file
+//                new int[]{R.id.MainText, R.id.subtext});
+//        // iterate through a hashmap
+//        //loop until there aren o more values
+//        for (Object aListOfArrayList : listOfArrayList) {
+//            // creating a new hashmap
+//            HashMap<String, String> resultsMap = new HashMap<>();
+//            Map.Entry pair = (Map.Entry) aListOfArrayList;
+//            resultsMap.put("First Line", pair.getKey().toString());
+//            resultsMap.put("Second Line", pair.getValue().toString());
+//            listItems.add(resultsMap);
+//        }
+//
+//        choreListView.setAdapter(adapter);
 
 
         // To retrieve object in second Activity

@@ -22,7 +22,7 @@ public class CustomUserListView extends ArrayAdapter<String>
 
     public CustomUserListView(Activity context,String [] userName, String [] roleName,Integer[] imageIDs )
     {
-        super(context,R.layout.user_layout,userName);
+        super(context,R.layout.chore_list_item,userName);
     this.context= context;
     this.userName = userName;
     this.roleName = roleName;
