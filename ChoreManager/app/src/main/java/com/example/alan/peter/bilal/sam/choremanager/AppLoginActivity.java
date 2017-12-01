@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -84,57 +85,11 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
             if (resultCode == ResultCodes.OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                //String email = ("")+(user.getEmail());
                 String email = user.getEmail();
-                String emailEscaped = email.replaceFirst("@gmail.","ATgmailDOT");
-                System.out.print(emailEscaped);
-                //String id = databaseFamilies.push().getKey();
+                String emailEscaped = email.replaceAll("\\.","DOT").replaceFirst("@","AT");
                 databaseFamilies.child(emailEscaped).setValue(email);
 
                // String id = databaseFamilies.push().getKey();
-                /*databaseFamilies.child("families").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        boolean exists = false;
-                        for (DataSnapshot child : dataSnapshot.getChildren()) {
-                            Map<String, String> model = (Map<String, String>) child.getValue();
-
-                            if(model.containsValue(email)) {
-                                exists = true;
-                                break;
-                            }
-                        }
-
-                        if(exists) {
-                            // This user already exists in firebase.
-                        }
-                        else {
-                            // This user doesn't exists in firebase.
-                            String id = databaseFamilies.push().getKey();
-                            databaseFamilies.child(id).setValue(email);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });*/
-
-                /*databaseFamilies.child(email).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        if (snapshot.getValue() != null) {
-                            //user exists, do something
-                        } else {
-                            //user does not exist, add user to database
-                            addToDatabase(email);
-                        }
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError arg0) {
-                    }
-                });*/
 
                 Intent intent = new Intent(this, MenuActivity.class);
                 startActivity(intent);
@@ -144,10 +99,6 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
             }
         }
     }
-   /* private void addToDatabase(String email){
-        String id = databaseFamilies.push().getKey();
-        databaseFamilies.child(id).setValue(email);
-    }*/
 
     /**
      * Shows the progress UI and hides the login form.
