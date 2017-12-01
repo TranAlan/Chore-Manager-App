@@ -18,14 +18,14 @@ public class ShoppingListActivity extends AppCompatActivity {
     public void onCreateItemPress(View view) {
         String[] choices = {"Material","Grocery"};
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("Create an item to add to the shopping list.").setItems(choices, new DialogInterface.OnClickListener() {
+        alert.setTitle("Create an item to add to the shopping list").setItems(choices, new DialogInterface.OnClickListener() {
             @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
+                    public void onClick(DialogInterface dialog, int which)
+                    {
                     }
                 });
 
-        alert.setPositiveButton("O0k", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //Your action here
             }
