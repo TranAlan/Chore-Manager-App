@@ -8,113 +8,151 @@
     tools:context="com.example.alan.peter.bilal.sam.choremanager.SpecificChoreActivity">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout7"
-        android:layout_width="match_parent"
-        android:layout_height="472dp"
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="2dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/descriptionTitleText"
+        <LinearLayout
+            android:id="@+id/linearLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/secondaryDarkColor"
-            android:gravity="center"
-            android:text="@string/descriptionTitle"
-            android:textColor="@color/secondaryLightColor"
-            android:textSize="20sp" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="135dp">
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/pointsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/string_points"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/descriptionTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryDarkColor"
+                android:gravity="center"
+                android:text="@string/descriptionTitle"
+                android:textColor="@color/secondaryLightColor"
+                android:textSize="20sp" />
+
+            <EditText
                 android:id="@+id/descTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/descTextView"
-                tools:text="@string/descText" />
-        </ScrollView>
+                android:hint="@string/desc_hint"
+                android:inputType="textMultiLine"
+                tools:layout_editor_absoluteX="69dp"
+                tools:layout_editor_absoluteY="318dp" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <TextView
-            android:id="@+id/noteViewText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/secondaryDarkColor"
-            android:gravity="center"
-            android:text="@string/notes"
-            android:textColor="@color/secondaryLightColor"
-            android:textSize="20sp" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="135dp">
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
 
             <TextView
-                android:id="@+id/descTextView2"
+                android:id="@+id/noteViewText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/descTextView"
-                tools:text="@string/descText" />
-        </ScrollView>
+                android:background="@color/secondaryDarkColor"
+                android:gravity="center"
+                android:text="@string/notes"
+                android:textColor="@color/secondaryLightColor"
+                android:textSize="20sp" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/incompleteButton"
-                style="?android:attr/buttonBarButtonStyle"
+            <EditText
+                android:id="@+id/notesTextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/note_hint"
+                android:inputType="textMultiLine"
+                android:maxLength="26"
+                tools:layout_editor_absoluteX="69dp"
+                tools:layout_editor_absoluteY="318dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/descriptionTitleText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryDarkColor"
+                android:gravity="center"
+                android:text="@string/materials"
+                android:textColor="@color/secondaryLightColor"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/specificMaterialsSpinner"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:text="@string/mark_incomplete_button"
-                android:textColor="@color/secondaryTextColor" />
+                android:foregroundGravity="center" />
 
-            <Button
-                android:id="@+id/completeButton"
-                style="?android:attr/buttonBarButtonStyle"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginStart="2dp"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:text="@string/mark_complete_button"
-                android:textColor="@color/secondaryTextColor" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/incompleteButton"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorAccent"
+                    android:text="@string/mark_incomplete_button"
+                    android:textColor="@color/secondaryTextColor" />
+
+                <Button
+                    android:id="@+id/completeButton"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorAccent"
+                    android:text="@string/mark_complete_button"
+                    android:textColor="@color/secondaryTextColor" />
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/linearLayout10"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/background_light"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scrollView3"
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/parentCommandText2"
