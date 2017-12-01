@@ -173,6 +173,7 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
+            android:onClick="onCreateItemPress"
             android:text="@string/addItem" />
     </LinearLayout>
 
