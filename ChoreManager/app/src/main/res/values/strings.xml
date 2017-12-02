@@ -97,6 +97,14 @@
     <string name="string_total_points">Total Points: </string>
     <string name="string_points">Points: X</string>
     <string name="materials">Required Materials:</string>
+    <string name="string_choremanagericon">choreManagerIcon</string>
+    <string name="string_add_material">Add Material</string>
+    <string name="string_add_grocery">Add Grocery</string>
+    <string name="string_customNewItemTitle">Please Enter An Item Name</string>
+    <string name="stinrg_itemDesc">Please Add An Item Name</string>
+    <string name="string_confirm">Confirm</string>
+    <string name="string_cancel">Cancel</string>
+    <string name="string_please_select_a_category">Please Select A Category</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>
@@ -135,5 +143,11 @@
         <item name="eight">8</item>
         <item name="nine">9</item>
         <item name="ten">10</item>
+    </string-array>
+
+    <string-array name="shoppingItemTypeSpinner_Options">
+        <item name="material">Material</item>
+        <item name="grocery">Grocery</item>
+
     </string-array>
 </resources>

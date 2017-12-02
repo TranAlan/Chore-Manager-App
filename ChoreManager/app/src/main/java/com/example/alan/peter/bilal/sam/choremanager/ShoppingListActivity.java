@@ -1,73 +1,78 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
-public class ShoppingListActivity extends AppCompatActivity {
+public class ShoppingListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     //variables
-    private String toAdd = "";
-    private ChoreManagerProfile main = MenuActivity.getManager();
+    private String toAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
+
     }
 
     //Method to add a new grocery item to the shopping list
-    public void onAddGroceryClick(View view) {
+    public void addItemOnClick(View view) {
+
+        // Build an alert dialog
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setMessage("Item to add:");
-        alert.setTitle("Add a grocery to Shopping List");
-        final EditText name = new EditText(this);
-        alert.setView(name);
-
-        //buttons
-        alert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+        // create a new view that inflates the custom shoppping list layout
+        View newView = getLayoutInflater().inflate(R.layout.new_shopinglist_item_layout, null);
+        // declaring objects in the layout and linking them to the xml
+        final EditText itemName = (EditText) newView.findViewById(R.id.itemText);
+        final Spinner materialSpinner = (Spinner) newView.findViewById(R.id.spinner);
+        final ArrayAdapter spinnerAdapter;
+        final Button cancelButton = (Button) newView.findViewById(R.id.cancelButton);
+        final Button confirmButton = (Button) newView.findViewById(R.id.confirmButton);
+        // create adapter from string array in string.xml file for RepeatableSpinner
+        spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.shoppingItemTypeSpinner_Options,android.R.layout.simple_spinner_item);
+        // set spinner to the one the the xml
+        materialSpinner.setAdapter(spinnerAdapter);
+        // listen if the spinner is clicked
+        materialSpinner.setOnItemSelectedListener(ShoppingListActivity.this);
+        alert.setView(newView);
+        //create Alert Dialog
+        final AlertDialog dialog = alert.create();
+        dialog.show();
+        // Listen and close the dialog if user clicks Cancel
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
-                public void onClick(DialogInterface dialog, int which){
-                    toAdd = name.getText().toString();
-                    main.addShoppingGrocery(toAdd);
-                    //TODO: Find out how to update ChoreManagerProfile
-                }
-            });
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                dialogInterface.cancel();
+            public void onClick(View view) {
+                dialog.cancel();
             }
         });
-        alert.show();
-        }
-
-    //Method to add a new Material  to the shopping list
-    public void onAddMaterialClock(View view) {
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setMessage("Item to add:");
-        alert.setTitle("Add a material to Shopping List");
-        final EditText name = new EditText(this);
-        alert.setView(name);
-
-        //buttons
-        alert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+        // Listen and close the dialog and submits content if user clicks Confirm
+        confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which){
-                toAdd = name.getText().toString();
-                main.addShoppingMaterial(toAdd);
-                //TODO: Find out how to update ChoreManagerProfile
+            public void onClick(View view) {
+                toAdd = itemName.getText().toString();
+                MenuActivity.getManager().addShoppingMaterial(toAdd);
+                dialog.cancel();
+                //TODO: Get information from spinner aka ALAN TRAN
             }
         });
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                dialogInterface.cancel();
-            }
-        });
-        alert.show();
+
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

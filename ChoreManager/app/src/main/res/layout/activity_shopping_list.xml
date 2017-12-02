@@ -130,11 +130,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:baselineAligned="false"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:weightSum="3"
@@ -142,70 +143,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/purchasedButton"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:background="@color/colorAccent"
+            android:text="@string/markPurchased"
+            android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/purchasedButton"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:text="@string/markPurchased"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/deleteButton"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:text="@string/deleteSelected"
-                android:textAlignment="center"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
+            android:id="@+id/deleteButton"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:background="@color/colorAccent"
+            android:text="@string/deleteSelected"
+            android:textAlignment="center"
+            android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/addGrocery"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:onClick="onAddGroceryClick"
-                android:text="Add Grocery" />
-
-            <Button
-                android:id="@+id/addMaterial"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:onClick="onAddMaterialClick"
-                android:text="Add Material"
-                android:textAlignment="center"
-                android:textSize="14sp" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/addGrocery"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:onClick="addItemOnClick"
+            android:text="@string/addItem" />
 
     </LinearLayout>
 
