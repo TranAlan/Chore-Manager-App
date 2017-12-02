@@ -13,7 +13,26 @@ import java.util.Date;
 public class Chore implements Serializable {
 
     //status' the chore can hold
-    private enum Status {COMPLETE,INCOMPLETE,PARTIALLY_COMPLETE,UNASSIGNED,ACTIVE,LATE_COMPLETION};
+    private enum Status {
+        COMPLETE,
+        INCOMPLETE,
+        PARTIALLY_COMPLETE,
+        UNASSIGNED,
+        ACTIVE,
+        LATE_COMPLETION;
+        @Override
+        public String toString(){
+            switch(this) {
+                case COMPLETE: return "Complete";
+                case INCOMPLETE: return "Incomplete";
+                case PARTIALLY_COMPLETE: return "Partially Complete";
+                case UNASSIGNED: return "Unassigned";
+                case ACTIVE: return "Active";
+                case LATE_COMPLETION: return "Late Completion";
+                default: throw new IllegalArgumentException();
+            }
+        }
+    }
     public enum Type {CLEANING, COOKING, MISC};
 
 
@@ -124,7 +143,7 @@ public class Chore implements Serializable {
         return rewardPoints;
     }
     public Status getCompletionStatus() {
-        return completionStatus;
+        return this.completionStatus;
     }
     public Date getDeadline() {
         return deadline;
@@ -133,6 +152,9 @@ public class Chore implements Serializable {
         return assignedTo;
     }
     public int getId(){return id;}
+    public String getStatusString(){
+        return completionStatus.toString();
+    }
 
     //SETTERS
     public void setName(String name) {
