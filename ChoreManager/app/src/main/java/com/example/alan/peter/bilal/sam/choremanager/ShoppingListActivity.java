@@ -8,18 +8,67 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShoppingListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     //variables
     private String toAdd;
-
+    private List<String> allMaterials = new ArrayList<>();
+    private List<String> allGroceries = new ArrayList<>();
+    private ListView groceriesListView,materialsListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
+        //clearing data incase
+        allGroceries.clear();
+        allMaterials.clear();
 
+
+        //TO REMOVE
+        allGroceries.add("Groceries 1");
+        allGroceries.add("Groceries 2");
+        allGroceries.add("Groceries 3");
+        allMaterials.add("Materials 1");
+        allMaterials.add("Materials 2");
+        allMaterials.add("Materials 3");
+        // get all the materials from pantry and material list
+        // allMaterials.addAll();
+        //allGroceries.addAll();
+        // link listview to xml
+
+        groceriesListView = (ListView) findViewById(R.id.groceriesListView);
+        materialsListView = (ListView) findViewById(R.id.materialsListView);
+        ArrayList<StateVO> listVOs = new ArrayList<>();
+        for (int i = 0; i < allGroceries.size(); i++)
+        {
+            StateVO stateVO = new StateVO();
+            stateVO.setTitle(allGroceries.get(i));
+            stateVO.setSelected(false);
+            listVOs.add(stateVO);
+        }
+
+        CustomMaterialListAdapter myAdapter = new CustomMaterialListAdapter(ShoppingListActivity.this, 0,
+                listVOs);
+        groceriesListView.setAdapter(myAdapter);
+
+        ArrayList<StateVO> listVOs2 = new ArrayList<>();
+        for (int i = 0; i < allMaterials.size(); i++)
+        {
+            StateVO stateVO = new StateVO();
+            stateVO.setTitle(allMaterials.get(i));
+            stateVO.setSelected(false);
+            listVOs2.add(stateVO);
+        }
+
+        CustomMaterialListAdapter myAdapter2 = new CustomMaterialListAdapter(ShoppingListActivity.this, 0,
+                listVOs2);
+        materialsListView.setAdapter(myAdapter2);
     }
 
     //Method to add a new grocery item to the shopping list

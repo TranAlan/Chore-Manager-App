@@ -49,12 +49,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         choreTypeSpinner.setAdapter(choreAdapter);
         choreTypeSpinner.setOnItemSelectedListener(NewChoreActivity.this);
 
-        // create adapter from string array in string.xml file for RepeatableSpinner
-        repeatbleAdapter = ArrayAdapter.createFromResource(this,R.array.repeatableSpinner_Options,android.R.layout.simple_spinner_item);
-        // set spinner to the one the the xml
-        repeatableSpinner =(Spinner) findViewById(R.id.repeatableSpinner);
-        repeatableSpinner.setAdapter(repeatbleAdapter);
-        repeatableSpinner.setOnItemSelectedListener(NewChoreActivity.this);
 
 
         // create adapter from string array in string.xml file for RepeatableSpinner
@@ -72,11 +66,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         totalPointsSpinner.setAdapter(totalPointsAdapter);
         totalPointsSpinner.setOnItemSelectedListener(NewChoreActivity.this);
 
-        // Num Picker
-        numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
-        numberPicker.setMaxValue(100);
-        numberPicker.setMinValue(1);
-        numberPicker.setWrapSelectorWheel(false);
 
         // linking deadline button and text to xml
         deadlineButton = (Button)findViewById(R.id.deadlineButton);
