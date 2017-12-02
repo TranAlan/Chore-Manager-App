@@ -24,7 +24,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
     private ArrayList<String> checkedMaterials = new ArrayList<String>();
     private ArrayList<String> checkedGroceries = new ArrayList<String>();
 
-    
+
         //TO REMOVE
         allGroceries.
         allGroceries.add("Groceries 1");
@@ -185,8 +185,8 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 //delete item from ChoreManagerProfile shopping list and add it to the pantry
                 MenuActivity.getManager().getShoplistGroc().removeAll(checkedGroceries);
                 MenuActivity.getManager().getShopListMat().removeAll(checkedMaterials);
-                MenuActivity.getManager().getShopListMat().addAll(checkedMaterials);
-                MenuActivity.getManager().getShoplistGroc().addAll(checkedGroceries);
+                MenuActivity.getManager().getMaterials().addAll(checkedMaterials);
+                MenuActivity.getManager().getPantry().addAll(checkedGroceries);
                 //update view
                 //TODO
                 //close dialog
