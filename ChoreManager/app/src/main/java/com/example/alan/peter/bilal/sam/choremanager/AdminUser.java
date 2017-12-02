@@ -23,33 +23,31 @@ public class AdminUser extends User{
     }
 
 
-    public Chore createChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, User user){
-        Chore chore = new Chore(name, desc, note, points, due, materials, groceries, user);
+    public Chore createChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, int id, User user){
+        Chore chore = new Chore(name, desc, note, points, due, materials, groceries, id, user);
         if (user!= null){
             assignChore(user, chore);
         }
         return chore;
     }
 
-    public Chore createUnAssignedChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries ){
-        return new Chore(name, desc, note, points, due, materials, groceries);
+    public Chore createUnAssignedChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, int id ){
+        return new Chore(name, desc, note, points, due, materials, groceries, id);
     }
 
-
+    //UNIQUE PUBLIC METHODS
     public void assignChore(User user, Chore chore){
         user.addToAssignedChores(chore);
         chore.setAssignedTo(user);
         chore.setStatusActive();
         //Remember about ChoreManagerProfile
     }
-
     public void deAssignChore(Chore chore){
         chore.getAssignedTo().removeFromAssignedChores(chore);
         chore.setAssignedTo(null);
         chore.setStatusUnassigned();
         //add to unassigned list?
     }
-
     public void deleteChore(Chore chore){
 
         if(chore.getAssignedTo()!= null){

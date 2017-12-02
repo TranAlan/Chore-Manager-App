@@ -155,6 +155,7 @@
                     android:layout_marginStart="2dp"
                     android:layout_weight="1"
                     android:background="@color/colorAccent"
+                    android:onClick="onClickCompleteChore"
                     android:text="@string/mark_complete_button"
                     android:textColor="@color/secondaryTextColor" />
             </LinearLayout>
