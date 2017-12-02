@@ -118,19 +118,18 @@
                         android:id="@+id/requiredText"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/required_materials"
                         android:textSize="20sp" />
 
-                    <ImageButton
-                        android:id="@+id/reqMaterialsButton"
+                    <Spinner
+                        android:id="@+id/requiredMaterialsSpinner"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
                         android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_weight="1"
-                        android:background="@color/colorAccent"
-                        android:contentDescription="@string/desc_reqmaterials_button"
-                        app:srcCompat="@drawable/list_icon" />
+                        android:layout_height="45dp"
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 

@@ -13,7 +13,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,13 +33,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/pointsTextView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/string_points"
-                android:textSize="25sp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/choreTypeTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|start"
+                    android:text="@string/string_chore_type"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/pointsTextView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@string/string_points"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/descriptionTitleText"
@@ -52,12 +67,11 @@
                 android:textColor="@color/secondaryLightColor"
                 android:textSize="20sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/descTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/desc_hint"
-                android:inputType="textMultiLine"
+                android:minHeight="100dp"
                 tools:layout_editor_absoluteX="69dp"
                 tools:layout_editor_absoluteY="318dp" />
 
@@ -75,13 +89,12 @@
                 android:textColor="@color/secondaryLightColor"
                 android:textSize="20sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/notesTextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/note_hint"
-                android:inputType="textMultiLine"
                 android:maxLength="26"
+                android:minHeight="100dp"
                 tools:layout_editor_absoluteX="69dp"
                 tools:layout_editor_absoluteY="318dp" />
 
@@ -105,7 +118,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:foregroundGravity="center" />
+                android:foregroundGravity="center"
+                android:minHeight="50dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -143,7 +157,6 @@
         android:id="@+id/linearLayout10"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/background_light"
         android:orientation="vertical"

@@ -94,8 +94,8 @@
     <string name="repeatable_text">Repeatable:</string>
     <string name="numberOfTimes_String">Number of Times</string>
     <string name="string_pick_deadline">Pick Deadline</string>
-    <string name="string_total_points">Total Points:</string>
-    <string name="string_points">X Points</string>
+    <string name="string_total_points">Total Points: </string>
+    <string name="string_points">Points: X</string>
     <string name="materials">Required Materials:</string>
 
     <string-array name="themeSpinner_Options">

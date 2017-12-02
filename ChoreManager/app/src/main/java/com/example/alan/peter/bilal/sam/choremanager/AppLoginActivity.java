@@ -3,44 +3,36 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.text.TextUtils;
-import android.view.KeyEvent;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.ResultCodes;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static android.Manifest.permission.READ_CONTACTS;
+import java.util.Map;
 
 /**
  * A login screen that offers login via email/password.
@@ -49,6 +41,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
 
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
+    private DatabaseReference databaseFamilies;
     List<AuthUI.IdpConfig> providers = Arrays.asList(
             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build());
 
@@ -60,6 +53,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        databaseFamilies = FirebaseDatabase.getInstance().getReference("families");
         setContentView(R.layout.activity_app_login);
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -67,6 +61,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
             public void onClick(View view) {
                 // Check if user is signed in (non-null)
                 FirebaseUser currentUser = mAuth.getCurrentUser();
+                // Add user to database
                 startActivityForResult(
                         AuthUI.getInstance()
                                 .createSignInIntentBuilder()
@@ -76,8 +71,8 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+     //   mLoginFormView = findViewById(R.id.login_form);
+    //    mProgressView = findViewById(R.id.login_progress);
     }
 
     @Override
@@ -90,6 +85,12 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
             if (resultCode == ResultCodes.OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String email = user.getEmail();
+                String emailEscaped = email.replaceAll("\\.","DOT").replaceFirst("@","AT");
+                databaseFamilies.child(emailEscaped).setValue(email);
+
+               // String id = databaseFamilies.push().getKey();
+
                 Intent intent = new Intent(this, MenuActivity.class);
                 startActivity(intent);
             } else {

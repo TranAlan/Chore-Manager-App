@@ -5,7 +5,6 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -20,7 +19,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class NewChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
@@ -32,6 +33,8 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     private NumberPicker numberPicker = null;
     private Button deadlineButton;
     private TextView actualDeadlineTextView;
+    private List<String> allMaterials = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +89,31 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
             }
         });
         updateDeadLineText();
+
+
+        allMaterials.add("-Select Materials-");
+        //TO REMOVE
+        allMaterials.add("Item 1");
+        allMaterials.add("Item 2");
+        allMaterials.add("Item 3");
+
+        // get all the materials from pantry and material list
+        allMaterials.addAll(MenuActivity.getManager().getMaterials());
+        allMaterials.addAll(MenuActivity.getManager().getPantry());
+
+        Spinner spinner = (Spinner) findViewById(R.id.requiredMaterialsSpinner);
+        ArrayList<StateVO> listVOs = new ArrayList<>();
+        for (int i = 0; i < allMaterials.size(); i++)
+        {
+            StateVO stateVO = new StateVO();
+            stateVO.setTitle(allMaterials.get(i));
+            stateVO.setSelected(false);
+            listVOs.add(stateVO);
+        }
+
+        CustomMaterialListAdapter myAdapter = new CustomMaterialListAdapter(NewChoreActivity.this, 0,
+                listVOs);
+        spinner.setAdapter(myAdapter);
 
     }
     public void updateDate()

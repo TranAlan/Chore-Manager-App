@@ -2,10 +2,6 @@ package com.example.alan.peter.bilal.sam.choremanager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
-
-import android.media.Image;
-import android.util.Log;
 
 /**
  * Created by Alan on 11/27/2017.
@@ -106,6 +102,7 @@ public class User implements Serializable {
             //Log.d("Test", assignedChores.get(i).getName());
         }
         return null;
+
     }
     /*
     public void sortChoresByDeadline(){

@@ -2,7 +2,6 @@ package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.app.Activity;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +23,10 @@ public class CustomUserListView extends ArrayAdapter<String>
     public CustomUserListView(Activity context,String [] userName, String [] roleName,Integer[] imageIDs )
     {
         super(context,R.layout.user_layout,userName);
-    this.context= context;
-    this.userName = userName;
-    this.roleName = roleName;
-    this.imageIDs = imageIDs;
+        this.context= context;
+        this.userName = userName;
+        this.roleName = roleName;
+        this.imageIDs = imageIDs;
     }
 
     public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent)
@@ -50,7 +49,6 @@ public class CustomUserListView extends ArrayAdapter<String>
         viewHolder.profilePicture.setImageResource(imageIDs[position]);
         viewHolder.userNameTV.setText(userName[position]);
         viewHolder.roleNameTV.setText(roleName[position]);
-        Log.d("test", userName[position]);
         return r;
     }
 
@@ -64,7 +62,6 @@ public class CustomUserListView extends ArrayAdapter<String>
             userNameTV = (TextView) v.findViewById(R.id.userNameTV);
             roleNameTV = (TextView) v.findViewById(R.id.roleNameTV);
             profilePicture = v.findViewById(R.id.profilePicture);
-            Log.d("test", "HELP");
         }
     }
 }

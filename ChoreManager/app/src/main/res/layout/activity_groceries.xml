@@ -81,7 +81,8 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:text="@string/deleteSelected" />
+            android:text="@string/deleteSelected"
+            android:layout_marginLeft="5dp" />
 
         <Button
             android:id="@+id/addItem"
