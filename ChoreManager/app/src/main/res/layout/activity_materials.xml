@@ -29,6 +29,7 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
+            android:onClick="deleteSelectedOnClick"
             android:text="@string/deleteSelected" />
 
         <Button
@@ -40,6 +41,7 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
+            android:onClick="addMaterialsOnClick"
             android:text="@string/addItem" />
     </LinearLayout>
 
