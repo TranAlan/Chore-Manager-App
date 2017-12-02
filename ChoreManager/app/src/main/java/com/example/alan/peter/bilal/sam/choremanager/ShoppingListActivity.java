@@ -29,8 +29,9 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
         //clearing data incase
         allGroceries.clear();
         allMaterials.clear();
-
-
+        // DO NOT REMOVE
+        allGroceries.add("");
+        allMaterials.add("");
         //TO REMOVE
         allGroceries.add("Groceries 1");
         allGroceries.add("Groceries 2");
@@ -38,9 +39,10 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
         allMaterials.add("Materials 1");
         allMaterials.add("Materials 2");
         allMaterials.add("Materials 3");
+        
         // get all the materials from pantry and material list
-        // allMaterials.addAll();
-        //allGroceries.addAll();
+         allMaterials.addAll(MenuActivity.getManager().getShopListMat());
+         allGroceries.addAll(MenuActivity.getManager().getShoplistGroc());
         // link listview to xml
 
         groceriesListView = (ListView) findViewById(R.id.groceriesListView);
@@ -67,8 +69,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
             listVOs2.add(stateVO);
         }
 
-        CustomMaterialListAdapter myAdapter2 = new CustomMaterialListAdapter(ShoppingListActivity.this, 0,
-                listVOs2);
+        CustomMaterialListAdapter myAdapter2 = new CustomMaterialListAdapter(ShoppingListActivity.this, 0, listVOs2);
         materialsListView.setAdapter(myAdapter2);
     }
 
