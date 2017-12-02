@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class MaterialsActivity extends AppCompatActivity {
 
     //variables
-    private String toAdd;
     private ArrayList<String> selected = new ArrayList<String>();
     private ArrayList<String> materialList = new ArrayList<>();
     private ListView materialsListView;
