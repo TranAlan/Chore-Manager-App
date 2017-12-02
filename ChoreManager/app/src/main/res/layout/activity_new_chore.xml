@@ -135,38 +135,6 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <TextView
-                        android:id="@+id/repeatableTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/repeatable_text"
-                        android:textSize="20sp" />
-
-                    <Spinner
-                        android:id="@+id/repeatableSpinner"
-                        style="@style/Widget.AppCompat.Spinner.Underlined"
-                        android:layout_width="0dp"
-                        android:layout_height="45dp"
-                        android:layout_weight=".75" />
-
-                    <NumberPicker
-                        android:id="@+id/numberPicker"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".25" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
