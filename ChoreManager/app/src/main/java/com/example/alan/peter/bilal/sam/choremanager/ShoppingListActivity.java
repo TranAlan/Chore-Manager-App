@@ -1,5 +1,6 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -85,7 +86,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
         final Button cancelButton = (Button) newView.findViewById(R.id.cancelButton);
         final Button confirmButton = (Button) newView.findViewById(R.id.confirmButton);
         // create adapter from string array in string.xml file for RepeatableSpinner
-        spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.shoppingItemTypeSpinner_Options,android.R.layout.simple_spinner_item);
+        spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.shoppingItemTypeSpinner_Options, android.R.layout.simple_spinner_item);
         // set spinner to the one the the xml
         materialSpinner.setAdapter(spinnerAdapter);
         // listen if the spinner is clicked
@@ -123,5 +124,63 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+
+    public void onDeletionClick(View view) {
+        // Build an alert dialog
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        //set title and message of dialogue
+        alert.setTitle("Delete items");
+        alert.setMessage("Are you sure you want to delete the selected items? This cannot be undone.");
+
+        //If user clicks cancel the dialogue closes without deleting
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        //if user clicks ok the selected items are deleted from the shopping list
+        //arrayList in ChoreManagerProfile
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //get selected items
+                //delete item from ChoreManagerProfile
+                //update view
+                //close dialog
+            }
+        });
+    }
+
+    public void onAdditionClick(View view) {
+        // Build an alert dialog
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        //set title and message of dialogue
+        alert.setTitle("Purchase items");
+        alert.setMessage("Mark selceted items as purchased?");
+
+
+        //If user clicks cancel the dialogue closes without moving items to pantry
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        //if user clicks ok the selected items are deleted from the shopping list
+        //arrayList in ChoreManagerProfile
+        alert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //get selected items
+                //delete item from ChoreManagerProfile shopping list and add it to the pantry
+                //update view
+                //close dialog
+            }
+        });
     }
 }
