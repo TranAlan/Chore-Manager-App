@@ -177,35 +177,20 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
 
 
         //Simple variables from newChoreActivity
-        String choreName = grabChoreName.getText().toString();
+        String choreName = grabChoreName.getText().toString().trim();
         String choreAssignedTo = (String) grabAssignedTo.getSelectedItem();
         String choreType = (String) grabChoreType.getSelectedItem();
-        //int choreRepeatValue = grabRepeatValue.getValue();
-        //String choreRepeatType = (String) grabRepeatType.getSelectedItem();
+
         String choreDesc = grabDesc.getText().toString();
         String choreNote = grabNote.getText().toString();
         int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
-        //Repeated repeat = new Repeated(0);
-        /*
-        if (choreRepeatType.equals("Daily")){
-            repeat = new Repeated(choreRepeatValue);
-            repeat.setTypeDaily();
-        }
-        else if(choreRepeatType.equals("Weekly")){
-            repeat = new Repeated(choreRepeatValue);
-            repeat.setTypeMonthly();
-        }
 
-        else if(choreRepeatType.equals("Monthly")){
-            repeat = new Repeated(choreRepeatValue);
-            repeat.setTypeMonthly();
-        }
-        */
+        //Gets the user the chore is assigne to and the current user.
         User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
         AdminUser currentUser = (AdminUser) MenuActivity.getManager().getCurrentUser();
         Chore newChore;
 
-        if (assignedUser.getUsername().equals("")){
+        if (assignedUser.getUsername().equals("")){ //UNASSIGNED CHORE
 
             newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints, dateTime.getTime(), null, null);
             MenuActivity.getManager().addUnassignedChores(newChore);
@@ -214,6 +199,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
             newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints, dateTime.getTime(), null, null, assignedUser);
         }
 
+        //Changing the type of Chore
         if (choreType.equals("Misc")){
             newChore.setTypeMisc();
         }
@@ -225,6 +211,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         }
 
         startActivity(intent);
+        finish();
     }
 
 

@@ -44,15 +44,11 @@ public class ChoreListActivity extends AppCompatActivity {
         choreListView.setClickable(true);
         choreListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("test", "At onclick");
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { //If click on a chore, starts Specific Chore Activity
                 Chore item = customChoreListView.getItem(position);
-
-                Log.d("test", item.getAssignedTo().getUsername());
-
                 Intent intent = new Intent(getBaseContext(), SpecificChoreActivity.class);
-                intent = intent.putExtra("ChoreInfo", item );
-               startActivity(intent);
+                intent = intent.putExtra("ChoreInfo", item ); // passes chore to next activity
+                startActivity(intent);
 
 
             }
@@ -111,23 +107,8 @@ public class ChoreListActivity extends AppCompatActivity {
     protected void createNewChoreButton(View view){
         Intent intent = new Intent(this, NewChoreActivity.class);
         startActivity(intent);
-        //finish();
+        finish();
 
     }
 
-    protected void clickOnSpecificChore( View view){
-        Intent intent = new Intent(this, SpecificChoreActivity.class);
-
-        //Layout triangle = choreLayout;
-       // String a = triangle.toString();
-        Log.d("test", "ALIVE");
-                /*
-        TextView usedView = (TextView) view;
-        intent = intent.putExtra("ChoreInfo", usedView.getText().toString());
-        */
-        //Log.d("test", view.toString());
-        //Log.d("test",usedView.getText().toString());
-        startActivity(intent);
-
-    }
 }
