@@ -15,13 +15,32 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/statusTextView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        android:gravity="center"
-        android:textSize="22sp" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/statusTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/choreTypeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="22sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/subtext"
