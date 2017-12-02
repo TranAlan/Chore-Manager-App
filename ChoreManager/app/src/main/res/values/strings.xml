@@ -112,6 +112,8 @@
     <string name="string_account_type">Account Type</string>
     <string name="string_specifc_user_profile_hint">profile picture of specific @string/stirng_current_user</string>
     <string name="string_create_user">Create User</string>
+    <string name="string_select_a_new_avatar">Select A New Avatar</string>
+    <string name="desc_avatar_image">avatar image</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>

@@ -32,41 +32,44 @@
         <activity
             android:name=".MenuActivity"
             android:label="Menu"
-            android:parentActivityName=".AppLoginActivity"></activity>
+            android:parentActivityName=".AppLoginActivity" />
         <activity
             android:name=".UserMenu"
             android:label="Users"
-            android:parentActivityName=".MenuActivity"></activity>
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".MaterialsActivity"
             android:label="Materials List"
-            android:parentActivityName=".MenuActivity"></activity>
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".Groceries"
             android:label="Grocery List"
-            android:parentActivityName=".MenuActivity"></activity>
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".ShoppingListActivity"
             android:label="Shopping List"
-            android:parentActivityName=".MenuActivity"></activity>
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="Settings"
-            android:parentActivityName=".MenuActivity"></activity>
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".ChoreListActivity"
             android:label="Chores"
-            android:parentActivityName=".MenuActivity"></activity>
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".SpecificChoreActivity"
             android:label="Chore Details"
-            android:parentActivityName=".ChoreListActivity"></activity>
+            android:parentActivityName=".ChoreListActivity" />
         <activity
             android:name=".NewChoreActivity"
             android:label="New Chore"
-            android:parentActivityName=".ChoreListActivity"></activity>
-        <activity android:name=".NewUserActivity" android:label="New User"
-            android:parentActivityName=".UserMenu"></activity>
+            android:parentActivityName=".ChoreListActivity" />
+        <activity
+            android:name=".NewUserActivity"
+            android:label="New User"
+            android:parentActivityName=".UserMenu" />
+        <activity android:name=".ChooseProfilePictureActivity"></activity>
     </application>
 
 </manifest>
