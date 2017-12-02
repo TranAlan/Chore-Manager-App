@@ -51,10 +51,6 @@ public class ChoreManagerProfile implements Serializable {
 
     public ArrayList<String> getShoplistGroc() { return this.shoplistGroc;}
 
-    public void deleteFromShopListGroc(String s){shoplistGroc.remove(s);}
-
-    public void deleteFromShopListMat(String s){shopListMat.remove(s);}
-
     public void addShoppingMaterial(String material){shopListMat.add(material);}
 
     public void addShoppingGrocery(String item) { shoplistGroc.add(item);}
