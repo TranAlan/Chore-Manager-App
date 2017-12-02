@@ -1,7 +1,9 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ListView;
 
 public class UserMenu extends AppCompatActivity {
@@ -20,6 +22,10 @@ public class UserMenu extends AppCompatActivity {
         userListView = (ListView) findViewById(R.id.userListView);
         CustomUserListView customUserListView = new CustomUserListView(this,userName, roleName, imageIDs);
         userListView.setAdapter(customUserListView);
+    }
+    protected void createUserOnClick(View view){
+        Intent intent = new Intent(this, NewUserActivity.class);
+        startActivity(intent);
     }
 
 }
