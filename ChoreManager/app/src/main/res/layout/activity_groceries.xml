@@ -78,11 +78,12 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:text="@string/deleteSelected"
-            android:layout_marginLeft="5dp" />
+            android:onClick="deleteSelectedOnClick"
+            android:text="@string/deleteSelected" />
 
         <Button
             android:id="@+id/addItem"
@@ -92,6 +93,7 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
+            android:onClick="addGroceryOnClick"
             android:text="@string/addItem" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

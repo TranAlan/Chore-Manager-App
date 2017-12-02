@@ -29,6 +29,7 @@ public class Chore implements Serializable {
     private User assignedTo;
     private ArrayList reqMat;
     private ArrayList reqGroc;
+    private int id;
 
 
     //constructor 1 - not assigned to user
@@ -75,7 +76,7 @@ public class Chore implements Serializable {
         this.completionStatus=Status.ACTIVE;
     }
 
-    public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, User assigned) {
+    public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries,int id, User assigned) {
         this.name=name;
         this.description=desc;
         this.notes=note;
@@ -86,9 +87,10 @@ public class Chore implements Serializable {
         this.reqGroc=groceries;
         this.assignedTo=assigned;
         this.completionStatus=Status.ACTIVE;
+        this.id = id;
     }
 
-    public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries) {
+    public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries,int id) {
         this.name=name;
         this.description=desc;
         this.notes=note;
@@ -100,106 +102,85 @@ public class Chore implements Serializable {
         User emptyUser = new User("UNASSIGNED", "");
         this.assignedTo= emptyUser;
         this.completionStatus=Status.UNASSIGNED;
+        this.id = id;
     }
 
     //Getters and Setters
+
+    //GETTERS
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Type getType() {
         return this.choreType;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getNotes() {
         return notes;
     }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public String getDescription() {
+        return description;
     }
-
     public int getRewardPoints() {
         return rewardPoints;
     }
-
-    public void setRewardPoints(int rewardPoints) {
-        this.rewardPoints = rewardPoints;
-    }
-
-    public Repeated getRepeat() {
-        return repeat;
-    }
-
-    public void setRepeat(Repeated repeat) {
-        this.repeat = repeat;
-    }
-
     public Status getCompletionStatus() {
         return completionStatus;
     }
-
-
     public Date getDeadline() {
         return deadline;
     }
-
-    public void setDeadline(Date deadline) {
-        this.deadline = deadline;
-    }
-
     public User getAssignedTo() {
         return assignedTo;
     }
+    public int getId(){return id;}
 
+    //SETTERS
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+    public void setRewardPoints(int rewardPoints) {
+        this.rewardPoints = rewardPoints;
+    }
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
     public void setAssignedTo(User assignedTo) {
         this.assignedTo = assignedTo;
     }
 
+    //STATUS SETTERS
     public void setStatusComplete(){
         completionStatus = Status.COMPLETE;
     }
-
     public void setStatusInComplete(){
         completionStatus = Status.INCOMPLETE;
     }
-
     public void setStatusPartial(){
         completionStatus = Status.PARTIALLY_COMPLETE;
     }
-
     public void setStatusUnassigned(){
         completionStatus = Status.UNASSIGNED;
     }
-
     public void setStatusActive(){
         completionStatus = Status.ACTIVE;
     }
-
     public void setStatusLate(){
         completionStatus = Status.LATE_COMPLETION;
     }
 
+    //TYPE SETTERS
     public void setTypeCleaning(){
         choreType = Type.CLEANING;
     }
-
     public void setTypeCooking(){
         choreType = Type.COOKING;
     }
-
     public void setTypeMisc(){
         choreType = Type.MISC;
     }

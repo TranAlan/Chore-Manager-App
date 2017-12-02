@@ -29,6 +29,7 @@ public class ChoreManagerProfile implements Serializable {
     private ArrayList<Chore> finishedChores;
     private Date currentDate;
     private User currentUser;
+    private int id;
 
 
     //Constructor
@@ -41,95 +42,79 @@ public class ChoreManagerProfile implements Serializable {
         this.unassignedChores = new ArrayList<Chore>();
         this.finishedChores = new ArrayList<Chore>();
         this.users = new ArrayList<User>();
+        this.id = 0;
     }
 
 
 
-    //Getters and Setters
-
+    //Getters
     public ArrayList<String> getShopListMat() { return this.shopListMat;}
-
     public ArrayList<String> getShoplistGroc() { return this.shoplistGroc;}
-
-    public void addShoppingMaterial(String material){shopListMat.add(material);}
-
-    public void addShoppingGrocery(String item) { shoplistGroc.add(item);}
-
     public ArrayList<String> getMaterials() {
         return this.materials;
     }
-
-
-    public void addMaterial(String material) {
-        materials.add(material);
-    }
-
-
     public ArrayList<String> getPantry() {
         return pantry;
     }
-
-
-    public void addPantryItem(String item) {
-        pantry.add(item);
-    }
-
     public ArrayList<String> getTools() {
         return tools;
     }
-
-
-    public void addTools(String tool) {
-        tools.add(tool);
-    }
-
-
     public ArrayList<User> getUsers() {
         return users;
     }
-
-
-    public void addUser(User toAdd) {
-        users.add(toAdd);
-    }
-
-
     public ArrayList<Chore> getUnassignedChores() {
         return unassignedChores;
     }
-
-
-    public void addUnassignedChores(Chore unassigned) {
-        unassignedChores.add(unassigned);
-    }
-
-
     public ArrayList<Chore> getFinishedChores() {
         return finishedChores;
     }
-
-
-    public void addFinishedChores(Chore finished) {
-        finishedChores.add(finished);
+    public User getCurrentUser(){
+        return currentUser;
     }
-
+    public int getId(){return id;}
     public Date getDate() {
         //update date to be current
         this.currentDate = new Date();
         return this.currentDate;
     }
+    public int[] getStats() {
+        return new int[1];//TO BE IMPLEMENTED
+    }
 
+    //SETTERS
+    public void setCurrentUser(User user){
+        currentUser = user;
+    }
+
+    //HALF SETTERS
+    public void addShoppingMaterial(String material){shopListMat.add(material);}
+    public void addShoppingGrocery(String item) { shoplistGroc.add(item);}
+    public void addMaterial(String material) {
+        materials.add(material);
+    }
+    public void addPantryItem(String item) {
+        pantry.add(item);
+    }
+    public void addTools(String tool) {
+        tools.add(tool);
+    }
+    public void addUser(User toAdd) {
+        users.add(toAdd);
+    }
+    public void addUnassignedChores(Chore unassigned) {
+        unassignedChores.add(unassigned);
+    }
+    public void addFinishedChores(Chore finished) {
+        finishedChores.add(finished);
+    }
 
     //other methods
-
     public void sortMaterials() {
         Collections.sort(materials);
     }
-
     public void sortPantry() {
         Collections.sort(pantry);
     }
-
     public void sortTools() {
         Collections.sort(tools);
     }
@@ -146,20 +131,9 @@ public class ChoreManagerProfile implements Serializable {
         //TO BE IMPLEMENTED
     }
 
-    public int[] getStats() {
-        return new int[1];//TO BE IMPLEMENTED
-    }
 
     public void resetAppData() {
         //TO BE IMPLEMENTED
-    }
-
-    public void setCurrentUser(User user){
-        currentUser = user;
-    }
-
-    public User getCurrentUser(){
-        return currentUser;
     }
 
     public boolean isUserAdmin(){
@@ -174,4 +148,10 @@ public class ChoreManagerProfile implements Serializable {
         }
         return null;
     }
+
+    public int nextId(){
+        id = id + 1;
+        return id;
+    }
+
 }

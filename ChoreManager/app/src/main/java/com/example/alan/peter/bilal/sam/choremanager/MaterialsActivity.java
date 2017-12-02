@@ -23,7 +23,7 @@ public class MaterialsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_materials);
     }
 
-    //Method to add a new grocery item to the shopping list
+    //Method to add a new material item to the shopping list
     public void addMaterialOnClick(View view) {
 
         // Build an alert dialog
