@@ -3,10 +3,13 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -36,8 +39,26 @@ public class ChoreListActivity extends AppCompatActivity {
 
         }
         // calling custom chore view to display all the choews
-        CustomChoreListView customChoreListView = new CustomChoreListView(this,listOfChores);
+        final CustomChoreListView customChoreListView = new CustomChoreListView(this,listOfChores);
         choreListView.setAdapter(customChoreListView);
+        choreListView.setClickable(true);
+        choreListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("test", "At onclick");
+                Chore item = customChoreListView.getItem(position);
+
+                Log.d("test", item.getAssignedTo().getUsername());
+
+                Intent intent = new Intent(getBaseContext(), SpecificChoreActivity.class);
+                intent = intent.putExtra("ChoreInfo", item );
+               startActivity(intent);
+
+
+            }
+        });
+
+
         // link buttons to the ones in XML
         filterButton = (ImageButton) findViewById(R.id.filterButton);
         sortButton = (ImageButton) findViewById(R.id.sortButton);
@@ -94,13 +115,19 @@ public class ChoreListActivity extends AppCompatActivity {
 
     }
 
-    protected void clickOnSpecificChore(View view){
+    protected void clickOnSpecificChore( View view){
         Intent intent = new Intent(this, SpecificChoreActivity.class);
+
+        //Layout triangle = choreLayout;
+       // String a = triangle.toString();
+        Log.d("test", "ALIVE");
+                /*
         TextView usedView = (TextView) view;
         intent = intent.putExtra("ChoreInfo", usedView.getText().toString());
-
-        Log.d("test", view.toString());
-        Log.d("test",usedView.getText().toString());
+        */
+        //Log.d("test", view.toString());
+        //Log.d("test",usedView.getText().toString());
         startActivity(intent);
+
     }
 }

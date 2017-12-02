@@ -17,28 +17,21 @@ public class SpecificChoreActivity extends AppCompatActivity {
 
         // To retrieve object in second Activity
         Intent i = getIntent();
-        String choreNameDate = (String) i.getSerializableExtra("ChoreInfo");
-        choreNameDate =  choreNameDate.trim();
-        String[] choreInfo = choreNameDate.split(" ", 3);
-        String firstName = choreInfo[0];
-        String lastName = choreInfo[1];
-        String date = choreInfo[2];
+        Chore chore = (Chore) i.getSerializableExtra("ChoreInfo");
 
-        User userOfChore = MenuActivity.getManager().getUserFromName("Peter Lam");
+        TextView description = (TextView) findViewById(R.id.descTextView);
+        description.setText(chore.getDescription());
 
-        //Chore chore = userOfChore.getChoreFromDate(date);
-        //Log.d("TestTag0", chore.getName());
-
-        //TextView description = (TextView) findViewById(R.id.descTextView);
-        //description.setText(chore.getDescription());
-        /*
-        TextView note = (TextView) findViewById(R.id.descTextView2);
+        TextView note = (TextView) findViewById(R.id.notesTextView2);
         note.setText(chore.getNotes());
-        */
 
-        Log.d("TestTag1",firstName);
-        Log.d("TestTag2",lastName);
-        Log.d("TestTag3",date);
+        TextView typeView = (TextView) findViewById(R.id.choreTypeTextView);
+        String typeText = typeView.getText() + " " + chore.choreType.toString();
+        typeView.setText(typeText);
+
+        TextView pointsView = (TextView) findViewById(R.id.pointsTextView2);
+        String pointsText = "Points: "+ chore.getRewardPoints();
+        pointsView.setText(pointsText);
 
     }
 }
