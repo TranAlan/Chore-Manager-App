@@ -41,7 +41,9 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
 
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
-    private DatabaseReference databaseFamilies;
+    static DatabaseReference databaseFamilies;
+    static FirebaseUser user;
+    static String emailEscaped;
     List<AuthUI.IdpConfig> providers = Arrays.asList(
             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build());
 
@@ -53,7 +55,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
-        databaseFamilies = FirebaseDatabase.getInstance().getReference("families");
+        databaseFamilies = FirebaseDatabase.getInstance().getReference("Families");
         setContentView(R.layout.activity_app_login);
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -70,9 +72,6 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
                         RC_SIGN_IN);
             }
         });
-
-     //   mLoginFormView = findViewById(R.id.login_form);
-    //    mProgressView = findViewById(R.id.login_progress);
     }
 
     @Override
@@ -84,9 +83,9 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
 
             if (resultCode == ResultCodes.OK) {
                 // Successfully signed in
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                user = FirebaseAuth.getInstance().getCurrentUser();
                 String email = user.getEmail();
-                String emailEscaped = email.replaceAll("\\.","DOT").replaceFirst("@","AT");
+                emailEscaped = email.replaceAll("\\.","DOT").replaceFirst("@","AT");
                 databaseFamilies.child(emailEscaped).setValue(email);
 
                // String id = databaseFamilies.push().getKey();
