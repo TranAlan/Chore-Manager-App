@@ -14,6 +14,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Collections;
+import java.util.Iterator;
 
 
 public class ChoreManagerProfile implements Serializable {
@@ -152,6 +153,36 @@ public class ChoreManagerProfile implements Serializable {
     public int nextId(){
         id = id + 1;
         return id;
+    }
+
+    public Chore findChoreID(int id){
+        //Checking All chore Lists
+
+        //Unassigned List
+        Iterator<Chore> choreIterator = unassignedChores.iterator();
+        while (choreIterator.hasNext()){
+            Chore chore = choreIterator.next();
+            if(chore.getId() == id){
+                return chore;
+            }
+
+        }
+
+        //FINISHED Chores
+        choreIterator = finishedChores.iterator();
+        while (choreIterator.hasNext()){
+            Chore chore = choreIterator.next();
+            if(chore.getId() == id){
+                return chore;
+            }
+
+        }
+
+        //Checking all users
+        for (int i = 0; i < users.size(); i++){
+            users.get(i).getChoreFromId(id);
+        }
+        return null;
     }
 
 }

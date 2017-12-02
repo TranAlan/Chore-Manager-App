@@ -12,11 +12,6 @@ import java.util.Date;
  */
 
 public class AdminUser extends User{
-    /*
-    public AdminUser(String username, String password, int totalPoints, Image profilePic){
-        super(username, password, totalPoints, profilePic);
-    }
-    */
 
     public AdminUser(String username, String password){
         super(username, password);

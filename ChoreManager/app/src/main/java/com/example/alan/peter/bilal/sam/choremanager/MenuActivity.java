@@ -13,8 +13,8 @@ public static ChoreManagerProfile manager = new ChoreManagerProfile();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
         AdminUser peter = new AdminUser("Peter Lam", "qwerty");
-        manager.setCurrentUser(peter);
         manager.addUser(peter);
+        manager.setCurrentUser(peter);
     }
 
     protected void userImageOnClick(View view){
