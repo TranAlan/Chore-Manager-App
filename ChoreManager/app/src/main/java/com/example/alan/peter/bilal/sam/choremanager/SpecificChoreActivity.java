@@ -25,5 +25,13 @@ public class SpecificChoreActivity extends AppCompatActivity {
         TextView note = (TextView) findViewById(R.id.notesTextView2);
         note.setText(chore.getNotes());
 
+        TextView typeView = (TextView) findViewById(R.id.choreTypeTextView);
+        String typeText = typeView.getText() + " " + chore.choreType.toString();
+        typeView.setText(typeText);
+
+        TextView pointsView = (TextView) findViewById(R.id.pointsTextView2);
+        String pointsText = "Points: "+ chore.getRewardPoints();
+        pointsView.setText(pointsText);
+
     }
 }

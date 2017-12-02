@@ -80,7 +80,7 @@
 
             <activity
                 android:name=".SpecificChoreActivity"
-                android:label="Chore_Name_Here"
+                android:label="Chore Details"
                 android:parentActivityName=".ChoreListActivity" >
             </activity>
 
