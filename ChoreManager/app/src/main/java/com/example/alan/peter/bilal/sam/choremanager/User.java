@@ -83,10 +83,44 @@ public class User{
         }
         return null;
     }
-    /*
-    public void sortChoresByDeadline(){
 
+
+    //sorts the list of assigned chores starting by those due at the earliest date
+    public void sortChoresByDeadline(){
+        int numChores = this.assignedChores.size();
+       ArrayList<Chore> sort = new ArrayList<>();
+       ArrayList<Chore> copy = assignedChores;
+       sort.add(copy.remove(0));
+       for (int i =0; i<numChores-1; i++){
+           addChoreByDate(sort, copy.get(i));
+       }
+       assignedChores=sort;
     }
+
+    //method which takes a list of chores, and a lone chore, and inserts the chore in
+    //the appropriate place in the list based on date
+    public void addChoreByDate(ArrayList<Chore> list, Chore toAdd){
+        Chore current = list.get(0);
+        boolean added = false;
+        int size = list.size();
+        int pos = 1;
+        while(added==false && pos<size){
+            if(toAdd.getDeadline().before(current.getDeadline())){
+                list.add(0,toAdd);
+                added=true;
+            }
+            else if(toAdd.getDeadline().after(current.getDeadline())){
+                if (pos==(size-1)){
+                    list.add(toAdd);
+                    added=true;
+                }
+                else{
+                    current=list.get(pos);
+                    pos++;
+                    }
+                }
+            }
+        }
 
     public void sortChoresByAlphabetical(){
 
