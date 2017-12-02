@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Chore implements Serializable {
+public class Chore{
 
     //status' the chore can hold
     private enum Status {

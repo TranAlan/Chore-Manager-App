@@ -8,7 +8,7 @@ import java.util.Iterator;
  * Created by Alan on 11/27/2017.
  */
 
-public class User implements Serializable {
+public class User{
     private String username;
     private String password;
     private int totalPoints;
