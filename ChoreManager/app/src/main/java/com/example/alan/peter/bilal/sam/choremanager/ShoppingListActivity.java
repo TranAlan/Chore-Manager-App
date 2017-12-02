@@ -8,30 +8,25 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
-
+import android.widget.Spinner
 import java.util.ArrayList;
-import java.util.List;
 
 public class ShoppingListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     //variables
     private String toAdd;
-    private List<String> allMaterials = new ArrayList<>();
-    private List<String> allGroceries = new ArrayList<>();
+    private ArrayList<String> allMaterials = new ArrayList<>();
+    private ArrayList<String> allGroceries = new ArrayList<>();
     private ListView groceriesListView,materialsListView;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shopping_list);
-        //clearing data incase
-        allGroceries.clear();
-        allMaterials.clear();
+    private ArrayList<String> checkedMaterials = new ArrayList<String>();
+    private ArrayList<String> checkedGroceries = new ArrayList<String>();
 
-
+    
         //TO REMOVE
+        allGroceries.
         allGroceries.add("Groceries 1");
         allGroceries.add("Groceries 2");
         allGroceries.add("Groceries 3");
@@ -42,6 +37,8 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
         // allMaterials.addAll();
         //allGroceries.addAll();
         // link listview to xml
+
+
 
         groceriesListView = (ListView) findViewById(R.id.groceriesListView);
         materialsListView = (ListView) findViewById(R.id.materialsListView);
@@ -147,15 +144,21 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //get selected items
-                //delete item from ChoreManagerProfile
+                //get selected items from checked
+                ArrayList<String> toPurchaseGroceries = checkedGroceries;
+                ArrayList<String> toPurchaseMaterials = checkedMaterials;
+                //delete item from ChoreManagerProfile shopping list and add it to the pantry
+                MenuActivity.getManager().getShoplistGroc().removeAll(checkedGroceries);
+                MenuActivity.getManager().getShopListMat().removeAll(checkedMaterials);
                 //update view
+                //TODO
                 //close dialog
+                dialogInterface.cancel();
             }
         });
     }
 
-    public void onAdditionClick(View view) {
+    public void onPurchaseClick(View view) {
         // Build an alert dialog
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         //set title and message of dialogue
@@ -176,10 +179,18 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
         alert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //get selected items
+                //get selected items from checked
+                ArrayList<String> toPurchaseGroceries = checkedGroceries;
+                ArrayList<String> toPurchaseMaterials = checkedMaterials;
                 //delete item from ChoreManagerProfile shopping list and add it to the pantry
+                MenuActivity.getManager().getShoplistGroc().removeAll(checkedGroceries);
+                MenuActivity.getManager().getShopListMat().removeAll(checkedMaterials);
+                MenuActivity.getManager().getShopListMat().addAll(checkedMaterials);
+                MenuActivity.getManager().getShoplistGroc().addAll(checkedGroceries);
                 //update view
+                //TODO
                 //close dialog
+                dialogInterface.cancel();
             }
         });
     }
