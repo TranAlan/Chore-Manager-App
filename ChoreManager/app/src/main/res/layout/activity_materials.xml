@@ -41,12 +41,12 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:onClick="addMaterialsOnClick"
+            android:onClick="addMaterialOnClick"
             android:text="@string/addItem" />
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/scrollView4"
+    <ListView
+        android:id="@+id/materialsListView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -60,40 +60,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:id="@+id/g_item1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/g_item1"
-                android:textSize="25sp" />
-
-            <CheckBox
-                android:id="@+id/g_item2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/g_item2"
-                android:textSize="25sp" />
-
-            <CheckBox
-                android:id="@+id/g_item3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/g_item3"
-                android:textSize="25sp" />
-
-            <CheckBox
-                android:id="@+id/g_item4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/g_item4"
-                android:textSize="25sp" />
-
-        </LinearLayout>
-
-    </ScrollView>
+    </ListView>
 </android.support.constraint.ConstraintLayout>

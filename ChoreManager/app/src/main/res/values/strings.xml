@@ -107,6 +107,11 @@
     <string name="string_please_select_a_category">Please Select A Category</string>
     <string name="string_placeholder_chore_name">Chore Name Here</string>
     <string name="string_placeholder_status">Status: Pending</string>
+    <string name="string_delete_item_warning">Are you sure you want to delete the selected items? This cannot be undone.</string>
+    <string name="string_account_name">Name</string>
+    <string name="string_account_type">Account Type</string>
+    <string name="string_specifc_user_profile_hint">profile picture of specific @string/stirng_current_user</string>
+    <string name="string_create_user">Create User</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>
@@ -150,6 +155,11 @@
     <string-array name="shoppingItemTypeSpinner_Options">
         <item name="material">Material</item>
         <item name="grocery">Grocery</item>
+    </string-array>
+
+    <string-array name="accountTypeSpinner_Options">
+        <item name="adminParent">Admin / Parent</item>
+        <item name="child">Child</item>
 
     </string-array>
 </resources>

@@ -5,7 +5,6 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -30,7 +29,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     DateFormat formatDateTime = DateFormat.getDateTimeInstance();
     Calendar dateTime = Calendar.getInstance();
     private Spinner choreTypeSpinner,repeatableSpinner,totalPointsSpinner;
-    private ArrayAdapter choreAdapter,repeatbleAdapter, assignToAdapter, totalPointsAdapter;
+    private ArrayAdapter choreAdapter, assignToAdapter, totalPointsAdapter;
     private NumberPicker numberPicker = null;
     private Button deadlineButton;
     private TextView actualDeadlineTextView;
