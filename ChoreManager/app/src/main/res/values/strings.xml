@@ -105,6 +105,8 @@
     <string name="string_confirm">Confirm</string>
     <string name="string_cancel">Cancel</string>
     <string name="string_please_select_a_category">Please Select A Category</string>
+    <string name="string_placeholder_chore_name">Chore Name Here</string>
+    <string name="string_placeholder_status">Status: Pending</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>

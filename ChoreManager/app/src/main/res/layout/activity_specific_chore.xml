@@ -32,6 +32,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:id="@+id/choreTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="@string/string_placeholder_chore_name"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -115,7 +126,7 @@
                 android:id="@+id/specificMaterialsSpinner"
                 style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:foregroundGravity="center"
                 android:minHeight="50dp" />
@@ -148,84 +159,94 @@
                     android:textColor="@color/secondaryTextColor" />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/choreStatusTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/string_placeholder_status"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/scrollView3"
+                app:layout_constraintVertical_bias="1.0">
+
+                <TextView
+                    android:id="@+id/parentCommandText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/secondaryDarkColor"
+                    android:gravity="center"
+                    android:text="@string/parentCommandTitle"
+                    android:textColor="@color/secondaryLightColor"
+                    android:textSize="20sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="494dp" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <Button
+                        android:id="@+id/editChoreButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:text="@string/edit_chore_button"
+                        android:textColor="@color/secondaryTextColor" />
+
+                    <Button
+                        android:id="@+id/unassignButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:text="@string/unassignButton"
+                        android:textColor="@color/secondaryTextColor" />
+
+                    <Button
+                        android:id="@+id/reassignButton"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:text="@string/reassignButton"
+                        android:textColor="@color/secondaryTextColor" />
+
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout10"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/background_light"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/scrollView3"
-        app:layout_constraintVertical_bias="1.0">
-
-        <TextView
-            android:id="@+id/parentCommandText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/secondaryDarkColor"
-            android:gravity="center"
-            android:text="@string/parentCommandTitle"
-            android:textColor="@color/secondaryLightColor"
-            android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="494dp" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout8"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="8dp"
-            android:gravity="bottom"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
-
-            <Button
-                android:id="@+id/editChoreButton"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:text="@string/edit_chore_button"
-                android:textColor="@color/secondaryTextColor" />
-
-            <Button
-                android:id="@+id/unassignButton"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginStart="2dp"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:text="@string/unassignButton"
-                android:textColor="@color/secondaryTextColor" />
-
-            <Button
-                android:id="@+id/reassignButton"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginStart="2dp"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:text="@string/reassignButton"
-                android:textColor="@color/secondaryTextColor" />
-
-        </LinearLayout>
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
