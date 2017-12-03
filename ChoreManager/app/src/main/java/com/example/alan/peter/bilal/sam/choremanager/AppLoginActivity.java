@@ -122,7 +122,8 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             if (!(dataSnapshot.child(emailEscaped).child("Users").hasChild(name))) {
-                databaseFamilies.child(emailEscaped).child("Users").child(name).setValue(name);
+                User thisUser = new User(name);
+                databaseFamilies.child(emailEscaped).child("Users").child(name).setValue(thisUser);
             }
         }
 
