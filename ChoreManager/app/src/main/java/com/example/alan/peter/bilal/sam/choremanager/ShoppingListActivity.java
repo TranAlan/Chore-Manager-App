@@ -117,10 +117,13 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 if(!(itemNameString.equals(""))){
                     if (shoppingListType.equals("Material")){
                         MenuActivity.getManager().addShoppingMaterial(itemNameString);
+                        allMaterials.add(itemNameString);
                     }
                     else{
                         MenuActivity.getManager().addShoppingGrocery(itemNameString);
+                        allGroceries.add(itemNameString);
                     }
+                    MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 }
                 dialog.cancel();
             }
