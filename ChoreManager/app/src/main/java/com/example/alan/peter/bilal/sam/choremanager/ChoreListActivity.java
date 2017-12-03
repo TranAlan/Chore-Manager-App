@@ -123,6 +123,7 @@ public class ChoreListActivity extends AppCompatActivity {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
+
                         if(item.getTitle().equals("My Chores Only")){
                             listOfChores.removeAll(listOfChores);
                             for(int i = 0; i < MenuActivity.getManager().getCurrentUser().getAssignedChores().size(); i ++){

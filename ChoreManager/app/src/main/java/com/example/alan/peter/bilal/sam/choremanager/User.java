@@ -87,14 +87,16 @@ public class User implements Serializable{
 
     //sorts the list of assigned chores starting by those due at the earliest date
     public void sortChoresByDeadline(){
-        int numChores = this.assignedChores.size();
-       List<Chore> sort = new ArrayList<>();
-       List<Chore> copy = assignedChores;
-       sort.add(copy.remove(0));
-       for (int i =0; i<numChores-1; i++){
-           addChoreByDate(sort, copy.get(i));
-       }
-       assignedChores=sort;
+        if(assignedChores.size()!=0) {
+            int numChores = this.assignedChores.size();
+            List<Chore> sort = new ArrayList<>();
+            List<Chore> copy = assignedChores;
+            sort.add(copy.remove(0));
+            for (int i = 0; i < numChores - 1; i++) {
+                addChoreByDate(sort, copy.get(i));
+            }
+            assignedChores = sort;
+        }
     }
 
     //method which takes a list of chores, and a lone chore, and inserts the chore in
@@ -124,26 +126,30 @@ public class User implements Serializable{
 
     //sorts the lit of assigned chores starting by those due at the earliest date
     public void sortChoresByAlphabetical(){
-        int numChores = this.assignedChores.size();
-        List<Chore> sort = new ArrayList<>();
-        List<Chore> copy = assignedChores;
-        sort.add(copy.remove(0));
-        for (int i =0; i<numChores-1; i++){
-            addChoreByAlphabetical(sort, copy.get(i));
+        if(assignedChores.size()!=0) {
+            int numChores = this.assignedChores.size();
+            List<Chore> sort = new ArrayList<>();
+            List<Chore> copy = assignedChores;
+            sort.add(copy.remove(0));
+            for (int i = 0; i < numChores - 1; i++) {
+                addChoreByAlphabetical(sort, copy.get(i));
+            }
+            assignedChores = sort;
         }
-        assignedChores=sort;
     }
 
     //sorts the lit of assigned chores starting by those starting last alphabetically
     public void sortChoresByReverseAlphabetical(){
-        int numChores = this.assignedChores.size();
-        List<Chore> sort = new ArrayList<>();
-        List<Chore> copy = assignedChores;
-        sort.add(copy.remove(0));
-        for (int i =0; i<numChores-1; i++){
-            addChoreByAlphabetical(sort, copy.get(i));
+        if(assignedChores.size()!=0) {
+            int numChores = this.assignedChores.size();
+            List<Chore> sort = new ArrayList<>();
+            List<Chore> copy = assignedChores;
+            sort.add(copy.remove(0));
+            for (int i = 0; i < numChores - 1; i++) {
+                addChoreByAlphabetical(sort, copy.get(i));
+            }
+            assignedChores = sort;
         }
-        assignedChores=sort;
     }
 
     public void addChoreByAlphabetical(List<Chore> list, Chore toAdd){
