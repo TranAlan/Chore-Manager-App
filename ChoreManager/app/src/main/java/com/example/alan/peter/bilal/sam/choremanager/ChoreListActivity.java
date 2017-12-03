@@ -72,19 +72,33 @@ public class ChoreListActivity extends AppCompatActivity {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-                        if(item.getTitle()== "Alphabetically"){
+                        if(item.getTitle().equals("A-Z")){
                             //sort all users chores alphabetically
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
                                 MenuActivity.getManager().getUsers().get(i).sortChoresByAlphabetical();
+                                //update view
+                                listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
                             }
-                            //update view TODO
+
+
+
                         }
-                        else if(item.getTitle()=="Deadline"){
+                        else if(item.getTitle().equals("Deadline")){
                             //sort all users chores by deadline
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
                                 MenuActivity.getManager().getUsers().get(i).sortChoresByDeadline();
+                                //update view
+                                listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
                             }
-                            //update view TODO
+                        }
+
+                        else if (item.getTitle().equals("Z-A")){
+                            //sort all users chores Z-A
+                            for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
+                                MenuActivity.getManager().getUsers().get(i).sortChoresByReverseAlphabetical();
+                                //update view
+                                listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+                            }
                         }
                         Toast.makeText(ChoreListActivity.this,"Sorted by: " + item.getTitle(),Toast.LENGTH_SHORT).show();
                         return true;
