@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Chore implements Serializable{
+public class Chore implements Serializable, Comparable<Chore>{
 
     //status' the chore can hold
     private enum Status {
@@ -49,6 +49,23 @@ public class Chore implements Serializable{
     private List<String> reqMat;
     private List<String> reqGroc;
     private int id;
+
+
+    public int compareTo(Chore chore){
+        final int BEFORE = -1;
+        final int EQUAL = 0;
+        final int AFTER = 1;
+
+        if(this.getName().compareTo(chore.getName())<0){
+            return BEFORE;
+        }
+        else if(this.getName().compareTo(chore.getName())==0){
+            return EQUAL;
+        }
+        else{
+            return AFTER;
+        }
+    }
 
     public Chore(){
 
