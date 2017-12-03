@@ -38,7 +38,6 @@ public class User{
     public int getTotalPoints(){
         return totalPoints;
     }
-
     public ArrayList<Chore> getAssignedChores(){
         return assignedChores;
     }

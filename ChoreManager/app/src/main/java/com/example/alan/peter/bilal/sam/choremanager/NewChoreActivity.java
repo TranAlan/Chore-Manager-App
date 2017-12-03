@@ -159,8 +159,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore
         Spinner grabPoints = findViewById(R.id.totalPointsSpinner); // The points the chore is worth
         //Requried matierals
-        //NumberPicker grabRepeatValue = findViewById(R.id.numberPicker);
-        //Spinner grabRepeatType = findViewById(R.id.repeatableSpinner);
         EditText grabDesc = (EditText) findViewById(R.id.descTextView2); //Description of Chore
         EditText grabNote = (EditText) findViewById(R.id.notesTextView); //Note of Chore
 
