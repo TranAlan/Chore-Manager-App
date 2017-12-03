@@ -26,7 +26,7 @@ public class ChoreListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chore_list);
 
         //  ---- List View Code ---
-        ListView choreListView = (ListView) findViewById(R.id.choreListView);
+        ListView choreListView = (ListView) findViewById(R.id.allResourcesList);
         // making a arraylist of string arrays for the list view
 
         // filling the arrays with title and the description aka Assign to name along with the deadline
@@ -170,7 +170,12 @@ public class ChoreListActivity extends AppCompatActivity {
         Log.d("test", "Going into newChore!");
         startActivity(intent);
         finish();
+    }
 
+    protected void viewAssignedResourcesButton(View view){
+        Intent intent = new Intent(this, AssignedResourcesActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }
