@@ -86,6 +86,7 @@ public class ChoreListActivity extends AppCompatActivity {
                             }
                             //update view TODO
                         }
+                        Toast.makeText(ChoreListActivity.this,"Sorted by: " + item.getTitle(),Toast.LENGTH_SHORT).show();
                         return true;
                     }
                 });
