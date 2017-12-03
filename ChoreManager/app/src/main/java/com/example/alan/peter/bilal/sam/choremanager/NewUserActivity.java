@@ -6,12 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 public class NewUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private  Spinner accountTypeSpinner;
     private ArrayAdapter accountTypeAdapter;
+    private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
+    private String email = AppLoginActivity.emailEscaped;
+    private String name;
+    private User newUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,9 +105,28 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     // if user presses create new User, create this
     public void createUserOnClick(View view)
     {
+        Intent intent = new Intent(this, UserMenu.class);
+        fbRef.addValueEventListener(listener);
+        startActivity(intent);
         finish();
-        //TODO: CODE THIS
     }
+
+    private ValueEventListener listener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            EditText username = (EditText)findViewById(R.id.usernameText);
+            name = username.getText().toString();
+            if (!(dataSnapshot.hasChild(name))) {
+                newUser = new User(name);
+                fbRef.child(email).child("Users").child(name).setValue(newUser);
+            }
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

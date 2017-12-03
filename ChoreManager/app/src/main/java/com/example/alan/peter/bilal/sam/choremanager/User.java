@@ -24,6 +24,13 @@ public class User implements Serializable{
         assignedChores = new ArrayList<Chore>();
     }
 
+    public User(String username){
+        this.username = username;
+        password = null;
+        this.totalPoints = 0;
+        assignedChores = new ArrayList<Chore>();
+    }
+
     public User(String username, String password){
         this.username = username;
         this.password = password;

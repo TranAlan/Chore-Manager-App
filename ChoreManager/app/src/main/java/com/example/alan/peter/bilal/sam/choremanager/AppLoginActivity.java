@@ -106,9 +106,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     private ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            if (dataSnapshot.hasChild(emailEscaped)) {
-
-            } else {
+            if (!(dataSnapshot.hasChild(emailEscaped))) {
                 databaseFamilies.child(emailEscaped).setValue(email);
             }
         }
@@ -119,12 +117,11 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         }
     };
 
+    //Signing in for first time creates user with that account's name and adds it to database
     private ValueEventListener nameListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            if (dataSnapshot.child(emailEscaped).child("Users").hasChild(name)) {
-
-            } else {
+            if (!(dataSnapshot.child(emailEscaped).child("Users").hasChild(name))) {
                 databaseFamilies.child(emailEscaped).child("Users").child(name).setValue(name);
             }
         }
