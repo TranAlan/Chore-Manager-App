@@ -26,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
             } else {
                 manager = new ChoreManagerProfile();
                 AdminUser peter = new AdminUser("Peter Lam", "qwerty", manager.getSerialNumber());
-                manager.setCurrentUser(peter);
+                manager.setCurrentUserId(peter.getUserId());
                 manager.addAdminUser(peter);
                 fbRef.child(email).child("ChoreManager").setValue(manager);
             }

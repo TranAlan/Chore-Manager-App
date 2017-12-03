@@ -179,7 +179,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         //Gets the user the chore is assigne to and the current user.
         //Log.d("test", MenuActivity.getManager().getUsers().get(0).getUsername());
         User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
-        AdminUser currentUser = MenuActivity.getManager().getAdminUserFromId(MenuActivity.getManager().getCurrentUser().getUserId());
+        AdminUser currentUser = MenuActivity.getManager().getAdminUserFromId(MenuActivity.getManager().getCurrentUserId());
         Chore newChore;
 
         if (assignedUser.getUsername().equals("None")){ //UNASSIGNED CHORE
@@ -191,9 +191,11 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         else{
             newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints,
                     dateTime.getTime(), null, null, MenuActivity.getManager().nextSerialNumber(), assignedUser);
+            /*
             if(assignedUser.getUsername().equals(currentUser.getUsername())){
                 MenuActivity.getManager().setCurrentUser(assignedUser);
             }
+            */
         }
         Log.d("test", "YAY");
         //Changing the type of Chore

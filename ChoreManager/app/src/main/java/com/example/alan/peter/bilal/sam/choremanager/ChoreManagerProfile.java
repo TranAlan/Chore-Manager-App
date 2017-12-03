@@ -35,7 +35,7 @@ public class ChoreManagerProfile implements Serializable{
     private List<Chore> unassignedChores;
     private List<Chore> finishedChores;
     private Date currentDate;
-    private User currentUser;
+    private int currentUserId;
     private int serialNumber;
 
 
@@ -52,6 +52,7 @@ public class ChoreManagerProfile implements Serializable{
         this.regUsers = new ArrayList<User>();
         this.adminUsers = new ArrayList<AdminUser>();
         this.serialNumber = 1;
+        this.currentUserId = 0;
     }
 
 
@@ -78,8 +79,8 @@ public class ChoreManagerProfile implements Serializable{
     public List<Chore> getFinishedChores() {
         return finishedChores;
     }
-    public User getCurrentUser(){
-        return currentUser;
+    public int getCurrentUserId(){
+        return currentUserId;
     }
     public int getSerialNumber(){return serialNumber;}
     public Date getDate() {
@@ -88,8 +89,8 @@ public class ChoreManagerProfile implements Serializable{
         return this.currentDate;
     }
     //SETTERS
-    public void setCurrentUser(User user){
-        currentUser = user;
+    public void setCurrentUserId(int currentUserId){
+        this.currentUserId = currentUserId;
     }
 
     //HALF SETTERS
@@ -155,8 +156,13 @@ public class ChoreManagerProfile implements Serializable{
         this.serialNumber = 0;
     }
 
-    public boolean isUserAdmin(){
-        return currentUser instanceof AdminUser;
+    public boolean isCurrentUserAdmin(){
+        if (getAdminUserFromId(currentUserId)!=null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public User getUserFromName(String username) {
@@ -206,6 +212,10 @@ public class ChoreManagerProfile implements Serializable{
             }
         }
         return null;
+    }
+
+    public User getCurrentUser(){
+        return getUserFromId(this.currentUserId);
     }
 
     public int nextSerialNumber(){
