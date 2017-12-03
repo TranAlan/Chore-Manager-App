@@ -3,16 +3,17 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Alan on 11/27/2017.
  */
 
-public class User{
+public class User implements Serializable{
     private String username;
     private String password;
     private int totalPoints;
-    private ArrayList<Chore> assignedChores;
+    private List<Chore> assignedChores;
 
     public User(){
         username = null;
@@ -38,7 +39,7 @@ public class User{
     public int getTotalPoints(){
         return totalPoints;
     }
-    public ArrayList<Chore> getAssignedChores(){
+    public List<Chore> getAssignedChores(){
         return assignedChores;
     }
 
@@ -66,7 +67,7 @@ public class User{
     }
 
     public int completeChore(Chore chore){
-        chore.setStatusComplete();
+        //chore.setStatusComplete();
         //assignedChores.remove(chore);
         totalPoints =  totalPoints + chore.getRewardPoints();
         return chore.getRewardPoints();
@@ -83,7 +84,7 @@ public class User{
         return null;
     }
 
-
+    /*
     //sorts the list of assigned chores starting by those due at the earliest date
     public void sortChoresByDeadline(){
         int numChores = this.assignedChores.size();
@@ -156,6 +157,7 @@ public class User{
              }
           }
     }
+    */
 }
 
     //sort by categorie?

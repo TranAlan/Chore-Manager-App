@@ -9,8 +9,9 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class Chore{
+public class Chore implements Serializable{
 
     //status' the chore can hold
     private enum Status {
@@ -42,11 +43,11 @@ public class Chore{
     private String notes;
     private int rewardPoints;
     private Status completionStatus;
-    public Type choreType;
+    private Type choreType;
     private Date deadline;
     private User assignedTo;
-    private ArrayList<String> reqMat;
-    private ArrayList<String> reqGroc;
+    private List<String> reqMat;
+    private List<String> reqGroc;
     private int id;
 
     public Chore(){
@@ -100,9 +101,11 @@ public class Chore{
     public String getName() {
         return name;
     }
+    /*
     public Type getType() {
         return this.choreType;
     }
+    */
     public String getNotes() {
         return notes;
     }
@@ -125,8 +128,8 @@ public class Chore{
     public String getStatusString(){
         return completionStatus.toString();
     }
-    public ArrayList<String> getReqMat(){ return reqMat;}
-    public ArrayList<String> getReqGroc(){return reqGroc;}
+    public List<String> getReqMat(){ return reqMat;}
+    public List<String> getReqGroc(){return reqGroc;}
 
     //SETTERS
     public void setName(String name) {
@@ -147,6 +150,7 @@ public class Chore{
     public void setAssignedTo(User assignedTo) {
         this.assignedTo = assignedTo;
     }
+
 
     //STATUS SETTERS
     public void setStatusComplete(){
