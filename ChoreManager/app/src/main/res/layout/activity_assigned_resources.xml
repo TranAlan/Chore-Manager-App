@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/colorAccent"
+        android:background="@color/primaryLightColor"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/allResourcesList"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
             android:layout_width="4dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/primaryLightColor"
             android:contentDescription="@string/filter_desc"
             app:srcCompat="@drawable/filter_icon" />
     </LinearLayout>

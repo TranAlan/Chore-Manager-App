@@ -31,7 +31,7 @@
                 android:id="@+id/ic_avatar_11"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:background="@color/secondaryDarkColor"
+                android:background="@color/primaryLightColor"
                 android:contentDescription="@string/string_specifc_user_profile_hint"
                 android:onClick="setAvatarButtonOnClick"
                 app:srcCompat="@drawable/ic_avatar_11_2" />
@@ -107,10 +107,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="cancelSelectedOnClick"
             android:text="@string/string_cancel"
-            />
+            android:textColor="@color/primaryLightColor" />
 
         <Button
             android:id="@+id/addUser"
@@ -120,9 +120,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="createUserOnClick"
-            android:text="@string/string_create_user" />
+            android:text="@string/string_create_user"
+            android:textColor="@color/primaryLightColor" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

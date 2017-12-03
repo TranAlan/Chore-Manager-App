@@ -54,9 +54,9 @@
             android:layout_marginRight="2.5dp"
             android:layout_marginStart="5dp"
             android:layout_weight=".99"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:text="@string/string_cancel"
-            android:textColor="@color/secondaryTextColor" />
+            android:textColor="@color/primaryLightColor" />
 
         <Button
             android:id="@+id/confirmButton"
@@ -65,13 +65,13 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="5dp"
+            android:layout_marginLeft="2.5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginStart="2.5dp"
             android:layout_weight=".99"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:text="@string/string_confirm"
-            android:textColor="@color/secondaryTextColor"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="2.5dp" />
+            android:textColor="@color/primaryLightColor" />
     </LinearLayout>
 
 </LinearLayout>

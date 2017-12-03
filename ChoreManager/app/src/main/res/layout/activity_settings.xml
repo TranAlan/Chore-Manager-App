@@ -15,10 +15,10 @@
         android:layout_marginStart="8dp"
         android:background="@color/colorPrimaryDark"
         android:text="@string/resetDataButton"
+        android:textColor="@color/primaryLightColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@android:color/white"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -28,7 +28,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@color/secondaryLightColor"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/resetButton"
         app:layout_constraintEnd_toEndOf="parent"

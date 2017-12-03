@@ -57,9 +57,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="onPurchaseClick"
             android:text="@string/markPurchased"
+            android:textColor="@color/primaryLightColor"
             android:textSize="14sp" />
 
         <Button
@@ -70,10 +71,11 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="onDeletionClick"
             android:text="@string/deleteSelected"
             android:textAlignment="center"
+            android:textColor="@color/primaryLightColor"
             android:textSize="14sp" />
 
         <Button
@@ -84,9 +86,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="addItemOnClick"
-            android:text="@string/addItem" />
+            android:text="@string/addItem"
+            android:textColor="@color/primaryLightColor" />
 
     </LinearLayout>
 
@@ -95,7 +98,7 @@
         android:layout_width="0dp"
         android:layout_height="27dp"
         android:layout_marginEnd="1dp"
-        android:background="@color/colorAccent"
+        android:background="@color/primaryLightColor"
         android:gravity="center_horizontal"
         android:text="@string/materialsTitle"
         android:textColor="@color/secondaryTextColor"
@@ -110,7 +113,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:background="@color/colorAccent"
+        android:background="@color/primaryLightColor"
         android:gravity="center_horizontal"
         android:text="@string/groceriesTitle"
         android:textColor="@color/secondaryTextColor"

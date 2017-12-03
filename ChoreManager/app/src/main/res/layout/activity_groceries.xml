@@ -46,9 +46,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="deleteSelectedOnClick"
-            android:text="@string/deleteSelected" />
+            android:text="@string/deleteSelected"
+            android:textColor="@color/secondaryLightColor" />
 
         <Button
             android:id="@+id/addItem"
@@ -57,8 +58,9 @@
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="addGroceryOnClick"
-            android:text="@string/addItem" />
+            android:text="@string/addItem"
+            android:textColor="@color/secondaryLightColor" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_weight="1"
-        android:background="@color/secondaryDarkColor"
+        android:background="@color/primaryLightColor"
         android:contentDescription="@string/userProfilePicture"
         app:srcCompat="@mipmap/ic_launcher" />
 

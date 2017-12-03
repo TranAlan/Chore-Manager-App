@@ -162,8 +162,9 @@
                     android:id="@+id/deadlineButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
-                    android:text="@string/string_pick_deadline" />
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/string_pick_deadline"
+                    android:textColor="@color/primaryLightColor" />
 
                 <TextView
                     android:id="@+id/actualDeadlineTextView"
@@ -191,10 +192,10 @@
                     android:id="@+id/desciptionTextTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/secondaryDarkColor"
+                    android:background="@color/secondaryLightColor"
                     android:gravity="center"
                     android:text="@string/descTitle"
-                    android:textColor="@color/secondaryLightColor"
+                    android:textColor="@color/secondaryTextColor"
                     android:textSize="20sp"
                     tools:layout_editor_absoluteY="47dp" />
 
@@ -215,10 +216,10 @@
                     android:id="@+id/noteViewText2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/secondaryDarkColor"
+                    android:background="@color/secondaryLightColor"
                     android:gravity="center"
                     android:text="@string/notes"
-                    android:textColor="@color/secondaryLightColor"
+                    android:textColor="@color/secondaryTextColor"
                     android:textSize="20sp" />
 
                 <EditText
@@ -254,15 +255,15 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="saveExitOnClick"
             android:text="@string/save_and_exit"
+            android:textColor="@color/primaryLightColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
