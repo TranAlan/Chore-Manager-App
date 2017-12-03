@@ -101,11 +101,11 @@ public class Chore implements Serializable{
     public String getName() {
         return name;
     }
-    /*
+
     public Type getType() {
         return this.choreType;
     }
-    */
+
     public String getNotes() {
         return notes;
     }

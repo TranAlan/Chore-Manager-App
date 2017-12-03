@@ -67,7 +67,7 @@ public class User implements Serializable{
     }
 
     public int completeChore(Chore chore){
-        //chore.setStatusComplete();
+        chore.setStatusComplete();
         //assignedChores.remove(chore);
         totalPoints =  totalPoints + chore.getRewardPoints();
         return chore.getRewardPoints();

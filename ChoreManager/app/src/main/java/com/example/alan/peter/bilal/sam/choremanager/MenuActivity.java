@@ -21,13 +21,14 @@ public class MenuActivity extends AppCompatActivity {
     private ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            Log.d("test", "HELLO!");
-            manager = dataSnapshot.child("ChoreManager").getValue(ChoreManagerProfile.class);
+            Log.d("test", "IN DATACHANGE");
+
             if (dataSnapshot.hasChild("ChoreManager")) {
                 manager = dataSnapshot.child("ChoreManager").getValue(ChoreManagerProfile.class);
-                Log.d("test", "TSHIRT");
+                Log.d("test", "EXISTS!");
             } else {
                 manager = new ChoreManagerProfile();
+                Log.d("test", "Making new Profile");
                 //fbRef.child(email).child("ChoreManager").setValue(manager);
             }
         }
@@ -77,8 +78,10 @@ public class MenuActivity extends AppCompatActivity {
         AdminUser peter = new AdminUser("Peter Lam", "qwerty");
         manager.setCurrentUser(peter);
         manager.addUser(peter);
-        fbRef.child(email).child("ChoreManager").setValue(manager);
-
+        //fbRef.child(email).child("ChoreManager").setValue(manager);
+        Log.d("test",  manager.getCurrentUser().getUsername());
+        Log.d("test", manager.getUsers().get(0).getPassword());
+        Log.d("test", "PETER EXISTS!");
         if (manager == null){
             Log.d("test", "null!");
         }
