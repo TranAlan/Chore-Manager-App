@@ -3,16 +3,17 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Alan on 11/27/2017.
  */
 
-public class User{
+public class User implements Serializable{
     private String username;
     private String password;
     private int totalPoints;
-    private ArrayList<Chore> assignedChores;
+    private List<Chore> assignedChores;
 
     public User(){
         username = null;
@@ -38,8 +39,7 @@ public class User{
     public int getTotalPoints(){
         return totalPoints;
     }
-
-    public ArrayList<Chore> getAssignedChores(){
+    public List<Chore> getAssignedChores(){
         return assignedChores;
     }
 
@@ -87,19 +87,21 @@ public class User{
 
     //sorts the list of assigned chores starting by those due at the earliest date
     public void sortChoresByDeadline(){
-        int numChores = this.assignedChores.size();
-       ArrayList<Chore> sort = new ArrayList<>();
-       ArrayList<Chore> copy = assignedChores;
-       sort.add(copy.remove(0));
-       for (int i =0; i<numChores-1; i++){
-           addChoreByDate(sort, copy.get(i));
-       }
-       assignedChores=sort;
+        if(assignedChores.size()!=0) {
+            int numChores = this.assignedChores.size();
+            List<Chore> sort = new ArrayList<>();
+            List<Chore> copy = assignedChores;
+            sort.add(copy.remove(0));
+            for (int i = 0; i < numChores - 1; i++) {
+                addChoreByDate(sort, copy.get(i));
+            }
+            assignedChores = sort;
+        }
     }
 
     //method which takes a list of chores, and a lone chore, and inserts the chore in
     //the appropriate place in the list based on date
-    public void addChoreByDate(ArrayList<Chore> list, Chore toAdd){
+    public void addChoreByDate(List<Chore> list, Chore toAdd){
         Chore current = list.get(0);
         boolean added = false;
         int size = list.size();
@@ -124,17 +126,33 @@ public class User{
 
     //sorts the lit of assigned chores starting by those due at the earliest date
     public void sortChoresByAlphabetical(){
-        int numChores = this.assignedChores.size();
-        ArrayList<Chore> sort = new ArrayList<>();
-        ArrayList<Chore> copy = assignedChores;
-        sort.add(copy.remove(0));
-        for (int i =0; i<numChores-1; i++){
-            addChoreByAlphabetical(sort, copy.get(i));
+        if(assignedChores.size()!=0) {
+            int numChores = this.assignedChores.size();
+            List<Chore> sort = new ArrayList<>();
+            List<Chore> copy = assignedChores;
+            sort.add(copy.remove(0));
+            for (int i = 0; i < numChores - 1; i++) {
+                addChoreByAlphabetical(sort, copy.get(i));
+            }
+            assignedChores = sort;
         }
-        assignedChores=sort;
     }
 
-    public void addChoreByAlphabetical(ArrayList<Chore> list, Chore toAdd){
+    //sorts the lit of assigned chores starting by those starting last alphabetically
+    public void sortChoresByReverseAlphabetical(){
+        if(assignedChores.size()!=0) {
+            int numChores = this.assignedChores.size();
+            List<Chore> sort = new ArrayList<>();
+            List<Chore> copy = assignedChores;
+            sort.add(copy.remove(0));
+            for (int i = 0; i < numChores - 1; i++) {
+                addChoreByAlphabetical(sort, copy.get(i));
+            }
+            assignedChores = sort;
+        }
+    }
+
+    public void addChoreByAlphabetical(List<Chore> list, Chore toAdd){
         Chore current = list.get(0);
         boolean added = false;
         int size = list.size();
@@ -156,6 +174,30 @@ public class User{
                  }
              }
           }
+    }
+
+    public void addChoreByReverseAlphabetical(List<Chore> list, Chore toAdd){
+        Chore current = list.get(0);
+        boolean added = false;
+        int size = list.size();
+        int pos = 1;
+
+        while(added==false && pos<size){
+            if(toAdd.getName().compareTo(toAdd.getName())<0){
+                list.add(0,toAdd);
+                added=true;
+            }
+            else if(toAdd.getName().compareTo(toAdd.getName())>0){
+                if (pos==(size-1)){
+                    list.add(toAdd);
+                    added=true;
+                }
+                else{
+                    current=list.get(pos);
+                    pos++;
+                }
+            }
+        }
     }
 }
 

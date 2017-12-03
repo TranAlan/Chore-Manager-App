@@ -9,8 +9,9 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class Chore{
+public class Chore implements Serializable{
 
     //status' the chore can hold
     private enum Status {
@@ -41,44 +42,13 @@ public class Chore{
     private String description;
     private String notes;
     private int rewardPoints;
-    private Repeated repeat;
     private Status completionStatus;
-    public Type choreType;
+    private Type choreType;
     private Date deadline;
     private User assignedTo;
-    private ArrayList reqMat;
-    private ArrayList reqGroc;
+    private List<String> reqMat;
+    private List<String> reqGroc;
     private int id;
-
-
-    //constructor 1 - not assigned to user
-    public Chore(String name, String desc, String note, int points, Repeated repeat, Date due, ArrayList materials, ArrayList groceries) {
-        this.name=name;
-        this.description=desc;
-        this.notes=note;
-        this.rewardPoints=points;
-        this.repeat=repeat;
-        this.choreType=Type.MISC;
-        this.deadline=due;
-        this.reqMat=materials;
-        this.reqGroc=groceries;
-        this.completionStatus=Status.UNASSIGNED;
-    }
-
-    //constructor 2 -  assigned to user
-    public Chore(String name, String desc, String note, int points, Repeated repeat, Date due, ArrayList materials, ArrayList groceries, User assigned) {
-        this.name=name;
-        this.description=desc;
-        this.notes=note;
-        this.rewardPoints=points;
-        this.repeat=repeat;
-        this.choreType=Type.MISC;
-        this.deadline=due;
-        this.reqMat=materials;
-        this.reqGroc=groceries;
-        this.assignedTo=assigned;
-        this.completionStatus=Status.ACTIVE;
-    }
 
     public Chore(){
 
@@ -86,7 +56,6 @@ public class Chore{
         this.description=null;
         this.notes=null;
         this.rewardPoints= 0;
-        this.repeat=null;
         this.choreType=Type.MISC;
         this.deadline=null;
         this.reqMat=null;
@@ -95,6 +64,7 @@ public class Chore{
         this.completionStatus=Status.ACTIVE;
     }
 
+    //ASSIGNED
     public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries,int id, User assigned) {
         this.name=name;
         this.description=desc;
@@ -109,6 +79,7 @@ public class Chore{
         this.id = id;
     }
 
+    //UNASSIGNED
     public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries,int id) {
         this.name=name;
         this.description=desc;
@@ -130,9 +101,11 @@ public class Chore{
     public String getName() {
         return name;
     }
+
     public Type getType() {
         return this.choreType;
     }
+
     public String getNotes() {
         return notes;
     }
@@ -155,6 +128,8 @@ public class Chore{
     public String getStatusString(){
         return completionStatus.toString();
     }
+    public List<String> getReqMat(){ return reqMat;}
+    public List<String> getReqGroc(){return reqGroc;}
 
     //SETTERS
     public void setName(String name) {
@@ -175,6 +150,7 @@ public class Chore{
     public void setAssignedTo(User assignedTo) {
         this.assignedTo = assignedTo;
     }
+
 
     //STATUS SETTERS
     public void setStatusComplete(){

@@ -13,40 +13,44 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MenuActivity extends AppCompatActivity {
     //https://stackoverflow.com/questions/2736389/how-to-pass-an-object-from-one-activity-to-another-on-android
-    private FirebaseUser fbUser = AppLoginActivity.user;
-    private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
-
-    private String email = AppLoginActivity.emailEscaped;
-
     //TODO: delete the " = new ChoreManagerProfile();"
     public static ChoreManagerProfile manager = new ChoreManagerProfile();
+    private FirebaseUser fbUser = AppLoginActivity.user;
+    private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
+    private String email = AppLoginActivity.emailEscaped;
+    private ValueEventListener listener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            Log.d("test", "IN DATACHANGE");
+
+            if (dataSnapshot.hasChild("ChoreManager")) {
+                manager = dataSnapshot.child("ChoreManager").getValue(ChoreManagerProfile.class);
+                Log.d("test", "EXISTS!");
+            } else {
+                manager = new ChoreManagerProfile();
+                Log.d("test", "Making new Profile");
+                //fbRef.child(email).child("ChoreManager").setValue(manager);
+            }
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("test", "START");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
 
         //TODO: uncomment this block
-       /* fbRef.child(email).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.hasChild("ChoreManager")) {
-                    manager = snapshot.child("ChoreManager").getValue(ChoreManagerProfile.class);
-                } else {
-                    manager = new ChoreManagerProfile();
-                    fbRef.child(email).child("ChoreManager").setValue(manager);
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+        fbRef.child(email).addValueEventListener(listener);
 
-            }
-        }); */
-
-        AdminUser peter = new AdminUser("Peter Lam", "qwerty");
+        //AdminUser peter = new AdminUser("Peter Lam", "qwerty");
         //TODO: comment these out
-        manager.setCurrentUser(peter);
-        manager.addUser(peter);
+        //Log.d("test",manager.getCurrentUser().getUsername());
     }
 
     protected void userImageOnClick(View view){
@@ -71,6 +75,16 @@ public class MenuActivity extends AppCompatActivity {
 
         // To retrieve object in second Activity
         //getIntent().getSerializableExtra("MyClass");
+        AdminUser peter = new AdminUser("Peter Lam", "qwerty");
+        manager.setCurrentUser(peter);
+        manager.addUser(peter);
+        //fbRef.child(email).child("ChoreManager").setValue(manager);
+        Log.d("test",  manager.getCurrentUser().getUsername());
+        Log.d("test", manager.getUsers().get(0).getPassword());
+        Log.d("test", "PETER EXISTS!");
+        if (manager == null){
+            Log.d("test", "null!");
+        }
         startActivity(intent);
 
     }

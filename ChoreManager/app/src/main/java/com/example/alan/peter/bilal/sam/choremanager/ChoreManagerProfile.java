@@ -15,19 +15,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 
-public class ChoreManagerProfile{
+public class ChoreManagerProfile implements Serializable{
 
     //instance Variables
-    private ArrayList<String> materials;
-    private ArrayList<String> pantry;
-    private ArrayList<String> tools;
-    private ArrayList<String> shopListMat;
-    private ArrayList<String> shoplistGroc;
-    private ArrayList<User> users;
-    private ArrayList<Chore> unassignedChores;
-    private ArrayList<Chore> finishedChores;
+    private List<String> materials;
+    private List<String> pantry;
+    private List<String> tools;
+    private List<String> shopListMat;
+    private List<String> shoplistGroc;
+    private List<User> users;
+    private List<Chore> unassignedChores;
+    private List<Chore> finishedChores;
     private Date currentDate;
     private User currentUser;
     private int id;
@@ -49,24 +50,24 @@ public class ChoreManagerProfile{
 
 
     //Getters
-    public ArrayList<String> getShopListMat() { return this.shopListMat;}
-    public ArrayList<String> getShoplistGroc() { return this.shoplistGroc;}
-    public ArrayList<String> getMaterials() {
+    public List<String> getShopListMat() { return this.shopListMat;}
+    public List<String> getShoplistGroc() { return this.shoplistGroc;}
+    public List<String> getMaterials() {
         return this.materials;
     }
-    public ArrayList<String> getPantry() {
+    public List<String> getPantry() {
         return pantry;
     }
-    public ArrayList<String> getTools() {
+    public List<String> getTools() {
         return tools;
     }
-    public ArrayList<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
-    public ArrayList<Chore> getUnassignedChores() {
+    public List<Chore> getUnassignedChores() {
         return unassignedChores;
     }
-    public ArrayList<Chore> getFinishedChores() {
+    public List<Chore> getFinishedChores() {
         return finishedChores;
     }
     public User getCurrentUser(){
@@ -78,10 +79,6 @@ public class ChoreManagerProfile{
         this.currentDate = new Date();
         return this.currentDate;
     }
-    public int[] getStats() {
-        return new int[1];//TO BE IMPLEMENTED
-    }
-
     //SETTERS
     public void setCurrentUser(User user){
         currentUser = user;

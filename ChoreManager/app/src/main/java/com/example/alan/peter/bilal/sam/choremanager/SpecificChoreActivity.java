@@ -16,7 +16,7 @@ public class SpecificChoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specific_chore);
-        /*
+
         // To retrieve object in second Activity
         Intent i = getIntent();
         Chore chore = (Chore) i.getSerializableExtra("ChoreInfo");
@@ -44,11 +44,11 @@ public class SpecificChoreActivity extends AppCompatActivity {
 
         //Displaying Chore Name
 
-        */
+
     }
 
     public void onClickCompleteChore(View view){
-        /*
+
         Intent i = getIntent();
         Chore chore = (Chore) i.getSerializableExtra("ChoreInfo"); //Serilizable Chore
         User currentUser = MenuActivity.getManager().getCurrentUser(); //Getting Current User
@@ -68,16 +68,16 @@ public class SpecificChoreActivity extends AppCompatActivity {
         else{
             Snackbar.make(view, "NOT ASSIGNED TO YOU!", Snackbar.LENGTH_LONG).setAction("Action",null).show();
         }
-        */
+
 
     }
 
     public void setStatusText(String status){
-        /*
+
         TextView statusView = (TextView) findViewById(R.id.choreStatusTextView);
         String statusText = "Status: " + status;
         statusView.setText(statusText);
-        */
+
         return;
     }
 }

@@ -5,6 +5,8 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -39,6 +41,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_chore);
+
         //allows textfields to move above keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
@@ -79,7 +82,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         });
         updateDeadLineText();
 
-
         allMaterials.add("-Select Materials-");
         //TO REMOVE
         allMaterials.add("Item 1");
@@ -103,7 +105,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         CustomMaterialListAdapter myAdapter = new CustomMaterialListAdapter(NewChoreActivity.this, 0,
                 listVOs);
         spinner.setAdapter(myAdapter);
-
     }
     public void updateDate()
     {
@@ -150,8 +151,10 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         // Not using this
     }
 
+
     // listening if Save and Exit button is clicked
     protected void saveExitOnClick(View view){
+        Log.d("test", "MEEE");
         Intent intent = new Intent(this, ChoreListActivity.class);
 
         EditText grabChoreName = (EditText) findViewById(R.id.choreNameInput); //Chore Name
@@ -159,14 +162,13 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore
         Spinner grabPoints = findViewById(R.id.totalPointsSpinner); // The points the chore is worth
         //Requried matierals
-        //NumberPicker grabRepeatValue = findViewById(R.id.numberPicker);
-        //Spinner grabRepeatType = findViewById(R.id.repeatableSpinner);
+
         EditText grabDesc = (EditText) findViewById(R.id.descTextView2); //Description of Chore
         EditText grabNote = (EditText) findViewById(R.id.notesTextView); //Note of Chore
 
 
         //Simple variables from newChoreActivity
-        String choreName = grabChoreName.getText().toString().trim();
+        String choreName = grabChoreName.getText().toString();
         String choreAssignedTo = (String) grabAssignedTo.getSelectedItem();
         String choreType = (String) grabChoreType.getSelectedItem();
 
@@ -175,8 +177,10 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
 
         //Gets the user the chore is assigne to and the current user.
+        //Log.d("test", MenuActivity.getManager().getUsers().get(0).getUsername());
         User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
         AdminUser currentUser = (AdminUser) MenuActivity.getManager().getCurrentUser();
+        Log.d("test", currentUser.getUsername());
         Chore newChore;
 
         if (assignedUser.getUsername().equals("")){ //UNASSIGNED CHORE
@@ -189,13 +193,13 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
             newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints,
                     dateTime.getTime(), null, null, MenuActivity.getManager().nextId(), assignedUser);
         }
-
+        Log.d("test", "YAY");
         //Changing the type of Chore
         if (choreType.equals("Misc")){
             newChore.setTypeMisc();
         }
         else if (choreType.equals("Cooking")){
-            newChore.setTypeCleaning();
+            newChore.setTypeCooking();
         }
         else{
             newChore.setTypeCleaning();
