@@ -72,7 +72,20 @@ public class ChoreListActivity extends AppCompatActivity {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(ChoreListActivity.this,"Sorted by: " + item.getTitle(),Toast.LENGTH_SHORT).show();
+                        if(item.getTitle()== "Alphabetically"){
+                            //sort all users chores alphabetically
+                            for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
+                                MenuActivity.getManager().getUsers().get(i).sortChoresByAlphabetical();
+                            }
+                            //update view TODO
+                        }
+                        else if(item.getTitle()=="Deadline"){
+                            //sort all users chores by deadline
+                            for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
+                                MenuActivity.getManager().getUsers().get(i).sortChoresByDeadline();
+                            }
+                            //update view TODO
+                        }
                         return true;
                     }
                 });
