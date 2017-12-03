@@ -98,7 +98,8 @@
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="viewAssignedResourcesButton"
-            android:text="@string/string_assigned_resources_button" />
+            android:text="@string/string_assigned_resources_button"
+            />
 
         <Button
             android:id="@+id/createChore"

@@ -109,7 +109,8 @@
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="cancelSelectedOnClick"
-            android:text="@string/string_cancel" />
+            android:text="@string/string_cancel"
+            />
 
         <Button
             android:id="@+id/addUser"

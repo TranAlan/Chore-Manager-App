@@ -115,6 +115,7 @@
     <string name="string_select_a_new_avatar">Select A New Avatar</string>
     <string name="desc_avatar_image">avatar image</string>
     <string name="string_assigned_resources_button">View \nAssigned Resources</string>
+    <string name="string_user_menu">User Menu</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>
