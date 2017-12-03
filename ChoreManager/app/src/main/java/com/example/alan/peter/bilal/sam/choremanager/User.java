@@ -84,12 +84,12 @@ public class User implements Serializable{
         return null;
     }
 
-    /*
+
     //sorts the list of assigned chores starting by those due at the earliest date
     public void sortChoresByDeadline(){
         int numChores = this.assignedChores.size();
-       ArrayList<Chore> sort = new ArrayList<>();
-       ArrayList<Chore> copy = assignedChores;
+       List<Chore> sort = new ArrayList<>();
+       List<Chore> copy = assignedChores;
        sort.add(copy.remove(0));
        for (int i =0; i<numChores-1; i++){
            addChoreByDate(sort, copy.get(i));
@@ -99,7 +99,7 @@ public class User implements Serializable{
 
     //method which takes a list of chores, and a lone chore, and inserts the chore in
     //the appropriate place in the list based on date
-    public void addChoreByDate(ArrayList<Chore> list, Chore toAdd){
+    public void addChoreByDate(List<Chore> list, Chore toAdd){
         Chore current = list.get(0);
         boolean added = false;
         int size = list.size();
@@ -125,8 +125,8 @@ public class User implements Serializable{
     //sorts the lit of assigned chores starting by those due at the earliest date
     public void sortChoresByAlphabetical(){
         int numChores = this.assignedChores.size();
-        ArrayList<Chore> sort = new ArrayList<>();
-        ArrayList<Chore> copy = assignedChores;
+        List<Chore> sort = new ArrayList<>();
+        List<Chore> copy = assignedChores;
         sort.add(copy.remove(0));
         for (int i =0; i<numChores-1; i++){
             addChoreByAlphabetical(sort, copy.get(i));
@@ -134,7 +134,19 @@ public class User implements Serializable{
         assignedChores=sort;
     }
 
-    public void addChoreByAlphabetical(ArrayList<Chore> list, Chore toAdd){
+    //sorts the lit of assigned chores starting by those starting last alphabetically
+    public void sortChoresByReverseAlphabetical(){
+        int numChores = this.assignedChores.size();
+        List<Chore> sort = new ArrayList<>();
+        List<Chore> copy = assignedChores;
+        sort.add(copy.remove(0));
+        for (int i =0; i<numChores-1; i++){
+            addChoreByAlphabetical(sort, copy.get(i));
+        }
+        assignedChores=sort;
+    }
+
+    public void addChoreByAlphabetical(List<Chore> list, Chore toAdd){
         Chore current = list.get(0);
         boolean added = false;
         int size = list.size();
@@ -157,7 +169,30 @@ public class User implements Serializable{
              }
           }
     }
-    */
+
+    public void addChoreByReverseAlphabetical(List<Chore> list, Chore toAdd){
+        Chore current = list.get(0);
+        boolean added = false;
+        int size = list.size();
+        int pos = 1;
+
+        while(added==false && pos<size){
+            if(toAdd.getName().compareTo(toAdd.getName())<0){
+                list.add(0,toAdd);
+                added=true;
+            }
+            else if(toAdd.getName().compareTo(toAdd.getName())>0){
+                if (pos==(size-1)){
+                    list.add(toAdd);
+                    added=true;
+                }
+                else{
+                    current=list.get(pos);
+                    pos++;
+                }
+            }
+        }
+    }
 }
 
     //sort by categorie?
