@@ -9,13 +9,17 @@ package com.example.alan.peter.bilal.sam.choremanager;
  * email: 8881891
  **/
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 
 public class ChoreManagerProfile implements Serializable{
@@ -131,12 +135,23 @@ public class ChoreManagerProfile implements Serializable{
     //removes a Chore c, from either the unassigned or assigned list directory
     //if the chore exists
     public void removeChore(Chore c,ArrayList directory) {
-        //TO BE IMPLEMENTED
+        if(directory.contains(c)){
+            directory.remove(c);
+        }
     }
 
 
+    //scrubs all of the data stored within the ChoreManagerProfile
     public void resetAppData() {
-        //TO BE IMPLEMENTED
+        this.materials = new ArrayList<String>();
+        this.shoplistGroc = new ArrayList<String>();
+        this.shopListMat = new ArrayList<String>();
+        this.pantry = new ArrayList<String>();
+        this.tools = new ArrayList<String>();
+        this.unassignedChores = new ArrayList<Chore>();
+        this.finishedChores = new ArrayList<Chore>();
+        this.users = new ArrayList<User>();
+        this.id = 0;
     }
 
     public boolean isUserAdmin(){
