@@ -19,6 +19,8 @@ public class ChoreListActivity extends AppCompatActivity {
 
     List<Chore> listOfChores = new ArrayList<>();
     private ImageButton sortButton,filterButton;
+    private CustomChoreListView customChoreListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,10 +35,10 @@ public class ChoreListActivity extends AppCompatActivity {
         for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++)
         {
             listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+            customChoreListView = new CustomChoreListView(this,listOfChores);
 
         }
         // calling custom chore view to display all the choews
-        final CustomChoreListView customChoreListView = new CustomChoreListView(this,listOfChores);
         choreListView.setAdapter(customChoreListView);
 
         choreListView.setClickable(true);
@@ -73,9 +75,10 @@ public class ChoreListActivity extends AppCompatActivity {
                             //sort all users chores alphabetically
                             listOfChores.removeAll(listOfChores);
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
-                                MenuActivity.getManager().getUsers().get(i).sortChoresByAlphabetical();
+                                MenuActivity.getManager().getUsers().get(i).spaghettiSort();
                                 //update view
-                                listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+                                customChoreListView.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+
 
                             }
 
@@ -84,9 +87,9 @@ public class ChoreListActivity extends AppCompatActivity {
                             //sort all users chores by deadline
                             listOfChores.removeAll(listOfChores);
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
-                                MenuActivity.getManager().getUsers().get(i).sortChoresByDeadline();
+                                MenuActivity.getManager().getUsers().get(i).newAttempt();
                                 //update view
-                                listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+                                customChoreListView.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
                             }
                         }
 
@@ -94,9 +97,9 @@ public class ChoreListActivity extends AppCompatActivity {
                             //sort all users chores Z-A
                             listOfChores.removeAll(listOfChores);
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
-                                MenuActivity.getManager().getUsers().get(i).sortChoresByReverseAlphabetical();
+                                MenuActivity.getManager().getUsers().get(i).newAttempt();
                                 //update view
-                                listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+                                customChoreListView.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
                             }
                         }
                         Toast.makeText(ChoreListActivity.this,"Sorted by: " + item.getTitle(),Toast.LENGTH_SHORT).show();

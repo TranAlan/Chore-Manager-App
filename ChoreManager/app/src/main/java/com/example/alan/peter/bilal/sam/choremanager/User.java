@@ -2,8 +2,10 @@ package com.example.alan.peter.bilal.sam.choremanager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Date;
 
 /**
  * Created by Alan on 11/27/2017.
@@ -123,6 +125,27 @@ public class User implements Serializable{
                 }
             }
         }
+
+
+    public void spaghettiSort() {
+        //public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries,int id, User assigned)
+        Date date = new Date();
+        ArrayList<String> temp = new ArrayList<String>();
+        User temp2 = new User();
+        Chore one = new Chore("ABC", "", "", 5, date, temp, temp, 1, temp2);
+        Chore two = new Chore("CBA", "", "", 5, date, temp, temp, 1, temp2);
+        Chore three = new Chore("BAC", "", "", 5, date, temp, temp, 1, temp2);
+        this.assignedChores.add(one);
+        this.assignedChores.add(two);
+        this.assignedChores.add(three);
+    }
+
+    public void newAttempt(){
+        List<Chore> clone = assignedChores;
+        assignedChores.add(clone.remove(1));
+    }
+
+
 
     //sorts the lit of assigned chores starting by those due at the earliest date
     public void sortChoresByAlphabetical(){
