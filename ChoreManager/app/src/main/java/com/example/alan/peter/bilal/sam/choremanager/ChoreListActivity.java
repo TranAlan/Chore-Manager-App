@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -74,17 +75,17 @@ public class ChoreListActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         if(item.getTitle().equals("A-Z")){
                             //sort all users chores alphabetically
+                            listOfChores.removeAll(listOfChores);
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
                                 MenuActivity.getManager().getUsers().get(i).sortChoresByAlphabetical();
                                 //update view
                                 listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
                             }
 
-
-
                         }
                         else if(item.getTitle().equals("Deadline")){
                             //sort all users chores by deadline
+                            listOfChores.removeAll(listOfChores);
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
                                 MenuActivity.getManager().getUsers().get(i).sortChoresByDeadline();
                                 //update view
@@ -94,6 +95,7 @@ public class ChoreListActivity extends AppCompatActivity {
 
                         else if (item.getTitle().equals("Z-A")){
                             //sort all users chores Z-A
+                            listOfChores.removeAll(listOfChores);
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
                                 MenuActivity.getManager().getUsers().get(i).sortChoresByReverseAlphabetical();
                                 //update view
@@ -121,6 +123,37 @@ public class ChoreListActivity extends AppCompatActivity {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
+                        if(item.getTitle().equals("My Chores Only")){
+                            listOfChores.removeAll(listOfChores);
+                            for(int i = 0; i < MenuActivity.getManager().getCurrentUser().getAssignedChores().size(); i ++){
+                                listOfChores.add(MenuActivity.getManager().getCurrentUser().getAssignedChores().get(i));
+                            }
+                        }
+                        else if(item.getTitle().equals("Finished")){
+                            listOfChores.removeAll(listOfChores);
+
+                            for(int i  = 0; i < MenuActivity.getManager().getFinishedChores().size(); i++)
+                            {
+                                //TODO FIX
+                                listOfChores.add(MenuActivity.getManager().getFinishedChores().get(i));
+                            }
+                        }
+                        else if(item.getTitle().equals("Unassigned Chores")) {
+                            listOfChores.removeAll(listOfChores);
+                            for(int i = 0; i < MenuActivity.getManager().getUnassignedChores().size(); i++){
+                                //update view to show only unassigned chores
+                                listOfChores.add(MenuActivity.getManager().getUnassignedChores().get(i));
+                            }
+                        }
+                        else if(item.getTitle().equals("All Chores")){
+                            //populate list with all assigned chores
+                            listOfChores.removeAll(listOfChores);
+                            for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++)
+                            {
+                                listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+
+                            }
+                        }
                         Toast.makeText(ChoreListActivity.this,"Filtered by: " + item.getTitle(),Toast.LENGTH_SHORT).show();
                         return true;
                     }

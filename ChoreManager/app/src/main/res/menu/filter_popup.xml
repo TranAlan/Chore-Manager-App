@@ -2,14 +2,17 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
         <item
-            android:id="@+id/misc"
-            android:title="My Chores Only"/>
+            android:id="@+id/myChores"
+            android:title="My Chores Only" />
 
         <item
-            android:id="@+id/cleaning"
-            android:title="Unassigned Chores"/>
+            android:id="@+id/unassigned"
+            android:title="Unassigned Chores" />
 
         <item
-            android:id="@+id/cooking"
-            android:title="All Chores"/>
+            android:id="@+id/finished"
+            android:title="Finished" />
+        <item
+            android:id="@+id/allChores"
+            android:title="All Chores" />
 </menu>
