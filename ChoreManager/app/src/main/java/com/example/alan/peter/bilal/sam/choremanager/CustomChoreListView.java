@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -49,6 +51,8 @@ public class CustomChoreListView extends ArrayAdapter<Chore> {
         int choreUserId = choreList.get(position).getAssignedToId();
         String choreUsername = MenuActivity.getManager().getUserFromId(choreUserId).getUsername();
         viewHolder.subText.setText(choreUsername+"\n "+choreList.get(position).getDeadline().toString());
+        viewHolder.statusText.setText(choreList.get(position).getStatusString());
+        viewHolder.choreTypeText.setText(choreList.get(position).getType().toString());
 
         return r;
     }
@@ -57,10 +61,14 @@ public class CustomChoreListView extends ArrayAdapter<Chore> {
     {
         TextView MainText;
         TextView subText;
+        TextView statusText;
+        TextView choreTypeText;
         ViewHolder(View v)
         {
             MainText = (TextView) v.findViewById(R.id.MainText);
             subText = (TextView) v.findViewById(R.id.subtext);
+            statusText= (TextView) v.findViewById(R.id.statusTextView);
+            choreTypeText = (TextView) v.findViewById(R.id.choreTypeTextView);
         }
     }
 }

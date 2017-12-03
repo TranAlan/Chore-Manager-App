@@ -43,7 +43,8 @@ public class SpecificChoreActivity extends AppCompatActivity {
         setStatusText(chore.getStatusString());
 
         //Displaying Chore Name
-
+        TextView nameView = (TextView) findViewById(R.id.choreTitleTextView);
+        nameView.setText(chore.getName());
 
     }
 

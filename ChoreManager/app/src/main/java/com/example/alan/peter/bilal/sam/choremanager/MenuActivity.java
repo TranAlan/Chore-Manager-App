@@ -25,8 +25,9 @@ public class MenuActivity extends AppCompatActivity {
                 manager = dataSnapshot.child("ChoreManager").getValue(ChoreManagerProfile.class);
             } else {
                 manager = new ChoreManagerProfile();
-                AdminUser peter = new AdminUser("Peter Lam", "qwerty", manager.getSerialNumber());
-                manager.setCurrentUserId(peter.getUserId());
+                int userId = manager.getSerialNumber();
+                AdminUser peter = new AdminUser("Peter Lam", "qwerty", userId);
+                manager.setCurrentUserId(userId);
                 manager.addAdminUser(peter);
                 fbRef.child(email).child("ChoreManager").setValue(manager);
             }
