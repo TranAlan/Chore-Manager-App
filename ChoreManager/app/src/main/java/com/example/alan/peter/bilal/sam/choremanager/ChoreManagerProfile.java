@@ -17,7 +17,7 @@ import java.util.Collections;
 import java.util.Iterator;
 
 
-public class ChoreManagerProfile implements Serializable {
+public class ChoreManagerProfile{
 
     //instance Variables
     private ArrayList<String> materials;

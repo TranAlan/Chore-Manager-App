@@ -41,6 +41,7 @@ public class ChoreListActivity extends AppCompatActivity {
         // calling custom chore view to display all the choews
         final CustomChoreListView customChoreListView = new CustomChoreListView(this,listOfChores);
         choreListView.setAdapter(customChoreListView);
+        /*
         choreListView.setClickable(true);
         choreListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -52,7 +53,7 @@ public class ChoreListActivity extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
 
         // link buttons to the ones in XML
