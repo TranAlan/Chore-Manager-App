@@ -43,6 +43,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     private FirebaseAuth mAuth;
     static DatabaseReference databaseFamilies;
     static FirebaseUser user;
+    static String email;
     static String emailEscaped;
     List<AuthUI.IdpConfig> providers = Arrays.asList(
             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build());
@@ -84,9 +85,9 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
             if (resultCode == ResultCodes.OK) {
                 // Successfully signed in
                 user = FirebaseAuth.getInstance().getCurrentUser();
-                String email = user.getEmail();
+                email = user.getEmail();
                 emailEscaped = email.replaceAll("\\.","DOT").replaceFirst("@","AT");
-                databaseFamilies.child(emailEscaped).setValue(email);
+                databaseFamilies.addValueEventListener(listener);
 
                // String id = databaseFamilies.push().getKey();
 
@@ -98,6 +99,22 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
             }
         }
     }
+
+    private ValueEventListener listener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            if (dataSnapshot.hasChild(emailEscaped)) {
+
+            } else {
+                databaseFamilies.child(emailEscaped).setValue(email);
+            }
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
 
     /**
      * Shows the progress UI and hides the login form.
