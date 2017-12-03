@@ -75,7 +75,7 @@ public class ChoreListActivity extends AppCompatActivity {
                             //sort all users chores alphabetically
                             listOfChores.removeAll(listOfChores);
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
-                                MenuActivity.getManager().getUsers().get(i).spaghettiSort();
+                                MenuActivity.getManager().getUsers().get(i).sortAZ();
                                 //update view
                                 customChoreListView.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
 
@@ -87,7 +87,7 @@ public class ChoreListActivity extends AppCompatActivity {
                             //sort all users chores by deadline
                             listOfChores.removeAll(listOfChores);
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
-                                MenuActivity.getManager().getUsers().get(i).newAttempt();
+                                MenuActivity.getManager().getUsers().get(i).sortDeadline();
                                 //update view
                                 customChoreListView.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
                             }
@@ -97,7 +97,7 @@ public class ChoreListActivity extends AppCompatActivity {
                             //sort all users chores Z-A
                             listOfChores.removeAll(listOfChores);
                             for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
-                                MenuActivity.getManager().getUsers().get(i).newAttempt();
+                                MenuActivity.getManager().getUsers().get(i).sortZA();
                                 //update view
                                 customChoreListView.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
                             }

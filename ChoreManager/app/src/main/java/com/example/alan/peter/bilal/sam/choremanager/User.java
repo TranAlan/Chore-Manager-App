@@ -3,6 +3,7 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Date;
@@ -93,6 +94,18 @@ public class User implements Serializable{
         return null;
     }
 
+    public Chore getChoreFromName(String name){
+        Iterator<Chore> i = assignedChores.iterator();
+        while(i.hasNext()){
+            Chore chore = i.next();
+            if(chore.getName().equals(name)){
+                return chore;
+            }
+        }
+        return null;
+    }
+
+
 
     //sorts the list of assigned chores starting by those due at the earliest date
     public void sortChoresByDeadline(){
@@ -134,7 +147,7 @@ public class User implements Serializable{
         }
 
 
-    public void spaghettiSort() {
+    /*public void spaghettiSort() {
         //public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries,int id, User assigned)
         Date date = new Date();
         ArrayList<String> temp = new ArrayList<String>();
@@ -146,89 +159,48 @@ public class User implements Serializable{
         this.assignedChores.add(two);
         this.assignedChores.add(three);
     }
+    }*/
 
-    public void newAttempt(){
-        List<Chore> clone = assignedChores;
-        assignedChores.add(clone.remove(1));
-    }
-
-
-
-    //sorts the lit of assigned chores starting by those due at the earliest date
-    public void sortChoresByAlphabetical(){
-        if(assignedChores.size()!=0) {
-            int numChores = this.assignedChores.size();
-            List<Chore> sort = new ArrayList<>();
-            List<Chore> copy = assignedChores;
-            sort.add(copy.remove(0));
-            for (int i = 0; i < numChores - 1; i++) {
-                addChoreByAlphabetical(sort, copy.get(i));
+    //sorts the Users assignedChores
+    public void sortAZ(){
+        Collections.sort(assignedChores, new Comparator<Chore>() {
+            @Override
+            public int compare(Chore chore, Chore t1) {
+                return chore.getName().compareTo(t1.getName());
             }
-            assignedChores = sort;
-        }
+        });
     }
+
 
     //sorts the lit of assigned chores starting by those starting last alphabetically
-    public void sortChoresByReverseAlphabetical(){
-        if(assignedChores.size()!=0) {
-            int numChores = this.assignedChores.size();
-            List<Chore> sort = new ArrayList<>();
-            List<Chore> copy = assignedChores;
-            sort.add(copy.remove(0));
-            for (int i = 0; i < numChores - 1; i++) {
-                addChoreByAlphabetical(sort, copy.get(i));
+    public void sortZA(){
+        Collections.sort(assignedChores, new Comparator<Chore>() {
+            @Override
+            public int compare(Chore chore, Chore t1) {
+                int toReturn;
+                if (chore.getName().compareTo(t1.getName()) > 0) {
+                    toReturn = -1;
+                } else if (chore.getName().compareTo(t1.getName()) < 0) {
+                    toReturn = 1;
+                } else {
+                    toReturn = 0;
+                }
+                return toReturn;
             }
-            assignedChores = sort;
-        }
+        });
     }
 
-    public void addChoreByAlphabetical(List<Chore> list, Chore toAdd){
-        Chore current = list.get(0);
-        boolean added = false;
-        int size = list.size();
-        int pos = 1;
-
-        while(added==false && pos<size){
-            if(toAdd.getName().compareTo(toAdd.getName())>0){
-                list.add(0,toAdd);
-                added=true;
+    //sorts chore from those due first, to those with the furthest away deadline
+    public void sortDeadline(){
+        Collections.sort(assignedChores, new Comparator<Chore>() {
+            @Override
+            public int compare(Chore chore, Chore t1) {
+                return chore.getDeadline().compareTo(t1.getDeadline());
             }
-        else if(toAdd.getName().compareTo(toAdd.getName())<0){
-            if (pos==(size-1)){
-                list.add(toAdd);
-                added=true;
-                }
-            else{
-                current=list.get(pos);
-                pos++;
-                 }
-             }
-          }
+        });
     }
 
-    public void addChoreByReverseAlphabetical(List<Chore> list, Chore toAdd){
-        Chore current = list.get(0);
-        boolean added = false;
-        int size = list.size();
-        int pos = 1;
 
-        while(added==false && pos<size){
-            if(toAdd.getName().compareTo(toAdd.getName())<0){
-                list.add(0,toAdd);
-                added=true;
-            }
-            else if(toAdd.getName().compareTo(toAdd.getName())>0){
-                if (pos==(size-1)){
-                    list.add(toAdd);
-                    added=true;
-                }
-                else{
-                    current=list.get(pos);
-                    pos++;
-                }
-            }
-        }
-    }
 }
 
     //sort by categorie?
