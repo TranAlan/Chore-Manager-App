@@ -12,7 +12,7 @@
         android:layout_height="55dp"
         android:background="@color/colorAccent"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/choreListView"
+        app:layout_constraintBottom_toTopOf="@+id/allResourcesList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/choreListView"
+        android:id="@+id/allResourcesList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="60dp"
@@ -86,19 +86,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choreListView">
+        app:layout_constraintTop_toBottomOf="@+id/allResourcesList">
+
+        <Button
+            android:id="@+id/assignedResourcesButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:onClick="viewAssignedResourcesButton"
+            android:text="@string/string_assigned_resources_button" />
 
         <Button
             android:id="@+id/createChore"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="createNewChoreButton"
             android:text="@string/createChore" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -69,7 +69,9 @@
             android:name=".NewUserActivity"
             android:label="New User"
             android:parentActivityName=".UserMenu" />
-        <activity android:name=".ChooseProfilePictureActivity"></activity>
+        <activity android:name=".ChooseProfilePictureActivity" />
+        <activity android:name=".AssignedResourcesActivity" android:label="Assigned Resources"
+            android:parentActivityName=".ChoreListActivity" ></activity>
     </application>
 
 </manifest>
