@@ -1,6 +1,7 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,23 +60,34 @@ public class CustomMaterialListAdapter extends ArrayAdapter<StateVO> {
         }
 
         holder.mTextView.setText(listState.get(position).getTitle());
-
         // To check weather checked event fire from getview() or user input
-        isFromView = true;
-        holder.mCheckBox.setChecked(listState.get(position).isSelected());
-        isFromView = false;
+        //isFromView = true;
+        //holder.mCheckBox.setChecked(listState.get(position).isSelected());
+        //isFromView = false;
 
-        if ((position == 0)) {
-            holder.mCheckBox.setVisibility(View.INVISIBLE);
+        if (position == 0) {
+            holder.mCheckBox.setVisibility(View.VISIBLE);
         } else {
             holder.mCheckBox.setVisibility(View.VISIBLE);
         }
+
         holder.mCheckBox.setTag(position);
         holder.mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 int getPosition = (Integer) buttonView.getTag();
+                if (!listState.get(0).isSelected()){
+
+                    if (isChecked && buttonView.isInputMethodTarget()){
+                        listState.get(getPosition).setSelected(true);
+                    }
+                    else{
+                        if (!isChecked && buttonView.isInputMethodTarget()){
+                            listState.get(getPosition).setSelected(false);
+                        }
+                    }
+                }
 
 
             }

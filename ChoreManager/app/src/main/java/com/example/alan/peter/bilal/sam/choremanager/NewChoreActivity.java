@@ -104,6 +104,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
 
         CustomMaterialListAdapter myAdapter = new CustomMaterialListAdapter(NewChoreActivity.this, 0,
                 listVOs);
+
         spinner.setAdapter(myAdapter);
     }
     public void updateDate()
@@ -162,7 +163,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore
         Spinner grabPoints = findViewById(R.id.totalPointsSpinner); // The points the chore is worth
         //Requried matierals
-
+        Spinner grabMaterials = findViewById(R.id.requiredMaterialsSpinner); //The list of materials
         EditText grabDesc = (EditText) findViewById(R.id.descTextView2); //Description of Chore
         EditText grabNote = (EditText) findViewById(R.id.notesTextView); //Note of Chore
 
@@ -171,7 +172,17 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         String choreName = grabChoreName.getText().toString();
         String choreAssignedTo = (String) grabAssignedTo.getSelectedItem();
         String choreType = (String) grabChoreType.getSelectedItem();
+        /*
+        List<String> materials = new List<String>;
+        for(int i = 0; i < allMaterials.size()){
+            if( ((StateVO)grabMaterials.getItemAtPosition(0)) )
+        }
+        */
 
+        StateVO materials = (StateVO)grabMaterials.getItemAtPosition(1);
+        if(materials.isSelected()){
+            Log.d("test", materials.getTitle());
+        }
         String choreDesc = grabDesc.getText().toString();
         String choreNote = grabNote.getText().toString();
         int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
@@ -191,11 +202,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         else{
             newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints,
                     dateTime.getTime(), null, null, MenuActivity.getManager().nextSerialNumber(), assignedUser);
-            /*
-            if(assignedUser.getUsername().equals(currentUser.getUsername())){
-                MenuActivity.getManager().setCurrentUser(assignedUser);
-            }
-            */
         }
         Log.d("test", "YAY");
         //Changing the type of Chore
