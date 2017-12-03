@@ -150,8 +150,9 @@ public class ChoreManagerProfile implements Serializable{
         this.tools = new ArrayList<String>();
         this.unassignedChores = new ArrayList<Chore>();
         this.finishedChores = new ArrayList<Chore>();
-        this.users = new ArrayList<User>();
-        this.id = 0;
+        this.regUsers= new ArrayList<User>();
+        this.adminUsers= new ArrayList<AdminUser>();
+        this.serialNumber = 0;
     }
 
     public boolean isUserAdmin(){
