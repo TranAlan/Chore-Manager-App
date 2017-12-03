@@ -61,9 +61,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="createUserOnClick"
-            android:text="@string/createNewUser" />
+            android:text="@string/createNewUser"
+            android:textColor="@color/primaryLightColor" />
 
     </LinearLayout>
 

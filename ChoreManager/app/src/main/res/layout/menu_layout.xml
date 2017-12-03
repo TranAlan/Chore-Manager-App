@@ -31,81 +31,124 @@
                 android:layout_width="match_parent"
                 android:layout_height="5dp" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/userButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="false"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:contentDescription="@string/user_desc"
+                android:drawableEnd="@drawable/right_arrow_icon"
+                android:drawableLeft="@drawable/user_icon"
+                android:drawableRight="@drawable/right_arrow_icon"
+                android:drawableStart="@drawable/user_icon"
                 android:onClick="userImageOnClick"
+                android:text="@string/string_user_menu"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
                 app:srcCompat="@drawable/user_icon" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp" />
 
-            <ImageButton
-                android:id="@+id/settingsButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:baselineAligned="false"
-                android:contentDescription="@string/settings_buttons_desc"
-                android:onClick="settingImageOnClick"
-                app:srcCompat="@drawable/settings_icon" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp" />
-
-            <ImageButton
-                android:id="@+id/materialsButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:contentDescription="@string/materials_buttons_desc"
-                android:onClick="materialsImageOnClick"
-                app:srcCompat="@drawable/materials_icon" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp" />
-
-            <ImageButton
+            <Button
                 android:id="@+id/choreListButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:contentDescription="@string/chores_buttons_desc"
+                android:drawableEnd="@drawable/right_arrow_icon"
+                android:drawableLeft="@drawable/chore_list_icon"
+                android:drawableRight="@drawable/right_arrow_icon"
+                android:drawableStart="@drawable/chore_list_icon"
                 android:onClick="choreListImageOnClick"
-                app:srcCompat="@drawable/chore_list_icon" />
+                android:text="Chore List"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="30sp" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp" />
 
-            <ImageButton
+            <Button
+                android:id="@+id/materialsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:contentDescription="@string/materials_buttons_desc"
+                android:drawableEnd="@drawable/right_arrow_icon"
+                android:drawableLeft="@drawable/materials_icon"
+                android:drawableRight="@drawable/right_arrow_icon"
+                android:drawableStart="@drawable/materials_icon"
+                android:onClick="materialsImageOnClick"
+                android:text="Materials"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <Button
                 android:id="@+id/groceriesButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:contentDescription="@string/groceries_buttons_desc"
+                android:drawableEnd="@drawable/right_arrow_icon"
+                android:drawableLeft="@drawable/pantry_icon"
+                android:drawableRight="@drawable/right_arrow_icon"
+                android:drawableStart="@drawable/pantry_icon"
                 android:onClick="groceriesImageOnClick"
-                app:srcCompat="@drawable/pantry_icon" />
+                android:text="Groceries"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="30sp" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/shoppingListButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:contentDescription="@string/shoppinglist_buttons_desc"
+                android:drawableEnd="@drawable/right_arrow_icon"
+                android:drawableLeft="@drawable/shopping_list_icon"
+                android:drawableRight="@drawable/right_arrow_icon"
+                android:drawableStart="@drawable/shopping_list_icon"
                 android:onClick="shoppingImageOnClick"
-                app:srcCompat="@drawable/shopping_list_icon" />
+                android:text="Shopping List"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <Button
+                android:id="@+id/settingsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:baselineAligned="false"
+                android:contentDescription="@string/settings_buttons_desc"
+                android:drawableEnd="@drawable/right_arrow_icon"
+                android:drawableLeft="@drawable/settings_icon"
+                android:drawableRight="@drawable/right_arrow_icon"
+                android:drawableStart="@drawable/settings_icon"
+                android:onClick="settingImageOnClick"
+                android:text="Settings"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="30sp" />
 
         </LinearLayout>
     </ScrollView>

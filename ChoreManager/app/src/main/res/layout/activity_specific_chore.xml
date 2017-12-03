@@ -40,8 +40,9 @@
                 android:background="@color/colorAccent"
                 android:gravity="center"
                 android:text="@string/string_placeholder_chore_name"
+                android:textColor="@color/secondaryTextColor"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,10 +72,10 @@
                 android:id="@+id/descriptionTitleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/secondaryDarkColor"
+                android:background="@color/secondaryLightColor"
                 android:gravity="center"
                 android:text="@string/descriptionTitle"
-                android:textColor="@color/secondaryLightColor"
+                android:textColor="@color/secondaryTextColor"
                 android:textSize="20sp" />
 
             <TextView
@@ -93,10 +94,10 @@
                 android:id="@+id/noteViewText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/secondaryDarkColor"
+                android:background="@color/secondaryLightColor"
                 android:gravity="center"
                 android:text="@string/notes"
-                android:textColor="@color/secondaryLightColor"
+                android:textColor="@color/secondaryTextColor"
                 android:textSize="20sp" />
 
             <TextView
@@ -116,10 +117,10 @@
                 android:id="@+id/descriptionTitleText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/secondaryDarkColor"
+                android:background="@color/secondaryLightColor"
                 android:gravity="center"
                 android:text="@string/materials"
-                android:textColor="@color/secondaryLightColor"
+                android:textColor="@color/secondaryTextColor"
                 android:textSize="20sp" />
 
             <Spinner
@@ -142,9 +143,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorAccent"
+                    android:background="@color/colorPrimaryDark"
                     android:text="@string/mark_incomplete_button"
-                    android:textColor="@color/secondaryTextColor" />
+                    android:textColor="@color/primaryLightColor" />
 
                 <Button
                     android:id="@+id/completeButton"
@@ -154,10 +155,10 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginStart="2dp"
                     android:layout_weight="1"
-                    android:background="@color/colorAccent"
+                    android:background="@color/colorPrimaryDark"
                     android:onClick="onClickCompleteChore"
                     android:text="@string/mark_complete_button"
-                    android:textColor="@color/secondaryTextColor" />
+                    android:textColor="@color/primaryLightColor" />
             </LinearLayout>
 
             <TextView
@@ -188,10 +189,10 @@
                     android:id="@+id/parentCommandText2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/secondaryDarkColor"
+                    android:background="@color/secondaryLightColor"
                     android:gravity="center"
                     android:text="@string/parentCommandTitle"
-                    android:textColor="@color/secondaryLightColor"
+                    android:textColor="@color/secondaryTextColor"
                     android:textSize="20sp"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -215,9 +216,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@color/colorAccent"
+                        android:background="@color/colorPrimaryDark"
                         android:text="@string/edit_chore_button"
-                        android:textColor="@color/secondaryTextColor" />
+                        android:textColor="@color/primaryLightColor" />
 
                     <Button
                         android:id="@+id/unassignButton"
@@ -227,9 +228,9 @@
                         android:layout_marginLeft="2dp"
                         android:layout_marginStart="2dp"
                         android:layout_weight="1"
-                        android:background="@color/colorAccent"
+                        android:background="@color/colorPrimaryDark"
                         android:text="@string/unassignButton"
-                        android:textColor="@color/secondaryTextColor" />
+                        android:textColor="@color/primaryLightColor" />
 
                     <Button
                         android:id="@+id/reassignButton"
@@ -239,9 +240,9 @@
                         android:layout_marginLeft="2dp"
                         android:layout_marginStart="2dp"
                         android:layout_weight="1"
-                        android:background="@color/colorAccent"
+                        android:background="@color/colorPrimaryDark"
                         android:text="@string/reassignButton"
-                        android:textColor="@color/secondaryTextColor" />
+                        android:textColor="@color/primaryLightColor" />
 
                 </LinearLayout>
             </LinearLayout>

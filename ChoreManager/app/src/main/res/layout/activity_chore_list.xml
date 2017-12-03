@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/colorAccent"
+        android:background="@color/primaryLightColor"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/allResourcesList"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
             android:layout_width="4dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/primaryLightColor"
             android:contentDescription="@string/sort_desc"
             app:srcCompat="@drawable/sort_icon" />
 
@@ -53,7 +53,7 @@
             android:layout_width="4dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/primaryLightColor"
             android:contentDescription="@string/filter_desc"
             app:srcCompat="@drawable/filter_icon" />
     </LinearLayout>
@@ -96,9 +96,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="viewAssignedResourcesButton"
-            android:text="@string/string_assigned_resources_button" />
+            android:text="@string/string_assigned_resources_button"
+            android:textColor="@color/primaryLightColor" />
 
         <Button
             android:id="@+id/createChore"
@@ -108,9 +109,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:onClick="createNewChoreButton"
-            android:text="@string/createChore" />
+            android:text="@string/createChore"
+            android:textColor="@color/primaryLightColor" />
 
     </LinearLayout>
 
