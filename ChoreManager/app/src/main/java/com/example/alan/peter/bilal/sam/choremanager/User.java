@@ -93,7 +93,7 @@ public class User implements Serializable{
         }
         return null;
     }
-    
+
     //sorts the Users assignedChores
     public void sortAZ(){
         Collections.sort(assignedChores, new Comparator<Chore>() {
