@@ -52,7 +52,7 @@ public class SpecificChoreActivity extends AppCompatActivity {
         Intent i = getIntent();
         Chore chore = (Chore) i.getSerializableExtra("ChoreInfo"); //Serilizable Chore
         User currentUser = MenuActivity.getManager().getCurrentUser(); //Getting Current User
-        chore = currentUser.getChoreFromId(chore.getId()); //Actual Chore
+        chore = currentUser.getChoreFromId(chore.getChoreId()); //Actual Chore
 
         if(chore != null){
             if(chore.getStatusString().equals("Complete")){ //IF already done
@@ -69,7 +69,7 @@ public class SpecificChoreActivity extends AppCompatActivity {
             Snackbar.make(view, "NOT ASSIGNED TO YOU!", Snackbar.LENGTH_LONG).setAction("Action",null).show();
         }
 
-
+        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
     }
 
     public void setStatusText(String status){

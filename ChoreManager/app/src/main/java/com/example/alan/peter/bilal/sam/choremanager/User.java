@@ -16,6 +16,7 @@ public class User implements Serializable{
     private String username;
     private String password;
     private int totalPoints;
+    private int userId;
     private List<Chore> assignedChores;
 
     public User(){
@@ -23,6 +24,7 @@ public class User implements Serializable{
         password = null;
         totalPoints = 0;
         assignedChores = new ArrayList<Chore>();
+        userId = 0;
     }
 
     public User(String username){
@@ -32,10 +34,11 @@ public class User implements Serializable{
         assignedChores = new ArrayList<Chore>();
     }
 
-    public User(String username, String password){
+    public User(String username, String password, int userId){
         this.username = username;
         this.password = password;
         this.totalPoints = 0;
+        this.userId = userId;
         assignedChores = new ArrayList<Chore>();
     }
 
@@ -52,6 +55,7 @@ public class User implements Serializable{
     public List<Chore> getAssignedChores(){
         return assignedChores;
     }
+    public int getUserId(){return userId;}
 
     //SETTERS
     public void setUsername(String username){
@@ -87,7 +91,7 @@ public class User implements Serializable{
         Iterator<Chore> i = assignedChores.iterator();
         while(i.hasNext()){
             Chore chore = i.next();
-            if(chore.getId() == id){
+            if(chore.getChoreId() == id){
                 return chore;
             }
         }

@@ -32,12 +32,18 @@ public class ChoreListActivity extends AppCompatActivity {
         // making a arraylist of string arrays for the list view
 
         // filling the arrays with title and the description aka Assign to name along with the deadline
-        for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++)
-        {
-            listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
-            customChoreListView = new CustomChoreListView(this,listOfChores);
 
+        for(int i  = 0; i < MenuActivity.getManager().getRegUsers().size(); i++){
+            listOfChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
         }
+        for(int i  = 0; i < MenuActivity.getManager().getAdminUsers().size(); i++){
+            listOfChores.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores());
+        }
+
+        listOfChores.addAll(MenuActivity.getManager().getUnassignedChores());
+        listOfChores.addAll(MenuActivity.getManager().getFinishedChores());
+        customChoreListView = new CustomChoreListView(this,listOfChores);
+
         // calling custom chore view to display all the choews
         choreListView.setAdapter(customChoreListView);
 
@@ -59,7 +65,7 @@ public class ChoreListActivity extends AppCompatActivity {
         filterButton = (ImageButton) findViewById(R.id.filterButton);
         sortButton = (ImageButton) findViewById(R.id.sortButton);
         // set and create OnClickListener for Fitler and Sort buttons
-
+        /*
         sortButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -164,13 +170,10 @@ public class ChoreListActivity extends AppCompatActivity {
 
 
         }); //closing the setOnClickListener method
-
+        */
     }
-
     protected void createNewChoreButton(View view){
         Intent intent = new Intent(this, NewChoreActivity.class);
-        Log.d("test", MenuActivity.getManager().getCurrentUser().getUsername());
-        Log.d("test", "Going into newChore!");
         startActivity(intent);
         finish();
     }
@@ -180,5 +183,6 @@ public class ChoreListActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 
 }

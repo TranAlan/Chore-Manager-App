@@ -26,12 +26,13 @@ public class ChoreManagerProfile implements Serializable{
     private List<String> tools;
     private List<String> shopListMat;
     private List<String> shoplistGroc;
-    private List<User> users;
+    private List<User> regUsers;
+    private List<AdminUser> adminUsers;
     private List<Chore> unassignedChores;
     private List<Chore> finishedChores;
     private Date currentDate;
     private User currentUser;
-    private int id;
+    private int serialNumber;
 
 
     //Constructor
@@ -41,10 +42,12 @@ public class ChoreManagerProfile implements Serializable{
         this.shopListMat = new ArrayList<String>();
         this.pantry = new ArrayList<String>();
         this.tools = new ArrayList<String>();
+        this.currentDate = new Date();
         this.unassignedChores = new ArrayList<Chore>();
         this.finishedChores = new ArrayList<Chore>();
-        this.users = new ArrayList<User>();
-        this.id = 0;
+        this.regUsers = new ArrayList<User>();
+        this.adminUsers = new ArrayList<AdminUser>();
+        this.serialNumber = 1;
     }
 
 
@@ -61,9 +64,10 @@ public class ChoreManagerProfile implements Serializable{
     public List<String> getTools() {
         return tools;
     }
-    public List<User> getUsers() {
-        return users;
+    public List<User> getRegUsers() {
+        return regUsers;
     }
+    public List<AdminUser> getAdminUsers() {return adminUsers;}
     public List<Chore> getUnassignedChores() {
         return unassignedChores;
     }
@@ -73,7 +77,7 @@ public class ChoreManagerProfile implements Serializable{
     public User getCurrentUser(){
         return currentUser;
     }
-    public int getId(){return id;}
+    public int getSerialNumber(){return serialNumber;}
     public Date getDate() {
         //update date to be current
         this.currentDate = new Date();
@@ -96,9 +100,10 @@ public class ChoreManagerProfile implements Serializable{
     public void addTools(String tool) {
         tools.add(tool);
     }
-    public void addUser(User toAdd) {
-        users.add(toAdd);
+    public void addRegUser(User toAdd) {
+        regUsers.add(toAdd);
     }
+    public void addAdminUser(AdminUser toAdd){adminUsers.add(toAdd);}
     public void addUnassignedChores(Chore unassigned) {
         unassignedChores.add(unassigned);
     }
@@ -139,45 +144,90 @@ public class ChoreManagerProfile implements Serializable{
     }
 
     public User getUserFromName(String username) {
-        for (int i = 0; i < users.size(); i++){
-            if (users.get(i).getUsername().equals(username) ){
-                return users.get(i);
+        for (int i = 0; i < regUsers.size(); i++){
+            if (regUsers.get(i).getUsername().equals(username) ){
+                return regUsers.get(i);
+            }
+        }
+
+        for (int i = 0; i < adminUsers.size(); i++){
+            if (adminUsers.get(i).getUsername().equals(username) ){
+                return adminUsers.get(i);
+             }
+        }
+        return null;
+    }
+
+    public User getAdminUserFromName(String username) {
+        for (int i = 0; i < adminUsers.size(); i++){
+
+            if (adminUsers.get(i).getUsername().equals(username) ){
+                return adminUsers.get(i);
             }
         }
         return null;
     }
 
-    public int nextId(){
-        id = id + 1;
-        return id;
+    public User getUserFromId(int userId){
+        for (int i = 0; i < regUsers.size(); i++){
+            if (regUsers.get(i).getUserId() == userId){
+                return regUsers.get(i);
+            }
+        }
+
+        for (int i = 0; i < adminUsers.size(); i++){
+            if (adminUsers.get(i).getUserId() == userId){
+                return adminUsers.get(i);
+            }
+        }
+        return null;
     }
 
-    public Chore findChoreID(int id){
+    public AdminUser getAdminUserFromId(int userId){
+        for (int i = 0; i < adminUsers.size(); i++){
+            if (adminUsers.get(i).getUserId() == userId){
+                return adminUsers.get(i);
+            }
+        }
+        return null;
+    }
+
+    public int nextSerialNumber(){
+        serialNumber++;
+        return serialNumber;
+    }
+
+    public Chore findChoreId(int id){
         //Checking All chore Lists
 
         //Unassigned List
         Iterator<Chore> choreIterator = unassignedChores.iterator();
         while (choreIterator.hasNext()){
             Chore chore = choreIterator.next();
-            if(chore.getId() == id){
+            if(chore.getChoreId() == id){
                 return chore;
             }
 
         }
 
+
         //FINISHED Chores
         choreIterator = finishedChores.iterator();
         while (choreIterator.hasNext()){
             Chore chore = choreIterator.next();
-            if(chore.getId() == id){
+            if(chore.getChoreId() == id){
                 return chore;
             }
 
         }
 
         //Checking all users
-        for (int i = 0; i < users.size(); i++){
-            users.get(i).getChoreFromId(id);
+        for (int i = 0; i < regUsers.size(); i++){
+            regUsers.get(i).getChoreFromId(id);
+        }
+
+        for (int i = 0; i < adminUsers.size(); i++){
+            adminUsers.get(i).getChoreFromId(id);
         }
         return null;
     }

@@ -13,39 +13,41 @@ import java.util.Date;
 
 public class AdminUser extends User{
 
-    public AdminUser(String username, String password){
-        super(username, password);
+    public AdminUser(){
+        super();
+    }
+    public AdminUser(String username, String password, int userId){
+        super(username, password, userId);
     }
 
-
-    public Chore createChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, int id, User user){
-        Chore chore = new Chore(name, desc, note, points, due, materials, groceries, id, user);
+    public Chore createChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, int choreId, User user){
+        Chore chore = new Chore(name, desc, note, points, due, materials, groceries, choreId, user.getUserId());
         if (user!= null){
             assignChore(user, chore);
         }
         return chore;
     }
 
-    public Chore createUnAssignedChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, int id ){
-        return new Chore(name, desc, note, points, due, materials, groceries, id);
+    public Chore createUnAssignedChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, int choreId ){
+        return new Chore(name, desc, note, points, due, materials, groceries, choreId);
     }
 
     //UNIQUE PUBLIC METHODS
     public void assignChore(User user, Chore chore){
         user.addToAssignedChores(chore);
-        chore.setAssignedTo(user);
+        chore.setAssignedToId(user.getUserId());
         chore.setStatusActive();
         //Remember about ChoreManagerProfile
     }
     public void deAssignChore(Chore chore){
-        chore.getAssignedTo().removeFromAssignedChores(chore);
-        chore.setAssignedTo(null);
+        //chore.getAssignedToId().removeFromAssignedChores(chore); <<<<<<<<<<<<<gotta do manually
+        chore.setAssignedToId(0);
         chore.setStatusUnassigned();
         //add to unassigned list?
     }
     public void deleteChore(Chore chore){
 
-        if(chore.getAssignedTo()!= null){
+        if(chore.getAssignedToId()!= 0){
             deAssignChore(chore);
         }
         //remove from ChoreManagerProfile

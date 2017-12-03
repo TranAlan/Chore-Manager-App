@@ -179,19 +179,21 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         //Gets the user the chore is assigne to and the current user.
         //Log.d("test", MenuActivity.getManager().getUsers().get(0).getUsername());
         User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
-        AdminUser currentUser = (AdminUser) MenuActivity.getManager().getCurrentUser();
-        Log.d("test", currentUser.getUsername());
+        AdminUser currentUser = MenuActivity.getManager().getAdminUserFromId(MenuActivity.getManager().getCurrentUser().getUserId());
         Chore newChore;
 
-        if (assignedUser.getUsername().equals("")){ //UNASSIGNED CHORE
+        if (assignedUser.getUsername().equals("None")){ //UNASSIGNED CHORE
 
             newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints,
-                    dateTime.getTime(),null, null, MenuActivity.getManager().nextId() );
+                    dateTime.getTime(),null, null, MenuActivity.getManager().nextSerialNumber() );
             MenuActivity.getManager().addUnassignedChores(newChore);
         }
         else{
             newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints,
-                    dateTime.getTime(), null, null, MenuActivity.getManager().nextId(), assignedUser);
+                    dateTime.getTime(), null, null, MenuActivity.getManager().nextSerialNumber(), assignedUser);
+            if(assignedUser.getUsername().equals(currentUser.getUsername())){
+                MenuActivity.getManager().setCurrentUser(assignedUser);
+            }
         }
         Log.d("test", "YAY");
         //Changing the type of Chore
@@ -204,6 +206,8 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         else{
             newChore.setTypeCleaning();
         }
+
+       MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
 
         startActivity(intent);
         finish();

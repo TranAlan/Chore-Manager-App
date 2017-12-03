@@ -14,16 +14,20 @@ import com.google.firebase.database.ValueEventListener;
 public class MenuActivity extends AppCompatActivity {
     //https://stackoverflow.com/questions/2736389/how-to-pass-an-object-from-one-activity-to-another-on-android
     public static ChoreManagerProfile manager;
-    private FirebaseUser fbUser = AppLoginActivity.user;
-    private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
-    private String email = AppLoginActivity.emailEscaped;
+    private static FirebaseUser fbUser = AppLoginActivity.user;
+    private static DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
+    private static String email = AppLoginActivity.emailEscaped;
     private ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
+            Log.d("test", "On data change");
             if (dataSnapshot.hasChild("ChoreManager")) {
                 manager = dataSnapshot.child("ChoreManager").getValue(ChoreManagerProfile.class);
             } else {
                 manager = new ChoreManagerProfile();
+                AdminUser peter = new AdminUser("Peter Lam", "qwerty", manager.getSerialNumber());
+                manager.setCurrentUser(peter);
+                manager.addAdminUser(peter);
                 fbRef.child(email).child("ChoreManager").setValue(manager);
             }
         }
@@ -39,11 +43,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
 
-        fbRef.child(email).addValueEventListener(listener);
-
-        //AdminUser peter = new AdminUser("Peter Lam", "qwerty");
-        //TODO: comment these out
-        //Log.d("test",manager.getCurrentUser().getUsername());
+        fbRef.child(email).addListenerForSingleValueEvent(listener);
     }
 
     protected void userImageOnClick(View view){
@@ -63,21 +63,7 @@ public class MenuActivity extends AppCompatActivity {
 
     protected void choreListImageOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
-        //To pass:
-        // intent = intent.putExtra("Manager", manager);
-
-        // To retrieve object in second Activity
-        //getIntent().getSerializableExtra("MyClass");
-        AdminUser peter = new AdminUser("Peter Lam", "qwerty");
-        manager.setCurrentUser(peter);
-        manager.addUser(peter);
         //fbRef.child(email).child("ChoreManager").setValue(manager);
-        Log.d("test",  manager.getCurrentUser().getUsername());
-        Log.d("test", manager.getUsers().get(0).getPassword());
-        Log.d("test", "PETER EXISTS!");
-        if (manager == null){
-            Log.d("test", "null!");
-        }
         startActivity(intent);
 
     }
@@ -94,5 +80,17 @@ public class MenuActivity extends AppCompatActivity {
     protected void shoppingImageOnClick(View view){
         Intent intent = new Intent(this, ShoppingListActivity.class);
         startActivity(intent);
+    }
+
+    protected static DatabaseReference getFbRef(){
+        return fbRef;
+    }
+
+    protected static String getEmail(){
+        return email;
+    }
+
+    protected static FirebaseUser getFbUser(){
+        return fbUser;
     }
 }
