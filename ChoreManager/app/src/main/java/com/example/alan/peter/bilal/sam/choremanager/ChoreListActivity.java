@@ -3,17 +3,13 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -80,6 +76,7 @@ public class ChoreListActivity extends AppCompatActivity {
                                 MenuActivity.getManager().getUsers().get(i).sortChoresByAlphabetical();
                                 //update view
                                 listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+
                             }
 
                         }
