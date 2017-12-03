@@ -181,12 +181,4 @@ public class ChoreManagerProfile implements Serializable{
         }
         return null;
     }
-
-    public Chore findChoreByName(String name){
-        for(int i=0; i<users.size(); i++) {
-            users.get(i).getChoreFromName(name);
-        }
-        return null;
-    }
-
 }
