@@ -45,7 +45,7 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
 
     protected void resetDataOnClick(View view) {
         MenuActivity.getManager().resetAppData();
-        int userId = MenuActivity.getManager().getSerialNumber();
+        int userId = MenuActivity.getManager().nextSerialNumber();
         AdminUser peter = new AdminUser("Peter Lam", "qwerty", userId);
         MenuActivity.getManager().setCurrentUserId(userId);
         MenuActivity.getManager().addAdminUser(peter);

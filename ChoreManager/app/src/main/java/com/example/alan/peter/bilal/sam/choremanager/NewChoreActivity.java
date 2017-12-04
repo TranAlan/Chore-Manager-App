@@ -154,7 +154,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
 
     // listening if Save and Exit button is clicked
     protected void saveExitOnClick(View view){
-        Log.d("test", "MEEE");
         Intent intent = new Intent(this, ChoreListActivity.class);
 
         EditText grabChoreName = (EditText) findViewById(R.id.choreNameInput); //Chore Name
@@ -189,8 +188,8 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
 
         //Gets the user the chore is assigne to and the current user.
-        //Log.d("test", MenuActivity.getManager().getUsers().get(0).getUsername());
         User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
+        //Administrator user
         AdminUser currentUser = MenuActivity.getManager().getAdminUserFromId(MenuActivity.getManager().getCurrentUserId());
         Chore newChore;
 
@@ -201,10 +200,11 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
             MenuActivity.getManager().addUnassignedChores(newChore);
         }
         else{
-            newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints,
+            newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints, //If theres a User to assign
                     dateTime.getTime(), resources, MenuActivity.getManager().nextSerialNumber(), assignedUser);
         }
-        Log.d("test", "YAY");
+
+
         //Changing the type of Chore
         if (choreType.equals("Misc")){
             newChore.setTypeMisc();
