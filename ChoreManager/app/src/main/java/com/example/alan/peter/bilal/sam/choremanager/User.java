@@ -18,7 +18,7 @@ public class User implements Serializable{
     private int totalPoints;
     private int userId;
     private List<Chore> assignedChores;
-    private Integer imageID;
+    private int imageID;
 
     public User(){
         username = null;
