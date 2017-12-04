@@ -87,6 +87,13 @@ public class User implements Serializable{
         return chore.getRewardPoints();
     }
 
+    public int completeChoreLate(Chore chore){
+        chore.setStatusLate();
+        int pointsEarned = chore.getRewardPoints()/2;
+        totalPoints =  totalPoints + pointsEarned;
+        return pointsEarned;
+    }
+
     public Chore getChoreFromId(int id){
         Iterator<Chore> i = assignedChores.iterator();
         while(i.hasNext()){

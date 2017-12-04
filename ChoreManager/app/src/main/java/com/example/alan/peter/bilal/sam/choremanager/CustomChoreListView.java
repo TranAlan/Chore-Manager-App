@@ -51,8 +51,8 @@ public class CustomChoreListView extends ArrayAdapter<Chore> {
         int choreUserId = choreList.get(position).getAssignedToId();
         String choreUsername = MenuActivity.getManager().getUserFromId(choreUserId).getUsername();
         viewHolder.subText.setText(choreUsername+"\n "+choreList.get(position).getDeadline().toString());
-        viewHolder.statusText.setText(choreList.get(position).getStatusString());
-        viewHolder.choreTypeText.setText(choreList.get(position).getType().toString());
+        viewHolder.statusText.setText("Status: "+choreList.get(position).getStatusString());
+        viewHolder.choreTypeText.setText("Chore Type :"+choreList.get(position).getType().toString());
 
         return r;
     }

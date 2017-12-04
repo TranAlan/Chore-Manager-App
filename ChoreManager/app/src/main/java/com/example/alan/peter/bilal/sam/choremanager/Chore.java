@@ -17,7 +17,6 @@ public class Chore implements Serializable, Comparable<Chore>{
     private enum Status {
         COMPLETE,
         INCOMPLETE,
-        PARTIALLY_COMPLETE,
         UNASSIGNED,
         ACTIVE,
         LATE_COMPLETION;
@@ -26,7 +25,6 @@ public class Chore implements Serializable, Comparable<Chore>{
             switch(this) {
                 case COMPLETE: return "Complete";
                 case INCOMPLETE: return "Incomplete";
-                case PARTIALLY_COMPLETE: return "Partially Complete";
                 case UNASSIGNED: return "Unassigned";
                 case ACTIVE: return "Active";
                 case LATE_COMPLETION: return "Late Completion";
@@ -170,9 +168,6 @@ public class Chore implements Serializable, Comparable<Chore>{
     }
     public void setStatusInComplete(){
         completionStatus = Status.INCOMPLETE;
-    }
-    public void setStatusPartial(){
-        completionStatus = Status.PARTIALLY_COMPLETE;
     }
     public void setStatusUnassigned(){
         completionStatus = Status.UNASSIGNED;
