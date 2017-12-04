@@ -94,7 +94,7 @@
     <string name="string_please_select_a_category">Please Select A Category</string>
     <string name="string_placeholder_chore_name">Chore Name Here</string>
     <string name="string_placeholder_status">Status: Pending</string>
-    <string name="string_delete_item_warning">Are you sure you want to delete the selected items? This cannot be undone.</string>
+    <string name="string_delete_item_warning">Are you sure you want to delete? This cannot be undone.</string>
     <string name="string_account_name">Name</string>
     <string name="string_account_type">Account Type</string>
     <string name="string_specifc_user_profile_hint">profile picture of specific @string/stirng_current_user</string>
@@ -107,6 +107,7 @@
     <string name="string_please_assign_user">Please Assign User</string>
     <string name="string_edit_deadline">Edit Deadline</string>
     <string name="string_sign_in">Sign In</string>
+    <string name="string_delete">Delete</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>

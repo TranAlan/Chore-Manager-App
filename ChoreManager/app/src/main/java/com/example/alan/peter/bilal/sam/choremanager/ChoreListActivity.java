@@ -217,6 +217,81 @@ public class ChoreListActivity extends AppCompatActivity {
                             customChoreListView.addAll(allChores);
 
                         }
+                        else if(item.getTitle().equals("Cleaning Chores")){
+                            //remove current chore view
+                            listOfChores.removeAll(listOfChores);
+                            List<Chore> allChores = new ArrayList<>();
+                            List<Chore> subsetChore = new ArrayList<>();
+                            //populate List with all chores
+                            //add all regular user assigned chores
+                            for(int i  = 0; i < MenuActivity.getManager().getRegUsers().size(); i++){
+                                allChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
+                            }
+                            //add all admin user assigned chores
+                            for(int i  = 0; i < MenuActivity.getManager().getAdminUsers().size(); i++){
+                                allChores.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores());
+                            }
+                            //add finished and unassigned chores
+                            allChores.addAll(MenuActivity.getManager().getFinishedChores());
+                            allChores.addAll(MenuActivity.getManager().getUnassignedChores());
+                            //filter only needed chores into subsetChore list
+                            for(int i =0; i<allChores.size(); i++){
+                                if(allChores.get(i).isCleaning()){
+                                    subsetChore.add(allChores.get(i));
+                                }
+                            }
+                            customChoreListView.addAll(subsetChore);
+                        }
+                        else if(item.getTitle().equals("Cooking Chores")){
+                            //remove current chore view
+                            listOfChores.removeAll(listOfChores);
+                            List<Chore> allChores = new ArrayList<>();
+                            List<Chore> subsetChore = new ArrayList<>();
+                            //populate List with all chores
+                            //add all regular user assigned chores
+                            for(int i  = 0; i < MenuActivity.getManager().getRegUsers().size(); i++){
+                                allChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
+                            }
+                            //add all admin user assigned chores
+                            for(int i  = 0; i < MenuActivity.getManager().getAdminUsers().size(); i++){
+                                allChores.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores());
+                            }
+                            //add finished and unassigned chores
+                            allChores.addAll(MenuActivity.getManager().getFinishedChores());
+                            allChores.addAll(MenuActivity.getManager().getUnassignedChores());
+                            //filter only needed chores into subsetChore list
+                            for(int i =0; i<allChores.size(); i++){
+                                if(allChores.get(i).isCooking()){
+                                    subsetChore.add(allChores.get(i));
+                                }
+                            }
+                            customChoreListView.addAll(subsetChore);
+                        }
+                        else if(item.getTitle().equals("Misc Chores")){
+                            //remove current chore view
+                            listOfChores.removeAll(listOfChores);
+                            List<Chore> allChores = new ArrayList<>();
+                            List<Chore> subsetChore = new ArrayList<>();
+                            //populate List with all chores
+                            //add all regular user assigned chores
+                            for(int i  = 0; i < MenuActivity.getManager().getRegUsers().size(); i++){
+                                allChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
+                            }
+                            //add all admin user assigned chores
+                            for(int i  = 0; i < MenuActivity.getManager().getAdminUsers().size(); i++){
+                                allChores.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores());
+                            }
+                            //add finished and unassigned chores
+                            allChores.addAll(MenuActivity.getManager().getFinishedChores());
+                            allChores.addAll(MenuActivity.getManager().getUnassignedChores());
+                            //filter only needed chores into subsetChore list
+                            for(int i =0; i<allChores.size(); i++){
+                                if(allChores.get(i).isMisc()){
+                                    subsetChore.add(allChores.get(i));
+                                }
+                            }
+                            customChoreListView.addAll(subsetChore);
+                        }
                         else if(item.getTitle().equals("Unassigned Chores")) {
                             //remove current chore view
                             listOfChores.removeAll(listOfChores);
