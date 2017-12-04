@@ -50,7 +50,13 @@ public class CustomChoreListView extends ArrayAdapter<Chore> {
 
         viewHolder.MainText.setText(choreList.get(position).getName());
         int choreUserId = choreList.get(position).getAssignedToId();
-        String choreUsername = MenuActivity.getManager().getUserFromId(choreUserId).getUsername();
+        String choreUsername;
+        if(MenuActivity.getManager().getUserFromId(choreUserId) == null){
+            choreUsername = "UNASSIGNED";
+        }
+        else{
+            choreUsername = MenuActivity.getManager().getUserFromId(choreUserId).getUsername();
+        }
 
         String nameDate = choreUsername+"\n "+choreList.get(position).getDeadline().toString();
         viewHolder.subText.setText(nameDate);
