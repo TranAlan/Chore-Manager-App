@@ -41,7 +41,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     public boolean onOptionsItemSelected(MenuItem item){
         if( item.getItemId() == android.R.id.home ){
             onBackPressed();
-            Log.d("test", "BACKED");
             return true;
         }
         return false;
