@@ -106,11 +106,6 @@ public class User implements Serializable{
         return null;
     }
 
-
-
-
 }
-
-    //sort by categorie?
 
 

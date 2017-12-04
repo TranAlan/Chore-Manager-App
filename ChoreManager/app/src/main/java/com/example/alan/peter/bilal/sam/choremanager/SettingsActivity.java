@@ -42,4 +42,9 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
     {
 
     }
+
+    protected void resetDataOnClick(View view) {
+        MenuActivity.getManager().resetAppData();
+        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
+    }
 }
