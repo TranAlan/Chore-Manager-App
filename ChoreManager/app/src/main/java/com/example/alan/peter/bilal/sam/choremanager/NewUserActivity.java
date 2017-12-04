@@ -3,6 +3,7 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -105,6 +106,7 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
         }
         int resID = getResources().getIdentifier(drawableName, "drawable",
                 getPackageName());
+        Log.d("test", Integer.toString(resID));
         avatarImage.setImageResource(resID);
     }
     // if user presses cancel close this activity
