@@ -238,12 +238,14 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
                 MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 //close dialog
                 dialog.cancel();
-                //Intent intent = new Intent(this, NewChoreActivity.class);
-                //startActivity(intent);
-                finish();
+
 
             }
         });
+
+        Intent intent = new Intent(this, ChoreListActivity.class);
+        startActivity(intent);
+        finish();
     }
     // listening if Save and Exit button is clicked
     protected void saveExitOnClick(View view){
