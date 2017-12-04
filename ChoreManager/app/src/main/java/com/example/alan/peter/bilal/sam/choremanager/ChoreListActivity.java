@@ -193,32 +193,40 @@ public class ChoreListActivity extends AppCompatActivity {
                             //remove current chore view
                             listOfChores.removeAll(listOfChores);
                             List<Chore> allChores = new ArrayList<>();
+                            //populate with only currentuser chores
                             allChores.addAll(MenuActivity.getManager().getCurrentUser().getAssignedChores());
                             customChoreListView.addAll(allChores);
 
                         }
                         else if(item.getTitle().equals("Finished")){
+                            //remove current chore view
                             listOfChores.removeAll(listOfChores);
                             List<Chore> allChores = new ArrayList<>();
+                            //populate with only finished chroe
                             allChores.addAll(MenuActivity.getManager().getFinishedChores());
                             customChoreListView.addAll(allChores);
 
                         }
                         else if(item.getTitle().equals("Unassigned Chores")) {
+                            //remove current chore view
                             listOfChores.removeAll(listOfChores);
                             List<Chore> allChores = new ArrayList<>();
+                            //populate with only unassigned chores
                             allChores.addAll(MenuActivity.getManager().getUnassignedChores());
                             customChoreListView.addAll(allChores);
                         }
                         else if(item.getTitle().equals("All Chores")){
                             listOfChores.removeAll(listOfChores);
                             List<Chore> allChores = new ArrayList<>();
+                            //add all regular user assigned chores
                             for(int i  = 0; i < MenuActivity.getManager().getRegUsers().size(); i++){
                                 allChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
                             }
+                            //add all admin user assigned chores
                             for(int i  = 0; i < MenuActivity.getManager().getAdminUsers().size(); i++){
                                 allChores.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores());
                             }
+                            //add finished and unassigned chores
                             allChores.addAll(MenuActivity.getManager().getFinishedChores());
                             allChores.addAll(MenuActivity.getManager().getUnassignedChores());
                             customChoreListView.addAll(allChores);
