@@ -151,7 +151,7 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
                 }
             }
 
-    //        finish();
+           finish();
         }
 
         @Override

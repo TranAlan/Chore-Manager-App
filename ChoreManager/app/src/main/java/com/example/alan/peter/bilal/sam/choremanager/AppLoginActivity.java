@@ -47,7 +47,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     static String emailEscaped;
     static String name;
     static ChoreManagerProfile manager;
-
+    private int counter;
     List<AuthUI.IdpConfig> providers = Arrays.asList(
             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build());
 
@@ -59,6 +59,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
+        counter =0;
         mAuth = FirebaseAuth.getInstance();
         databaseFamilies = FirebaseDatabase.getInstance().getReference("Families");
         setContentView(R.layout.activity_app_login);
@@ -140,10 +141,14 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     private ValueEventListener childListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            if(dataSnapshot.child(emailEscaped).child("ChoreManager").child("adminUsers").getChildrenCount()==0) {
+            if((dataSnapshot.child(emailEscaped).child("ChoreManager").child("adminUsers").getChildrenCount()==0)&& counter==0) {
+                counter++;
+                finish();
                 startActivity(new Intent(AppLoginActivity.this, SpecialAdminUserCreationActivity.class));
             }
-            else{
+            else if (counter==0){
+                finish();
+                startActivity(new Intent(AppLoginActivity.this, MenuActivity.class));
                 startActivity(new Intent(AppLoginActivity.this, UserMenu.class));
             }
         }
