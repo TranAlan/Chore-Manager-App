@@ -117,6 +117,7 @@
     <string name="string_assigned_resources_button">View \nAssigned Resources</string>
     <string name="string_user_menu">User Menu</string>
     <string name="string_assigned_resources">Assigned Resources</string>
+    <string name="string_please_assign_user">Please Assign User</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>

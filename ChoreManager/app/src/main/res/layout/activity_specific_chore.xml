@@ -241,6 +241,7 @@
                         android:layout_marginStart="2dp"
                         android:layout_weight="1"
                         android:background="@color/colorPrimaryDark"
+                        android:onClick="onClickReAssign"
                         android:text="@string/reassignButton"
                         android:textColor="@android:color/white" />
 
