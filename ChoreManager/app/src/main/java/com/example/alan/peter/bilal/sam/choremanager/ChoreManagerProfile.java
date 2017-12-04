@@ -15,6 +15,7 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Collections;
 import java.util.Iterator;
@@ -244,5 +245,44 @@ public class ChoreManagerProfile implements Serializable{
             adminUsers.get(i).getChoreFromId(id);
         }
         return null;
+    }
+
+    //sorts the Users assignedChores
+    public void sortAZ(List<Chore> chores){
+        Collections.sort(chores, new Comparator<Chore>() {
+            @Override
+            public int compare(Chore chore, Chore t1) {
+                return chore.getName().compareTo(t1.getName());
+            }
+        });
+    }
+
+
+    //sorts the lit of assigned chores starting by those starting last alphabetically
+    public void sortZA(List<Chore> chores){
+        Collections.sort(chores, new Comparator<Chore>() {
+            @Override
+            public int compare(Chore chore, Chore t1) {
+                int toReturn;
+                if (chore.getName().compareTo(t1.getName()) > 0) {
+                    toReturn = -1;
+                } else if (chore.getName().compareTo(t1.getName()) < 0) {
+                    toReturn = 1;
+                } else {
+                    toReturn = 0;
+                }
+                return toReturn;
+            }
+        });
+    }
+
+    //sorts chore from those due first, to those with the furthest away deadline
+    public void sortDeadline(List<Chore> chores){
+        Collections.sort(chores, new Comparator<Chore>() {
+            @Override
+            public int compare(Chore chore, Chore t1) {
+                return chore.getDeadline().compareTo(t1.getDeadline());
+            }
+        });
     }
 }
