@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -32,7 +33,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     Calendar dateTime = Calendar.getInstance();
     private Spinner choreTypeSpinner,repeatableSpinner,totalPointsSpinner;
     private ArrayAdapter choreAdapter, assignToAdapter, totalPointsAdapter;
-    private NumberPicker numberPicker = null;
     private Button deadlineButton;
     private TextView actualDeadlineTextView;
     private List<String> allMaterials = new ArrayList<>();
@@ -51,8 +51,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         choreTypeSpinner =(Spinner) findViewById(R.id.choreTypeSpinner);
         choreTypeSpinner.setAdapter(choreAdapter);
         choreTypeSpinner.setOnItemSelectedListener(NewChoreActivity.this);
-
-
 
         // create adapter from string array in string.xml file for RepeatableSpinner
         assignToAdapter = ArrayAdapter.createFromResource(this,R.array.userSpinner_Options,android.R.layout.simple_spinner_item);
@@ -150,7 +148,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     {
         // Not using this
     }
-
 
     // listening if Save and Exit button is clicked
     protected void saveExitOnClick(View view){
