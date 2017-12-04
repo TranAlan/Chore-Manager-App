@@ -177,6 +177,9 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         String choreName = grabChoreName.getText().toString();
         String choreAssignedTo = (String) grabAssignedTo.getSelectedItem();
         String choreType = (String) grabChoreType.getSelectedItem();
+        String choreDesc = grabDesc.getText().toString();
+        String choreNote = grabNote.getText().toString();
+        int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
 
         //FIND ALL MATERIALS THAT WERE SELECTED
         List<String> resources= new ArrayList<String>();
@@ -187,11 +190,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
 
             }
         }
-
-
-        String choreDesc = grabDesc.getText().toString();
-        String choreNote = grabNote.getText().toString();
-        int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
 
         //Gets the user the chore is assigne to and the current user.
         User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
