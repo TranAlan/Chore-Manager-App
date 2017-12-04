@@ -162,34 +162,36 @@ public class ChoreListActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
 
                         if(item.getTitle().equals("My Chores Only")){
+                            //remove current chore view
                             listOfChores.removeAll(listOfChores);
-                            for(int i = 0; i < MenuActivity.getManager().getCurrentUser().getAssignedChores().size(); i ++){
-                                listOfChores.add(MenuActivity.getManager().getCurrentUser().getAssignedChores().get(i));
-                            }
+                            List<Chore> allChores = new ArrayList<>();
+                            allChores.addAll(MenuActivity.getManager().getCurrentUser().getAssignedChores());
+                            customChoreListView.addAll(allChores);
+
                         }
                         else if(item.getTitle().equals("Finished")){
                             listOfChores.removeAll(listOfChores);
+                            List<Chore> allChores = new ArrayList<>();
+                            allChores.addAll(MenuActivity.getManager().getFinishedChores());
+                            customChoreListView.addAll(allChores);
 
-                            for(int i  = 0; i < MenuActivity.getManager().getFinishedChores().size(); i++)
-                            {
-                                listOfChores.add(MenuActivity.getManager().getFinishedChores().get(i));
-                            }
                         }
                         else if(item.getTitle().equals("Unassigned Chores")) {
                             listOfChores.removeAll(listOfChores);
-                            for(int i = 0; i < MenuActivity.getManager().getUnassignedChores().size(); i++){
-                                //update view to show only unassigned chores
-                                listOfChores.add(MenuActivity.getManager().getUnassignedChores().get(i));
-                            }
+                            List<Chore> allChores = new ArrayList<>();
+                            allChores.addAll(MenuActivity.getManager().getUnassignedChores());
+                            customChoreListView.addAll(allChores);
                         }
                         else if(item.getTitle().equals("All Chores")){
-                            //populate list with all assigned chores
                             listOfChores.removeAll(listOfChores);
-                            for(int i  = 0; i < MenuActivity.getManager().getRegUsers().size(); i++)
-                            {
-                                listOfChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
-
+                            List<Chore> allChores = new ArrayList<>();
+                            for(int i  = 0; i < MenuActivity.getManager().getRegUsers().size(); i++){
+                                allChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
                             }
+                            for(int i  = 0; i < MenuActivity.getManager().getAdminUsers().size(); i++){
+                                allChores.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores());
+                            }
+                            customChoreListView.addAll(allChores);
                         }
                         Toast.makeText(ChoreListActivity.this,"Filtered by: " + item.getTitle(),Toast.LENGTH_SHORT).show();
                         return true;
