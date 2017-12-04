@@ -191,20 +191,4 @@ public class Chore implements Serializable, Comparable<Chore>{
     }
 
 
-        //rewards full points if the chore is completed before the deadline and
-        //half points if completed afterwards
-        public int calcRewardPoints() {
-            Date current = new Date();
-            int points=0;
-            int possible = this.getRewardPoints();
-            Date toCompare = this.getDeadline();
-            if(toCompare.before(current)) {
-                points = possible;
-            }
-            else if(toCompare.after(current)) {
-                points = possible/2;
-            }
-            return points;
-        }
-
 }

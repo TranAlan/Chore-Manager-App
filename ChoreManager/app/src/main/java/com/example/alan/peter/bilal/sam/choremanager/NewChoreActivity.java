@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -36,6 +37,17 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     private Button deadlineButton;
     private TextView actualDeadlineTextView;
     private List<String> allMaterials = new ArrayList<>();
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if( item.getItemId() == android.R.id.home ){
+            onBackPressed();
+            Log.d("test", "BACKED");
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,7 +182,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
 
         //FIND ALL MATERIALS THAT WERE SELECTED
         List<String> resources= new ArrayList<String>();
-        StateVO a = (StateVO) grabResources.getSelectedItem();
         for(int i = 0; i < allMaterials.size(); i++){
             StateVO currentItem = (StateVO)grabResources.getItemAtPosition(i);
             if (   currentItem.isSelected() ){
@@ -190,7 +201,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         AdminUser currentUser = MenuActivity.getManager().getAdminUserFromId(MenuActivity.getManager().getCurrentUserId());
         Chore newChore;
 
-        if (assignedUser.getUsername().equals("None")){ //UNASSIGNED CHORE
+        if (assignedUser == null){ //UNASSIGNED CHORE
 
             newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints,
                     dateTime.getTime(),resources , MenuActivity.getManager().nextSerialNumber() );

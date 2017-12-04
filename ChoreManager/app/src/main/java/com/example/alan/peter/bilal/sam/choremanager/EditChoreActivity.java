@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.view.MenuItem;
+
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -32,6 +34,15 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
     private Button deadlineButton;
     private TextView actualDeadlineTextView;
     private List<String> allMaterials = new ArrayList<>();
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if( item.getItemId() == android.R.id.home ){
+            onBackPressed();
+            return true;
+        }
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
