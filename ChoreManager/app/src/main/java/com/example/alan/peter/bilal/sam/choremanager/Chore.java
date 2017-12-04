@@ -190,5 +190,26 @@ public class Chore implements Serializable, Comparable<Chore>{
         choreType = Type.MISC;
     }
 
+    //Type checker
+    public boolean isCleaning(){
+        if(choreType.equals(Type.CLEANING)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isCooking(){
+        if(choreType.equals(Type.COOKING)){
+            return true;
+        }
+        return false;
+    }
+    public boolean isMisc(){
+        if(choreType.equals(Type.MISC)){
+            return true;
+        }
+        return false;
+    }
+
 
 }

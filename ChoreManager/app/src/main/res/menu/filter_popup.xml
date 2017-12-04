@@ -15,4 +15,13 @@
         <item
             android:id="@+id/allChores"
             android:title="All Chores" />
+        <item
+            android:id="@+id/misc"
+            android:title="Misc Chores" />
+        <item
+            android:id="@+id/cook"
+            android:title="Cooking Chores" />
+        <item
+            android:id="@+id/clean"
+            android:title="Cleaning Chores" />
 </menu>
