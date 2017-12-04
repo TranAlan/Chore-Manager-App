@@ -23,6 +23,7 @@ public class MenuActivity extends AppCompatActivity {
 
             if (dataSnapshot.hasChild("ChoreManager")) {
                 manager = dataSnapshot.child("ChoreManager").getValue(ChoreManagerProfile.class);
+                Log.d("test",manager.getUnassignedChores().get(0).getChoreType().toString());
             } else {
                 manager = new ChoreManagerProfile();
                 int userId = manager.nextSerialNumber();

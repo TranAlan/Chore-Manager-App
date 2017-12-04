@@ -83,7 +83,7 @@ public class Chore implements Serializable, Comparable<Chore>{
         this.description=null;
         this.notes=null;
         this.rewardPoints= 0;
-        this.choreType=CatType.MISC;
+        this.choreType= CatType.MISC;
         this.assignedToId = 0;
         this.deadline=null;
         this.reqResources=null;
@@ -91,12 +91,12 @@ public class Chore implements Serializable, Comparable<Chore>{
     }
 
     //ASSIGNED
-    public Chore(String name, String desc, String note, int points, Date due, List<String> reqResources,int choreId, int assignedToId) {
+    public Chore(String name, String desc, String note, int points,String type, Date due, List<String> reqResources,int choreId, int assignedToId) {
         this.name=name;
         this.description=desc;
         this.notes=note;
         this.rewardPoints=points;
-        this.choreType=CatType.MISC;
+        this.choreType=typeFromString(type);
         this.deadline=due;
         this.reqResources=reqResources;
         this.assignedToId = assignedToId;
@@ -105,12 +105,12 @@ public class Chore implements Serializable, Comparable<Chore>{
     }
 
     //UNASSIGNED
-    public Chore(String name, String desc, String note, int points, Date due, List<String> reqResources, int choreId) {
+    public Chore(String name, String desc, String note, int points, String type, Date due, List<String> reqResources, int choreId) {
         this.name=name;
         this.description=desc;
         this.notes=note;
         this.rewardPoints=points;
-        this.choreType=CatType.MISC;
+        this.choreType=typeFromString(type);
         this.deadline=due;
         this.reqResources=reqResources;
         this.assignedToId = 0;
@@ -125,7 +125,7 @@ public class Chore implements Serializable, Comparable<Chore>{
         return name;
     }
 
-    public CatType getType() {
+    public CatType getChoreType() {
         return this.choreType;
     }
 
@@ -222,6 +222,19 @@ public class Chore implements Serializable, Comparable<Chore>{
             return true;
         }
         return false;
+    }
+
+    public CatType typeFromString(String s){
+        if(s.equals(CatType.CLEANING.toString())){
+            return CatType.CLEANING;
+        }
+
+        else if(s.equals(CatType.MISC.toString())){
+            return CatType.MISC;
+        }
+        else{
+            return CatType.COOKING;
+        }
     }
 
 

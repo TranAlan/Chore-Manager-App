@@ -199,12 +199,12 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
 
         if (assignedUser == null){ //UNASSIGNED CHORE
 
-            newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints,
+            newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints, choreType,
                     dateTime.getTime(),resources , MenuActivity.getManager().nextSerialNumber() );
             MenuActivity.getManager().addUnassignedChores(newChore);
         }
         else{
-            newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints, //If theres a User to assign
+            newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints, choreType, //If theres a User to assign
                     dateTime.getTime(), resources, MenuActivity.getManager().nextSerialNumber(), assignedUser);
         }
 
@@ -219,6 +219,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         else{
             newChore.setTypeCleaning();
         }
+
 
        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
 

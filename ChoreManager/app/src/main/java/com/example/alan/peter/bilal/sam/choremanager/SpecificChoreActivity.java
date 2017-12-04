@@ -46,7 +46,7 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
 
         //Diplay Chore Type
         TextView typeView = (TextView) findViewById(R.id.choreTypeTextView);
-        String typeText = typeView.getText() + " " + chore.getType().toString();
+        String typeText = typeView.getText() + " " + chore.getChoreType().toString();
         typeView.setText(typeText);
 
         //Display Points
