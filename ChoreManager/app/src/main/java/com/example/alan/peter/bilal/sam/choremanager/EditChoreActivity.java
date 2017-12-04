@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -230,8 +231,17 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
                 //delete items from material list
                 //update view
                 //TODO
+                AdminUser currentUser = (AdminUser)MenuActivity.getManager().getCurrentUser();
+                Intent i = getIntent();
+                Chore chore = (Chore) i.getSerializableExtra("ChoreInfo2");
+                MenuActivity.getManager().removeChore(chore.getChoreId());
+                MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 //close dialog
                 dialog.cancel();
+                //Intent intent = new Intent(this, NewChoreActivity.class);
+                //startActivity(intent);
+                finish();
+
             }
         });
     }

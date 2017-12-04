@@ -41,19 +41,10 @@ public class AdminUser extends User{
         //Remember about ChoreManagerProfile
     }
     public void deAssignChore(Chore chore){
-        //chore.getAssignedToId().removeFromAssignedChores(chore); <<<<<<<<<<<<<gotta do manually
         chore.setAssignedToId(0);
         chore.setStatusUnassigned();
         //add to unassigned list?
     }
-    public void deleteChore(Chore chore){
 
-        if(chore.getAssignedToId()!= 0){
-            deAssignChore(chore);
-        }
-        //remove from ChoreManagerProfile
-
-
-    }
 }
 

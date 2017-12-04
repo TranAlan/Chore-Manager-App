@@ -120,10 +120,43 @@ public class ChoreManagerProfile implements Serializable{
 
     //removes a Chore c, from either the unassigned or assigned list directory
     //if the chore exists
-    public void removeChore(Chore c,ArrayList directory) {
-        if(directory.contains(c)){
-            directory.remove(c);
+    public boolean removeChore(int choreId){
+        for(int i = 0; i< unassignedChores.size(); i++){
+            if (unassignedChores.get(i).getChoreId() == choreId){
+                unassignedChores.remove(i);
+                return true;
+            }
         }
+
+        for(int i = 0; i< finishedChores.size(); i++){
+            if (finishedChores.get(i).getChoreId() == choreId){
+                finishedChores.remove(i);
+                return true;
+            }
+        }
+
+        for(int i = 0; i< regUsers.size(); i++){
+
+            for(int j = 0; j< regUsers.get(i).getAssignedChores().size(); j++ ){
+                if (regUsers.get(i).getAssignedChores().get(j).getChoreId() == choreId){
+                    regUsers.get(i).getAssignedChores().remove(i);
+                    return true;
+                }
+            }
+
+        }
+
+        for(int i = 0; i< adminUsers.size(); i++){
+
+            for(int j = 0; j< adminUsers.get(i).getAssignedChores().size(); j++ ){
+                if (adminUsers.get(i).getAssignedChores().get(j).getChoreId() == choreId){
+                    adminUsers.get(i).getAssignedChores().remove(i);
+                    return true;
+                }
+            }
+
+        }
+        return false;
     }
 
 

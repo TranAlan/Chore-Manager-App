@@ -160,6 +160,7 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
         Chore chore = (Chore) i.getSerializableExtra("ChoreInfo");
         intent.putExtra("ChoreInfo2", chore);
         startActivity(intent);
+        finish();
         }
         else{
             Snackbar.make(view, "You must be signed in as a Admin", Snackbar.LENGTH_LONG)
