@@ -46,6 +46,8 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     static String email;
     static String emailEscaped;
     static String name;
+    static ChoreManagerProfile manager;
+
     List<AuthUI.IdpConfig> providers = Arrays.asList(
             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build());
 
@@ -61,6 +63,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         databaseFamilies = FirebaseDatabase.getInstance().getReference("Families");
         setContentView(R.layout.activity_app_login);
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        //Signs in user with Google sign in
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,14 +93,12 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
                 email = user.getEmail();
                 emailEscaped = email.replaceAll("\\.","DOT").replaceFirst("@","AT");
                 name = user.getDisplayName();
-                databaseFamilies.addValueEventListener(listener);
-                databaseFamilies.addValueEventListener(nameListener);
+                databaseFamilies.addValueEventListener(emailListener);
+                databaseFamilies.addValueEventListener(managerListener);
+                databaseFamilies.addValueEventListener(childListener);
+                //databaseFamilies.addValueEventListener(nameListener);
 
                // String id = databaseFamilies.push().getKey();
-
-                Intent intent = new Intent(this, MenuActivity.class);
-                startActivity(intent);
-
             } else {
                 // Sign in failed, check response for error code
                 // ...
@@ -105,7 +106,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         }
     }
 
-    private ValueEventListener listener = new ValueEventListener() {
+    private ValueEventListener emailListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             if (!(dataSnapshot.hasChild(emailEscaped))) {
@@ -119,13 +120,14 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         }
     };
 
-    //Signing in for first time creates user with that account's name and adds it to database
-    private ValueEventListener nameListener = new ValueEventListener() {
+    private ValueEventListener managerListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            if (!(dataSnapshot.child(emailEscaped).child("Users").hasChild(name))) {
-                User thisUser = new User(name);
-                databaseFamilies.child(emailEscaped).child("Users").child(name).setValue(thisUser);
+            if (dataSnapshot.child(emailEscaped).hasChild("ChoreManager")) {
+                manager = dataSnapshot.child(emailEscaped).child("ChoreManager").getValue(ChoreManagerProfile.class);
+            } else {
+                manager = new ChoreManagerProfile();
+                databaseFamilies.child(emailEscaped).child("ChoreManager").setValue(manager);
             }
         }
 
@@ -134,6 +136,42 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
 
         }
     };
+
+    private ValueEventListener childListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            if(dataSnapshot.child(emailEscaped).child("ChoreManager").child("adminUsers").getChildrenCount()==0) {
+                goToSpecialLogin();
+            }
+            else{
+                goToMenu();
+            }
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
+
+    private void goToMenu(){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void goToSpecialLogin(){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+        Intent intent2 = new Intent(this, SpecialAdminUserCreationActivity.class);
+        startActivity(intent2);
+    }
+
+   /* private void goToLogin(){
+        Intent intent = new Intent(this, UserMenu.class);
+        startActivity(intent);
+        finish();
+    }*/
 
     /**
      * Shows the progress UI and hides the login form.

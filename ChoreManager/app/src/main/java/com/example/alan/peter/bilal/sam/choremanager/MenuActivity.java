@@ -13,40 +13,15 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MenuActivity extends AppCompatActivity {
     //https://stackoverflow.com/questions/2736389/how-to-pass-an-object-from-one-activity-to-another-on-android
-    private static ChoreManagerProfile manager;
     private static FirebaseUser fbUser = AppLoginActivity.user;
     private static DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
     private static String email = AppLoginActivity.emailEscaped;
-    private ValueEventListener listener = new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-
-            if (dataSnapshot.hasChild("ChoreManager")) {
-                manager = dataSnapshot.child("ChoreManager").getValue(ChoreManagerProfile.class);
-            } else {
-                manager = new ChoreManagerProfile();
-                int userId = manager.nextSerialNumber();
-                AdminUser peter = new AdminUser("Peter Lam", "qwerty", userId);
-                manager.setCurrentUserId(userId);
-                manager.addAdminUser(peter);
-                fbRef.child(email).child("ChoreManager").setValue(manager);
-            }
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-        }
-    };
-
-
+    private static ChoreManagerProfile manager = AppLoginActivity.manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
-
-        fbRef.child(email).addListenerForSingleValueEvent(listener);
     }
 
     protected void userImageOnClick(View view){

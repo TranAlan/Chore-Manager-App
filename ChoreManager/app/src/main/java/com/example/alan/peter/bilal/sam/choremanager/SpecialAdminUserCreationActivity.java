@@ -3,6 +3,7 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -11,9 +12,18 @@ import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 public class SpecialAdminUserCreationActivity extends AppCompatActivity {
+
+    private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
+    private String email = AppLoginActivity.emailEscaped;
+    private String name;
+    private String pass;
+    private AdminUser newUser;
+    private ChoreManagerProfile manager = MenuActivity.getManager();
+    private int resID = 2131230876;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -86,15 +96,39 @@ public class SpecialAdminUserCreationActivity extends AppCompatActivity {
                 drawableName = "ic_avatar_11_2";
                 break;
         }
-        int resID = getResources().getIdentifier(drawableName, "drawable",
+        resID = getResources().getIdentifier(drawableName, "drawable",
                 getPackageName());
+        Log.d("test",Integer.toString(resID));
         avatarImage.setImageResource(resID);
     }
 
     // if user presses create new User, create this
     public void createUserOnClick(View view)
     {
+        Intent intent = new Intent(this, MenuActivity.class);
+        fbRef.addListenerForSingleValueEvent(listener);
+        startActivity(intent);
         finish();
-        //TODO: Code This @Bilal
     }
+
+    private ValueEventListener listener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            EditText username = (EditText)findViewById(R.id.usernameText);
+            name = username.getText().toString();
+            EditText password = (EditText)findViewById(R.id.passwordText);
+            pass = password.getText().toString();
+            if (!(dataSnapshot.hasChild(name))) {
+                newUser = new AdminUser(name,pass,MenuActivity.getManager().nextSerialNumber(), resID);
+                manager.setCurrentUserId(newUser.getUserId());
+                manager.addAdminUser(newUser);
+                fbRef.child(email).child("ChoreManager").setValue(manager);
+            }
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
 }

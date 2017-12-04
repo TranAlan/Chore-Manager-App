@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,7 +24,11 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
     private String email = AppLoginActivity.emailEscaped;
     private String name;
+    private String pass;
     private User newUser;
+    private AdminUser newAdminUser;
+    private ChoreManagerProfile manager = MenuActivity.getManager();
+    private int resID = 2131230876;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -33,7 +38,6 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
         }
         return false;
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +108,7 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
                 drawableName = "ic_avatar_11_2";
                 break;
         }
-        int resID = getResources().getIdentifier(drawableName, "drawable",
+        resID = getResources().getIdentifier(drawableName, "drawable",
                 getPackageName());
         Log.d("test", Integer.toString(resID));
         avatarImage.setImageResource(resID);
@@ -118,19 +122,37 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     public void createUserOnClick(View view)
     {
         Intent intent = new Intent(this, UserMenu.class);
-        fbRef.addValueEventListener(listener);
+        fbRef.addListenerForSingleValueEvent(listener);
         startActivity(intent);
         finish();
     }
 
+    // Creates new user and updates ChoreManager in database
     private ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             EditText username = (EditText)findViewById(R.id.usernameText);
             name = username.getText().toString();
-            if (!(dataSnapshot.hasChild(name))) {
-                newUser = new User(name);
-                fbRef.child(email).child("Users").child(name).setValue(newUser);
+            EditText password = (EditText)findViewById(R.id.passwordText);
+            pass = password.getText().toString();
+            Spinner grabAccountType = findViewById(R.id.accountTypeSpinner);
+            String accountType = (String) grabAccountType.getSelectedItem();
+            if (!(dataSnapshot.child(email).hasChild(name))) {
+                if (accountType.equals("Child")) {
+                    newUser = new User(name, pass, MenuActivity.getManager().nextSerialNumber(), resID);
+                    manager.setCurrentUserId(newUser.getUserId());
+                    manager.addRegUser(newUser);
+                    fbRef.child(email).child("ChoreManager").setValue(manager);
+                    //TODO: remove
+                    goToMenu();
+                } else {
+                    newAdminUser = new AdminUser(name, pass, MenuActivity.getManager().nextSerialNumber(), resID);
+                    manager.setCurrentUserId(newAdminUser.getUserId());
+                    manager.addAdminUser(newAdminUser);
+                    fbRef.child(email).child("ChoreManager").setValue(manager);
+                    //TODO: remove
+                    goToMenu();
+                }
             }
         }
 
@@ -139,6 +161,13 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
 
         }
     };
+
+    //TODO: remove
+    void goToMenu(){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

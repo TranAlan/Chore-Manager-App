@@ -81,11 +81,6 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
                 @Override
                 public void onClick(View view) {
                     MenuActivity.getManager().resetAppData();
-                    int userId = MenuActivity.getManager().nextSerialNumber();
-                    AdminUser peter = new AdminUser("Peter Lam", "qwerty", userId);
-                    MenuActivity.getManager().setCurrentUserId(userId);
-                    MenuActivity.getManager().addAdminUser(peter);
-                    MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                     Toast.makeText(getApplicationContext(), "Data has been reset.",Toast.LENGTH_SHORT).show();
                     dialog.cancel();
                 }

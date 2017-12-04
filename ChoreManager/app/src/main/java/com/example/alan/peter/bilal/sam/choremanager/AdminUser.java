@@ -17,8 +17,8 @@ public class AdminUser extends User{
     public AdminUser(){
         super();
     }
-    public AdminUser(String username, String password, int userId){
-        super(username, password, userId);
+    public AdminUser(String username, String password, int userId, int imageID){
+        super(username, password, userId, imageID);
     }
 
     public Chore createChore(String name, String desc, String note, int points,String type, Date due, List<String> reqResources , int choreId, User user){

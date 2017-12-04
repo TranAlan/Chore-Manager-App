@@ -18,6 +18,7 @@ public class User implements Serializable{
     private int totalPoints;
     private int userId;
     private List<Chore> assignedChores;
+    private Integer imageID;
 
     public User(){
         username = null;
@@ -27,19 +28,13 @@ public class User implements Serializable{
         userId = 0;
     }
 
-    public User(String username){
-        this.username = username;
-        password = null;
-        this.totalPoints = 0;
-        assignedChores = new ArrayList<Chore>();
-    }
-
-    public User(String username, String password, int userId){
+    public User(String username, String password, int userId, int imageID){
         this.username = username;
         this.password = password;
         this.totalPoints = 0;
         this.userId = userId;
         assignedChores = new ArrayList<Chore>();
+        this.imageID = imageID;
     }
 
     //GETTERS
@@ -56,6 +51,7 @@ public class User implements Serializable{
         return assignedChores;
     }
     public int getUserId(){return userId;}
+    public int getImageID(){return imageID;}
 
     //SETTERS
     public void setUsername(String username){
@@ -70,6 +66,7 @@ public class User implements Serializable{
     public void setAssignedChores(ArrayList<Chore> assignedChores){
         this.assignedChores = assignedChores;
     }
+    public void setImageID(int imageID){this.imageID = imageID;}
 
     //OTHER PUBLIC METHODS
     public void addToAssignedChores(Chore chore){

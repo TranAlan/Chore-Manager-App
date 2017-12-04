@@ -32,8 +32,7 @@
 
         <activity
             android:name=".MenuActivity"
-            android:label="Menu"
-            android:parentActivityName=".AppLoginActivity" />
+            android:label="Menu" />
         <activity
             android:name=".UserMenu"
             android:label="Users"
