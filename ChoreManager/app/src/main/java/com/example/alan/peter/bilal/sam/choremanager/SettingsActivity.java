@@ -86,6 +86,7 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
                 MenuActivity.getManager().setCurrentUserId(userId);
                 MenuActivity.getManager().addAdminUser(peter);
                 MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
+                Toast.makeText(getApplicationContext(), "Data has been reset.",Toast.LENGTH_SHORT).show();
                 dialog.cancel();
             }
         });
