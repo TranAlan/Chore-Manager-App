@@ -20,7 +20,7 @@ public class MenuActivity extends AppCompatActivity {
     private ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            Log.d("test", "On data change");
+
             if (dataSnapshot.hasChild("ChoreManager")) {
                 manager = dataSnapshot.child("ChoreManager").getValue(ChoreManagerProfile.class);
             } else {
