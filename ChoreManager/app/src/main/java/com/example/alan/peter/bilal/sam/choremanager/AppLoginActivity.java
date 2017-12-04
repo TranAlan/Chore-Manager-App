@@ -55,6 +55,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         databaseFamilies = FirebaseDatabase.getInstance().getReference("Families");
