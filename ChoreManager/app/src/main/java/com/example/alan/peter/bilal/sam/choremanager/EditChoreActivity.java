@@ -18,8 +18,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.view.MenuItem;
-
-
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -47,7 +45,7 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_chore);
+        setContentView(R.layout.activity_edit_chore);
 
         //allows textfields to move above keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -187,7 +185,6 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
                 dialog.cancel();
             }
         });
-        finish();
     }
     // listening if Save and Exit button is clicked
     protected void saveExitOnClick(View view){

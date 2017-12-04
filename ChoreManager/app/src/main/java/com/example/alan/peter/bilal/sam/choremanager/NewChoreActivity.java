@@ -27,8 +27,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class NewChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
-{
+public class NewChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // creating variables to link with xml
     DateFormat formatDateTime = DateFormat.getDateTimeInstance();
     Calendar dateTime = Calendar.getInstance();
