@@ -70,8 +70,15 @@
             android:label="New User"
             android:parentActivityName=".UserMenu" />
         <activity android:name=".ChooseProfilePictureActivity" />
-        <activity android:name=".AssignedResourcesActivity" android:label="Assigned Resources"
-            android:parentActivityName=".ChoreListActivity" ></activity>
+        <activity
+            android:name=".AssignedResourcesActivity"
+            android:label="Assigned Resources"
+            android:parentActivityName=".ChoreListActivity" />
+        <activity
+            android:name=".EditChoreActivity"
+            android:label="Edit Chore"
+            android:parentActivityName=".SpecificChoreActivity" />
+        <activity android:name=".SpecialAdminUserCreationActivity"></activity>
     </application>
 
 </manifest>

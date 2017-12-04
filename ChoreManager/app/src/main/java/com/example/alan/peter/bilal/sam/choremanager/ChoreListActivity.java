@@ -219,6 +219,8 @@ public class ChoreListActivity extends AppCompatActivity {
                             for(int i  = 0; i < MenuActivity.getManager().getAdminUsers().size(); i++){
                                 allChores.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores());
                             }
+                            allChores.addAll(MenuActivity.getManager().getFinishedChores());
+                            allChores.addAll(MenuActivity.getManager().getUnassignedChores());
                             customChoreListView.addAll(allChores);
                         }
                         Toast.makeText(ChoreListActivity.this,"Filtered by: " + item.getTitle(),Toast.LENGTH_SHORT).show();

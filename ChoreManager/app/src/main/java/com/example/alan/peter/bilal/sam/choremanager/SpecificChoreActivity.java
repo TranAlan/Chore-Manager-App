@@ -55,8 +55,11 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
 
         //Display Assigned Resources
         Spinner assignedResourcesSpinner = (Spinner) findViewById(R.id.assignedResourcesSpinner);
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,chore.getReqResources());
-        assignedResourcesSpinner.setAdapter(spinnerArrayAdapter);
+            if(chore.getReqResources() != null){
+            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,chore.getReqResources());
+            assignedResourcesSpinner.setAdapter(spinnerArrayAdapter);
+            }
+
 
     }
 
@@ -93,6 +96,35 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
 
         MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
     }
+
+    public void onClickIncompleteChore(View view){
+
+        Intent i = getIntent();
+        Chore chore = (Chore) i.getSerializableExtra("ChoreInfo"); //Serilizable Chore
+        User currentUser = MenuActivity.getManager().getCurrentUser(); //Getting Current User
+        chore = currentUser.getChoreFromId(chore.getChoreId()); //Actual Chore
+
+        if(chore != null){
+            if(chore.getStatusString().equals("Complete")){ //IF already done
+                Snackbar.make(view, "Already Completed", Snackbar.LENGTH_LONG).setAction("Action",null).show();
+            }
+            else{
+                Snackbar.make(view, "Please complete chore next time. You get: "+ currentUser.inCompleteChore(chore), Snackbar.LENGTH_LONG)
+                        .setAction("Action",null).show();
+                setStatusText(chore.getStatusString());
+                MenuActivity.getManager().addFinishedChores(chore);
+
+            }
+
+        }
+        else{
+            Snackbar.make(view, "NOT ASSIGNED TO YOU!", Snackbar.LENGTH_LONG).setAction("Action",null).show();
+        }
+
+        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
+    }
+
+
     public void onClickReAssign(View view) {
         // Build an alert dialog
         AlertDialog.Builder reAssignAlert = new AlertDialog.Builder(this);
@@ -104,7 +136,7 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
         final Button cancelButton = (Button) newView.findViewById(R.id.cancelButton);
         final Button confirmButton = (Button) newView.findViewById(R.id.confirmButton);
         // create adapter from string array in string.xml file for RepeatableSpinner
-        spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.shoppingItemTypeSpinner_Options, android.R.layout.simple_spinner_item);
+        spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.userSpinner_Options, android.R.layout.simple_spinner_item);
         // set spinner to the one the the xml
         userSpinner.setAdapter(spinnerAdapter);
         // listen if the spinner is clicked
@@ -153,4 +185,5 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
 }
