@@ -64,7 +64,7 @@ public class CustomChoreListView extends ArrayAdapter<Chore> {
         String statusString = "Status: "+choreList.get(position).getStatusString();
         viewHolder.statusText.setText(statusString);
 
-        String typeText = "Chore Type: "+choreList.get(position).getType().toString();
+        String typeText = "Type: "+choreList.get(position).getType().toString();
         viewHolder.choreTypeText.setText(typeText);
 
         return r;

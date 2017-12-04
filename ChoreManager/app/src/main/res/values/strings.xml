@@ -101,13 +101,14 @@
     <string name="string_create_user">Create User</string>
     <string name="string_select_a_new_avatar">Select A New Avatar</string>
     <string name="desc_avatar_image">avatar image</string>
-    <string name="string_assigned_resources_button">View \nAssigned Resources</string>
+    <string name="string_assigned_resources_button">Assigned Resources</string>
     <string name="string_user_menu">User Menu</string>
     <string name="string_assigned_resources">Assigned Resources</string>
     <string name="string_please_assign_user">Please Assign User</string>
     <string name="string_edit_deadline">Edit Deadline</string>
     <string name="string_sign_in">Sign In</string>
     <string name="string_delete">Delete</string>
+    <string name="string_password">Password:</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>
