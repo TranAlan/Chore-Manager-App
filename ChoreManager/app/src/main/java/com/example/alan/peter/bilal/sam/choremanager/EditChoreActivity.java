@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 public class EditChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -46,7 +47,8 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_chore);
-
+        Intent intent = getIntent();
+        Chore chore = (Chore) intent.getSerializableExtra("ChoreInfo2");
         //allows textfields to move above keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
@@ -76,6 +78,7 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
         // linking deadline button and text to xml
         deadlineButton = (Button)findViewById(R.id.deadlineButton);
         actualDeadlineTextView = (TextView)findViewById(R.id.actualDeadlineTextView);
+        actualDeadlineTextView.setText(formatDateTime.format(chore.getDeadline()));
 
         deadlineButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -84,11 +87,6 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
             }
         });
         updateDeadLineText();
-
-        //To Remove
-        allMaterials.add("Item 1");
-        allMaterials.add("Item 2");
-        allMaterials.add("Item 3");
 
         // get all the materials from pantry and material list
         allMaterials.addAll(MenuActivity.getManager().getMaterials());
@@ -108,6 +106,57 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
                 listVOs);
 
         spinner.setAdapter(myAdapter);
+
+        //UPDATING EXiSTING VIEWS
+
+        EditText grabChoreName = (EditText) findViewById(R.id.choreNameInput); //Chore Name
+        grabChoreName.setText(chore.getName());
+
+        Spinner grabAssignedTo = findViewById(R.id.assignToSpiner); //Who the Chore is assigned to
+
+        int AdminUserPosition = 0;
+        int regUserPosition = 0;
+        Iterator<AdminUser> adminIterator = MenuActivity.getManager().getAdminUsers().iterator();
+        while(adminIterator.hasNext()){
+            if(adminIterator.next().getUserId() != chore.getAssignedToId()){
+                break;
+            }
+            AdminUserPosition++;
+        }
+        Iterator<User> regIterator = MenuActivity.getManager().getRegUsers().iterator();
+        while(regIterator.hasNext()){
+
+            if(regIterator.next().getUserId() == chore.getAssignedToId()){
+                break;
+            }
+            regUserPosition++;
+        }
+
+        grabAssignedTo.setSelection(AdminUserPosition + regUserPosition);
+
+        Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore
+        if(chore.isMisc()){
+            grabChoreType.setSelection(0);
+        }
+        else if (chore.isCleaning()){
+            grabChoreType.setSelection(1);
+        }
+        else{
+            grabChoreType.setSelection(2);
+        }
+
+        Spinner grabPoints = findViewById(R.id.totalPointsSpinner); // The points the chore is worth
+        grabPoints.setSelection(chore.getRewardPoints()-1);
+
+        //Requried matierals
+        //Spinner grabResources = findViewById(R.id.requiredMaterialsSpinner); //The list of materials
+        EditText grabDesc = (EditText) findViewById(R.id.descTextView2); //Description of Chore
+        grabDesc.setText(chore.getDescription());
+
+        EditText grabNote = (EditText) findViewById(R.id.notesTextView); //Note of Chore
+        grabNote.setText(chore.getNotes());
+        actualDeadlineTextView.setText(formatDateTime.format(chore.getDeadline()));
+
     }
     public void updateDate()
     {
