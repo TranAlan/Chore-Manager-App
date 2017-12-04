@@ -55,6 +55,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         databaseFamilies = FirebaseDatabase.getInstance().getReference("Families");
@@ -96,6 +97,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
 
                 Intent intent = new Intent(this, MenuActivity.class);
                 startActivity(intent);
+
             } else {
                 // Sign in failed, check response for error code
                 // ...
