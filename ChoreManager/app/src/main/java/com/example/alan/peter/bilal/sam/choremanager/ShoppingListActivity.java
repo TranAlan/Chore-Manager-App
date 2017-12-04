@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,6 +24,15 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
     private ListView groceriesListView,materialsListView;
     private ArrayList<String> checkedMaterials = new ArrayList<String>();
     private ArrayList<String> checkedGroceries = new ArrayList<String>();
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if( item.getItemId() == android.R.id.home ){
+            onBackPressed();
+            return true;
+        }
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

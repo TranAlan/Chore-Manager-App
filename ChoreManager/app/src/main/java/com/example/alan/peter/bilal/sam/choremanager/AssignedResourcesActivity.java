@@ -10,6 +10,17 @@ import android.widget.PopupMenu;
 
 public class AssignedResourcesActivity extends AppCompatActivity {
     private ImageButton filterButton;
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if( item.getItemId() == android.R.id.home ){
+            onBackPressed();
+            return true;
+        }
+        return false;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

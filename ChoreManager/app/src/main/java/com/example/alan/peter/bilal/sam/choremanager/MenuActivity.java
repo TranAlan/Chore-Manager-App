@@ -13,7 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MenuActivity extends AppCompatActivity {
     //https://stackoverflow.com/questions/2736389/how-to-pass-an-object-from-one-activity-to-another-on-android
-    public static ChoreManagerProfile manager;
+    private static ChoreManagerProfile manager;
     private static FirebaseUser fbUser = AppLoginActivity.user;
     private static DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
     private static String email = AppLoginActivity.emailEscaped;
@@ -38,6 +38,8 @@ public class MenuActivity extends AppCompatActivity {
 
         }
     };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

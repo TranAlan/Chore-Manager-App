@@ -107,6 +107,7 @@
     <string name="string_please_assign_user">Please Assign User</string>
     <string name="string_edit_deadline">Edit Deadline</string>
     <string name="string_sign_in">Sign In</string>
+    <string name="string_delete">Delete</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>

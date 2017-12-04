@@ -3,6 +3,7 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,11 +12,20 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class MaterialsActivity extends AppCompatActivity {
-
     //variables
     private ArrayList<String> selected = new ArrayList<String>();
     private ArrayList<String> materialList = new ArrayList<>();
     private ListView materialsListView;
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if( item.getItemId() == android.R.id.home ){
+            onBackPressed();
+            return true;
+        }
+        return false;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
