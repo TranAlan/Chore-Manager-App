@@ -83,6 +83,5 @@ public class UserMenu extends AppCompatActivity {
     protected void createUserOnClick(View view){
         Intent intent = new Intent(this, NewUserActivity.class);
         startActivity(intent);
-        finish();
     }
 }

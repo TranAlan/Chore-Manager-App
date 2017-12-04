@@ -141,10 +141,10 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             if(dataSnapshot.child(emailEscaped).child("ChoreManager").child("adminUsers").getChildrenCount()==0) {
-                goToSpecialLogin();
+                startActivity(new Intent(AppLoginActivity.this, SpecialAdminUserCreationActivity.class));
             }
             else{
-                goToMenu();
+                startActivity(new Intent(AppLoginActivity.this, UserMenu.class));
             }
         }
 
@@ -154,18 +154,6 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         }
     };
 
-    private void goToMenu(){
-        Intent intent = new Intent(this, MenuActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    private void goToSpecialLogin(){
-        Intent intent = new Intent(this, MenuActivity.class);
-        startActivity(intent);
-        Intent intent2 = new Intent(this, SpecialAdminUserCreationActivity.class);
-        startActivity(intent2);
-    }
 
    /* private void goToLogin(){
         Intent intent = new Intent(this, UserMenu.class);

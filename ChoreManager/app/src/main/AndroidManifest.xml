@@ -48,7 +48,8 @@
         <activity
             android:name=".ShoppingListActivity"
             android:label="Shopping List"
-            android:parentActivityName=".MenuActivity" />
+            android:parentActivityName=".MenuActivity"
+            android:noHistory="true"/>
         <activity
             android:name=".SettingsActivity"
             android:label="Settings"

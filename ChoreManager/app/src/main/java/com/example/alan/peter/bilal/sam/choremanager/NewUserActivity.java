@@ -121,10 +121,9 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     // if user presses create new User, create this
     public void createUserOnClick(View view)
     {
-        Intent intent = new Intent(this, UserMenu.class);
         fbRef.addListenerForSingleValueEvent(listener);
-        startActivity(intent);
         finish();
+
     }
 
     // Creates new user and updates ChoreManager in database
@@ -143,17 +142,16 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
                     manager.setCurrentUserId(newUser.getUserId());
                     manager.addRegUser(newUser);
                     fbRef.child(email).child("ChoreManager").setValue(manager);
-                    //TODO: remove
-                    goToMenu();
+
                 } else {
                     newAdminUser = new AdminUser(name, pass, MenuActivity.getManager().nextSerialNumber(), resID);
                     manager.setCurrentUserId(newAdminUser.getUserId());
                     manager.addAdminUser(newAdminUser);
                     fbRef.child(email).child("ChoreManager").setValue(manager);
-                    //TODO: remove
-                    goToMenu();
                 }
             }
+
+    //        finish();
         }
 
         @Override
@@ -162,12 +160,6 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
         }
     };
 
-    //TODO: remove
-    void goToMenu(){
-        Intent intent = new Intent(this, MenuActivity.class);
-        startActivity(intent);
-        finish();
-    }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
