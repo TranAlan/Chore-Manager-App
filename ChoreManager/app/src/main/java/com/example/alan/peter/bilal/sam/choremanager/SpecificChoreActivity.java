@@ -51,8 +51,8 @@ public class SpecificChoreActivity extends AppCompatActivity {
 
         //Display Assigned Resources
         Spinner assignedResourcesSpinner = (Spinner) findViewById(R.id.assignedResourcesSpinner);
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,chore.getReqResources);
-        //Displaying required materials;
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,chore.getReqResources());
+        assignedResourcesSpinner.setAdapter(spinnerArrayAdapter);
 
     }
 
