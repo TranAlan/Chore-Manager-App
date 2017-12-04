@@ -173,11 +173,11 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         String choreAssignedTo = (String) grabAssignedTo.getSelectedItem();
         String choreType = (String) grabChoreType.getSelectedItem();
 
+        //FIND ALL MATERIALS THAT WERE SELECTED
         List<String> resources= new ArrayList<String>();
         StateVO a = (StateVO) grabResources.getSelectedItem();
         for(int i = 0; i < allMaterials.size(); i++){
             StateVO currentItem = (StateVO)grabResources.getItemAtPosition(i);
-            Log.d("test", currentItem.getTitle());
             if (   currentItem.isSelected() ){
                 resources.add(currentItem.getTitle());
 

@@ -78,11 +78,9 @@ public class CustomMaterialListAdapter extends ArrayAdapter<StateVO> {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 int getPosition = (Integer) buttonView.getTag();
                 if (isChecked){
-                    Log.d("test", "setTrue");
                     listState.get(getPosition).setSelected(true);
                 }
                 else{
-                    Log.d("test","setFalse");
                     listState.get(getPosition).setSelected(false);
                 }
 
