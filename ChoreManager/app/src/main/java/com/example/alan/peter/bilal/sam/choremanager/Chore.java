@@ -46,8 +46,7 @@ public class Chore implements Serializable, Comparable<Chore>{
     private Type choreType;
     private Date deadline;
     private int assignedToId;
-    private List<String> reqMat;
-    private List<String> reqGroc;
+    private List<String> reqResources;
     private int choreId;
 
 
@@ -76,36 +75,33 @@ public class Chore implements Serializable, Comparable<Chore>{
         this.choreType=Type.MISC;
         this.assignedToId = 0;
         this.deadline=null;
-        this.reqMat=null;
-        this.reqGroc=null;
+        this.reqResources=null;
         this.completionStatus=Status.ACTIVE;
     }
 
     //ASSIGNED
-    public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries,int choreId, int assignedToId) {
+    public Chore(String name, String desc, String note, int points, Date due, List<String> reqResources,int choreId, int assignedToId) {
         this.name=name;
         this.description=desc;
         this.notes=note;
         this.rewardPoints=points;
         this.choreType=Type.MISC;
         this.deadline=due;
-        this.reqMat=materials;
-        this.reqGroc=groceries;
+        this.reqResources=reqResources;
         this.assignedToId = assignedToId;
         this.completionStatus=Status.ACTIVE;
         this.choreId = choreId;
     }
 
     //UNASSIGNED
-    public Chore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, int choreId) {
+    public Chore(String name, String desc, String note, int points, Date due, List<String> reqResources, int choreId) {
         this.name=name;
         this.description=desc;
         this.notes=note;
         this.rewardPoints=points;
         this.choreType=Type.MISC;
         this.deadline=due;
-        this.reqMat=materials;
-        this.reqGroc=groceries;
+        this.reqResources=reqResources;
         this.assignedToId = 0;
         this.completionStatus=Status.UNASSIGNED;
         this.choreId = choreId;
@@ -144,8 +140,7 @@ public class Chore implements Serializable, Comparable<Chore>{
     public String getStatusString(){
         return completionStatus.toString();
     }
-    public List<String> getReqMat(){ return reqMat;}
-    public List<String> getReqGroc(){return reqGroc;}
+    public List<String> getReqResources(){ return reqResources;}
 
     //SETTERS
     public void setName(String name) {
@@ -167,6 +162,7 @@ public class Chore implements Serializable, Comparable<Chore>{
         this.assignedToId = assignedToId;
     }
     public void setChoreId(int choreId){ this.choreId = choreId;}
+    public void setReqResources(List<String> reqResources){this.reqResources = reqResources;}
 
     //STATUS SETTERS
     public void setStatusComplete(){

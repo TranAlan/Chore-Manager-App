@@ -46,6 +46,8 @@ public class SpecificChoreActivity extends AppCompatActivity {
         TextView nameView = (TextView) findViewById(R.id.choreTitleTextView);
         nameView.setText(chore.getName());
 
+        //Displaying required materials;
+
     }
 
     public void onClickCompleteChore(View view){
