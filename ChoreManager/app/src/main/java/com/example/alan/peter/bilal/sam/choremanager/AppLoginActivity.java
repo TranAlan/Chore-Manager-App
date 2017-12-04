@@ -96,8 +96,6 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
 
                 Intent intent = new Intent(this, MenuActivity.class);
                 startActivity(intent);
-                Intent intent2 = new Intent(this, SpecialAdminUserCreationActivity.class);
-                startActivity(intent2);
 
             } else {
                 // Sign in failed, check response for error code
