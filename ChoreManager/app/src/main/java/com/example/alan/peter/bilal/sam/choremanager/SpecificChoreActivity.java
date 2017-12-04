@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,10 +20,18 @@ import java.util.Calendar;
 public class SpecificChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if( item.getItemId() == android.R.id.home ){
+            onBackPressed();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specific_chore);
-
         // To retrieve object in second Activity
         Intent i = getIntent();
         Chore chore = (Chore) i.getSerializableExtra("ChoreInfo");

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -36,6 +37,17 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     private Button deadlineButton;
     private TextView actualDeadlineTextView;
     private List<String> allMaterials = new ArrayList<>();
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if( item.getItemId() == android.R.id.home ){
+            onBackPressed();
+            Log.d("test", "BACKED");
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,7 +185,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
 
         //FIND ALL MATERIALS THAT WERE SELECTED
         List<String> resources= new ArrayList<String>();
-        StateVO a = (StateVO) grabResources.getSelectedItem();
         for(int i = 0; i < allMaterials.size(); i++){
             StateVO currentItem = (StateVO)grabResources.getItemAtPosition(i);
             if (   currentItem.isSelected() ){

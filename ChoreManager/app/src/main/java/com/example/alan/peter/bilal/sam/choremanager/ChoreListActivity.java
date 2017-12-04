@@ -23,6 +23,16 @@ public class ChoreListActivity extends AppCompatActivity {
     private CustomChoreListView customChoreListView;
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if( item.getItemId() == android.R.id.home ){
+            onBackPressed();
+            return true;
+        }
+        return false;
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
