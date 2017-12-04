@@ -2,6 +2,7 @@ package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -328,9 +329,16 @@ public class ChoreListActivity extends AppCompatActivity {
 
     }
     protected void createNewChoreButton(View view){
-        Intent intent = new Intent(this, NewChoreActivity.class);
-        startActivity(intent);
-        finish();
+        if(MenuActivity.getManager().isCurrentUserAdmin()){
+            Intent intent = new Intent(this, NewChoreActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            Snackbar.make(view, "You must be signed in as a Admin", Snackbar.LENGTH_LONG)
+                    .setAction("Action",null).show();
+        }
+
     }
 
     protected void viewAssignedResourcesButton(View view){

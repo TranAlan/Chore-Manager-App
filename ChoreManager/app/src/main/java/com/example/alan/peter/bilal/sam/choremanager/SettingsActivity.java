@@ -1,6 +1,7 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -56,37 +57,44 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
     }
 
     protected void resetDataOnClick(View view) {
-        // Build an alert dialog
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        // create a new view that inflates the custom shoppping list layout
-        View newView = getLayoutInflater().inflate(R.layout.delete_item_layout, null);
-        // declaring objects in the layout and linking them to the xml
-        final Button cancelButton = (Button) newView.findViewById(R.id.cancelButton);
-        final Button confirmButton = (Button) newView.findViewById(R.id.confirmButton);
-        alert.setView(newView);
-        //create Alert Dialog
-        final AlertDialog dialog = alert.create();
-        dialog.show();
-        // Listen and close the dialog if user clicks Cancel
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.cancel();
-            }
-        });
-        // Listen and close the dialog and deletes content if user clicks Confirm
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MenuActivity.getManager().resetAppData();
-                int userId = MenuActivity.getManager().nextSerialNumber();
-                AdminUser peter = new AdminUser("Peter Lam", "qwerty", userId);
-                MenuActivity.getManager().setCurrentUserId(userId);
-                MenuActivity.getManager().addAdminUser(peter);
-                MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
-                Toast.makeText(getApplicationContext(), "Data has been reset.",Toast.LENGTH_SHORT).show();
-                dialog.cancel();
-            }
-        });
+        if(MenuActivity.getManager().isCurrentUserAdmin()){
+            // Build an alert dialog
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            // create a new view that inflates the custom shoppping list layout
+            View newView = getLayoutInflater().inflate(R.layout.delete_item_layout, null);
+            // declaring objects in the layout and linking them to the xml
+            final Button cancelButton = (Button) newView.findViewById(R.id.cancelButton);
+            final Button confirmButton = (Button) newView.findViewById(R.id.confirmButton);
+            alert.setView(newView);
+            //create Alert Dialog
+            final AlertDialog dialog = alert.create();
+            dialog.show();
+            // Listen and close the dialog if user clicks Cancel
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.cancel();
+                }
+            });
+            // Listen and close the dialog and deletes content if user clicks Confirm
+            confirmButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MenuActivity.getManager().resetAppData();
+                    int userId = MenuActivity.getManager().nextSerialNumber();
+                    AdminUser peter = new AdminUser("Peter Lam", "qwerty", userId);
+                    MenuActivity.getManager().setCurrentUserId(userId);
+                    MenuActivity.getManager().addAdminUser(peter);
+                    MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
+                    Toast.makeText(getApplicationContext(), "Data has been reset.",Toast.LENGTH_SHORT).show();
+                    dialog.cancel();
+                }
+            });
+        }
+        else{
+            Snackbar.make(view, "You must be signed in as a Admin", Snackbar.LENGTH_LONG)
+                    .setAction("Action",null).show();
+        }
+
     }
 }

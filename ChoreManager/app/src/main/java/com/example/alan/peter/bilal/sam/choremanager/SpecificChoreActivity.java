@@ -154,8 +154,14 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
     }
 
     protected void editChoreOnClick(View view)
-    {
+    {   if(MenuActivity.getManager().isCurrentUserAdmin()){
         Intent intent = new Intent(this, EditChoreActivity.class);
         startActivity(intent);
+        }
+        else{
+            Snackbar.make(view, "You must be signed in as a Admin", Snackbar.LENGTH_LONG)
+                    .setAction("Action",null).show();
+        }
+
     }
 }
