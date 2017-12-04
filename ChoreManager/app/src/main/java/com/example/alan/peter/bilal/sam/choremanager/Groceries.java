@@ -22,8 +22,6 @@ public class Groceries extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groceries);
-        // DO NOT REMOVE
-        groceryList.add("");
         //TO REMOVE
         groceryList.add("Grocery 1");
         groceryList.add("Grocery 2");

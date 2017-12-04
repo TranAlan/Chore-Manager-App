@@ -119,12 +119,12 @@
                 android:layout_height="wrap_content"
                 android:background="@color/secondaryLightColor"
                 android:gravity="center"
-                android:text="@string/materials"
+                android:text="@string/string_assigned_resources"
                 android:textColor="@color/secondaryTextColor"
                 android:textSize="20sp" />
 
             <Spinner
-                android:id="@+id/specificMaterialsSpinner"
+                android:id="@+id/assignedResourcesSpinner"
                 style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
                     android:background="@color/colorPrimaryDark"
                     android:onClick="onClickCompleteChore"
                     android:text="@string/mark_complete_button"
-                    android:textColor="@color/primaryLightColor" />
+                    android:textColor="@android:color/white" />
             </LinearLayout>
 
             <TextView
@@ -218,7 +218,7 @@
                         android:layout_weight="1"
                         android:background="@color/colorPrimaryDark"
                         android:text="@string/edit_chore_button"
-                        android:textColor="@color/primaryLightColor" />
+                        android:textColor="@android:color/white" />
 
                     <Button
                         android:id="@+id/unassignButton"
@@ -230,7 +230,7 @@
                         android:layout_weight="1"
                         android:background="@color/colorPrimaryDark"
                         android:text="@string/unassignButton"
-                        android:textColor="@color/primaryLightColor" />
+                        android:textColor="@android:color/white" />
 
                     <Button
                         android:id="@+id/reassignButton"
@@ -242,7 +242,7 @@
                         android:layout_weight="1"
                         android:background="@color/colorPrimaryDark"
                         android:text="@string/reassignButton"
-                        android:textColor="@color/primaryLightColor" />
+                        android:textColor="@android:color/white" />
 
                 </LinearLayout>
             </LinearLayout>

@@ -31,16 +31,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
         //clearing data incase
         allGroceries.clear();
         allMaterials.clear();
-        // DO NOT REMOVE
-        allGroceries.add("");
-        allMaterials.add("");
-        //TO REMOVE
-        allGroceries.add("Groceries 1");
-        allGroceries.add("Groceries 2");
-        allGroceries.add("Groceries 3");
-        allMaterials.add("Materials 1");
-        allMaterials.add("Materials 2");
-        allMaterials.add("Materials 3");
+
         
         // get all the materials from pantry and material list
          allMaterials.addAll(MenuActivity.getManager().getShopListMat());
@@ -118,8 +109,6 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                     if (shoppingListType.equals("Material")){
                         MenuActivity.getManager().addShoppingMaterial(itemNameString);
                         allMaterials.add(itemNameString);
-                        materialsListView.refreshDrawableState();
-
                     }
                     else{
                         MenuActivity.getManager().addShoppingGrocery(itemNameString);
@@ -128,6 +117,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                     MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 }
                 dialog.cancel();
+                finish(); // Can remove later if we know how to update
             }
         });
 

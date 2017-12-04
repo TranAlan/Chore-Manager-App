@@ -6,9 +6,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.util.Calendar;
 
 public class SpecificChoreActivity extends AppCompatActivity {
 
@@ -46,6 +50,12 @@ public class SpecificChoreActivity extends AppCompatActivity {
         TextView nameView = (TextView) findViewById(R.id.choreTitleTextView);
         nameView.setText(chore.getName());
 
+
+        //Display Assigned Resources
+        Spinner assignedResourcesSpinner = (Spinner) findViewById(R.id.assignedResourcesSpinner);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,chore.getReqResources());
+        assignedResourcesSpinner.setAdapter(spinnerArrayAdapter);
+
     }
 
     public void onClickCompleteChore(View view){
@@ -60,9 +70,17 @@ public class SpecificChoreActivity extends AppCompatActivity {
                 Snackbar.make(view, "Already Completed", Snackbar.LENGTH_LONG).setAction("Action",null).show();
             }
             else{
-                Snackbar.make(view, "You have received "+ currentUser.completeChore(chore) +" points!", Snackbar.LENGTH_LONG)
-                        .setAction("Action",null).show();
-                setStatusText(chore.getStatusString());
+                if(Calendar.getInstance().getTime().compareTo(chore.getDeadline()) <= 0){
+                    Snackbar.make(view, "You have received "+ currentUser.completeChore(chore) +" points!", Snackbar.LENGTH_LONG)
+                            .setAction("Action",null).show();
+                    setStatusText(chore.getStatusString());
+                }
+                else{
+                    Snackbar.make(view, "You completed it late, you get half points: "+ currentUser.completeChoreLate(chore), Snackbar.LENGTH_LONG)
+                            .setAction("Action",null).show();
+                    setStatusText(chore.getStatusString());
+                }
+
             }
 
         }

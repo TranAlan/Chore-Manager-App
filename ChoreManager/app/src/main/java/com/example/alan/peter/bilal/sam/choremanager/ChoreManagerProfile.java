@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Date;
@@ -34,7 +35,6 @@ public class ChoreManagerProfile implements Serializable{
     private List<AdminUser> adminUsers;
     private List<Chore> unassignedChores;
     private List<Chore> finishedChores;
-    private Date currentDate;
     private int currentUserId;
     private int serialNumber;
 
@@ -45,7 +45,6 @@ public class ChoreManagerProfile implements Serializable{
         this.shoplistGroc = new ArrayList<String>();
         this.shopListMat = new ArrayList<String>();
         this.pantry = new ArrayList<String>();
-        this.currentDate = new Date();
         this.unassignedChores = new ArrayList<Chore>();
         this.finishedChores = new ArrayList<Chore>();
         this.regUsers = new ArrayList<User>();
@@ -79,11 +78,7 @@ public class ChoreManagerProfile implements Serializable{
         return currentUserId;
     }
     public int getSerialNumber(){return serialNumber;}
-    public Date getDate() {
-        //update date to be current
-        this.currentDate = new Date();
-        return this.currentDate;
-    }
+
     //SETTERS
     public void setCurrentUserId(int currentUserId){
         this.currentUserId = currentUserId;

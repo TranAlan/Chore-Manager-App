@@ -49,7 +49,7 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="deleteSelectedOnClick"
             android:text="@string/deleteSelected"
-            android:textColor="@color/secondaryLightColor" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/addItem"
@@ -61,6 +61,6 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="addGroceryOnClick"
             android:text="@string/addItem"
-            android:textColor="@color/secondaryLightColor" />
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

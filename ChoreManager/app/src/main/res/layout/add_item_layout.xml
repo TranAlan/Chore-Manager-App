@@ -43,7 +43,7 @@
             android:layout_weight=".99"
             android:background="@color/colorPrimaryDark"
             android:text="@string/string_cancel"
-            android:textColor="@color/primaryLightColor" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/confirmButton"
@@ -58,7 +58,7 @@
             android:layout_weight=".99"
             android:background="@color/colorPrimaryDark"
             android:text="@string/string_confirm"
-            android:textColor="@color/primaryLightColor" />
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
 </LinearLayout>

@@ -99,7 +99,7 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="viewAssignedResourcesButton"
             android:text="@string/string_assigned_resources_button"
-            android:textColor="@color/primaryLightColor" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/createChore"
@@ -112,7 +112,7 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="createNewChoreButton"
             android:text="@string/createChore"
-            android:textColor="@color/primaryLightColor" />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

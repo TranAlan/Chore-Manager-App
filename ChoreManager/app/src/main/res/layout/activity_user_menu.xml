@@ -64,7 +64,7 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="createUserOnClick"
             android:text="@string/createNewUser"
-            android:textColor="@color/primaryLightColor" />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
