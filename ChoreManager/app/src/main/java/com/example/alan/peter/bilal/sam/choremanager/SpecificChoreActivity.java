@@ -104,7 +104,7 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
         final Button cancelButton = (Button) newView.findViewById(R.id.cancelButton);
         final Button confirmButton = (Button) newView.findViewById(R.id.confirmButton);
         // create adapter from string array in string.xml file for RepeatableSpinner
-        spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.shoppingItemTypeSpinner_Options, android.R.layout.simple_spinner_item);
+        spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.userSpinner_Options, android.R.layout.simple_spinner_item);
         // set spinner to the one the the xml
         userSpinner.setAdapter(spinnerAdapter);
         // listen if the spinner is clicked

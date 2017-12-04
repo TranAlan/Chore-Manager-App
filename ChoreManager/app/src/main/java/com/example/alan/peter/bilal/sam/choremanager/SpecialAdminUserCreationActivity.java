@@ -1,40 +1,23 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-public class NewUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-    private Spinner accountTypeSpinner;
-    private ArrayAdapter accountTypeAdapter;
-    private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
-    private String email = AppLoginActivity.emailEscaped;
-    private String name;
-    private User newUser;
+public class SpecialAdminUserCreationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_user);
-
-        // create adapter from string array in string.xml file for totalPointsSpinner
-
-        accountTypeAdapter = ArrayAdapter.createFromResource(this,R.array.accountTypeSpinner_Options,android.R.layout.simple_spinner_item);
-        // set spinner to the one the the xml
-        accountTypeSpinner =(Spinner) findViewById(R.id.accountTypeSpinner);
-        accountTypeSpinner.setAdapter(accountTypeAdapter);
-        accountTypeSpinner.setOnItemSelectedListener(NewUserActivity.this);
+        setContentView(R.layout.activity_special_admin_user_creation);
     }
     public void setAvatarButtonOnClick(View view)
     {
@@ -97,44 +80,11 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
                 getPackageName());
         avatarImage.setImageResource(resID);
     }
-    // if user presses cancel close this activity
-    public void cancelSelectedOnClick(View view)
-    {
-        finish();
-    }
+
     // if user presses create new User, create this
     public void createUserOnClick(View view)
     {
-        Intent intent = new Intent(this, UserMenu.class);
-        fbRef.addValueEventListener(listener);
-        startActivity(intent);
         finish();
-    }
-
-    private ValueEventListener listener = new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            EditText username = (EditText)findViewById(R.id.usernameText);
-            name = username.getText().toString();
-            if (!(dataSnapshot.hasChild(name))) {
-                newUser = new User(name);
-                fbRef.child(email).child("Users").child(name).setValue(newUser);
-            }
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-        }
-    };
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
+        //TODO: Code This @Bilal
     }
 }
