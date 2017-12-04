@@ -48,9 +48,11 @@ public class SpecificChoreActivity extends AppCompatActivity {
         TextView nameView = (TextView) findViewById(R.id.choreTitleTextView);
         nameView.setText(chore.getName());
 
+
         //Display Assigned Resources
         Spinner assignedResourcesSpinner = (Spinner) findViewById(R.id.assignedResourcesSpinner);
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,chore.getReqResources);
+        //Displaying required materials;
 
     }
 

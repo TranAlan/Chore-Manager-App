@@ -162,7 +162,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore
         Spinner grabPoints = findViewById(R.id.totalPointsSpinner); // The points the chore is worth
         //Requried matierals
-        Spinner grabMaterials = findViewById(R.id.requiredMaterialsSpinner); //The list of materials
+        Spinner grabResources = findViewById(R.id.requiredMaterialsSpinner); //The list of materials
         EditText grabDesc = (EditText) findViewById(R.id.descTextView2); //Description of Chore
         EditText grabNote = (EditText) findViewById(R.id.notesTextView); //Note of Chore
 
@@ -171,17 +171,19 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         String choreName = grabChoreName.getText().toString();
         String choreAssignedTo = (String) grabAssignedTo.getSelectedItem();
         String choreType = (String) grabChoreType.getSelectedItem();
-        /*
-        List<String> materials = new List<String>;
-        for(int i = 0; i < allMaterials.size()){
-            if( ((StateVO)grabMaterials.getItemAtPosition(0)) )
-        }
-        */
 
-        StateVO materials = (StateVO)grabMaterials.getItemAtPosition(1);
-        if(materials.isSelected()){
-            Log.d("test", materials.getTitle());
+        //FIND ALL MATERIALS THAT WERE SELECTED
+        List<String> resources= new ArrayList<String>();
+        StateVO a = (StateVO) grabResources.getSelectedItem();
+        for(int i = 0; i < allMaterials.size(); i++){
+            StateVO currentItem = (StateVO)grabResources.getItemAtPosition(i);
+            if (   currentItem.isSelected() ){
+                resources.add(currentItem.getTitle());
+
+            }
         }
+
+
         String choreDesc = grabDesc.getText().toString();
         String choreNote = grabNote.getText().toString();
         int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
@@ -195,12 +197,12 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         if (assignedUser.getUsername().equals("None")){ //UNASSIGNED CHORE
 
             newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints,
-                    dateTime.getTime(),null, null, MenuActivity.getManager().nextSerialNumber() );
+                    dateTime.getTime(),resources , MenuActivity.getManager().nextSerialNumber() );
             MenuActivity.getManager().addUnassignedChores(newChore);
         }
         else{
             newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints,
-                    dateTime.getTime(), null, null, MenuActivity.getManager().nextSerialNumber(), assignedUser);
+                    dateTime.getTime(), resources, MenuActivity.getManager().nextSerialNumber(), assignedUser);
         }
         Log.d("test", "YAY");
         //Changing the type of Chore

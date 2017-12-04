@@ -5,6 +5,7 @@ import android.media.Image;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -20,16 +21,16 @@ public class AdminUser extends User{
         super(username, password, userId);
     }
 
-    public Chore createChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, int choreId, User user){
-        Chore chore = new Chore(name, desc, note, points, due, materials, groceries, choreId, user.getUserId());
+    public Chore createChore(String name, String desc, String note, int points, Date due, List<String> reqResources , int choreId, User user){
+        Chore chore = new Chore(name, desc, note, points, due, reqResources, choreId, user.getUserId());
         if (user!= null){
             assignChore(user, chore);
         }
         return chore;
     }
 
-    public Chore createUnAssignedChore(String name, String desc, String note, int points, Date due, ArrayList materials, ArrayList groceries, int choreId ){
-        return new Chore(name, desc, note, points, due, materials, groceries, choreId);
+    public Chore createUnAssignedChore(String name, String desc, String note, int points, Date due, List<String> reqResources, int choreId ){
+        return new Chore(name, desc, note, points, due, reqResources, choreId);
     }
 
     //UNIQUE PUBLIC METHODS

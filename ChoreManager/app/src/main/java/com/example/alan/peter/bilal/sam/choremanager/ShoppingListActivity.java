@@ -117,6 +117,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                     MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 }
                 dialog.cancel();
+                finish(); // Can remove later if we know how to update
             }
         });
 
