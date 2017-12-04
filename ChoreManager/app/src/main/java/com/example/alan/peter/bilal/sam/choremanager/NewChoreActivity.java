@@ -82,8 +82,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         });
         updateDeadLineText();
 
-        allMaterials.add("-Select Materials-");
-        //TO REMOVE
+        //To Remove
         allMaterials.add("Item 1");
         allMaterials.add("Item 2");
         allMaterials.add("Item 3");

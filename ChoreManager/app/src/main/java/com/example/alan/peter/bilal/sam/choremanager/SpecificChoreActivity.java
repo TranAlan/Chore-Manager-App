@@ -6,6 +6,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -45,6 +47,10 @@ public class SpecificChoreActivity extends AppCompatActivity {
         //Displaying Chore Name
         TextView nameView = (TextView) findViewById(R.id.choreTitleTextView);
         nameView.setText(chore.getName());
+
+        //Display Assigned Resources
+        Spinner assignedResourcesSpinner = (Spinner) findViewById(R.id.assignedResourcesSpinner);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,chore.getReqResources);
 
     }
 

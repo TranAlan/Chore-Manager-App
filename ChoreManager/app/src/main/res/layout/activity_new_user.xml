@@ -110,7 +110,7 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="cancelSelectedOnClick"
             android:text="@string/string_cancel"
-            android:textColor="@color/primaryLightColor" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/addUser"
@@ -123,7 +123,7 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="createUserOnClick"
             android:text="@string/string_create_user"
-            android:textColor="@color/primaryLightColor" />
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -20,8 +20,6 @@ public class MaterialsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_materials);
-        // DO NOT REMOVE
-        materialList.add("");
         //TO REMOVE
         materialList.add("Materials 1");
         materialList.add("Materials 2");
