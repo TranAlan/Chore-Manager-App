@@ -66,7 +66,7 @@ public class Groceries extends AppCompatActivity {
                 //Adds item to ChoreManagerProfile based on their input
                 String itemNameString = itemName.getText().toString().trim();
                 MenuActivity.getManager().addPantryItem(itemNameString);
-
+                MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 groceryList.add(itemNameString);
                 groceryList.clear();
                 groceryList.addAll(MenuActivity.getManager().getPantry());

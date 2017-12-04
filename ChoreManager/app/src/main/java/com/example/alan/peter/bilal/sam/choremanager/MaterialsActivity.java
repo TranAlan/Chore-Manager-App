@@ -73,7 +73,7 @@ public class MaterialsActivity extends AppCompatActivity {
                 //Adds item to ChoreManagerProfile based on their input
                 String itemNameString = itemName.getText().toString().trim();
                 MenuActivity.getManager().addMaterial(itemNameString);
-
+                MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 materialList.add(itemNameString);
                 materialList.clear();
                 materialList.addAll(MenuActivity.getManager().getMaterials());

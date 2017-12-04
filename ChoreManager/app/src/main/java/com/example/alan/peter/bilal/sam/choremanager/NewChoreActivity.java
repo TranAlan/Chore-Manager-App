@@ -90,10 +90,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         });
         updateDeadLineText();
 
-        //To Remove
-        allMaterials.add("Item 1");
-        allMaterials.add("Item 2");
-        allMaterials.add("Item 3");
 
         // get all the materials from pantry and material list
         allMaterials.addAll(MenuActivity.getManager().getMaterials());
@@ -206,18 +202,6 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         else{
             newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints, choreType, //If theres a User to assign
                     dateTime.getTime(), resources, MenuActivity.getManager().nextSerialNumber(), assignedUser);
-        }
-
-
-        //Changing the type of Chore
-        if (choreType.equals("Misc")){
-            newChore.setTypeMisc();
-        }
-        else if (choreType.equals("Cooking")){
-            newChore.setTypeCooking();
-        }
-        else{
-            newChore.setTypeCleaning();
         }
 
 
