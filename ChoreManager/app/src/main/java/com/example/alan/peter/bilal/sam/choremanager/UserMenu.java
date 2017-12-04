@@ -12,6 +12,7 @@ import java.util.List;
 
 public class UserMenu extends AppCompatActivity {
 
+    private List<User> users = new ArrayList<>();
     // declaring vars
     private List<String> userName = new ArrayList<>(Arrays.asList("Peter","Bilal","Sam","Alan"));
     private List<String> roleName  = new ArrayList<>(Arrays.asList("Admin", "Child","Child","Child")) ;
@@ -26,7 +27,7 @@ public class UserMenu extends AppCompatActivity {
         setContentView(R.layout.activity_user_menu);
         // link listview to xml
         userListView = (ListView) findViewById(R.id.userListView);
-        CustomUserListView customUserListView = new CustomUserListView(this,userName, roleName, imageIDs, points);
+        CustomUserListView customUserListView = new CustomUserListView(this,users);
         userListView.setAdapter(customUserListView);
     }
     protected void createUserOnClick(View view){
