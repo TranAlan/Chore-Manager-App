@@ -117,11 +117,15 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 if(!(itemNameString.equals(""))){
                     if (shoppingListType.equals("Material")){
                         MenuActivity.getManager().addShoppingMaterial(itemNameString);
+                        allMaterials.add(itemNameString);
                         materialsListView.refreshDrawableState();
+
                     }
                     else{
                         MenuActivity.getManager().addShoppingGrocery(itemNameString);
+                        allGroceries.add(itemNameString);
                     }
+                    MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 }
                 dialog.cancel();
             }
@@ -167,6 +171,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 //delete item from ChoreManagerProfile shopping list and add it to the pantry
                 MenuActivity.getManager().getShoplistGroc().removeAll(checkedGroceries);
                 MenuActivity.getManager().getShopListMat().removeAll(checkedMaterials);
+                MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 //update view
                 //TODO
                 //close dialog
@@ -204,6 +209,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 MenuActivity.getManager().getShopListMat().removeAll(checkedMaterials);
                 MenuActivity.getManager().getMaterials().addAll(checkedMaterials);
                 MenuActivity.getManager().getPantry().addAll(checkedGroceries);
+                MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 //update view
                 //TODO
                 //close dialog

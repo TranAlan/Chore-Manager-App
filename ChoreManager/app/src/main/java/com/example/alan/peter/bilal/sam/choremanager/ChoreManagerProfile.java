@@ -27,7 +27,6 @@ public class ChoreManagerProfile implements Serializable{
     //instance Variables
     private List<String> materials;
     private List<String> pantry;
-    private List<String> tools;
     private List<String> shopListMat;
     private List<String> shoplistGroc;
     private List<User> regUsers;
@@ -45,7 +44,6 @@ public class ChoreManagerProfile implements Serializable{
         this.shoplistGroc = new ArrayList<String>();
         this.shopListMat = new ArrayList<String>();
         this.pantry = new ArrayList<String>();
-        this.tools = new ArrayList<String>();
         this.currentDate = new Date();
         this.unassignedChores = new ArrayList<Chore>();
         this.finishedChores = new ArrayList<Chore>();
@@ -65,9 +63,6 @@ public class ChoreManagerProfile implements Serializable{
     }
     public List<String> getPantry() {
         return pantry;
-    }
-    public List<String> getTools() {
-        return tools;
     }
     public List<User> getRegUsers() {
         return regUsers;
@@ -102,9 +97,6 @@ public class ChoreManagerProfile implements Serializable{
     public void addPantryItem(String item) {
         pantry.add(item);
     }
-    public void addTools(String tool) {
-        tools.add(tool);
-    }
     public void addRegUser(User toAdd) {
         regUsers.add(toAdd);
     }
@@ -122,9 +114,6 @@ public class ChoreManagerProfile implements Serializable{
     }
     public void sortPantry() {
         Collections.sort(pantry);
-    }
-    public void sortTools() {
-        Collections.sort(tools);
     }
 
 
@@ -148,12 +137,11 @@ public class ChoreManagerProfile implements Serializable{
         this.shoplistGroc = new ArrayList<String>();
         this.shopListMat = new ArrayList<String>();
         this.pantry = new ArrayList<String>();
-        this.tools = new ArrayList<String>();
         this.unassignedChores = new ArrayList<Chore>();
         this.finishedChores = new ArrayList<Chore>();
         this.regUsers= new ArrayList<User>();
         this.adminUsers= new ArrayList<AdminUser>();
-        this.serialNumber = 0;
+        this.serialNumber = 1;
     }
 
     public boolean isCurrentUserAdmin(){
