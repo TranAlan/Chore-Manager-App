@@ -217,7 +217,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         //set title and message of dialogue
         alert.setTitle("Purchase items");
-        alert.setMessage("Mark selceted items as purchased?");
+        alert.setMessage("Mark selected items as purchased?");
 
 
         //If user clicks cancel the dialogue closes without moving items to pantry

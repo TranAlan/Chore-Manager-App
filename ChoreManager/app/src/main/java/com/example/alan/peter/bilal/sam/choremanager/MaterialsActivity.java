@@ -30,10 +30,7 @@ public class MaterialsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_materials);
-        //TO REMOVE
-        materialList.add("Materials 1");
-        materialList.add("Materials 2");
-        materialList.add("Materials 3");
+        materialList.addAll(MenuActivity.getManager().getMaterials());
         materialsListView = (ListView) findViewById(R.id.materialsListView);
         ArrayList<StateVO> listVOs = new ArrayList<>();
         for (int i = 0; i < materialList.size(); i++)
@@ -76,6 +73,22 @@ public class MaterialsActivity extends AppCompatActivity {
                 //Adds item to ChoreManagerProfile based on their input
                 String itemNameString = itemName.getText().toString().trim();
                 MenuActivity.getManager().addMaterial(itemNameString);
+
+                materialList.add(itemNameString);
+                materialList.clear();
+                materialList.addAll(MenuActivity.getManager().getMaterials());
+                materialsListView = (ListView) findViewById(R.id.materialsListView);
+                ArrayList<StateVO> listVOs = new ArrayList<>();
+                for (int i = 0; i < materialList.size(); i++)
+                {
+                    StateVO stateVO = new StateVO();
+                    stateVO.setTitle(materialList.get(i));
+                    stateVO.setSelected(false);
+                    listVOs.add(stateVO);
+                }
+
+                CustomMaterialListAdapter myAdapter = new CustomMaterialListAdapter(MaterialsActivity.this, 0, listVOs);
+                materialsListView.setAdapter(myAdapter);
                 dialog.cancel();
             }
         });
