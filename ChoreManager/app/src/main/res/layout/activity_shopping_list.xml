@@ -60,7 +60,7 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="onPurchaseClick"
             android:text="@string/markPurchased"
-            android:textColor="@color/primaryLightColor"
+            android:textColor="@android:color/white"
             android:textSize="14sp" />
 
         <Button
@@ -75,7 +75,7 @@
             android:onClick="onDeletionClick"
             android:text="@string/deleteSelected"
             android:textAlignment="center"
-            android:textColor="@color/primaryLightColor"
+            android:textColor="@android:color/white"
             android:textSize="14sp" />
 
         <Button
@@ -89,7 +89,7 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="addItemOnClick"
             android:text="@string/addItem"
-            android:textColor="@color/primaryLightColor" />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
