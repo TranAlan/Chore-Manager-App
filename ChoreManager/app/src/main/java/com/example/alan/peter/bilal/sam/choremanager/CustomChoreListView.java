@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
 import java.util.List;
 
 /**
@@ -57,8 +58,8 @@ public class CustomChoreListView extends ArrayAdapter<Chore> {
         else{
             choreUsername = MenuActivity.getManager().getUserFromId(choreUserId).getUsername();
         }
-
-        String nameDate = choreUsername+"\n "+choreList.get(position).getDeadline().toString();
+        DateFormat formatDateTime = DateFormat.getDateTimeInstance();
+        String nameDate = choreUsername+"\n "+formatDateTime.format(choreList.get(position).getDeadline());
         viewHolder.subText.setText(nameDate);
 
         String statusString = "Status: "+choreList.get(position).getStatusString();

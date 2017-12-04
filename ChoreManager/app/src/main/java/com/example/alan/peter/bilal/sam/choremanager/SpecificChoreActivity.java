@@ -156,6 +156,9 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
     protected void editChoreOnClick(View view)
     {   if(MenuActivity.getManager().isCurrentUserAdmin()){
         Intent intent = new Intent(this, EditChoreActivity.class);
+        Intent i = getIntent();
+        Chore chore = (Chore) i.getSerializableExtra("ChoreInfo");
+        intent.putExtra("ChoreInfo2", chore);
         startActivity(intent);
         }
         else{

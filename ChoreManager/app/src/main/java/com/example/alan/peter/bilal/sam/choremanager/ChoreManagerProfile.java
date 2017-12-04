@@ -199,6 +199,16 @@ public class ChoreManagerProfile implements Serializable{
         return null;
     }
 
+    public User getRegUserFromId(int userId){
+        for (int i = 0; i < regUsers.size(); i++){
+            if (regUsers.get(i).getUserId() == userId){
+                return regUsers.get(i);
+            }
+        }
+
+       return null;
+    }
+
     public AdminUser getAdminUserFromId(int userId){
         for (int i = 0; i < adminUsers.size(); i++){
             if (adminUsers.get(i).getUserId() == userId){
