@@ -95,6 +95,11 @@ public class User implements Serializable{
         return pointsEarned;
     }
 
+    public int inCompleteChore(Chore chore){
+        chore.setStatusInComplete();
+        assignedChores.remove(chore);
+        return 0;
+    }
     public Chore getChoreFromId(int id){
         Iterator<Chore> i = assignedChores.iterator();
         while(i.hasNext()){
