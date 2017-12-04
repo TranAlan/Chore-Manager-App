@@ -42,7 +42,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
         allGroceries.clear();
         allMaterials.clear();
 
-        
+
         // get all the materials from pantry and material list
          allMaterials.addAll(MenuActivity.getManager().getShopListMat());
          allGroceries.addAll(MenuActivity.getManager().getShoplistGroc());
@@ -126,12 +126,39 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                     }
                     MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 }
+                allGroceries.clear();
+                allMaterials.clear();
+                allMaterials.addAll(MenuActivity.getManager().getShopListMat());
+                allGroceries.addAll(MenuActivity.getManager().getShoplistGroc());
+                groceriesListView = (ListView) findViewById(R.id.groceriesListView);
+                materialsListView = (ListView) findViewById(R.id.materialsListView);
+                ArrayList<StateVO> listVOs = new ArrayList<>();
+                for (int i = 0; i < allGroceries.size(); i++)
+                {
+                    StateVO stateVO = new StateVO();
+                    stateVO.setTitle(allGroceries.get(i));
+                    stateVO.setSelected(false);
+                    listVOs.add(stateVO);
+                }
+
+                CustomMaterialListAdapter myAdapter = new CustomMaterialListAdapter(ShoppingListActivity.this, 0,
+                        listVOs);
+                groceriesListView.setAdapter(myAdapter);
+
+                ArrayList<StateVO> listVOs2 = new ArrayList<>();
+                for (int i = 0; i < allMaterials.size(); i++)
+                {
+                    StateVO stateVO = new StateVO();
+                    stateVO.setTitle(allMaterials.get(i));
+                    stateVO.setSelected(false);
+                    listVOs2.add(stateVO);
+                }
+
+                CustomMaterialListAdapter myAdapter2 = new CustomMaterialListAdapter(ShoppingListActivity.this, 0, listVOs2);
+                materialsListView.setAdapter(myAdapter2);
                 dialog.cancel();
-                finish(); // Can remove later if we know how to update
             }
         });
-
-
     }
 
     @Override
@@ -171,6 +198,11 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 //delete item from ChoreManagerProfile shopping list and add it to the pantry
                 MenuActivity.getManager().getShoplistGroc().removeAll(checkedGroceries);
                 MenuActivity.getManager().getShopListMat().removeAll(checkedMaterials);
+                allGroceries.clear();
+                allMaterials.clear();
+                allMaterials.addAll(MenuActivity.getManager().getShopListMat());
+                allGroceries.addAll(MenuActivity.getManager().getShoplistGroc());
+
                 MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 //update view
                 //TODO
@@ -185,7 +217,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         //set title and message of dialogue
         alert.setTitle("Purchase items");
-        alert.setMessage("Mark selceted items as purchased?");
+        alert.setMessage("Mark selected items as purchased?");
 
 
         //If user clicks cancel the dialogue closes without moving items to pantry
@@ -211,7 +243,10 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 MenuActivity.getManager().getPantry().addAll(checkedGroceries);
                 MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 //update view
-                //TODO
+                allGroceries.clear();
+                allMaterials.clear();
+                allMaterials.addAll(MenuActivity.getManager().getShopListMat());
+                allGroceries.addAll(MenuActivity.getManager().getShoplistGroc());
                 //close dialog
                 dialogInterface.cancel();
             }

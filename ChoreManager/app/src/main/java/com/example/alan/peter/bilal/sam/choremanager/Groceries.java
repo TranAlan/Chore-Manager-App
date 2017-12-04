@@ -22,10 +22,9 @@ public class Groceries extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groceries);
-        //TO REMOVE
-        groceryList.add("Grocery 1");
-        groceryList.add("Grocery 2");
-        groceryList.add("Grocery 3");
+
+        // get all the items from pantry
+        groceryList.addAll(MenuActivity.getManager().getPantry());
         groceryListView = (ListView) findViewById(R.id.groceryListView);
         ArrayList<StateVO> listVOs = new ArrayList<>();
         for (int i = 0; i < groceryList.size(); i++)
@@ -66,7 +65,23 @@ public class Groceries extends AppCompatActivity {
             public void onClick(View view) {
                 //Adds item to ChoreManagerProfile based on their input
                 String itemNameString = itemName.getText().toString().trim();
-                MenuActivity.getManager().addShoppingGrocery(itemNameString);
+                MenuActivity.getManager().addPantryItem(itemNameString);
+
+                groceryList.add(itemNameString);
+                groceryList.clear();
+                groceryList.addAll(MenuActivity.getManager().getPantry());
+                groceryListView = (ListView) findViewById(R.id.groceryListView);
+                ArrayList<StateVO> listVOs = new ArrayList<>();
+                for (int i = 0; i < groceryList.size(); i++)
+                {
+                    StateVO stateVO = new StateVO();
+                    stateVO.setTitle(groceryList.get(i));
+                    stateVO.setSelected(false);
+                    listVOs.add(stateVO);
+                }
+
+                CustomMaterialListAdapter myAdapter = new CustomMaterialListAdapter(Groceries.this, 0, listVOs);
+                groceryListView.setAdapter(myAdapter);
                 dialog.cancel();
             }
         });
