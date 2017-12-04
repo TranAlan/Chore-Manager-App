@@ -13,8 +13,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.example.alan.peter.bilal.sam.choremanager.R.string.menuText;
-
 public class SettingsActivity extends AppCompatActivity implements OnItemSelectedListener {
 
     Spinner spinnerDropdownTheme, spinnerDropDownUsers;

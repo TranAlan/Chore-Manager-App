@@ -9,24 +9,29 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by peter on 2017-11-29.
  */
 
 public class CustomUserListView extends ArrayAdapter<String>
 {
-    private String [] userName;
-    private String [] roleName ;
-    private Integer[] imageIDs;
+    private List<String> userName = new ArrayList<>();
+    private List<String> roleName  = new ArrayList<>() ;
+    private  List<Integer> imageIDs = new ArrayList<>();
+    private  List<Integer> points = new ArrayList<>();
     private Activity context;
 
-    public CustomUserListView(Activity context,String [] userName, String [] roleName,Integer[] imageIDs )
+    public CustomUserListView(Activity context, List<String> userName, List<String> roleName, List<Integer> imageIDs,  List<Integer> points)
     {
         super(context,R.layout.user_layout,userName);
         this.context= context;
         this.userName = userName;
         this.roleName = roleName;
         this.imageIDs = imageIDs;
+        this.points = points;
     }
 
     public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent)
@@ -46,21 +51,22 @@ public class CustomUserListView extends ArrayAdapter<String>
             viewHolder = (ViewHolder) r.getTag();
         }
 
-        viewHolder.profilePicture.setImageResource(imageIDs[position]);
-        viewHolder.userNameTV.setText(userName[position]);
-        viewHolder.roleNameTV.setText(roleName[position]);
+        viewHolder.profilePicture.setImageResource(imageIDs.get(position));
+        viewHolder.userNameTV.setText(userName.get(position));
+        viewHolder.roleNameTV.setText(roleName.get(position));
+        viewHolder.actualPointsTV.setText(points.get(position).toString());
         return r;
     }
 
     class ViewHolder
     {
-        TextView userNameTV;
-        TextView roleNameTV;
+        TextView userNameTV,roleNameTV,actualPointsTV;
         ImageView profilePicture;
         ViewHolder(View v)
         {
             userNameTV = (TextView) v.findViewById(R.id.userNameTV);
             roleNameTV = (TextView) v.findViewById(R.id.roleNameTV);
+            actualPointsTV = (TextView) v.findViewById(R.id.actualPointsTV);
             profilePicture = v.findViewById(R.id.profilePicture);
         }
     }
