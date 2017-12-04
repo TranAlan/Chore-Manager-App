@@ -32,7 +32,20 @@ public class Chore implements Serializable, Comparable<Chore>{
             }
         }
     }
-    public enum Type {CLEANING, COOKING, MISC};
+    public enum CatType {
+        CLEANING,
+        COOKING,
+        MISC;
+        @Override
+        public String toString(){
+            switch(this) {
+                case MISC: return "Misc";
+                case CLEANING: return "Cleaning";
+                case COOKING: return "Cooking";
+                default: throw new IllegalArgumentException();
+            }
+        }
+    };
 
 
     //Instance variables
@@ -41,7 +54,7 @@ public class Chore implements Serializable, Comparable<Chore>{
     private String notes;
     private int rewardPoints;
     private Status completionStatus;
-    private Type choreType;
+    private CatType choreType;
     private Date deadline;
     private int assignedToId;
     private List<String> reqResources;
@@ -70,7 +83,7 @@ public class Chore implements Serializable, Comparable<Chore>{
         this.description=null;
         this.notes=null;
         this.rewardPoints= 0;
-        this.choreType=Type.MISC;
+        this.choreType=CatType.MISC;
         this.assignedToId = 0;
         this.deadline=null;
         this.reqResources=null;
@@ -83,7 +96,7 @@ public class Chore implements Serializable, Comparable<Chore>{
         this.description=desc;
         this.notes=note;
         this.rewardPoints=points;
-        this.choreType=Type.MISC;
+        this.choreType=CatType.MISC;
         this.deadline=due;
         this.reqResources=reqResources;
         this.assignedToId = assignedToId;
@@ -97,7 +110,7 @@ public class Chore implements Serializable, Comparable<Chore>{
         this.description=desc;
         this.notes=note;
         this.rewardPoints=points;
-        this.choreType=Type.MISC;
+        this.choreType=CatType.MISC;
         this.deadline=due;
         this.reqResources=reqResources;
         this.assignedToId = 0;
@@ -112,7 +125,7 @@ public class Chore implements Serializable, Comparable<Chore>{
         return name;
     }
 
-    public Type getType() {
+    public CatType getType() {
         return this.choreType;
     }
 
@@ -181,35 +194,36 @@ public class Chore implements Serializable, Comparable<Chore>{
 
     //TYPE SETTERS
     public void setTypeCleaning(){
-        choreType = Type.CLEANING;
+        choreType = CatType.CLEANING;
     }
     public void setTypeCooking(){
-        choreType = Type.COOKING;
+        choreType = CatType.COOKING;
     }
     public void setTypeMisc(){
-        choreType = Type.MISC;
+        choreType = CatType.MISC;
     }
 
     //Type checker
     public boolean isCleaning(){
-        if(choreType.equals(Type.CLEANING)){
+        if(choreType.equals(CatType.CLEANING)){
             return true;
         }
         return false;
     }
 
     public boolean isCooking(){
-        if(choreType.equals(Type.COOKING)){
+        if(choreType.equals(CatType.COOKING)){
             return true;
         }
         return false;
     }
     public boolean isMisc(){
-        if(choreType.equals(Type.MISC)){
+        if(choreType.equals(CatType.MISC)){
             return true;
         }
         return false;
     }
+
 
 
 }
