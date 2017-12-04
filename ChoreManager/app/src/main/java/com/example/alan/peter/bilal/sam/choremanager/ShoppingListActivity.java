@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShoppingListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -24,6 +26,9 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
     private ListView groceriesListView,materialsListView;
     private ArrayList<String> checkedMaterials = new ArrayList<String>();
     private ArrayList<String> checkedGroceries = new ArrayList<String>();
+    private ArrayList<StateVO> listVOs = new ArrayList<>(); //Groceries
+    private ArrayList<StateVO> listVOs2 = new ArrayList<>(); //Materials
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -52,7 +57,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
 
         groceriesListView = (ListView) findViewById(R.id.groceriesListView);
         materialsListView = (ListView) findViewById(R.id.materialsListView);
-        ArrayList<StateVO> listVOs = new ArrayList<>();
+        listVOs = new ArrayList<>();
         for (int i = 0; i < allGroceries.size(); i++)
         {
             StateVO stateVO = new StateVO();
@@ -65,7 +70,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 listVOs);
         groceriesListView.setAdapter(myAdapter);
 
-        ArrayList<StateVO> listVOs2 = new ArrayList<>();
+        listVOs2 = new ArrayList<>();
         for (int i = 0; i < allMaterials.size(); i++)
         {
             StateVO stateVO = new StateVO();
@@ -76,6 +81,39 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
 
         CustomMaterialListAdapter myAdapter2 = new CustomMaterialListAdapter(ShoppingListActivity.this, 0, listVOs2);
         materialsListView.setAdapter(myAdapter2);
+        /*
+        materialsListView.setClickable(true);
+        groceriesListView.setClickable(true);
+        Log.d("test", "OH");
+        groceriesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("test", "Hello");
+                StateVO item = (StateVO) groceriesListView.getItemAtPosition(position);
+                if(item.isSelected()){
+                    checkedGroceries.add(item.getTitle());
+                    Log.d("test",  "SELECTED");
+                }
+                else{
+                    checkedGroceries.remove(item.getTitle());
+                    Log.d("test",  "UNSELECTED");
+                }
+            }
+        });
+
+        materialsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                StateVO item = (StateVO) materialsListView.getItemAtPosition(position);
+                if(item.isSelected()){
+                    checkedMaterials.add(item.getTitle());
+                }
+                else{
+                    checkedMaterials.remove(item.getTitle());
+                }
+            }
+        });
+        */
     }
 
     //Method to add a new grocery item to the shopping list
@@ -146,6 +184,27 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
 
 
     public void onDeletionClick(View view) {
+
+        //FIND ALL MATERIALS THAT WERE SELECTED
+        List<String> checkedGroceries = new ArrayList<String>();
+        List<String> checkedMaterials = new ArrayList<String>();
+
+        //Checked Groceriess
+        for(int i = 0; i < listVOs.size(); i++){
+            StateVO currentItem = listVOs.get(i);
+            if (   currentItem.isSelected() ){
+                checkedGroceries.add(currentItem.getTitle());
+            }
+        }
+
+        //Checked MATERIALS
+        for(int i = 0; i < listVOs.size(); i++){
+            StateVO currentItem = listVOs.get(i);
+            if (   currentItem.isSelected() ){
+                checkedMaterials.add(currentItem.getTitle());
+            }
+        }
+
         // Build an alert dialog
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         //set title and message of dialogue
@@ -162,6 +221,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
 
         //if user clicks ok the selected items are deleted from the shopping list
         //arrayList in ChoreManagerProfile
+        /*
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -171,13 +231,13 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 //delete item from ChoreManagerProfile shopping list and add it to the pantry
                 MenuActivity.getManager().getShoplistGroc().removeAll(checkedGroceries);
                 MenuActivity.getManager().getShopListMat().removeAll(checkedMaterials);
-                MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 //update view
                 //TODO
                 //close dialog
                 dialogInterface.cancel();
             }
         });
+        */
     }
 
     public void onPurchaseClick(View view) {
