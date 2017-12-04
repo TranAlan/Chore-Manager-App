@@ -47,7 +47,7 @@ public class CustomUserListView extends ArrayAdapter<User>
             viewHolder = (ViewHolder) r.getTag();
         }
 
-        viewHolder.profilePicture.setImageResource(users.get(position).getImageID());
+//        viewHolder.profilePicture.setImageResource(users.get(position).getImageID());
         viewHolder.userNameTV.setText(users.get(position).getUsername());
          if (MenuActivity.getManager().isUserAdmin(users.get(position).getUserId()))
          {
@@ -71,7 +71,7 @@ public class CustomUserListView extends ArrayAdapter<User>
             userNameTV = (TextView) v.findViewById(R.id.userNameTV);
             roleNameTV = (TextView) v.findViewById(R.id.roleNameTV);
             actualPointsTV = (TextView) v.findViewById(R.id.actualPointsTV);
-            profilePicture = v.findViewById(R.id.profilePicture);
+//            profilePicture = v.findViewById(R.id.profilePicture);
         }
     }
 }
