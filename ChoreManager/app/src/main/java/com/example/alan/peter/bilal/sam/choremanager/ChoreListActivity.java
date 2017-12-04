@@ -40,7 +40,6 @@ public class ChoreListActivity extends AppCompatActivity {
         for(int i  = 0; i < MenuActivity.getManager().getAdminUsers().size(); i++){
             listOfChores.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores());
         }
-
         listOfChores.addAll(MenuActivity.getManager().getUnassignedChores());
         listOfChores.addAll(MenuActivity.getManager().getFinishedChores());
         customChoreListView = new CustomChoreListView(this,listOfChores);
@@ -92,7 +91,17 @@ public class ChoreListActivity extends AppCompatActivity {
                             //admin user add all chores
                             for(int i =0; i<MenuActivity.getManager().getAdminUsers().size(); i++){
                                 ArrayList<Chore> toAdd = (ArrayList)MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores();
-                                allChores.addAll(toAdd);                            }
+                                allChores.addAll(toAdd);
+                            }
+
+                            //sort and add finished / unassigned
+                            ArrayList<Chore> fin =  (ArrayList)MenuActivity.getManager().getFinishedChores();
+                            ArrayList<Chore> un =  (ArrayList)MenuActivity.getManager().getFinishedChores();
+                            MenuActivity.getManager().sortAZ(fin);
+                            MenuActivity.getManager().sortAZ(un);
+                            allChores.addAll(fin);
+                            allChores.addAll(un);
+                            
                                 //sort and repopulate view with all chores
                                 MenuActivity.getManager().sortAZ(allChores);
                                 customChoreListView.addAll(allChores);
@@ -112,7 +121,17 @@ public class ChoreListActivity extends AppCompatActivity {
                             //admin user add all chores
                             for(int i =0; i<MenuActivity.getManager().getAdminUsers().size(); i++){
                                 ArrayList<Chore> toAdd = (ArrayList)MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores();
-                                allChores.addAll(toAdd);                            }
+                                allChores.addAll(toAdd);
+                                }
+
+                            //sort and add finished / unassigned
+                            ArrayList<Chore> fin =  (ArrayList)MenuActivity.getManager().getFinishedChores();
+                            ArrayList<Chore> un =  (ArrayList)MenuActivity.getManager().getFinishedChores();
+                            MenuActivity.getManager().sortDeadline(fin);
+                            MenuActivity.getManager().sortDeadline(un);
+                            allChores.addAll(fin);
+                            allChores.addAll(un);
+
                             //sort and repopulate view with all chores
                             MenuActivity.getManager().sortDeadline(allChores);
                             customChoreListView.addAll(allChores);
@@ -134,6 +153,15 @@ public class ChoreListActivity extends AppCompatActivity {
                                 ArrayList<Chore> toAdd = (ArrayList)MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores();
                                 allChores.addAll(toAdd);
                             }
+
+                            //sort and add finished / unassigned
+                            ArrayList<Chore> fin =  (ArrayList)MenuActivity.getManager().getFinishedChores();
+                            ArrayList<Chore> un =  (ArrayList)MenuActivity.getManager().getFinishedChores();
+                            MenuActivity.getManager().sortZA(fin);
+                            MenuActivity.getManager().sortZA(un);
+                            allChores.addAll(fin);
+                            allChores.addAll(un);
+
                             //sort and repopulate view with all chores
                             MenuActivity.getManager().sortZA(allChores);
                             customChoreListView.addAll(allChores);
