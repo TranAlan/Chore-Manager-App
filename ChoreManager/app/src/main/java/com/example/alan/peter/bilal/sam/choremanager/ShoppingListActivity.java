@@ -118,6 +118,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                     if (shoppingListType.equals("Material")){
                         MenuActivity.getManager().addShoppingMaterial(itemNameString);
                         allMaterials.add(itemNameString);
+                        materialsListView.refreshDrawableState();
 
                     }
                     else{
