@@ -80,6 +80,7 @@ public class SpecificChoreActivity extends AppCompatActivity {
                             .setAction("Action",null).show();
                     setStatusText(chore.getStatusString());
                 }
+                MenuActivity.getManager().addFinishedChores(chore);
 
             }
 
