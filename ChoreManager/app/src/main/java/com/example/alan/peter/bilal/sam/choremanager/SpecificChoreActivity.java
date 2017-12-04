@@ -3,18 +3,20 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
-
 import java.util.Calendar;
-
-public class SpecificChoreActivity extends AppCompatActivity {
+public class SpecificChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,7 @@ public class SpecificChoreActivity extends AppCompatActivity {
                             .setAction("Action",null).show();
                     setStatusText(chore.getStatusString());
                 }
+                MenuActivity.getManager().addFinishedChores(chore);
 
             }
 
@@ -90,6 +93,47 @@ public class SpecificChoreActivity extends AppCompatActivity {
 
         MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
     }
+    public void onClickReAssign(View view) {
+        // Build an alert dialog
+        AlertDialog.Builder reAssignAlert = new AlertDialog.Builder(this);
+        // create a new view that inflates the custom shoppping list layout
+        View newView = getLayoutInflater().inflate(R.layout.assign_user_layout, null);
+        // declaring objects in the layout and linking them to the xml
+        final Spinner userSpinner = (Spinner) newView.findViewById(R.id.userSpinner);
+        final ArrayAdapter spinnerAdapter;
+        final Button cancelButton = (Button) newView.findViewById(R.id.cancelButton);
+        final Button confirmButton = (Button) newView.findViewById(R.id.confirmButton);
+        // create adapter from string array in string.xml file for RepeatableSpinner
+        spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.shoppingItemTypeSpinner_Options, android.R.layout.simple_spinner_item);
+        // set spinner to the one the the xml
+        userSpinner.setAdapter(spinnerAdapter);
+        // listen if the spinner is clicked
+        userSpinner.setOnItemSelectedListener(SpecificChoreActivity.this);
+        reAssignAlert.setView(newView);
+        //create Alert Dialog
+        final AlertDialog dialog = reAssignAlert.create();
+        dialog.show();
+        // Listen and close the dialog if user clicks Cancel
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        // Listen and close the dialog and submits content if user clicks Confirm
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Adds item to ChoreManagerProfile based on their input
+                String whichUser = (String) userSpinner.getSelectedItem();
+
+                dialog.cancel();
+                finish(); // Can remove later if we know how to update
+            }
+        });
+
+
+    }
 
     public void setStatusText(String status){
 
@@ -98,5 +142,15 @@ public class SpecificChoreActivity extends AppCompatActivity {
         statusView.setText(statusText);
 
         return;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

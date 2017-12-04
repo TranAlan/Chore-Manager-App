@@ -82,13 +82,14 @@ public class User implements Serializable{
 
     public int completeChore(Chore chore){
         chore.setStatusComplete();
-        //assignedChores.remove(chore);
+        assignedChores.remove(chore);
         totalPoints =  totalPoints + chore.getRewardPoints();
         return chore.getRewardPoints();
     }
 
     public int completeChoreLate(Chore chore){
         chore.setStatusLate();
+        assignedChores.remove(chore);
         int pointsEarned = chore.getRewardPoints()/2;
         totalPoints =  totalPoints + pointsEarned;
         return pointsEarned;
@@ -105,11 +106,6 @@ public class User implements Serializable{
         return null;
     }
 
-
-
-
 }
-
-    //sort by categorie?
 
 

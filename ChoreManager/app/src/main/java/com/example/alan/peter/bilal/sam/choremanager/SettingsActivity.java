@@ -42,4 +42,13 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
     {
 
     }
+
+    protected void resetDataOnClick(View view) {
+        MenuActivity.getManager().resetAppData();
+        int userId = MenuActivity.getManager().getSerialNumber();
+        AdminUser peter = new AdminUser("Peter Lam", "qwerty", userId);
+        MenuActivity.getManager().setCurrentUserId(userId);
+        MenuActivity.getManager().addAdminUser(peter);
+        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
+    }
 }

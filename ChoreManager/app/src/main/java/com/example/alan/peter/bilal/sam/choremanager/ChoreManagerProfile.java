@@ -137,6 +137,7 @@ public class ChoreManagerProfile implements Serializable{
         this.finishedChores = new ArrayList<Chore>();
         this.regUsers= new ArrayList<User>();
         this.adminUsers= new ArrayList<AdminUser>();
+        this.currentUserId = 0;
         this.serialNumber = 1;
     }
 
