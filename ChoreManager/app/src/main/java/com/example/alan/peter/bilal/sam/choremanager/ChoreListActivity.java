@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -65,7 +66,7 @@ public class ChoreListActivity extends AppCompatActivity {
         filterButton = (ImageButton) findViewById(R.id.filterButton);
         sortButton = (ImageButton) findViewById(R.id.sortButton);
         // set and create OnClickListener for Fitler and Sort buttons
-        /*
+
         sortButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -78,36 +79,66 @@ public class ChoreListActivity extends AppCompatActivity {
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         if(item.getTitle().equals("A-Z")){
-                            //sort all users chores alphabetically
+                            //remove current chore view
                             listOfChores.removeAll(listOfChores);
-                            for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
-                                MenuActivity.getManager().getUsers().get(i).sortAZ();
-                                //update view
-                                customChoreListView.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
 
+                            //populate a list with chores from all users
+                            List<Chore> allChores = new ArrayList<>();
 
+                            //regular user add all chores
+                            for(int i =0; i<MenuActivity.getManager().getRegUsers().size(); i++) {
+                                allChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
+                            }
+                            //admin user add all chores
+                            for(int i =0; i<MenuActivity.getManager().getAdminUsers().size(); i++){
+                                ArrayList<Chore> toAdd = (ArrayList)MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores();
+                                allChores.addAll(toAdd);                            }
+                                //sort and repopulate view with all chores
+                                MenuActivity.getManager().sortAZ(allChores);
+                                customChoreListView.addAll(allChores);
                             }
 
-                        }
                         else if(item.getTitle().equals("Deadline")){
-                            //sort all users chores by deadline
+                            //remove current chore view
                             listOfChores.removeAll(listOfChores);
-                            for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
-                                MenuActivity.getManager().getUsers().get(i).sortDeadline();
-                                //update view
-                                customChoreListView.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+
+                            //populate a list with chores from all users
+                            List<Chore> allChores = new ArrayList<>();
+
+                            //regular user add all chores
+                            for(int i =0; i<MenuActivity.getManager().getRegUsers().size(); i++) {
+                                allChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
                             }
+                            //admin user add all chores
+                            for(int i =0; i<MenuActivity.getManager().getAdminUsers().size(); i++){
+                                ArrayList<Chore> toAdd = (ArrayList)MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores();
+                                allChores.addAll(toAdd);                            }
+                            //sort and repopulate view with all chores
+                            MenuActivity.getManager().sortDeadline(allChores);
+                            customChoreListView.addAll(allChores);
                         }
 
                         else if (item.getTitle().equals("Z-A")){
-                            //sort all users chores Z-A
+                            //remove current chore view
                             listOfChores.removeAll(listOfChores);
-                            for(int i =0; i<MenuActivity.getManager().getUsers().size(); i++){
-                                MenuActivity.getManager().getUsers().get(i).sortZA();
-                                //update view
-                                customChoreListView.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+
+                            //populate a list with chores from all users
+                            List<Chore> allChores = new ArrayList<>();
+
+                            //regular user add all chores
+                            for(int i =0; i<MenuActivity.getManager().getRegUsers().size(); i++) {
+                                allChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
                             }
+                            //admin user add all chores
+                            for(int i =0; i<MenuActivity.getManager().getAdminUsers().size(); i++){
+                                ArrayList<Chore> toAdd = (ArrayList)MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores();
+                                allChores.addAll(toAdd);
+                            }
+                            //sort and repopulate view with all chores
+                            MenuActivity.getManager().sortZA(allChores);
+                            customChoreListView.addAll(allChores);
                         }
+
                         Toast.makeText(ChoreListActivity.this,"Sorted by: " + item.getTitle(),Toast.LENGTH_SHORT).show();
                         return true;
                     }
@@ -141,7 +172,6 @@ public class ChoreListActivity extends AppCompatActivity {
 
                             for(int i  = 0; i < MenuActivity.getManager().getFinishedChores().size(); i++)
                             {
-                                //TODO FIX
                                 listOfChores.add(MenuActivity.getManager().getFinishedChores().get(i));
                             }
                         }
@@ -155,9 +185,9 @@ public class ChoreListActivity extends AppCompatActivity {
                         else if(item.getTitle().equals("All Chores")){
                             //populate list with all assigned chores
                             listOfChores.removeAll(listOfChores);
-                            for(int i  = 0; i < MenuActivity.getManager().getUsers().size(); i++)
+                            for(int i  = 0; i < MenuActivity.getManager().getRegUsers().size(); i++)
                             {
-                                listOfChores.addAll(MenuActivity.getManager().getUsers().get(i).getAssignedChores());
+                                listOfChores.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
 
                             }
                         }
@@ -170,7 +200,7 @@ public class ChoreListActivity extends AppCompatActivity {
 
 
         }); //closing the setOnClickListener method
-        */
+
     }
     protected void createNewChoreButton(View view){
         Intent intent = new Intent(this, NewChoreActivity.class);

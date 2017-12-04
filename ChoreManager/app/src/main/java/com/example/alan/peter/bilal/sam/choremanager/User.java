@@ -82,9 +82,17 @@ public class User implements Serializable{
 
     public int completeChore(Chore chore){
         chore.setStatusComplete();
-        //assignedChores.remove(chore);
+        assignedChores.remove(chore);
         totalPoints =  totalPoints + chore.getRewardPoints();
         return chore.getRewardPoints();
+    }
+
+    public int completeChoreLate(Chore chore){
+        chore.setStatusLate();
+        assignedChores.remove(chore);
+        int pointsEarned = chore.getRewardPoints()/2;
+        totalPoints =  totalPoints + pointsEarned;
+        return pointsEarned;
     }
 
     public Chore getChoreFromId(int id){
@@ -98,44 +106,7 @@ public class User implements Serializable{
         return null;
     }
 
-    //sorts the Users assignedChores
-    public void sortAZ(){
-        Collections.sort(assignedChores, new Comparator<Chore>() {
-            @Override
-            public int compare(Chore chore, Chore t1) {
-                return chore.getName().compareTo(t1.getName());
-            }
-        });
-    }
 
-
-    //sorts the lit of assigned chores starting by those starting last alphabetically
-    public void sortZA(){
-        Collections.sort(assignedChores, new Comparator<Chore>() {
-            @Override
-            public int compare(Chore chore, Chore t1) {
-                int toReturn;
-                if (chore.getName().compareTo(t1.getName()) > 0) {
-                    toReturn = -1;
-                } else if (chore.getName().compareTo(t1.getName()) < 0) {
-                    toReturn = 1;
-                } else {
-                    toReturn = 0;
-                }
-                return toReturn;
-            }
-        });
-    }
-
-    //sorts chore from those due first, to those with the furthest away deadline
-    public void sortDeadline(){
-        Collections.sort(assignedChores, new Comparator<Chore>() {
-            @Override
-            public int compare(Chore chore, Chore t1) {
-                return chore.getDeadline().compareTo(t1.getDeadline());
-            }
-        });
-    }
 
 
 }

@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
-
+import java.util.Calendar;
 public class SpecificChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
@@ -72,9 +72,18 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
                 Snackbar.make(view, "Already Completed", Snackbar.LENGTH_LONG).setAction("Action",null).show();
             }
             else{
-                Snackbar.make(view, "You have received "+ currentUser.completeChore(chore) +" points!", Snackbar.LENGTH_LONG)
-                        .setAction("Action",null).show();
-                setStatusText(chore.getStatusString());
+                if(Calendar.getInstance().getTime().compareTo(chore.getDeadline()) <= 0){
+                    Snackbar.make(view, "You have received "+ currentUser.completeChore(chore) +" points!", Snackbar.LENGTH_LONG)
+                            .setAction("Action",null).show();
+                    setStatusText(chore.getStatusString());
+                }
+                else{
+                    Snackbar.make(view, "You completed it late, you get half points: "+ currentUser.completeChoreLate(chore), Snackbar.LENGTH_LONG)
+                            .setAction("Action",null).show();
+                    setStatusText(chore.getStatusString());
+                }
+                MenuActivity.getManager().addFinishedChores(chore);
+
             }
 
         }

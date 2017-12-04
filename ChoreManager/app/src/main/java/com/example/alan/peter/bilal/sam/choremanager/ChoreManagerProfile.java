@@ -14,7 +14,9 @@ import android.support.annotation.NonNull;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Collections;
 import java.util.Iterator;
@@ -33,7 +35,6 @@ public class ChoreManagerProfile implements Serializable{
     private List<AdminUser> adminUsers;
     private List<Chore> unassignedChores;
     private List<Chore> finishedChores;
-    private Date currentDate;
     private int currentUserId;
     private int serialNumber;
 
@@ -44,7 +45,6 @@ public class ChoreManagerProfile implements Serializable{
         this.shoplistGroc = new ArrayList<String>();
         this.shopListMat = new ArrayList<String>();
         this.pantry = new ArrayList<String>();
-        this.currentDate = new Date();
         this.unassignedChores = new ArrayList<Chore>();
         this.finishedChores = new ArrayList<Chore>();
         this.regUsers = new ArrayList<User>();
@@ -78,11 +78,7 @@ public class ChoreManagerProfile implements Serializable{
         return currentUserId;
     }
     public int getSerialNumber(){return serialNumber;}
-    public Date getDate() {
-        //update date to be current
-        this.currentDate = new Date();
-        return this.currentDate;
-    }
+
     //SETTERS
     public void setCurrentUserId(int currentUserId){
         this.currentUserId = currentUserId;
@@ -244,5 +240,44 @@ public class ChoreManagerProfile implements Serializable{
             adminUsers.get(i).getChoreFromId(id);
         }
         return null;
+    }
+
+    //sorts the Users assignedChores
+    public void sortAZ(List<Chore> chores){
+        Collections.sort(chores, new Comparator<Chore>() {
+            @Override
+            public int compare(Chore chore, Chore t1) {
+                return chore.getName().compareTo(t1.getName());
+            }
+        });
+    }
+
+
+    //sorts the lit of assigned chores starting by those starting last alphabetically
+    public void sortZA(List<Chore> chores){
+        Collections.sort(chores, new Comparator<Chore>() {
+            @Override
+            public int compare(Chore chore, Chore t1) {
+                int toReturn;
+                if (chore.getName().compareTo(t1.getName()) > 0) {
+                    toReturn = -1;
+                } else if (chore.getName().compareTo(t1.getName()) < 0) {
+                    toReturn = 1;
+                } else {
+                    toReturn = 0;
+                }
+                return toReturn;
+            }
+        });
+    }
+
+    //sorts chore from those due first, to those with the furthest away deadline
+    public void sortDeadline(List<Chore> chores){
+        Collections.sort(chores, new Comparator<Chore>() {
+            @Override
+            public int compare(Chore chore, Chore t1) {
+                return chore.getDeadline().compareTo(t1.getDeadline());
+            }
+        });
     }
 }
