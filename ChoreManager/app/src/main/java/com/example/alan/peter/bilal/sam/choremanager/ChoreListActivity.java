@@ -105,7 +105,7 @@ public class ChoreListActivity extends AppCompatActivity {
 
                             //sort and add finished / unassigned
                             ArrayList<Chore> fin =  (ArrayList)MenuActivity.getManager().getFinishedChores();
-                            ArrayList<Chore> un =  (ArrayList)MenuActivity.getManager().getFinishedChores();
+                            ArrayList<Chore> un =  (ArrayList)MenuActivity.getManager().getUnassignedChores();
                             MenuActivity.getManager().sortAZ(fin);
                             MenuActivity.getManager().sortAZ(un);
                             allChores.addAll(fin);
@@ -135,7 +135,7 @@ public class ChoreListActivity extends AppCompatActivity {
 
                             //sort and add finished / unassigned
                             ArrayList<Chore> fin =  (ArrayList)MenuActivity.getManager().getFinishedChores();
-                            ArrayList<Chore> un =  (ArrayList)MenuActivity.getManager().getFinishedChores();
+                            ArrayList<Chore> un =  (ArrayList)MenuActivity.getManager().getUnassignedChores();
                             MenuActivity.getManager().sortDeadline(fin);
                             MenuActivity.getManager().sortDeadline(un);
                             allChores.addAll(fin);
@@ -165,7 +165,7 @@ public class ChoreListActivity extends AppCompatActivity {
 
                             //sort and add finished / unassigned
                             ArrayList<Chore> fin =  (ArrayList)MenuActivity.getManager().getFinishedChores();
-                            ArrayList<Chore> un =  (ArrayList)MenuActivity.getManager().getFinishedChores();
+                            ArrayList<Chore> un =  (ArrayList)MenuActivity.getManager().getUnassignedChores();
                             MenuActivity.getManager().sortZA(fin);
                             MenuActivity.getManager().sortZA(un);
                             allChores.addAll(fin);
