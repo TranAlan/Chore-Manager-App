@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
 import android.view.View;
@@ -122,6 +123,7 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     public void createUserOnClick(View view)
     {
         fbRef.addListenerForSingleValueEvent(listener);
+        startActivity(new Intent(NewUserActivity.this, UserMenu.class));
         finish();
 
     }
@@ -150,7 +152,6 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
                     fbRef.child(email).child("ChoreManager").setValue(manager);
                 }
             }
-
            finish();
         }
 

@@ -62,7 +62,7 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@color/colorPrimaryDark"
-            android:onClick="createUserOnClick"
+            android:onClick="onCreateUser"
             android:text="@string/createNewUser"
             android:textColor="@android:color/white" />
 

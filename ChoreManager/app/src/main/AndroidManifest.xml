@@ -32,9 +32,11 @@
 
         <activity
             android:name=".MenuActivity"
+            android:finishOnTaskLaunch="true"
             android:label="Menu" />
         <activity
             android:name=".UserMenu"
+            android:finishOnTaskLaunch="true"
             android:label="Users"
             android:parentActivityName=".MenuActivity" />
         <activity
@@ -48,8 +50,8 @@
         <activity
             android:name=".ShoppingListActivity"
             android:label="Shopping List"
-            android:parentActivityName=".MenuActivity"
-            android:noHistory="true"/>
+            android:noHistory="true"
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="Settings"
@@ -79,7 +81,9 @@
             android:name=".EditChoreActivity"
             android:label="Edit Chore"
             android:parentActivityName=".SpecificChoreActivity" />
-        <activity android:name=".SpecialAdminUserCreationActivity"></activity>
+        <activity android:name=".SpecialAdminUserCreationActivity" />
+        <activity android:name=".SwitchUserActivity" android:label="Switch User"
+            android:parentActivityName=".UserMenu"></activity>
     </application>
 
 </manifest>
