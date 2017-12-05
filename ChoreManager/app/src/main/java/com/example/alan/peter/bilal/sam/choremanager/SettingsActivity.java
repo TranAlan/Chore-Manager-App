@@ -33,16 +33,6 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        themeAdapter = ArrayAdapter.createFromResource(this, R.array.themeSpinner_Options, android.R.layout.simple_spinner_item);
-        spinnerDropdownTheme = (Spinner) findViewById(R.id.themeSpinner);
-        spinnerDropdownTheme.setAdapter(themeAdapter);
-        spinnerDropdownTheme.setOnItemSelectedListener(SettingsActivity.this);
-
-        userAdapter = ArrayAdapter.createFromResource(this, R.array.userSpinner_Options, android.R.layout.simple_spinner_item);
-        spinnerDropDownUsers = (Spinner) findViewById(R.id.userSpinner);
-        spinnerDropDownUsers.setAdapter(userAdapter);
-        spinnerDropDownUsers.setOnItemSelectedListener(SettingsActivity.this);
-
     }
 
     @Override
