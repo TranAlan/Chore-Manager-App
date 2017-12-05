@@ -15,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SettingsActivity extends AppCompatActivity implements OnItemSelectedListener {
 
     Spinner spinnerDropdownTheme, spinnerDropDownUsers;
@@ -96,6 +98,7 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
         //Clear Stack and Make MenuScreen and Go back to Chore List
         Intent mainIntent = new Intent(SettingsActivity.this, AppLoginActivity.class);
         mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        FirebaseAuth.getInstance().signOut();
         startActivity(mainIntent);
         finish();
     }
