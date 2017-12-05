@@ -42,7 +42,6 @@ public class MenuActivity extends AppCompatActivity {
 
     protected void choreListImageOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
-        //fbRef.child(email).child("ChoreManager").setValue(manager);
         startActivity(intent);
 
     }

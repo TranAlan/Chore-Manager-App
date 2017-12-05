@@ -70,6 +70,7 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
                 @Override
                 public void onClick(View view) {
                     MenuActivity.getManager().resetAppData();
+                    MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                     Toast.makeText(getApplicationContext(), "Data has been reset.",Toast.LENGTH_SHORT).show();
                     dialog.cancel();
                 }
