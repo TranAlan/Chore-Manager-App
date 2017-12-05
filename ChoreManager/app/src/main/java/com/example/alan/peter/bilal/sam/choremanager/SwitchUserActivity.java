@@ -51,7 +51,7 @@ public class SwitchUserActivity extends AppCompatActivity {
         Button deleteUser = (Button) findViewById(R.id.deleteUser);
 
         //If Current User is Admin, show button
-        if(MenuActivity.getManager().isCurrentUserAdmin()){
+        if(MenuActivity.getManager().isCurrentUserAdmin()&&!(manager.getCurrentUser().getUsername().equals(specificUser.getUsername()))){
             deleteUser.setVisibility(View.VISIBLE);
         }
         else{
@@ -83,7 +83,6 @@ public class SwitchUserActivity extends AppCompatActivity {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Delete The User from database. MenuActivity.getManager().... the user ur looking to delete is calls "specificUser"
                 fbRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -92,8 +91,7 @@ public class SwitchUserActivity extends AppCompatActivity {
                             for(int i = 0;i<admins;i++){
                                 DatabaseReference tempRef = adminIterator.next().getRef();
                                 DataSnapshot tempShot = dataSnapshot.child(email).child("ChoreManager").child("adminUsers").child(tempRef.getKey());
-                                //TODO: provide better solution for user deleting self than ---------------------------vvv this
-                                if(tempShot.getValue(AdminUser.class).getUsername().equals(specificUser.getUsername())&&!(manager.getCurrentUser().getUsername().equals(specificUser.getUsername()))){
+                                if(tempShot.getValue(AdminUser.class).getUsername().equals(specificUser.getUsername())){
                                     tempRef.removeValue();
                                     manager.getAdminUsers().remove(i);
                                     found = true;
