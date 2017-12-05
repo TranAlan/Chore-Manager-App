@@ -101,6 +101,7 @@ public class SwitchUserActivity extends AppCompatActivity {
                                 if(tempShot.getValue(AdminUser.class).getUsername().equals(specificUser.getUsername())){
                                     tempRef.removeValue();
                                     manager.getAdminUsers().remove(i);
+                                    fbRef.child(email).child("ChoreManager").setValue(manager);
                                     found = true;
                                     break;
                                 }
@@ -114,6 +115,7 @@ public class SwitchUserActivity extends AppCompatActivity {
                                 if(tempShot.getValue(User.class).getUsername().equals(specificUser.getUsername())){
                                     tempRef.removeValue();
                                     manager.getRegUsers().remove((j-(int)admins));
+                                    fbRef.child(email).child("ChoreManager").setValue(manager);
                                     break;
                                 }
                             }

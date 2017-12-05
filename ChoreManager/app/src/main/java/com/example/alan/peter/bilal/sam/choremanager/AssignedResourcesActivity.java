@@ -11,6 +11,8 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +61,11 @@ public class AssignedResourcesActivity extends AppCompatActivity {
                 allUsedMaterials.addAll(holding.get(i).getReqResources());
             }
         }
+        //remove dupes
+        Set<String> dupRemove = new HashSet<>();
+        dupRemove.addAll(allUsedMaterials);
+        allUsedMaterials.clear();;
+        allUsedMaterials.addAll(dupRemove);
 
         //populating list containing all materials used by misc chores
         for(int i=0; i<holding.size(); i++){
@@ -66,6 +73,11 @@ public class AssignedResourcesActivity extends AppCompatActivity {
                 miscMaterials.addAll(holding.get(i).getReqResources());
             }
         }
+        //remove dupes
+        Set<String> dupRemove2 = new HashSet<>();
+        dupRemove2.addAll(miscMaterials);
+        miscMaterials.clear();;
+        miscMaterials.addAll(dupRemove2);
 
         //populating list containing all materials used by cleaning chores
         for(int i=0; i<holding.size(); i++){
@@ -74,12 +86,24 @@ public class AssignedResourcesActivity extends AppCompatActivity {
             }
         }
 
+        //remove dupes
+        Set<String> dupRemove3 = new HashSet<>();
+        dupRemove3.addAll(cleaningMaterials);
+        cleaningMaterials.clear();;
+        cleaningMaterials.addAll(dupRemove3);
+
         //populating list containing all materials used by cooking chores
         for(int i=0; i<holding.size(); i++){
             if(holding.get(i).hasMaterials() && holding.get(i).isCooking()){
                 cookingMaterials.addAll(holding.get(i).getReqResources());
             }
         }
+
+        //remove dupes
+        Set<String> dupRemove4 = new HashSet<>();
+        dupRemove4.addAll(cookingMaterials);
+        cookingMaterials.clear();;
+        cookingMaterials.addAll(dupRemove4);
 
 
         //  ---- List View Code ---
