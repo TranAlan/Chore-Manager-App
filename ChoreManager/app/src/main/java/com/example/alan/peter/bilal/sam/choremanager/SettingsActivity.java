@@ -77,7 +77,7 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
 
                     //Clear Stack and Make MenuScreen and Go back to Chore List
                     Intent mainIntent = new Intent(SettingsActivity.this, AppLoginActivity.class);
-                    mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(mainIntent);
                     finish();
                 }
