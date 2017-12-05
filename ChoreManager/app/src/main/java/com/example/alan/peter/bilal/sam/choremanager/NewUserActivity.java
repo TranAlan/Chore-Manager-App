@@ -144,7 +144,6 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
                     manager.setCurrentUserId(newUser.getUserId());
                     manager.addRegUser(newUser);
                     fbRef.child(email).child("ChoreManager").setValue(manager);
-
                 } else {
                     newAdminUser = new AdminUser(name, pass, MenuActivity.getManager().nextSerialNumber(), resID);
                     manager.setCurrentUserId(newAdminUser.getUserId());

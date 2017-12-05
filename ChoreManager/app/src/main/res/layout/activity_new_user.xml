@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight=".5"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textVisiblePassword" />
             </LinearLayout>
 
             <LinearLayout

@@ -29,14 +29,14 @@
             android:text="@string/stirng_current_user" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/currentUserTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/string_Peter"
-            android:layout_marginLeft="5dp" />
+            android:text="@string/string_Peter" />
     </LinearLayout>
 
     <LinearLayout

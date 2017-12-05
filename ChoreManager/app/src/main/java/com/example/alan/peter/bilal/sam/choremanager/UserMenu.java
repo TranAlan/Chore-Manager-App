@@ -7,11 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.Iterator;
 
@@ -26,6 +29,7 @@ public class UserMenu extends AppCompatActivity {
     private ListView userListView;
     private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
     private String email = AppLoginActivity.emailEscaped;
+    private TextView currentUserTV;
     long admins = 0;
     long regs = 0;
     private CustomUserListView customUserListView;
@@ -39,18 +43,23 @@ public class UserMenu extends AppCompatActivity {
         fbRef.addListenerForSingleValueEvent(countListener);
         fbRef.addListenerForSingleValueEvent(usersListener);
 
-        // link listview to xml
+        // link listview to xml and title for current user
+        currentUserTV = (TextView) findViewById(R.id.currentUserTV);
+
         userListView = (ListView) findViewById(R.id.userListView);
+        currentUserTV.setText(MenuActivity.getManager().getCurrentUser().getUsername());
+
         customUserListView = new CustomUserListView(this,users);
         userListView.setAdapter(customUserListView);
         // calling custom chore view to display all the choews
         userListView.setClickable(true);
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { //If click on a chore, starts Specific Chore Activity
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { //If click on a user, SwitchUser Activity Runs
                 User specificUser = customUserListView.getItem(position);
                 Intent intent = new Intent(getBaseContext(), SwitchUserActivity.class);
                 intent = intent.putExtra("UserSwitch", specificUser ); // passes chore to next activity
+                finish();
                 startActivity(intent);
 
             }

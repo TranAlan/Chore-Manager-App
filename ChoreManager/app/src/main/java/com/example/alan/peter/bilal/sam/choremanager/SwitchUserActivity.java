@@ -80,16 +80,26 @@ public class SwitchUserActivity extends AppCompatActivity {
     }
     public void cancelSelectedOnClick(View view)
     {
+        startActivity(new Intent(SwitchUserActivity.this, UserMenu.class));
         finish();
     }
     // if user presses create new User, create this
     public void switchUserOnClick(View view)
     {
-        if (passwordText.getText() == specificUser)
+        TextView updatedPasswordText= (TextView) findViewById(R.id.passwordText);
+        if (updatedPasswordText.getText().toString().equals(specificUser.getPassword().toString()))
         {
-            //TODO @Bilal Set Current user To this
+            MenuActivity.getManager().setCurrentUserId(specificUser.getUserId());
+            Snackbar.make(view, "Account Switched to: "+ specificUser.getUsername(), Snackbar.LENGTH_LONG)
+                    .setAction("Action",null).show();
+            startActivity(new Intent(SwitchUserActivity.this, UserMenu.class));
+            finish();
         }
-        finish();
+        else{
+            Snackbar.make(view, "Password Invalid!", Snackbar.LENGTH_LONG)
+                    .setAction("Action",null).show();
+        }
+
 
     }
 }
