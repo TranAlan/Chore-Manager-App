@@ -13,11 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AssignedResourcesActivity extends AppCompatActivity {
+
     private ImageButton filterButton;
     ArrayList<String> allUsedMaterials = new ArrayList<>();
     List<String> cookingMaterials = new ArrayList<>();
     List<String> cleaningMaterials = new ArrayList<>();
     List<String> miscMaterials = new ArrayList<>();
+    private ListView listview;
 
 
 
@@ -36,27 +38,21 @@ public class AssignedResourcesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assigned_resources);
 
-        /*
-        //generate lists used in the filters
+        listview = (ListView) findViewById(R.id.allResourcesList);
 
-        //Unassigned
+
+        //generate all used materials list
         for(int i=0;  i<MenuActivity.getManager().getUnassignedChores().size(); i++){
-            allUsedMaterials.addAll(MenuActivity.getManager().getUnassignedChores().get(i).getReqResources());
-            if(MenuActivity.getManager().getUnassignedChores().get(i).isCleaning()){
-                cleaningMaterials.addAll(MenuActivity.getManager().getUnassignedChores().get(i).getReqResources());
+            if(MenuActivity.getManager().getUnassignedChores().get(i).getReqResources().size()>0) {
+                allUsedMaterials.addAll(MenuActivity.getManager().getUnassignedChores().get(i).getReqResources());
             }
-            if(MenuActivity.getManager().getUnassignedChores().get(i).isMisc()){
-                miscMaterials.addAll(MenuActivity.getManager().getUnassignedChores().get(i).getReqResources());
-            }
-            if(MenuActivity.getManager().getUnassignedChores().get(i).isCooking()){
-                cookingMaterials.addAll(MenuActivity.getManager().getUnassignedChores().get(i).getReqResources());
-            }
-        }
 
         //Finished
-        for(int i=0;  i<MenuActivity.getManager().getFinishedChores().size(); i++){
-            allUsedMaterials.addAll(MenuActivity.getManager().getFinishedChores().get(i).getReqResources());
-            if(MenuActivity.getManager().getFinishedChores().get(i).isCleaning()){
+        /*for(int i=0;  i<MenuActivity.getManager().getFinishedChores().size(); i++){
+            if(MenuActivity.getManager().getFinishedChores().get(i).getReqResources().size()>0) {
+                allUsedMaterials.addAll(MenuActivity.getManager().getFinishedChores().get(i).getReqResources());
+            }
+           /* if(MenuActivity.getManager().getFinishedChores().get(i).isCleaning()){
                 cleaningMaterials.addAll(MenuActivity.getManager().getFinishedChores().get(i).getReqResources());
             }
             if(MenuActivity.getManager().getFinishedChores().get(i).isMisc()){
@@ -70,8 +66,10 @@ public class AssignedResourcesActivity extends AppCompatActivity {
         //Assigned to reg users
         for(int i=0; i<MenuActivity.getManager().getRegUsers().size(); i++){
             for(int j=0; j<MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().size(); j++){
-                allUsedMaterials.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).getReqResources());
-                if(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).isCleaning()){
+                if(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).getReqResources().size()>0) {
+                    allUsedMaterials.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).getReqResources());
+                }
+               /* if(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).isCleaning()){
                     cleaningMaterials.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).getReqResources());
                 }
                 if(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).isCooking()){
@@ -81,14 +79,15 @@ public class AssignedResourcesActivity extends AppCompatActivity {
                     miscMaterials.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).getReqResources());
                 }
             }
-
         }
 
         //assigned to admin users
         for(int i=0; i<MenuActivity.getManager().getAdminUsers().size(); i++){
             for(int j=0; j<MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().size(); j++){
-                allUsedMaterials.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources());
-                if(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).isCleaning()){
+                if(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources().size()>0) {
+                    allUsedMaterials.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources());
+                }
+               /* if(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).isCleaning()){
                     cleaningMaterials.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources());
                 }
                 if(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).isCooking()){
@@ -97,16 +96,15 @@ public class AssignedResourcesActivity extends AppCompatActivity {
                 if(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).isMisc()){
                     miscMaterials.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources());
                 }
-            }
-        }*/
-        allUsedMaterials.add("test");
+            }*/
+        }
+
 
 
         //  ---- List View Code ---
-        ListView resourceListView = (ListView) findViewById(R.id.allResourcesList);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.activity_assigned_resources, allUsedMaterials );
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_gallery_item, allUsedMaterials );
         // link buttons to the ones in XML
-        resourceListView.setAdapter(adapter);
+        listview.setAdapter(adapter);
 
 
 

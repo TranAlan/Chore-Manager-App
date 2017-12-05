@@ -274,6 +274,9 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
             @Override
             public void onClick(View view) {
                 //TODO: Implement
+                //LOGIC: Get Selected Items from the selected arrays holding the strings of selecetd boxes
+                // 2) delete these from the respective ChoreManagerLocation
+
 
                 //clearing data incase
                 allGroceries.clear();
