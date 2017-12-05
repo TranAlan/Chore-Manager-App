@@ -148,6 +148,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
                 finish();
                 counter ++;
                 startActivity(new Intent(AppLoginActivity.this, MenuActivity.class));
+                startActivity(new Intent(AppLoginActivity.this, MenuActivity.class));
             }
         }
 
