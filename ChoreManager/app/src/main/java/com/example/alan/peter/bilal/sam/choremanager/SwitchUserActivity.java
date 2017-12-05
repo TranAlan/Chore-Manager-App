@@ -139,6 +139,7 @@ public class SwitchUserActivity extends AppCompatActivity {
         if (updatedPasswordText.getText().toString().equals(specificUser.getPassword().toString()))
         {
             MenuActivity.getManager().setCurrentUserId(specificUser.getUserId());
+            fbRef.child(email).child("ChoreManager").setValue(manager);
             Snackbar.make(view, "Account Switched to: "+ specificUser.getUsername(), Snackbar.LENGTH_LONG)
                     .setAction("Action",null).show();
             startActivity(new Intent(SwitchUserActivity.this, UserMenu.class));
