@@ -64,10 +64,26 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
 
         //Display Assigned Resources
         Spinner assignedResourcesSpinner = (Spinner) findViewById(R.id.assignedResourcesSpinner);
-            if(chore.getReqResources() != null){
-            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,chore.getReqResources());
-            assignedResourcesSpinner.setAdapter(spinnerArrayAdapter);
-            }
+        if(chore.getReqResources() != null){
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,chore.getReqResources());
+        assignedResourcesSpinner.setAdapter(spinnerArrayAdapter);
+        }
+
+        // Parental Control Text and Button
+        TextView parentCommandText2 = (TextView) findViewById(R.id.parentCommandText2);
+        Button editChoreButton = (Button) findViewById(R.id.editChoreButton);
+
+        if(MenuActivity.getManager().isCurrentUserAdmin()){
+            parentCommandText2.setVisibility(View.VISIBLE);
+            editChoreButton.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            parentCommandText2.setVisibility(View.GONE);
+            editChoreButton.setVisibility(View.GONE);
+        }
+
+
 
 
     }
@@ -154,18 +170,13 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
     }
 
     protected void editChoreOnClick(View view)
-    {   if(MenuActivity.getManager().isCurrentUserAdmin()){
+    {
         Intent intent = new Intent(this, EditChoreActivity.class);
         Intent i = getIntent();
         Chore chore = (Chore) i.getSerializableExtra("ChoreInfo");
         intent.putExtra("ChoreInfo2", chore);
         startActivity(intent);
         finish();
-        }
-        else{
-            Snackbar.make(view, "You must be signed in as a Admin", Snackbar.LENGTH_LONG)
-                    .setAction("Action",null).show();
-        }
 
     }
 }

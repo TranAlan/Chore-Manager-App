@@ -146,7 +146,7 @@
                     android:background="@color/colorPrimaryDark"
                     android:onClick="onClickIncompleteChore"
                     android:text="@string/mark_incomplete_button"
-                    android:textColor="@color/primaryLightColor" />
+                    android:textColor="@android:color/white" />
 
                 <Button
                     android:id="@+id/completeButton"

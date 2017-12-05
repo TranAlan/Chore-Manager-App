@@ -96,6 +96,25 @@
                         android:inputType="textPassword" />
                 </LinearLayout>
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+
+                <Button
+                    android:id="@+id/deleteUser"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@color/fui_bgEmail"
+                    android:onClick="deleteUserOnClick"
+                    android:text="delete user "
+                    android:textColor="@android:color/white" />
+
             </LinearLayout>
         </ScrollView>
 
