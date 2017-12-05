@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,11 +23,12 @@ public class UserMenu extends AppCompatActivity {
 
     // declaring vars
     private List<User> users = new ArrayList<>();
-    ListView userListView;
+    private ListView userListView;
     private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
     private String email = AppLoginActivity.emailEscaped;
     long admins = 0;
     long regs = 0;
+    private CustomUserListView customUserListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,23 @@ public class UserMenu extends AppCompatActivity {
         //Listeners for reading users from database
         fbRef.addListenerForSingleValueEvent(countListener);
         fbRef.addListenerForSingleValueEvent(usersListener);
+
+        // link listview to xml
+        userListView = (ListView) findViewById(R.id.userListView);
+        customUserListView = new CustomUserListView(this,users);
+        userListView.setAdapter(customUserListView);
+        // calling custom chore view to display all the choews
+        userListView.setClickable(true);
+        userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { //If click on a chore, starts Specific Chore Activity
+                User specificUser = customUserListView.getItem(position);
+                Intent intent = new Intent(getBaseContext(), SwitchUserActivity.class);
+                intent = intent.putExtra("UserSwitch", specificUser ); // passes chore to next activity
+                startActivity(intent);
+
+            }
+        });
     }
 
     protected void onCreateUser(View view){
@@ -43,14 +62,6 @@ public class UserMenu extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
-    public void func(List<User> users) {
-        // link listview to xml
-        userListView = (ListView) findViewById(R.id.userListView);
-        CustomUserListView customUserListView = new CustomUserListView(this,users);
-        userListView.setAdapter(customUserListView);
-    }
-
     private ValueEventListener countListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -78,7 +89,6 @@ public class UserMenu extends AppCompatActivity {
                     users.add(regIterator.next().getValue(User.class));
                 }
             }
-            func(users);
         }
 
         @Override

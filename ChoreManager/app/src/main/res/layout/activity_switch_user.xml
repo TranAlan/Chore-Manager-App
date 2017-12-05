@@ -63,13 +63,14 @@
                         android:text="@string/string_account_name"
                         android:textSize="25sp" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/usernameText"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight=".5"
-                        android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:foregroundGravity="center"
+                        android:gravity="center" />
+
                 </LinearLayout>
 
                 <LinearLayout

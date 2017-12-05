@@ -115,9 +115,9 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
         avatarImage.setImageResource(resID);
     }
     // if user presses cancel close this activity
-    public void cancelSelectedOnClick(View view)
-    {
-        finish();
+    public void cancelSelectedOnClick(View view){
+    startActivity(new Intent(NewUserActivity.this, UserMenu.class));
+    finish();
     }
     // if user presses create new User, create this
     public void createUserOnClick(View view)
