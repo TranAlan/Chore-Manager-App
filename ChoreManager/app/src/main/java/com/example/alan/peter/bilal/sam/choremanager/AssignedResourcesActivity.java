@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class AssignedResourcesActivity extends AppCompatActivity {
     private ImageButton filterButton;
-    List<String> allUsedMaterials = new ArrayList<>();
+    ArrayList<String> allUsedMaterials = new ArrayList<>();
     List<String> cookingMaterials = new ArrayList<>();
     List<String> cleaningMaterials = new ArrayList<>();
     List<String> miscMaterials = new ArrayList<>();
@@ -35,6 +36,7 @@ public class AssignedResourcesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assigned_resources);
 
+        /*
         //generate lists used in the filters
 
         //Unassigned
@@ -96,12 +98,18 @@ public class AssignedResourcesActivity extends AppCompatActivity {
                     miscMaterials.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources());
                 }
             }
-        }
+        }*/
+        allUsedMaterials.add("test");
 
 
         //  ---- List View Code ---
-        ListView choreListView = (ListView) findViewById(R.id.allResourcesList);
+        ListView resourceListView = (ListView) findViewById(R.id.allResourcesList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.activity_assigned_resources, allUsedMaterials );
         // link buttons to the ones in XML
+        resourceListView.setAdapter(adapter);
+
+
+
         filterButton = (ImageButton) findViewById(R.id.filterButton);
         // Onclick action for Filter Button
         filterButton.setOnClickListener(new View.OnClickListener()
