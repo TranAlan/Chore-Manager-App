@@ -136,7 +136,6 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
         fbRef.addListenerForSingleValueEvent(listener);
         finish();
         startActivity(new Intent(NewUserActivity.this, UserMenu.class));
-        startActivity(new Intent(NewUserActivity.this, UserMenu.class));
 
 
     }
