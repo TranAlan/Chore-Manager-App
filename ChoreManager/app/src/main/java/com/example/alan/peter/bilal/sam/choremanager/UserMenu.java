@@ -5,26 +5,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import java.util.Iterator;
-
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class UserMenu extends AppCompatActivity {
@@ -92,7 +84,7 @@ public class UserMenu extends AppCompatActivity {
                 User specificUser = customUserListView.getItem(position);
                 Intent intent = new Intent(getBaseContext(), SwitchUserActivity.class);
                 intent = intent.putExtra("UserSwitch", specificUser ); // passes chore to next activity
-                finish();
+                //finish();
                 startActivity(intent);
 
             }
@@ -113,6 +105,7 @@ public class UserMenu extends AppCompatActivity {
         public void onDataChange(DataSnapshot dataSnapshot) {
             admins = dataSnapshot.child(email).child("ChoreManager").child("adminUsers").getChildrenCount();
             regs = dataSnapshot.child(email).child("ChoreManager").child("regUsers").getChildrenCount();
+            ((CustomUserListView) userListView.getAdapter()).notifyDataSetChanged();
         }
 
         @Override

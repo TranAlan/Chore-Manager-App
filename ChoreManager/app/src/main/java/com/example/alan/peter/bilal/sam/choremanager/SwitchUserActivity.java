@@ -27,7 +27,14 @@ public class SwitchUserActivity extends AppCompatActivity {
     long admins = UserMenu.admins;
     long regs = UserMenu.regs;
     private boolean found = false;
-
+//    @Override
+//    public void onBackPressed()
+//    {
+//        super.onBackPressed();
+//        startActivity(new Intent(SwitchUserActivity.this, UserMenu.class));
+//        finish();
+//
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +128,12 @@ public class SwitchUserActivity extends AppCompatActivity {
                 fbRef.child(email).child("ChoreManager").child(specificUser.getUsername()).removeValue();
                 Toast.makeText(getApplicationContext(), "User Has Been Deleted!",Toast.LENGTH_SHORT).show();
                 dialog.cancel();
+                //Clear the activity stack and remake MainMenu
+                Intent mainIntent = new Intent(SwitchUserActivity.this, MenuActivity.class);
+                mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(mainIntent);
+                //Send user to User Menu
+                startActivity(new Intent(SwitchUserActivity.this, UserMenu.class));
                 finish();
             }
         });
@@ -129,6 +142,7 @@ public class SwitchUserActivity extends AppCompatActivity {
 
     public void cancelSelectedOnClick(View view)
     {
+        //Send user to User Menu
         startActivity(new Intent(SwitchUserActivity.this, UserMenu.class));
         finish();
     }
