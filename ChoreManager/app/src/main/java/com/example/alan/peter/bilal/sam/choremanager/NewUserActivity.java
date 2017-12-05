@@ -30,7 +30,14 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     private AdminUser newAdminUser;
     private ChoreManagerProfile manager = MenuActivity.getManager();
     private int resID = 2131230876;
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(NewUserActivity.this, UserMenu.class));
+        finish();
 
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if( item.getItemId() == android.R.id.home ){
@@ -42,6 +49,7 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_new_user);
 
         // create adapter from string array in string.xml file for totalPointsSpinner
@@ -123,8 +131,10 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     public void createUserOnClick(View view)
     {
         fbRef.addListenerForSingleValueEvent(listener);
-        startActivity(new Intent(NewUserActivity.this, UserMenu.class));
         finish();
+        startActivity(new Intent(NewUserActivity.this, UserMenu.class));
+        startActivity(new Intent(NewUserActivity.this, UserMenu.class));
+
 
     }
 

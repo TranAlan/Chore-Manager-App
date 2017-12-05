@@ -2,12 +2,17 @@ package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,7 +40,18 @@ public class UserMenu extends AppCompatActivity {
     private CustomUserListView customUserListView;
 
     @Override
+    public void onResume()
+    {  // After a pause OR at startup
+        super.onResume();
+        userListView = (ListView) findViewById(R.id.userListView);
+        currentUserTV.setText(MenuActivity.getManager().getCurrentUser().getUsername());
+        customUserListView = new CustomUserListView(this,users);
+        userListView.setAdapter(customUserListView);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_menu);
 
@@ -51,6 +67,23 @@ public class UserMenu extends AppCompatActivity {
 
         customUserListView = new CustomUserListView(this,users);
         userListView.setAdapter(customUserListView);
+        //creating ability to swipe and refresh
+        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                (new Handler()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                        // refresh the adapter that shows all users
+                        ((CustomUserListView) userListView.getAdapter()).notifyDataSetChanged();
+
+                    }
+                },3000);
+            }
+        });
         // calling custom chore view to display all the choews
         userListView.setClickable(true);
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -64,11 +97,15 @@ public class UserMenu extends AppCompatActivity {
 
             }
         });
+
+        ((CustomUserListView) userListView.getAdapter()).notifyDataSetChanged();
+
     }
 
     protected void onCreateUser(View view){
         Intent intent = new Intent(this, NewUserActivity.class);
         startActivity(intent);
+        ((CustomUserListView) userListView.getAdapter()).notifyDataSetChanged();
         finish();
     }
     private ValueEventListener countListener = new ValueEventListener() {
@@ -105,4 +142,6 @@ public class UserMenu extends AppCompatActivity {
 
         }
     };
+
+
 }
