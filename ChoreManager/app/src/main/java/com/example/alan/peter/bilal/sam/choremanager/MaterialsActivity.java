@@ -51,6 +51,7 @@ public class MaterialsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         MenuActivity.getManager().getMaterials().remove(item);
+                        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                         materialList.clear();
                         materialList.addAll(MenuActivity.getManager().getMaterials());
                         //creates a list of the groceries on the shopping list

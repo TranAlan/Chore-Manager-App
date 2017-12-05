@@ -88,6 +88,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                         groceriesListView.setAdapter(myNewAdapter);
                         ArrayAdapter<String> myNewAdapter2 = new ArrayAdapter<String>(ShoppingListActivity.this, android.R.layout.simple_list_item_1, listVOs2);
                         materialsListView.setAdapter(myNewAdapter2);
+                        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                     }
                 });
                 builder.setNeutralButton("Delete Item", new DialogInterface.OnClickListener() {
@@ -112,6 +113,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                         groceriesListView.setAdapter(myNewAdapter);
                         ArrayAdapter<String> myNewAdapter2 = new ArrayAdapter<String>(ShoppingListActivity.this, android.R.layout.simple_list_item_1, listVOs2);
                         materialsListView.setAdapter(myNewAdapter2);
+                        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -162,6 +164,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                         groceriesListView.setAdapter(myNewAdapter);
                         ArrayAdapter<String> myNewAdapter2 = new ArrayAdapter<String>(ShoppingListActivity.this, android.R.layout.simple_list_item_1, listVOs2);
                         materialsListView.setAdapter(myNewAdapter2);
+                        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                     }
                 });
                 builder.setNeutralButton("Delete Item", new DialogInterface.OnClickListener() {
@@ -186,6 +189,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                         groceriesListView.setAdapter(myNewAdapter);
                         ArrayAdapter<String> myNewAdapter2 = new ArrayAdapter<String>(ShoppingListActivity.this, android.R.layout.simple_list_item_1, listVOs2);
                         materialsListView.setAdapter(myNewAdapter2);
+                        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
