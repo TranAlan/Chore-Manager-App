@@ -1,10 +1,13 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -32,6 +35,35 @@ public class MaterialsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_materials);
         materialList.addAll(MenuActivity.getManager().getMaterials());
         materialsListView = (ListView) findViewById(R.id.materialsListView);
+
+        materialsListView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final String item = (String) materialsListView.getItemAtPosition(position);
+
+                //create an alert
+                AlertDialog.Builder builder = new AlertDialog.Builder(MaterialsActivity.this);
+                builder.setTitle("Item Selected");
+                builder.setMessage("What would you like to do with this selected item?");
+
+                //buttons
+                builder.setNeutralButton("Delete Item", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //IMPLEMENT
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                //create and show
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
         ArrayList<StateVO> listVOs = new ArrayList<>();
         for (int i = 0; i < materialList.size(); i++)
         {

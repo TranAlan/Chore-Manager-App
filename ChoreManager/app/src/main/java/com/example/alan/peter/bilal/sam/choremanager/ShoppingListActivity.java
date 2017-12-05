@@ -93,7 +93,25 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 builder.setNeutralButton("Delete Item", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //IMPLEMENT
+                        MenuActivity.getManager().getShoplistGroc().remove(item);
+                        allGroceries.clear();
+                        allGroceries.addAll(MenuActivity.getManager().getShoplistGroc());
+                        //creates a list of the groceries on the shopping list
+                        ArrayList<String> listVOs = new ArrayList<>();
+                        for (int j = 0; j < allGroceries.size(); j++)
+                        {
+                            listVOs.add(allGroceries.get(j));
+                        }
+                        //creates a list of the materials on the shopping list
+                        ArrayList<String> listVOs2 = new ArrayList<>();
+                        for (int j = 0; j < allMaterials.size(); j++)
+                        {
+                            listVOs2.add(allMaterials.get(j));
+                        }
+                        ArrayAdapter<String> myNewAdapter = new ArrayAdapter<String>(ShoppingListActivity.this, android.R.layout.simple_list_item_1, listVOs);
+                        groceriesListView.setAdapter(myNewAdapter);
+                        ArrayAdapter<String> myNewAdapter2 = new ArrayAdapter<String>(ShoppingListActivity.this, android.R.layout.simple_list_item_1, listVOs2);
+                        materialsListView.setAdapter(myNewAdapter2);
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -149,7 +167,25 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                 builder.setNeutralButton("Delete Item", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //IMPLEMENT
+                        MenuActivity.getManager().getShopListMat().remove(item);
+                        allMaterials.clear();
+                        allMaterials.addAll(MenuActivity.getManager().getShopListMat());
+                        //creates a list of the groceries on the shopping list
+                        ArrayList<String> listVOs = new ArrayList<>();
+                        for (int j = 0; j < allGroceries.size(); j++)
+                        {
+                            listVOs.add(allGroceries.get(j));
+                        }
+                        //creates a list of the materials on the shopping list
+                        ArrayList<String> listVOs2 = new ArrayList<>();
+                        for (int j = 0; j < allMaterials.size(); j++)
+                        {
+                            listVOs2.add(allMaterials.get(j));
+                        }
+                        ArrayAdapter<String> myNewAdapter = new ArrayAdapter<String>(ShoppingListActivity.this, android.R.layout.simple_list_item_1, listVOs);
+                        groceriesListView.setAdapter(myNewAdapter);
+                        ArrayAdapter<String> myNewAdapter2 = new ArrayAdapter<String>(ShoppingListActivity.this, android.R.layout.simple_list_item_1, listVOs2);
+                        materialsListView.setAdapter(myNewAdapter2);
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
