@@ -41,6 +41,7 @@ public class UserMenu extends AppCompatActivity {
     protected void onCreateUser(View view){
         Intent intent = new Intent(this, NewUserActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void func(List<User> users) {
