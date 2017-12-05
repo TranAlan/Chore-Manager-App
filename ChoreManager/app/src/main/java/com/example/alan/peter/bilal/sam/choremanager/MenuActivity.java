@@ -24,6 +24,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.menu_layout);
     }
 
+    // all the button listeners that direct to appropriate activities
     protected void userImageOnClick(View view){
         Intent intent = new Intent(this, UserMenu.class);
         startActivity(intent);

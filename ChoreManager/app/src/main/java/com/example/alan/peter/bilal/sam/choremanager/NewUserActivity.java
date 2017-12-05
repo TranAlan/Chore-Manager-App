@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 public class NewUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+
+    // Creating variables to link to XML and other private variables
     private Spinner accountTypeSpinner;
     private ArrayAdapter accountTypeAdapter;
     private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
@@ -30,6 +32,7 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     private AdminUser newAdminUser;
     private ChoreManagerProfile manager = MenuActivity.getManager();
     private int resID = 2131230876;
+    // Overides and If back button is pressed, it will send user to the menu screen
     @Override
     public void onBackPressed()
     {
@@ -53,13 +56,13 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_new_user);
 
         // create adapter from string array in string.xml file for totalPointsSpinner
-
         accountTypeAdapter = ArrayAdapter.createFromResource(this,R.array.accountTypeSpinner_Options,android.R.layout.simple_spinner_item);
         // set spinner to the one the the xml
         accountTypeSpinner =(Spinner) findViewById(R.id.accountTypeSpinner);
         accountTypeSpinner.setAdapter(accountTypeAdapter);
         accountTypeSpinner.setOnItemSelectedListener(NewUserActivity.this);
     }
+    // Creates new activrty that allows user to pick a profile picture
     public void setAvatarButtonOnClick(View view)
     {
         //Application Context and Activity

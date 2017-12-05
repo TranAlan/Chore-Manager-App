@@ -95,7 +95,9 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         allMaterials.addAll(MenuActivity.getManager().getMaterials());
         allMaterials.addAll(MenuActivity.getManager().getPantry());
 
+        // Link spinner to the one in xml
         Spinner spinner = (Spinner) findViewById(R.id.requiredMaterialsSpinner);
+        // create a list of STATE VO's
         ArrayList<StateVO> listVOs = new ArrayList<>();
         for (int i = 0; i < allMaterials.size(); i++)
         {
@@ -104,10 +106,10 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
             stateVO.setSelected(false);
             listVOs.add(stateVO);
         }
-
+        // Call special adapter that has a checkbox and a textview
         CustomMaterialListAdapter myAdapter = new CustomMaterialListAdapter(NewChoreActivity.this, 0,
                 listVOs);
-
+        // Set adapter
         spinner.setAdapter(myAdapter);
     }
     public void updateDate()
@@ -121,7 +123,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         new TimePickerDialog(this,t,dateTime.get(Calendar.HOUR_OF_DAY),dateTime.get(Calendar.MINUTE),true).show();
 
     }
-
+    // Diualogs for Deadline picker, sets all the values depending on user input
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthofYear, int dayOfMonth) {
@@ -159,6 +161,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     protected void saveExitOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
 
+        // Linking objects to XML
         EditText grabChoreName = (EditText) findViewById(R.id.choreNameInput); //Chore Name
         Spinner grabAssignedTo = findViewById(R.id.assignToSpiner); //Who the Chore is assigned to
         Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore

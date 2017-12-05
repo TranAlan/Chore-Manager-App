@@ -48,7 +48,7 @@ public class SpecialAdminUserCreationActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-
+        // Adapted from SEG Lab
         if (resultCode == RESULT_CANCELED) return;
         //Getting the Avatar Image we show to our users
         ImageView avatarImage = (ImageView) findViewById(R.id.ic_avatar_11);

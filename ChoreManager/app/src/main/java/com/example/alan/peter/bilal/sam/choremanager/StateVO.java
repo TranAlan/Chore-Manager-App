@@ -3,7 +3,7 @@ package com.example.alan.peter.bilal.sam.choremanager;
 /**
  * Created by peter on 2017-11-30.
  */
-
+// Adaated from https://stackoverflow.com/questions/19027843/android-get-text-of-all-checked-checkboxes-in-listview
 public class StateVO
 {
     private String title;
