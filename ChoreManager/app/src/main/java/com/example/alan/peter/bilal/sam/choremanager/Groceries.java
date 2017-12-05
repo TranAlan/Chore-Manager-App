@@ -1,9 +1,11 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +37,50 @@ public class Groceries extends AppCompatActivity {
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Groceries.this, android.R.layout.simple_list_item_1, listVOs);
         groceryListView.setAdapter(myAdapter);
+        groceryListView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                final String item = (String) groceryListView.getItemAtPosition(position);
+
+                //create an alert
+                AlertDialog.Builder builder = new AlertDialog.Builder(Groceries.this);
+                builder.setTitle("Item Selected");
+                builder.setMessage("What would you like to do with this selected item?");
+
+                //buttons
+
+                builder.setNegativeButton("Delete Item", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int j) {
+                        MenuActivity.getManager().getPantry().remove(item);
+                        groceryList.clear();
+                        groceryList.addAll(MenuActivity.getManager().getPantry());
+                        groceryListView = (ListView) findViewById(R.id.groceryListView);
+
+                        ArrayList<String> listVOs = new ArrayList<>();
+                        for (int i = 0; i < groceryList.size(); i++)
+                        {
+                            listVOs.add(groceryList.get(i));
+                        }
+
+                        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Groceries.this, android.R.layout.simple_list_item_1, listVOs);
+                        groceryListView.setAdapter(myAdapter);
+                        dialogInterface.cancel();
+                    }
+                });
+
+                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+                //show dialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
     }
 
     //Method to add a new material item to the shopping list
