@@ -175,80 +175,152 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
     public void onDeletionClick(View view) {
         // Build an alert dialog
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        //set title and message of dialogue
-        alert.setTitle("Delete items");
-        alert.setMessage("Are you sure you want to delete the selected items? This cannot be undone.");
+        // create a new view that inflates the custom shoppping list layout
+        View ts = getLayoutInflater().inflate(R.layout.delete_shopinglist_item_layout, null);
+        // declaring objects in the layout and linking them to the xml
+        final Button cancelButton = (Button) ts.findViewById(R.id.cancelButton);
+        final Button confirmButton = (Button) ts.findViewById(R.id.confirmButton);
 
-        //If user clicks cancel the dialogue closes without deleting
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alert.setView(ts);
+        //create Alert Dialog
+        final AlertDialog dialog = alert.create();
+        dialog.show();
+        // Listen and close the dialog if user clicks Cancel
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
+            public void onClick(View view) {
+                dialog.cancel();
             }
         });
-
-        //if user clicks ok the selected items are deleted from the shopping list
-        //arrayList in ChoreManagerProfile
-        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        // Listen and close the dialog and submits content if user clicks Confirm
+        confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //get selected items from checked
-                ArrayList<String> toPurchaseGroceries = checkedGroceries;
-                ArrayList<String> toPurchaseMaterials = checkedMaterials;
-                //delete item from ChoreManagerProfile shopping list and add it to the pantry
-                MenuActivity.getManager().getShoplistGroc().removeAll(checkedGroceries);
-                MenuActivity.getManager().getShopListMat().removeAll(checkedMaterials);
+            public void onClick(View view) {
+                //TODO: Implement
+
+                //clearing data incase
                 allGroceries.clear();
                 allMaterials.clear();
+
+
+                // get all the materials from pantry and material list
                 allMaterials.addAll(MenuActivity.getManager().getShopListMat());
                 allGroceries.addAll(MenuActivity.getManager().getShoplistGroc());
+                // link listview to xml
+
+
+
+                groceriesListView = (ListView) findViewById(R.id.groceriesListView);
+                materialsListView = (ListView) findViewById(R.id.materialsListView);
+                ArrayList<StateVO> listVOs = new ArrayList<>();
+                for (int i = 0; i < allGroceries.size(); i++)
+                {
+                    StateVO stateVO = new StateVO();
+                    stateVO.setTitle(allGroceries.get(i));
+                    stateVO.setSelected(false);
+                    listVOs.add(stateVO);
+                }
+
+                CustomMaterialListAdapter myAdapter = new CustomMaterialListAdapter(ShoppingListActivity.this, 0,
+                        listVOs);
+                groceriesListView.setAdapter(myAdapter);
+
+                ArrayList<StateVO> listVOs2 = new ArrayList<>();
+                for (int i = 0; i < allMaterials.size(); i++)
+                {
+                    StateVO stateVO = new StateVO();
+                    stateVO.setTitle(allMaterials.get(i));
+                    stateVO.setSelected(false);
+                    listVOs2.add(stateVO);
+                }
+
+                CustomMaterialListAdapter myAdapter2 = new CustomMaterialListAdapter(ShoppingListActivity.this, 0, listVOs2);
+                materialsListView.setAdapter(myAdapter2);
+
 
                 MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 //update view
-                //TODO
-                //close dialog
-                dialogInterface.cancel();
+                groceriesListView.invalidate();
+                materialsListView.invalidate();
+                // close dialog
+                dialog.cancel();
             }
         });
     }
 
+
     public void onPurchaseClick(View view) {
         // Build an alert dialog
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        //set title and message of dialogue
-        alert.setTitle("Purchase items");
-        alert.setMessage("Mark selected items as purchased?");
+        // create a new view that inflates the custom shoppping list layout
+        View ts = getLayoutInflater().inflate(R.layout.delete_shopinglist_item_layout, null);
+        // declaring objects in the layout and linking them to the xml
+        final Button cancelButton = (Button) ts.findViewById(R.id.cancelButton);
+        final Button confirmButton = (Button) ts.findViewById(R.id.confirmButton);
 
-
-        //If user clicks cancel the dialogue closes without moving items to pantry
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alert.setView(ts);
+        //create Alert Dialog
+        final AlertDialog dialog = alert.create();
+        dialog.show();
+        // Listen and close the dialog if user clicks Cancel
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
+            public void onClick(View view) {
+                dialog.cancel();
             }
         });
-
-        //if user clicks ok the selected items are deleted from the shopping list
-        //arrayList in ChoreManagerProfile
-        alert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+        // Listen and close the dialog and submits content if user clicks Confirm
+        confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //get selected items from checked
-                ArrayList<String> toPurchaseGroceries = checkedGroceries;
-                ArrayList<String> toPurchaseMaterials = checkedMaterials;
-                //delete item from ChoreManagerProfile shopping list and add it to the pantry
-                MenuActivity.getManager().getShoplistGroc().removeAll(checkedGroceries);
-                MenuActivity.getManager().getShopListMat().removeAll(checkedMaterials);
-                MenuActivity.getManager().getMaterials().addAll(checkedMaterials);
-                MenuActivity.getManager().getPantry().addAll(checkedGroceries);
-                MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
-                //update view
+            public void onClick(View view) {
+                //TODO: Implement
+
+                //clearing data incase
                 allGroceries.clear();
                 allMaterials.clear();
+
+
+                // get all the materials from pantry and material list
                 allMaterials.addAll(MenuActivity.getManager().getShopListMat());
                 allGroceries.addAll(MenuActivity.getManager().getShoplistGroc());
-                //close dialog
-                dialogInterface.cancel();
+                // link listview to xml
+
+
+
+                groceriesListView = (ListView) findViewById(R.id.groceriesListView);
+                materialsListView = (ListView) findViewById(R.id.materialsListView);
+                ArrayList<StateVO> listVOs = new ArrayList<>();
+                for (int i = 0; i < allGroceries.size(); i++)
+                {
+                    StateVO stateVO = new StateVO();
+                    stateVO.setTitle(allGroceries.get(i));
+                    stateVO.setSelected(false);
+                    listVOs.add(stateVO);
+                }
+
+                CustomMaterialListAdapter myAdapter = new CustomMaterialListAdapter(ShoppingListActivity.this, 0,
+                        listVOs);
+                groceriesListView.setAdapter(myAdapter);
+
+                ArrayList<StateVO> listVOs2 = new ArrayList<>();
+                for (int i = 0; i < allMaterials.size(); i++)
+                {
+                    StateVO stateVO = new StateVO();
+                    stateVO.setTitle(allMaterials.get(i));
+                    stateVO.setSelected(false);
+                    listVOs2.add(stateVO);
+                }
+
+                CustomMaterialListAdapter myAdapter2 = new CustomMaterialListAdapter(ShoppingListActivity.this, 0, listVOs2);
+                materialsListView.setAdapter(myAdapter2);
+
+
+                MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
+                //update view
+                groceriesListView.invalidate();
+                materialsListView.invalidate();
+                // close dialog
+                dialog.cancel();
             }
         });
     }
