@@ -35,8 +35,8 @@ public class UserMenu extends AppCompatActivity {
     private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
     private String email = AppLoginActivity.emailEscaped;
     private TextView currentUserTV;
-    long admins = 0;
-    long regs = 0;
+    static long admins = 0;
+    static long regs = 0;
     private CustomUserListView customUserListView;
 
     @Override

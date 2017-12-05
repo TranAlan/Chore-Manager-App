@@ -11,9 +11,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Iterator;
+
 public class SwitchUserActivity extends AppCompatActivity {
     private TextView passwordText;
     private User specificUser;
+    private ChoreManagerProfile manager = MenuActivity.getManager();
+    private static DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
+    private static String email = AppLoginActivity.emailEscaped;
+    long admins = UserMenu.admins;
+    long regs = UserMenu.regs;
+    private boolean found = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +84,43 @@ public class SwitchUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO: Delete The User from database. MenuActivity.getManager().... the user ur looking to delete is calls "specificUser"
+                fbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(!(dataSnapshot.child(email).child("ChoreManager").child("adminUsers").getChildrenCount()==0)){
+                            Iterator<DataSnapshot> adminIterator = dataSnapshot.child(email).child("ChoreManager").child("adminUsers").getChildren().iterator();
+                            for(int i = 0;i<admins;i++){
+                                DatabaseReference tempRef = adminIterator.next().getRef();
+                                DataSnapshot tempShot = dataSnapshot.child(email).child("ChoreManager").child("adminUsers").child(tempRef.getKey());
+                                //TODO: provide better solution for user deleting self than ---------------------------vvv this
+                                if(tempShot.getValue(AdminUser.class).getUsername().equals(specificUser.getUsername())&&!(manager.getCurrentUser().getUsername().equals(specificUser.getUsername()))){
+                                    tempRef.removeValue();
+                                    manager.getAdminUsers().remove(i);
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if(!(dataSnapshot.child(email).child("ChoreManager").child("regUsers").getChildrenCount()==0)&&!found){
+                            Iterator<DataSnapshot> regIterator = dataSnapshot.child(email).child("ChoreManager").child("regUsers").getChildren().iterator();
+                            for(int j = (int)admins;j<(admins+regs);j++){
+                                DatabaseReference tempRef = regIterator.next().getRef();
+                                DataSnapshot tempShot = dataSnapshot.child(email).child("ChoreManager").child("regUsers").child(tempRef.getKey());
+                                if(tempShot.getValue(User.class).getUsername().equals(specificUser.getUsername())){
+                                    tempRef.removeValue();
+                                    manager.getRegUsers().remove((j-(int)admins));
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+                fbRef.child(email).child("ChoreManager").child(specificUser.getUsername()).removeValue();
                 Toast.makeText(getApplicationContext(), "User Has Been Deleted!",Toast.LENGTH_SHORT).show();
                 dialog.cancel();
                 finish();
@@ -78,6 +128,7 @@ public class SwitchUserActivity extends AppCompatActivity {
         });
 
     }
+
     public void cancelSelectedOnClick(View view)
     {
         startActivity(new Intent(SwitchUserActivity.this, UserMenu.class));
