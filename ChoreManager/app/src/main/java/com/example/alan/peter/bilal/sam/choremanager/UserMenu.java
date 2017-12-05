@@ -28,6 +28,28 @@ public class UserMenu extends AppCompatActivity {
     long admins = 0;
     long regs = 0;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_menu);
+
+        //Listeners for reading users from database
+        fbRef.addListenerForSingleValueEvent(countListener);
+        fbRef.addListenerForSingleValueEvent(usersListener);
+    }
+
+    protected void onCreateUser(View view){
+        Intent intent = new Intent(this, NewUserActivity.class);
+        startActivity(intent);
+    }
+
+    public void func(List<User> users) {
+        // link listview to xml
+        userListView = (ListView) findViewById(R.id.userListView);
+        CustomUserListView customUserListView = new CustomUserListView(this,users);
+        userListView.setAdapter(customUserListView);
+    }
+
     private ValueEventListener countListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -63,25 +85,4 @@ public class UserMenu extends AppCompatActivity {
 
         }
     };
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_menu);
-
-        //Listeners for reading users from database
-        fbRef.addListenerForSingleValueEvent(countListener);
-        fbRef.addListenerForSingleValueEvent(usersListener);
-    }
-
-    public void func(List<User> users) {
-        // link listview to xml
-        userListView = (ListView) findViewById(R.id.userListView);
-        CustomUserListView customUserListView = new CustomUserListView(this,users);
-        userListView.setAdapter(customUserListView);
-    }
-    protected void createUserOnClick(View view){
-        Intent intent = new Intent(this, NewUserActivity.class);
-        startActivity(intent);
-    }
 }

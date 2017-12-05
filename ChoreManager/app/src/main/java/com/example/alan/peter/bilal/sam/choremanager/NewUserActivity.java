@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
 import android.view.View;
@@ -119,10 +120,36 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
         finish();
     }
     // if user presses create new User, create this
-    public void createUserOnClick(View view)
-    {
-        fbRef.addListenerForSingleValueEvent(listener);
-        finish();
+    public void createUserOnClick(View view) {
+        EditText username = (EditText) findViewById(R.id.usernameText);
+        name = username.getText().toString();
+        EditText password = (EditText) findViewById(R.id.passwordText);
+        pass = password.getText().toString();
+        Spinner grabAccountType = findViewById(R.id.accountTypeSpinner);
+        String accountType = (String) grabAccountType.getSelectedItem();
+        if (fbRef.child(email).child(name) != null) {
+            if (accountType.equals("Child"))
+            {
+                newUser = new User(name, pass, MenuActivity.getManager().nextSerialNumber(), resID);
+                manager.setCurrentUserId(newUser.getUserId());
+                manager.addRegUser(newUser);
+                fbRef.child(email).child("ChoreManager").setValue(manager);
+
+            }
+            else
+            {
+                newAdminUser = new AdminUser(name, pass, MenuActivity.getManager().nextSerialNumber(), resID);
+                manager.setCurrentUserId(newAdminUser.getUserId());
+                manager.addAdminUser(newAdminUser);
+                fbRef.child(email).child("ChoreManager").setValue(manager);
+
+
+            }
+
+            startActivity(new Intent(NewUserActivity.this, SettingsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            // startActivity(new Intent(NewUserActivity.this, SettingsActivity.class));
+            finish();
+        }
 
     }
 
@@ -150,8 +177,6 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
                     fbRef.child(email).child("ChoreManager").setValue(manager);
                 }
             }
-
-           finish();
         }
 
         @Override

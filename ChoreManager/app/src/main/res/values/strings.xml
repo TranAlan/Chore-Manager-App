@@ -109,6 +109,7 @@
     <string name="string_sign_in">Sign In</string>
     <string name="string_delete">Delete</string>
     <string name="string_password">Password:</string>
+    <string name="string_switch_user">switch user</string>
 
     <string-array name="themeSpinner_Options">
         <item name="defaultTheme">Default Theme</item>
