@@ -2,12 +2,14 @@ package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,8 @@ public class AssignedResourcesActivity extends AppCompatActivity {
     List<String> cookingMaterials = new ArrayList<>();
     List<String> cleaningMaterials = new ArrayList<>();
     List<String> miscMaterials = new ArrayList<>();
+    List<Chore> holding = new ArrayList<>();
+    List<String> hotFix = new ArrayList<>();
     private ListView listview;
 
 
@@ -32,7 +36,6 @@ public class AssignedResourcesActivity extends AppCompatActivity {
         return false;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,71 +43,52 @@ public class AssignedResourcesActivity extends AppCompatActivity {
 
         listview = (ListView) findViewById(R.id.allResourcesList);
 
+        //populating list of all chores to be used to find materials
+        holding.addAll(MenuActivity.getManager().getFinishedChores());
+        holding.addAll(MenuActivity.getManager().getUnassignedChores());
+        for(int i =0; i<MenuActivity.getManager().getAdminUsers().size(); i++){
+            holding.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores());
+        }
+        for(int i =0; i<MenuActivity.getManager().getRegUsers().size(); i++){
+            holding.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores());
+        }
 
-        //generate all used materials list
-        for(int i=0;  i<MenuActivity.getManager().getUnassignedChores().size(); i++){
-            if(MenuActivity.getManager().getUnassignedChores().get(i).getReqResources().size()>0) {
-                allUsedMaterials.addAll(MenuActivity.getManager().getUnassignedChores().get(i).getReqResources());
-            }
-
-        //Finished
-        /*for(int i=0;  i<MenuActivity.getManager().getFinishedChores().size(); i++){
-            if(MenuActivity.getManager().getFinishedChores().get(i).getReqResources().size()>0) {
-                allUsedMaterials.addAll(MenuActivity.getManager().getFinishedChores().get(i).getReqResources());
-            }
-           /* if(MenuActivity.getManager().getFinishedChores().get(i).isCleaning()){
-                cleaningMaterials.addAll(MenuActivity.getManager().getFinishedChores().get(i).getReqResources());
-            }
-            if(MenuActivity.getManager().getFinishedChores().get(i).isMisc()){
-                miscMaterials.addAll(MenuActivity.getManager().getFinishedChores().get(i).getReqResources());
-            }
-            if(MenuActivity.getManager().getFinishedChores().get(i).isCooking()){
-                cookingMaterials.addAll(MenuActivity.getManager().getFinishedChores().get(i).getReqResources());
+        //populating list containing all materials used by chores
+        for(int i=0; i<holding.size(); i++){
+            if(holding.get(i).hasMaterials()){
+                allUsedMaterials.addAll(holding.get(i).getReqResources());
             }
         }
 
-        //Assigned to reg users
-        for(int i=0; i<MenuActivity.getManager().getRegUsers().size(); i++){
-            for(int j=0; j<MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().size(); j++){
-                if(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).getReqResources().size()>0) {
-                    allUsedMaterials.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).getReqResources());
-                }
-               /* if(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).isCleaning()){
-                    cleaningMaterials.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).getReqResources());
-                }
-                if(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).isCooking()){
-                    cookingMaterials.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).getReqResources());
-                }
-                if(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).isMisc()){
-                    miscMaterials.addAll(MenuActivity.getManager().getRegUsers().get(i).getAssignedChores().get(j).getReqResources());
-                }
+        //populating list containing all materials used by misc chores
+        for(int i=0; i<holding.size(); i++){
+            if(holding.get(i).hasMaterials() && holding.get(i).isMisc()){
+                miscMaterials.addAll(holding.get(i).getReqResources());
             }
         }
 
-        //assigned to admin users
-        for(int i=0; i<MenuActivity.getManager().getAdminUsers().size(); i++){
-            for(int j=0; j<MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().size(); j++){
-                if(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources().size()>0) {
-                    allUsedMaterials.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources());
-                }
-               /* if(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).isCleaning()){
-                    cleaningMaterials.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources());
-                }
-                if(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).isCooking()){
-                    cookingMaterials.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources());
-                }
-                if(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).isMisc()){
-                    miscMaterials.addAll(MenuActivity.getManager().getAdminUsers().get(i).getAssignedChores().get(j).getReqResources());
-                }
-            }*/
+        //populating list containing all materials used by cleaning chores
+        for(int i=0; i<holding.size(); i++){
+            if(holding.get(i).hasMaterials() && holding.get(i).isCleaning()){
+                cleaningMaterials.addAll(holding.get(i).getReqResources());
+            }
         }
 
+        //populating list containing all materials used by cooking chores
+        for(int i=0; i<holding.size(); i++){
+            if(holding.get(i).hasMaterials() && holding.get(i).isCooking()){
+                cookingMaterials.addAll(holding.get(i).getReqResources());
+            }
+        }
 
 
         //  ---- List View Code ---
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_gallery_item, allUsedMaterials );
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_gallery_item, allUsedMaterials );
         // link buttons to the ones in XML
         listview.setAdapter(adapter);
+
+        //hotfix
+        hotFix.addAll(allUsedMaterials);
 
 
 
@@ -122,21 +106,28 @@ public class AssignedResourcesActivity extends AppCompatActivity {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-//
-//                        if(item.getTitle().equals("All"))
-//                        {
-//                            //TODO: Implement This
-//                        }
-//                        else if(item.getTitle().equals("Misc")){
-//                            //TODO: Implement This
-//                        }
-//                        else if(item.getTitle().equals("Cleaning")) {
-//                            //TODO: Implement This
-//                        }
-//                        else if(item.getTitle().equals("Cooking")){
-//                            //TODO: Implement This
-//                        }
-//                        Toast.makeText(AssignedResourcesActivity.this,"Filtered by: " + item.getTitle(),Toast.LENGTH_SHORT).show();
+
+                        if(item.getTitle().equals("All"))
+                        adapter.clear();
+                        adapter.addAll(hotFix);
+                        adapter.notifyDataSetChanged();
+                        {
+
+                        }
+                         if(item.getTitle().equals("Misc")){
+                            adapter.clear();
+                            adapter.addAll(miscMaterials);
+                            adapter.notifyDataSetChanged();
+                        }
+                        else if(item.getTitle().equals("Cleaning")) {
+                            adapter.clear();
+                            adapter.addAll(cleaningMaterials);
+                            adapter.notifyDataSetChanged();                        }
+                        else if(item.getTitle().equals("Cooking")){
+                            adapter.clear();
+                            adapter.addAll(cookingMaterials);
+                            adapter.notifyDataSetChanged();                        }
+                        Toast.makeText(AssignedResourcesActivity.this,"Filtered by: " + item.getTitle(),Toast.LENGTH_SHORT).show();
                         return true;
                     }
                 });

@@ -237,6 +237,14 @@ public class Chore implements Serializable, Comparable<Chore>{
         }
     }
 
+    //MISC
+    public boolean hasMaterials(){
+        if(this.reqResources==null){
+            return false;
+        }
+        return true;
+    }
+
 
 
 }
