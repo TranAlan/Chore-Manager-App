@@ -1,5 +1,6 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -73,8 +74,16 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
                     MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                     Toast.makeText(getApplicationContext(), "Data has been reset.",Toast.LENGTH_SHORT).show();
                     dialog.cancel();
+
+                    //Clear Stack and Make MenuScreen and Go back to Chore List
+                    Intent mainIntent = new Intent(SettingsActivity.this, AppLoginActivity.class);
+                    mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(mainIntent);
+                    finish();
                 }
             });
+
+
         }
         else{
             Snackbar.make(view, "You must be signed in as a Admin", Snackbar.LENGTH_LONG)
