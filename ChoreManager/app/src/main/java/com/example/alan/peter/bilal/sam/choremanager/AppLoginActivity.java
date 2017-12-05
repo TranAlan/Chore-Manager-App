@@ -13,7 +13,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -32,7 +31,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * A login screen that offers login via email/password.
@@ -150,7 +148,6 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
                 finish();
                 counter ++;
                 startActivity(new Intent(AppLoginActivity.this, MenuActivity.class));
-                startActivity(new Intent(AppLoginActivity.this, UserMenu.class));
             }
         }
 

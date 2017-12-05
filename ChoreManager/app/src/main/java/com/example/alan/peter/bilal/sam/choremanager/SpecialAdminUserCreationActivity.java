@@ -1,14 +1,12 @@
 package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -106,7 +104,6 @@ public class SpecialAdminUserCreationActivity extends AppCompatActivity {
         fbRef.addListenerForSingleValueEvent(listener);
         finish();
         startActivity(new Intent(SpecialAdminUserCreationActivity.this, MenuActivity.class));
-        startActivity(new Intent(SpecialAdminUserCreationActivity.this, UserMenu.class));
 
     }
 

@@ -3,10 +3,10 @@ package com.example.alan.peter.bilal.sam.choremanager;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -18,7 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import android.view.MenuItem;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -238,17 +238,25 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
                 MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                 //close dialog
                 dialog.cancel();
-
+                //Clear Stack and Make MenuScreen and Go back to Chore List
+                Intent mainIntent = new Intent(EditChoreActivity.this, MenuActivity.class);
+                mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(mainIntent);
+                Intent intent = new Intent(EditChoreActivity.this, ChoreListActivity.class);
+                startActivity(intent);
+                finish();
 
             }
         });
-
-        Intent intent = new Intent(this, ChoreListActivity.class);
-        startActivity(intent);
-        finish();
     }
     // listening if Save and Exit button is clicked
     protected void saveExitOnClick(View view){
+        //Clear Stack and Make MenuScreen and Go back to Chore List
+        Intent mainIntent = new Intent(EditChoreActivity.this, MenuActivity.class);
+        mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(mainIntent);
+        Intent intent = new Intent(EditChoreActivity.this, ChoreListActivity.class);
+        startActivity(intent);
         finish();
 
         //TODO
