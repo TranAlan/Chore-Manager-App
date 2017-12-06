@@ -13,6 +13,14 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: Groceries
+ */
+
 public class Groceries extends AppCompatActivity {
 
 

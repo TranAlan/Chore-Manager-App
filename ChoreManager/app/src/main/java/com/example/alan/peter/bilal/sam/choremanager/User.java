@@ -12,6 +12,15 @@ import java.util.Date;
  * Created by Alan on 11/27/2017.
  */
 
+/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: User
+ */
+
+
 public class User implements Serializable{
     private String username;
     private String password;
@@ -97,6 +106,12 @@ public class User implements Serializable{
         assignedChores.remove(chore);
         return 0;
     }
+
+    /** Assignes a Chore to a user
+     *
+     * @param id id of a chore
+     * @return Chore associated with the ID
+     */
     public Chore getChoreFromId(int id){
         Iterator<Chore> i = assignedChores.iterator();
         while(i.hasNext()){
