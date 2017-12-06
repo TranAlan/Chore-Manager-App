@@ -5,9 +5,9 @@
 
 **Date Started:** October 6th, 2017
 
-**Date Completed:** TBD
+**Date Completed:** December 6th, 2017
 
-**Running the program:** Open using cmd prompt. Change directory to file location > javac ___.java > java ___
+**Running the program:** Using Android Studio virtual devices or phyiscal android mobile device.
 
 **Reading the code:** Open using any IDE, or text editor
 
