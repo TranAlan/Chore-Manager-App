@@ -22,6 +22,7 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -286,6 +287,16 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
             }
         }
 
+        Date choreDeadline = dateTime.getTime(); //Deadline
+        //GETTING OLD CHORE TO CHECK IF TIME IS SAME AND TO REMOVE OLDCHORE LATER.
+        Intent choreIntent = getIntent();
+        Chore oldChore = (Chore) choreIntent.getSerializableExtra("ChoreInfo2");
+
+        //Checking if User did not change chore time.
+        if(formatDateTime.format(oldChore.getDeadline()).equals(actualDeadlineTextView.getText().toString())){
+           choreDeadline = oldChore.getDeadline();
+        }
+
         //Gets the user the chore is assigne to and the current user.
         User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
         //Administrator user
@@ -295,19 +306,18 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
         if (assignedUser == null || assignedUser.getUsername().equals("None")){ //UNASSIGNED CHORE
 
             newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints, choreType,
-                    dateTime.getTime(),resources , MenuActivity.getManager().nextSerialNumber() );
+                    choreDeadline,resources , MenuActivity.getManager().nextSerialNumber() );
 
             MenuActivity.getManager().addUnassignedChores(newChore);
         }
         else{
             newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints, choreType, //If theres a User to assign
-                    dateTime.getTime(), resources, MenuActivity.getManager().nextSerialNumber(), assignedUser);
+                    choreDeadline, resources, MenuActivity.getManager().nextSerialNumber(), assignedUser);
         }
 
-        Intent choreIntent = getIntent();
-        Chore oldChore = (Chore) choreIntent.getSerializableExtra("ChoreInfo2");
-        MenuActivity.getManager().removeChore(oldChore.getChoreId());
-        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
+
+        MenuActivity.getManager().removeChore(oldChore.getChoreId()); //Delete old chore
+        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager()); //Write to Database
 
 
         mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
