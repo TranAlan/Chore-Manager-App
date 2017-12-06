@@ -2,7 +2,6 @@ package com.example.alan.peter.bilal.sam.choremanager;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,10 +10,10 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class AssignedResourcesActivity extends AppCompatActivity {
 
@@ -26,7 +25,6 @@ public class AssignedResourcesActivity extends AppCompatActivity {
     List<Chore> holding = new ArrayList<>();
     List<String> hotFix = new ArrayList<>();
     private ListView listview;
-
 
 
     @Override

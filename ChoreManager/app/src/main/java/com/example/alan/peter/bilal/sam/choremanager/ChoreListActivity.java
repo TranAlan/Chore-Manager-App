@@ -342,7 +342,6 @@ public class ChoreListActivity extends AppCompatActivity {
     protected void viewAssignedResourcesButton(View view){
         Intent intent = new Intent(this, AssignedResourcesActivity.class);
         startActivity(intent);
-        finish();
     }
 
 
