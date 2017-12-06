@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
@@ -25,6 +25,9 @@ import com.google.firebase.auth.FirebaseAuth;
  * Class: SettingsActivity
  */
 
+/**
+ * Screen where Admin users can log out or reset all data of the app.
+ */
 public class SettingsActivity extends AppCompatActivity implements OnItemSelectedListener {
 
     Spinner spinnerDropdownTheme, spinnerDropDownUsers;

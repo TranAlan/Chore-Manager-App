@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
@@ -27,6 +27,11 @@ import java.util.List;
  * Class: UserMenu
  */
 
+/**
+ * Activity page that shows the list of all Users and who is currently signed in.
+ * Here users can add more users or click on one to switch to.
+ * Admin users can click on one to delete.
+ */
 public class UserMenu extends AppCompatActivity {
 
     // declaring vars

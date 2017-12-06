@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
@@ -30,6 +30,9 @@ import java.util.List;
  * Class: NewUserActivity
  */
 
+/**
+ * Screen where users can write information, choose a profile pic, to create a new user.
+ */
 public class NewUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     // Creating variables to link to XML and other private variables

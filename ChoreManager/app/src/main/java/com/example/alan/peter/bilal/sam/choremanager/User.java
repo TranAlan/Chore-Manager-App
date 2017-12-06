@@ -12,7 +12,7 @@ import java.util.Date;
  * Created by Alan on 11/27/2017.
  */
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
@@ -20,7 +20,9 @@ import java.util.Date;
  * Class: User
  */
 
-
+/**
+ * A class that hold all information of an user.
+ */
 public class User implements Serializable{
     private String username;
     private String password;

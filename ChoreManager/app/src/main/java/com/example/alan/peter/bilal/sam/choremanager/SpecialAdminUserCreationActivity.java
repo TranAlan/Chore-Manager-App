@@ -14,7 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
@@ -22,6 +22,10 @@ import com.google.firebase.database.ValueEventListener;
  * Class: SpecialAdminUserCreationActivity
  */
 
+/**
+ * A special screen to create a user for the VERY FIRST TIME.
+ * This screen must have the user enter a name in the textview.
+ */
 public class SpecialAdminUserCreationActivity extends AppCompatActivity {
 
     private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;

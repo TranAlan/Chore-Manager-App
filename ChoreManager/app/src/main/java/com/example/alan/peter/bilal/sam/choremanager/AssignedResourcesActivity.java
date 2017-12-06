@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
@@ -23,6 +23,9 @@ import java.util.Set;
  * Class: AssignedResourcesActivity
  */
 
+/**
+ * Activity that allows users to view all resources assigned to a group of chores.
+ */
 public class AssignedResourcesActivity extends AppCompatActivity {
 
     private ImageButton filterButton;

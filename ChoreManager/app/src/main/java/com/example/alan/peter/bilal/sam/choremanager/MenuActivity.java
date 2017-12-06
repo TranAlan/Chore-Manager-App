@@ -11,7 +11,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
@@ -19,12 +19,17 @@ import com.google.firebase.database.ValueEventListener;
  * Class: MenuActivity
  */
 
+/**
+ * A screen that displays all options for the user to do in the app.
+ * This consist of changeing users, viewing and creating chores.
+ * Also reseting app data, adding/deleting items, add/delete a shoppingList
+ */
 public class MenuActivity extends AppCompatActivity {
-    //https://stackoverflow.com/questions/2736389/how-to-pass-an-object-from-one-activity-to-another-on-android
-    private static FirebaseUser fbUser = AppLoginActivity.user;
-    private static DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
-    private static String email = AppLoginActivity.emailEscaped;
-    private static ChoreManagerProfile manager = AppLoginActivity.manager;
+
+    private static FirebaseUser fbUser = AppLoginActivity.user; //Database instance
+    private static DatabaseReference fbRef = AppLoginActivity.databaseFamilies; //Database reference
+    private static String email = AppLoginActivity.emailEscaped; //Email of family google account
+    private static ChoreManagerProfile manager = AppLoginActivity.manager; //The manager that stores everything of a family.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -18,12 +18,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Iterator;
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
  * Assignment: Project
  * Class: SwitchUserActivity
+ */
+
+/**
+ * An activity page where users can switch to their profiles or Admins can delete users.
  */
 
 public class SwitchUserActivity extends AppCompatActivity {
@@ -35,14 +39,7 @@ public class SwitchUserActivity extends AppCompatActivity {
     long admins = UserMenu.admins;
     long regs = UserMenu.regs;
     private boolean found = false;
-//    @Override
-//    public void onBackPressed()
-//    {
-//        super.onBackPressed();
-//        startActivity(new Intent(SwitchUserActivity.this, UserMenu.class));
-//        finish();
-//
-//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

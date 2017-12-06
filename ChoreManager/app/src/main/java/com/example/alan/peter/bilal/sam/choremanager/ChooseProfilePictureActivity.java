@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
@@ -15,6 +15,9 @@ import android.widget.ImageView;
  * Class: ChooseProfilePictureActivity
  */
 
+/**
+ * Page where users can choose the profile pictures for their account.
+ */
 public class ChooseProfilePictureActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){

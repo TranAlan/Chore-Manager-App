@@ -14,7 +14,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
@@ -22,6 +22,9 @@ import java.util.ArrayList;
  * Class: MaterialsActivity
  */
 
+/**
+ * A screen where users can add/delete materials they already have/don't-have
+ */
 public class MaterialsActivity extends AppCompatActivity {
     //variables
     private ArrayList<String> selected = new ArrayList<String>();

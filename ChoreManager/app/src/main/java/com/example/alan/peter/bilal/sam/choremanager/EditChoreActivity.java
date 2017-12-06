@@ -28,7 +28,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-/** Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
  * Course: SEG2105_C
  * Instructor: Dr. Miguel A. Garzón
@@ -36,6 +36,9 @@ import java.util.List;
  * Class: EditChoreActivity
  */
 
+/**
+ * A screen where users can edit any information of a pre-existing chore or delete the chore.
+ */
 public class EditChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // creating variables to link with xml
     DateFormat formatDateTime = DateFormat.getDateTimeInstance();
