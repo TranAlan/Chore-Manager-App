@@ -38,12 +38,11 @@ public class AdminUser extends User{
         user.addToAssignedChores(chore);
         chore.setAssignedToId(user.getUserId());
         chore.setStatusActive();
-        //Remember about ChoreManagerProfile
+
     }
     public void deAssignChore(Chore chore){
         chore.setAssignedToId(0);
         chore.setStatusUnassigned();
-        //add to unassigned list?
     }
 
 }

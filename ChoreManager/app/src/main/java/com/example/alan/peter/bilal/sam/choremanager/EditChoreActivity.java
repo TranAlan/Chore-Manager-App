@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -120,25 +122,18 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
 
         Spinner grabAssignedTo = findViewById(R.id.assignToSpiner); //Who the Chore is assigned to
 
-        int AdminUserPosition = 0;
-        int regUserPosition = 0;
-        Iterator<AdminUser> adminIterator = MenuActivity.getManager().getAdminUsers().iterator();
-        while(adminIterator.hasNext()){
-            if(adminIterator.next().getUserId() != chore.getAssignedToId()){
-                break;
+        //PUTTING EXISITNG ASSIGN TO
+        for(int j = 0; j < listOfUsernames.size(); j++ ){
+            if(chore.getAssignedToId() == 0){
+                grabAssignedTo.setSelection(0);
             }
-            AdminUserPosition++;
-        }
-        Iterator<User> regIterator = MenuActivity.getManager().getRegUsers().iterator();
-        while(regIterator.hasNext()){
-
-            if(regIterator.next().getUserId() == chore.getAssignedToId()){
-                break;
+            else{
+                if(grabAssignedTo.getItemAtPosition(j).equals(MenuActivity.getManager().getUserFromId(chore.getAssignedToId()).getUsername())){
+                    grabAssignedTo.setSelection(j);
+                }
             }
-            regUserPosition++;
-        }
 
-        grabAssignedTo.setSelection(AdminUserPosition + regUserPosition);
+        }
 
         Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore
         if(chore.isMisc()){
@@ -154,8 +149,6 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
         Spinner grabPoints = findViewById(R.id.totalPointsSpinner); // The points the chore is worth
         grabPoints.setSelection(chore.getRewardPoints()-1);
 
-        //Requried matierals
-        //Spinner grabResources = findViewById(R.id.requiredMaterialsSpinner); //The list of materials
         EditText grabDesc = (EditText) findViewById(R.id.descTextView2); //Description of Chore
         grabDesc.setText(chore.getDescription());
 
@@ -326,7 +319,6 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
         startActivity(intent);
         finish();
 
-        //TODO
     }
 
 
