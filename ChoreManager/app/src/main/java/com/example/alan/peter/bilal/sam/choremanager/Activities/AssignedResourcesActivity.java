@@ -1,4 +1,4 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+
+import com.example.alan.peter.bilal.sam.choremanager.Classes.Chore;
+import com.example.alan.peter.bilal.sam.choremanager.R;
 
 import java.util.ArrayList;
 import java.util.HashSet;

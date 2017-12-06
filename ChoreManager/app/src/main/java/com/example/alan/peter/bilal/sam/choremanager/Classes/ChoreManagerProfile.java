@@ -1,4 +1,4 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.Classes;
 
 /**
  * class storing the finished and unassigned chores. On top of this stores the pantry, materials and tools.
@@ -9,19 +9,12 @@ package com.example.alan.peter.bilal.sam.choremanager;
  * email: 8881891
  **/
 
-import android.support.annotation.NonNull;
-
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 
 public class ChoreManagerProfile implements Serializable{

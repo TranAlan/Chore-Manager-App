@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.example.alan.peter.bilal.sam.choremanager.MenuActivity"
+    tools:context="com.example.alan.peter.bilal.sam.choremanager.Activities.MenuActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <ScrollView

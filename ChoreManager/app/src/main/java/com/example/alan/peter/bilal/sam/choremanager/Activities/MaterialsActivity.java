@@ -1,9 +1,10 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.Activities;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,81 +12,82 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.alan.peter.bilal.sam.choremanager.R;
+
 import java.util.ArrayList;
 
-public class Groceries extends AppCompatActivity {
-
-
+public class MaterialsActivity extends AppCompatActivity {
     //variables
-    private ArrayList<String> groceryList = new ArrayList<>();
-    private ListView groceryListView;
+    private ArrayList<String> selected = new ArrayList<String>();
+    private ArrayList<String> materialList = new ArrayList<>();
+    private ListView materialsListView;
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if( item.getItemId() == android.R.id.home ){
+            onBackPressed();
+            return true;
+        }
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_groceries);
+        setContentView(R.layout.activity_materials);
+        materialList.addAll(MenuActivity.getManager().getMaterials());
+        materialsListView = (ListView) findViewById(R.id.materialsListView);
 
-        // get all the items from pantry
-        groceryList.addAll(MenuActivity.getManager().getPantry());
-        groceryListView = (ListView) findViewById(R.id.groceryListView);
-
-        ArrayList<String> listVOs = new ArrayList<>();
-        for (int i = 0; i < groceryList.size(); i++)
-        {
-            listVOs.add(groceryList.get(i));
-        }
-
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Groceries.this, android.R.layout.simple_list_item_1, listVOs);
-        groceryListView.setAdapter(myAdapter);
-        groceryListView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
+        materialsListView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                final String item = (String) groceryListView.getItemAtPosition(position);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final String item = (String) materialsListView.getItemAtPosition(position);
 
                 //create an alert
-                AlertDialog.Builder builder = new AlertDialog.Builder(Groceries.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MaterialsActivity.this);
                 builder.setTitle("Item Selected");
                 builder.setMessage("What would you like to do with this selected item?");
 
                 //buttons
-
                 builder.setPositiveButton("Delete Item", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int j) {
-                        MenuActivity.getManager().getPantry().remove(item);
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        MenuActivity.getManager().getMaterials().remove(item);
                         MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
-                        groceryList.clear();
-                        groceryList.addAll(MenuActivity.getManager().getPantry());
-                        groceryListView = (ListView) findViewById(R.id.groceryListView);
-
+                        materialList.clear();
+                        materialList.addAll(MenuActivity.getManager().getMaterials());
+                        //creates a list of the groceries on the shopping list
                         ArrayList<String> listVOs = new ArrayList<>();
-                        for (int i = 0; i < groceryList.size(); i++)
+                        for (int j = 0; j < materialList.size(); j++)
                         {
-                            listVOs.add(groceryList.get(i));
+                            listVOs.add(materialList.get(j));
                         }
-
-                        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Groceries.this, android.R.layout.simple_list_item_1, listVOs);
-                        groceryListView.setAdapter(myAdapter);
-                        dialogInterface.cancel();
+                        ArrayAdapter<String> myNewAdapter = new ArrayAdapter<String>(MaterialsActivity.this, android.R.layout.simple_list_item_1, listVOs);
+                        materialsListView.setAdapter(myNewAdapter);
                     }
                 });
-
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
                     }
                 });
-
-                //show dialog
+                //create and show
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
         });
+        ArrayList<String> listVOs = new ArrayList<>();
+        for (int i = 0; i < materialList.size(); i++)
+        {
+            listVOs.add(materialList.get(i));
+        }
+        ArrayAdapter<String> myNewAdapter = new ArrayAdapter<String>(MaterialsActivity.this, android.R.layout.simple_list_item_1, listVOs);
+        materialsListView.setAdapter(myNewAdapter);
     }
 
     //Method to add a new material item to the shopping list
-    public void addGroceryOnClick(View view) {
+    public void addMaterialOnClick(View view) {
         // Build an alert dialog
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         // create a new view that inflates the custom shoppping list layout
@@ -111,19 +113,19 @@ public class Groceries extends AppCompatActivity {
             public void onClick(View view) {
                 //Adds item to ChoreManagerProfile based on their input
                 String itemNameString = itemName.getText().toString().trim();
-                MenuActivity.getManager().addPantryItem(itemNameString);
+                MenuActivity.getManager().addMaterial(itemNameString);
                 MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
-                groceryList.clear();
-                groceryList.addAll(MenuActivity.getManager().getPantry());
-                groceryListView = (ListView) findViewById(R.id.groceryListView);
+                materialList.add(itemNameString);
+                materialList.clear();
+                materialList.addAll(MenuActivity.getManager().getMaterials());
+                materialsListView = (ListView) findViewById(R.id.materialsListView);
                 ArrayList<String> listVOs = new ArrayList<>();
-                for (int i = 0; i < groceryList.size(); i++)
+                for (int i = 0; i < materialList.size(); i++)
                 {
-                    listVOs.add(groceryList.get(i));
+                    listVOs.add(materialList.get(i));
                 }
-
-                ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Groceries.this, android.R.layout.simple_list_item_1, listVOs);
-                groceryListView.setAdapter(myAdapter);
+                ArrayAdapter<String> myNewAdapter = new ArrayAdapter<String>(MaterialsActivity.this, android.R.layout.simple_list_item_1, listVOs);
+                materialsListView.setAdapter(myNewAdapter);
                 dialog.cancel();
             }
         });

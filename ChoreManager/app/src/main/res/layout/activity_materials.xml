@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.alan.peter.bilal.sam.choremanager.MaterialsActivity">
+    tools:context="com.example.alan.peter.bilal.sam.choremanager.Activities.MaterialsActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout3"

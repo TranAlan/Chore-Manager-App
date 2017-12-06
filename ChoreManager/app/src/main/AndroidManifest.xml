@@ -18,7 +18,7 @@
 
         <!-- MAIN ACTIVITY -->
         <activity
-            android:name=".AppLoginActivity"
+            android:name=".Activities.AppLoginActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -31,59 +31,59 @@
         <!-- CHILD ACITVITES OF MAIN -->
 
         <activity
-            android:name=".MenuActivity"
+            android:name=".Activities.MenuActivity"
             android:finishOnTaskLaunch="true"
             android:label="Menu" />
         <activity
-            android:name=".UserMenu"
+            android:name=".Activities.UserMenu"
             android:finishOnTaskLaunch="true"
             android:label="Users"
-            android:parentActivityName=".MenuActivity" />
+            android:parentActivityName=".Activities.MenuActivity" />
         <activity
-            android:name=".MaterialsActivity"
+            android:name=".Activities.MaterialsActivity"
             android:label="Materials List"
-            android:parentActivityName=".MenuActivity" />
+            android:parentActivityName=".Activities.MenuActivity" />
         <activity
-            android:name=".Groceries"
+            android:name=".Activities.Groceries"
             android:label="Grocery List"
-            android:parentActivityName=".MenuActivity" />
+            android:parentActivityName=".Activities.MenuActivity" />
         <activity
-            android:name=".ShoppingListActivity"
+            android:name=".Activities.ShoppingListActivity"
             android:label="Shopping List"
             android:noHistory="true"
-            android:parentActivityName=".MenuActivity" />
+            android:parentActivityName=".Activities.MenuActivity" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Activities.SettingsActivity"
             android:label="Settings"
-            android:parentActivityName=".MenuActivity" />
+            android:parentActivityName=".Activities.MenuActivity" />
         <activity
-            android:name=".ChoreListActivity"
+            android:name=".Activities.ChoreListActivity"
             android:label="Chores"
-            android:parentActivityName=".MenuActivity" />
+            android:parentActivityName=".Activities.MenuActivity" />
         <activity
-            android:name=".SpecificChoreActivity"
+            android:name=".Activities.SpecificChoreActivity"
             android:label="Chore Details"
-            android:parentActivityName=".ChoreListActivity" />
+            android:parentActivityName=".Activities.ChoreListActivity" />
         <activity
-            android:name=".NewChoreActivity"
+            android:name=".Activities.NewChoreActivity"
             android:label="New Chore"
-            android:parentActivityName=".ChoreListActivity" />
+            android:parentActivityName=".Activities.ChoreListActivity" />
         <activity
-            android:name=".NewUserActivity"
+            android:name=".Activities.NewUserActivity"
             android:label="New User"
-            android:parentActivityName=".UserMenu" />
-        <activity android:name=".ChooseProfilePictureActivity" />
+            android:parentActivityName=".Activities.UserMenu" />
+        <activity android:name=".Activities.ChooseProfilePictureActivity" />
         <activity
-            android:name=".AssignedResourcesActivity"
+            android:name=".Activities.AssignedResourcesActivity"
             android:label="Assigned Resources"
-            android:parentActivityName=".ChoreListActivity" />
+            android:parentActivityName=".Activities.ChoreListActivity" />
         <activity
-            android:name=".EditChoreActivity"
+            android:name=".Activities.EditChoreActivity"
             android:label="Edit Chore"
-            android:parentActivityName=".SpecificChoreActivity" />
-        <activity android:name=".SpecialAdminUserCreationActivity" />
-        <activity android:name=".SwitchUserActivity" android:label="Switch User"
-            android:parentActivityName=".UserMenu"></activity>
+            android:parentActivityName=".Activities.SpecificChoreActivity" />
+        <activity android:name=".Activities.SpecialAdminUserCreationActivity" />
+        <activity android:name=".Activities.SwitchUserActivity" android:label="Switch User"
+            android:parentActivityName=".Activities.UserMenu"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.CustomAdapters;
 
 /**
  * Created by peter on 2017-11-30.
