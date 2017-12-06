@@ -111,22 +111,12 @@ public class ChoreManagerProfile implements Serializable{
         finishedChores.add(finished);
     }
 
-    //other methods
-    public void sortMaterials() {
-        Collections.sort(materials);
-    }
-    public void sortPantry() {
-        Collections.sort(pantry);
-    }
 
-
-
-    public void changeTheme() {
-        //TO BE IMPLEMENTED
-    }
-
-    //removes a Chore c, from either the unassigned or assigned list directory
-    //if the chore exists
+    /** Removes a Chore c, from either the unassigned or assigned list directory if the chore exists
+     *
+     * @param choreId id of a chore
+     * @return true if successfully removed, false otherwise
+     */
     public boolean removeChore(int choreId){
         for(int i = 0; i< unassignedChores.size(); i++){
             if (unassignedChores.get(i).getChoreId() == choreId){
@@ -166,8 +156,9 @@ public class ChoreManagerProfile implements Serializable{
         return false;
     }
 
-
-    //scrubs all of the data stored within the ChoreManagerProfile
+    /** Scrubs all of the data stored within the ChoreManagerProfile
+     *
+     */
     public void resetAppData() {
         this.materials = new ArrayList<String>();
         this.shoplistGroc = new ArrayList<String>();
@@ -181,6 +172,11 @@ public class ChoreManagerProfile implements Serializable{
         this.serialNumber = 1;
     }
 
+
+    /** checks if the current user is an admin
+     *
+     * @return true if current user is an admin false otherwise
+     */
     public boolean isCurrentUserAdmin(){
         if (getAdminUserFromId(currentUserId)!=null){
             return true;
@@ -190,6 +186,12 @@ public class ChoreManagerProfile implements Serializable{
         }
     }
 
+
+    /** Checks if the user is in the adminUser list.
+     *
+     * @param userId id of a chore
+     * @return true if the user with that Id is an admin, false othwerise
+     */
     public boolean isUserAdmin(int userId){
         if (getAdminUserFromId(userId)!=null){
             return true;
@@ -199,6 +201,11 @@ public class ChoreManagerProfile implements Serializable{
         }
     }
 
+
+    /**
+     * @param username of a user
+     * @return the user with that username, null if User is not found
+     */
     public User getUserFromName(String username) {
         for (int i = 0; i < regUsers.size(); i++){
             if (regUsers.get(i).getUsername().equals(username) ){
@@ -214,7 +221,12 @@ public class ChoreManagerProfile implements Serializable{
         return null;
     }
 
-    public User getAdminUserFromName(String username) {
+
+    /**
+     * @param username of a admin user
+     * @return AdminUser with that username, null if AdminUser is not found
+     */
+    public AdminUser getAdminUserFromName(String username) {
         for (int i = 0; i < adminUsers.size(); i++){
 
             if (adminUsers.get(i).getUsername().equals(username) ){
@@ -224,6 +236,12 @@ public class ChoreManagerProfile implements Serializable{
         return null;
     }
 
+
+    /** Searches all userlists to find a user with the userId
+     *
+     * @param userId id of a user
+     * @return User associated with the userId, null if not user was not found
+     */
     public User getUserFromId(int userId){
         for (int i = 0; i < regUsers.size(); i++){
             if (regUsers.get(i).getUserId() == userId){
@@ -239,6 +257,12 @@ public class ChoreManagerProfile implements Serializable{
         return null;
     }
 
+
+    /** Searches from only regUser to find a user
+     *
+     * @param userId id of a regular user
+     * @return a regular User associated to that id, null if user was not found
+     */
     public User getRegUserFromId(int userId){
         for (int i = 0; i < regUsers.size(); i++){
             if (regUsers.get(i).getUserId() == userId){
@@ -249,6 +273,11 @@ public class ChoreManagerProfile implements Serializable{
        return null;
     }
 
+
+    /** Searches only from the adminUser list to find the user
+     * @param userId id of a chore
+     * @return a admin user associated to that id, null if user was not found
+     */
     public AdminUser getAdminUserFromId(int userId){
         for (int i = 0; i < adminUsers.size(); i++){
             if (adminUsers.get(i).getUserId() == userId){
@@ -258,15 +287,29 @@ public class ChoreManagerProfile implements Serializable{
         return null;
     }
 
+
+    /**
+     * @return the current user thats logged in
+     */
     public User getCurrentUser(){
         return getUserFromId(this.currentUserId);
     }
 
+
+    /** gets the next unique serialNumber to be given to either a chore or a user
+     * @return integer of the next SerialNumber
+     */
     public int nextSerialNumber(){
         serialNumber++;
         return serialNumber;
     }
 
+
+    /** Searches unAssignedChoreList, finishedChoreList, and assignedChoreList of every user to find
+     *  a chore associated with that id.
+     * @param id id of a chore
+     * @return return Chore associated with that Id
+     */
     public Chore findChoreId(int id){
         //Checking All chore Lists
 
@@ -302,7 +345,12 @@ public class ChoreManagerProfile implements Serializable{
         return null;
     }
 
-    //sorts the Users assignedChores
+
+
+    /** Sorts the list of chores by alphabetical order
+     *
+     * @param chores list of chores
+     */
     public void sortAZ(List<Chore> chores){
         Collections.sort(chores, new Comparator<Chore>() {
             @Override
@@ -313,6 +361,11 @@ public class ChoreManagerProfile implements Serializable{
     }
 
 
+
+    /** Sorts the list of chore by reverse alphabetical order
+     *
+     * @param chores list of chores
+     */
     //sorts the lit of assigned chores starting by those starting last alphabetically
     public void sortZA(List<Chore> chores){
         Collections.sort(chores, new Comparator<Chore>() {
@@ -331,7 +384,10 @@ public class ChoreManagerProfile implements Serializable{
         });
     }
 
-    //sorts chore from those due first, to those with the furthest away deadline
+    /** Sorts the chores in the list base on the closest deadline of each chore to the farthest
+     *
+     * @param chores list of chores
+     */
     public void sortDeadline(List<Chore> chores){
         Collections.sort(chores, new Comparator<Chore>() {
             @Override

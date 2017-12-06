@@ -78,14 +78,22 @@ public class User implements Serializable{
     public void setImageID(int imageID){this.imageID = imageID;}
 
     //OTHER PUBLIC METHODS
+
+    /** Adds to a user's assigned chores list
+     *
+     * @param chore id of a chore
+     */
     public void addToAssignedChores(Chore chore){
         assignedChores.add(chore);
     }
 
-    public void removeFromAssignedChores(Chore chore){
-        assignedChores.remove(chore);
-    }
 
+    /** Completes the chore by giving user its points and sets status of chore to complete
+     *  and removes it from the user's assigned chores
+     *
+     * @param chore id of a chore
+     * @return amount of points chore is worth
+     */
     public int completeChore(Chore chore){
         chore.setStatusComplete();
         assignedChores.remove(chore);
@@ -93,6 +101,13 @@ public class User implements Serializable{
         return chore.getRewardPoints();
     }
 
+
+    /** Completes the chore by giving user half of its points and sets status of chore to complete
+     *  and removes it from the user's assigned chores
+     *
+     * @param chore id of a chore
+     * @return half of the points the chore is worth
+     */
     public int completeChoreLate(Chore chore){
         chore.setStatusLate();
         assignedChores.remove(chore);
@@ -101,14 +116,19 @@ public class User implements Serializable{
         return pointsEarned;
     }
 
+
+    /** Sets the chore status to incomplete and removes from user's assigned chores.
+     *
+     * @param chore id of a chore
+     * @return 0 points
+     */
     public int inCompleteChore(Chore chore){
         chore.setStatusInComplete();
         assignedChores.remove(chore);
         return 0;
     }
 
-    /** Assignes a Chore to a user
-     *
+    /**
      * @param id id of a chore
      * @return Chore associated with the ID
      */
