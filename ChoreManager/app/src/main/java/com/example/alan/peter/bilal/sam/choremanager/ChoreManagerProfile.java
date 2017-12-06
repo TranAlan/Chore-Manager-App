@@ -139,7 +139,7 @@ public class ChoreManagerProfile implements Serializable{
 
             for(int j = 0; j< regUsers.get(i).getAssignedChores().size(); j++ ){
                 if (regUsers.get(i).getAssignedChores().get(j).getChoreId() == choreId){
-                    regUsers.get(i).getAssignedChores().remove(i);
+                    regUsers.get(i).getAssignedChores().remove(j);
                     return true;
                 }
             }
@@ -150,7 +150,7 @@ public class ChoreManagerProfile implements Serializable{
 
             for(int j = 0; j< adminUsers.get(i).getAssignedChores().size(); j++ ){
                 if (adminUsers.get(i).getAssignedChores().get(j).getChoreId() == choreId){
-                    adminUsers.get(i).getAssignedChores().remove(i);
+                    adminUsers.get(i).getAssignedChores().remove(j);
                     return true;
                 }
             }
@@ -332,5 +332,20 @@ public class ChoreManagerProfile implements Serializable{
                 return chore.getDeadline().compareTo(t1.getDeadline());
             }
         });
+    }
+
+    public List<String> getListOfUsernames(){
+        List<String> usernameList = new ArrayList<String>();
+
+        for(int i = 0; i< regUsers.size(); i++){
+           usernameList.add(regUsers.get(i).getUsername());
+
+        }
+
+        for(int j = 0; j< adminUsers.size(); j++){
+            usernameList.add(adminUsers.get(j).getUsername());
+        }
+
+        return usernameList;
     }
 }

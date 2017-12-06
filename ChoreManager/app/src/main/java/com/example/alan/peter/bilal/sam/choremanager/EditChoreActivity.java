@@ -60,8 +60,12 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
         choreTypeSpinner.setAdapter(choreAdapter);
         choreTypeSpinner.setOnItemSelectedListener(EditChoreActivity.this);
 
+        List<String> listOfUsernames = new ArrayList<String>();
+        listOfUsernames.add("None");
+        listOfUsernames.addAll(MenuActivity.getManager().getListOfUsernames());
         // create adapter from string array in string.xml file for RepeatableSpinner
-        assignToAdapter = ArrayAdapter.createFromResource(this,R.array.userSpinner_Options,android.R.layout.simple_spinner_item);
+        assignToAdapter = new ArrayAdapter<String>(EditChoreActivity.this,android.R.layout.simple_spinner_item, listOfUsernames );
+
         // set spinner to the one the the xml
         repeatableSpinner =(Spinner) findViewById(R.id.assignToSpiner);
         repeatableSpinner.setAdapter(assignToAdapter);
@@ -228,9 +232,7 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //delete items from material list
-                //update view
-                //TODO
+
                 AdminUser currentUser = (AdminUser)MenuActivity.getManager().getCurrentUser();
                 Intent i = getIntent();
                 Chore chore = (Chore) i.getSerializableExtra("ChoreInfo2");
@@ -253,6 +255,61 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
     protected void saveExitOnClick(View view){
         //Clear Stack and Make MenuScreen and Go back to Chore List
         Intent mainIntent = new Intent(EditChoreActivity.this, MenuActivity.class);
+
+
+        // Linking objects to XML
+        EditText grabChoreName = (EditText) findViewById(R.id.choreNameInput); //Chore Name
+        Spinner grabAssignedTo = findViewById(R.id.assignToSpiner); //Who the Chore is assigned to
+        Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore
+        Spinner grabPoints = findViewById(R.id.totalPointsSpinner); // The points the chore is worth
+        //Requried matierals
+        Spinner grabResources = findViewById(R.id.requiredMaterialsSpinner); //The list of materials
+        EditText grabDesc = (EditText) findViewById(R.id.descTextView2); //Description of Chore
+        EditText grabNote = (EditText) findViewById(R.id.notesTextView); //Note of Chore
+
+
+        //Simple variables from newChoreActivity
+        String choreName = grabChoreName.getText().toString();
+        String choreAssignedTo = (String) grabAssignedTo.getSelectedItem();
+        String choreType = (String) grabChoreType.getSelectedItem();
+        String choreDesc = grabDesc.getText().toString();
+        String choreNote = grabNote.getText().toString();
+        int choreTotalPoints = Integer.parseInt((String)grabPoints.getSelectedItem());
+
+        //FIND ALL MATERIALS THAT WERE SELECTED
+        List<String> resources= new ArrayList<String>();
+        for(int i = 0; i < allMaterials.size(); i++){
+            StateVO currentItem = (StateVO)grabResources.getItemAtPosition(i);
+            if (   currentItem.isSelected() ){
+                resources.add(currentItem.getTitle());
+
+            }
+        }
+
+        //Gets the user the chore is assigne to and the current user.
+        User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
+        //Administrator user
+        AdminUser currentUser = MenuActivity.getManager().getAdminUserFromId(MenuActivity.getManager().getCurrentUserId());
+        Chore newChore;
+
+        if (assignedUser == null || assignedUser.getUsername().equals("None")){ //UNASSIGNED CHORE
+
+            newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints, choreType,
+                    dateTime.getTime(),resources , MenuActivity.getManager().nextSerialNumber() );
+
+            MenuActivity.getManager().addUnassignedChores(newChore);
+        }
+        else{
+            newChore = currentUser.createChore(choreName, choreDesc, choreNote, choreTotalPoints, choreType, //If theres a User to assign
+                    dateTime.getTime(), resources, MenuActivity.getManager().nextSerialNumber(), assignedUser);
+        }
+
+        Intent choreIntent = getIntent();
+        Chore oldChore = (Chore) choreIntent.getSerializableExtra("ChoreInfo2");
+        MenuActivity.getManager().removeChore(oldChore.getChoreId());
+        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
+
+
         mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(mainIntent);
         Intent intent = new Intent(EditChoreActivity.this, ChoreListActivity.class);

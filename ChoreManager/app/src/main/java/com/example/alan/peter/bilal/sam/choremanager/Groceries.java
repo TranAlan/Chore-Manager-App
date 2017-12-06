@@ -53,6 +53,7 @@ public class Groceries extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
                         MenuActivity.getManager().getPantry().remove(item);
+                        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
                         groceryList.clear();
                         groceryList.addAll(MenuActivity.getManager().getPantry());
                         groceryListView = (ListView) findViewById(R.id.groceryListView);
