@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -90,7 +89,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                         materialsListView.setAdapter(myNewAdapter2);
                     }
                 });
-                builder.setNeutralButton("Delete Item", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Delete Item", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         MenuActivity.getManager().getShoplistGroc().remove(item);
@@ -114,7 +113,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                         materialsListView.setAdapter(myNewAdapter2);
                     }
                 });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
@@ -164,7 +163,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                         materialsListView.setAdapter(myNewAdapter2);
                     }
                 });
-                builder.setNeutralButton("Delete Item", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Delete Item", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         MenuActivity.getManager().getShopListMat().remove(item);
@@ -188,7 +187,7 @@ public class ShoppingListActivity extends AppCompatActivity implements AdapterVi
                         materialsListView.setAdapter(myNewAdapter2);
                     }
                 });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();

@@ -47,7 +47,7 @@ public class MaterialsActivity extends AppCompatActivity {
                 builder.setMessage("What would you like to do with this selected item?");
 
                 //buttons
-                builder.setNeutralButton("Delete Item", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Delete Item", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         MenuActivity.getManager().getMaterials().remove(item);

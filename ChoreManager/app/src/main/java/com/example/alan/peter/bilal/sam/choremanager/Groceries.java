@@ -49,7 +49,7 @@ public class Groceries extends AppCompatActivity {
 
                 //buttons
 
-                builder.setNegativeButton("Delete Item", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Delete Item", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
                         MenuActivity.getManager().getPantry().remove(item);
@@ -69,7 +69,7 @@ public class Groceries extends AppCompatActivity {
                     }
                 });
 
-                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
