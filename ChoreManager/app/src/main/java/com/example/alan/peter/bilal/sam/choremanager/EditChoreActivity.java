@@ -128,9 +128,14 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
                 grabAssignedTo.setSelection(0);
             }
             else{
-                if(grabAssignedTo.getItemAtPosition(j).equals(MenuActivity.getManager().getUserFromId(chore.getAssignedToId()).getUsername())){
-                    grabAssignedTo.setSelection(j);
+                User assignedUser = MenuActivity.getManager().getUserFromId(chore.getAssignedToId());
+                if (!(assignedUser == null)){
+                    if(grabAssignedTo.getItemAtPosition(j).equals(MenuActivity.getManager().getUserFromId(chore.getAssignedToId()).getUsername())){
+                        grabAssignedTo.setSelection(j);
+                    }
                 }
+
+
             }
 
         }
