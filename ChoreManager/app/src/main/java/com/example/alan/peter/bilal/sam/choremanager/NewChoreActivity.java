@@ -62,8 +62,14 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         choreTypeSpinner.setAdapter(choreAdapter);
         choreTypeSpinner.setOnItemSelectedListener(NewChoreActivity.this);
 
+        List<String> listOfUsernames = new ArrayList<String>();
+        listOfUsernames.add("None");
+        listOfUsernames.addAll(MenuActivity.getManager().getListOfUsernames());
+
         // create adapter from string array in string.xml file for RepeatableSpinner
-        assignToAdapter = ArrayAdapter.createFromResource(this,R.array.userSpinner_Options,android.R.layout.simple_spinner_item);
+        assignToAdapter = new ArrayAdapter<String>(NewChoreActivity.this,android.R.layout.simple_spinner_item, listOfUsernames );
+
+
         // set spinner to the one the the xml
         repeatableSpinner =(Spinner) findViewById(R.id.assignToSpiner);
         repeatableSpinner.setAdapter(assignToAdapter);
@@ -196,7 +202,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         AdminUser currentUser = MenuActivity.getManager().getAdminUserFromId(MenuActivity.getManager().getCurrentUserId());
         Chore newChore;
 
-        if (assignedUser == null){ //UNASSIGNED CHORE
+        if (assignedUser == null || assignedUser.getUsername().equals("None")){ //UNASSIGNED CHORE
 
             newChore = currentUser.createUnAssignedChore(choreName, choreDesc, choreNote, choreTotalPoints, choreType,
                     dateTime.getTime(),resources , MenuActivity.getManager().nextSerialNumber() );
