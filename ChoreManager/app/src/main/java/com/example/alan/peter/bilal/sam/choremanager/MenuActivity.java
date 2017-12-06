@@ -38,27 +38,35 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     // all the button listeners that direct to appropriate activities
+
+    //UserMenu Activity
     protected void userImageOnClick(View view){
         Intent intent = new Intent(this, UserMenu.class);
         startActivity(intent);
     }
+
+    //Settings Activity
     protected void settingImageOnClick(View view){
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
+
+    //Materials Activity
     protected void materialsImageOnClick(View view){
         Intent intent = new Intent(this, MaterialsActivity.class);
         startActivity(intent);
     }
 
-
+    //ChoreList Activity
     protected void choreListImageOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
         startActivity(intent);
 
     }
 
+    // Returns the ChoreManagerProfile this is required because
+    // almost all activities require access to the manager. (Get information or write to database)
     public static ChoreManagerProfile getManager(){
         return manager;
     }
@@ -73,14 +81,17 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Get the database reference
     protected static DatabaseReference getFbRef(){
         return fbRef;
     }
 
+    //get email of the family
     protected static String getEmail(){
         return email;
     }
 
+    //The FirebaseUser
     protected static FirebaseUser getFbUser(){
         return fbUser;
     }

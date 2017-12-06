@@ -166,12 +166,6 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     };
 
 
-   /* private void goToLogin(){
-        Intent intent = new Intent(this, UserMenu.class);
-        startActivity(intent);
-        finish();
-    }*/
-
     /**
      * Shows the progress UI and hides the login form.
      */

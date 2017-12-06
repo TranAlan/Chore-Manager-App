@@ -137,6 +137,7 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
         MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
     }
 
+    //users have not completed their chore and will get 0 points
     public void onClickIncompleteChore(View view){
 
         Intent i = getIntent();

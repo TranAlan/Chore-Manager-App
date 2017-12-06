@@ -86,10 +86,10 @@ public class CustomChoreListView extends ArrayAdapter<Chore> {
 
     class ViewHolder
     {
-        TextView MainText;
-        TextView subText;
-        TextView statusText;
-        TextView choreTypeText;
+        TextView MainText; //Name
+        TextView subText; //AssignedTo  and Deadline
+        TextView statusText; //Status
+        TextView choreTypeText; //Type of the chore
         ViewHolder(View v)
         {
             MainText = (TextView) v.findViewById(R.id.MainText);

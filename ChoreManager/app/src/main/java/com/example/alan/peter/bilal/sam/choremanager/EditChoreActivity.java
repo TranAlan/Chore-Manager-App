@@ -126,8 +126,7 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
 
         spinner.setAdapter(myAdapter);
 
-        //UPDATING EXiSTING VIEWS
-
+        //UPDATING EXiSTING VIEWS---------------------------------------------------------------------------------
         EditText grabChoreName = (EditText) findViewById(R.id.choreNameInput); //Chore Name
         grabChoreName.setText(chore.getName());
 
@@ -272,7 +271,6 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
         Spinner grabAssignedTo = findViewById(R.id.assignToSpiner); //Who the Chore is assigned to
         Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore
         Spinner grabPoints = findViewById(R.id.totalPointsSpinner); // The points the chore is worth
-        //Requried matierals
         Spinner grabResources = findViewById(R.id.requiredMaterialsSpinner); //The list of materials
         EditText grabDesc = (EditText) findViewById(R.id.descTextView2); //Description of Chore
         EditText grabNote = (EditText) findViewById(R.id.notesTextView); //Note of Chore
@@ -308,9 +306,11 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
 
         //Gets the user the chore is assigne to and the current user.
         User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
+
         //Administrator user
         AdminUser currentUser = MenuActivity.getManager().getAdminUserFromId(MenuActivity.getManager().getCurrentUserId());
-        Chore newChore;
+
+        Chore newChore; //Chore thats being created
 
         if (assignedUser == null || assignedUser.getUsername().equals("None")){ //UNASSIGNED CHORE
 
