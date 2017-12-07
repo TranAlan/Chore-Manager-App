@@ -111,13 +111,13 @@ public class UserMenu extends AppCompatActivity {
 
     }
 
-    protected void onCreateUser(View view){
+    public void onCreateUser(View view){
         Intent intent = new Intent(this, NewUserActivity.class);
         startActivity(intent);
         ((CustomUserListView) userListView.getAdapter()).notifyDataSetChanged();
         finish();
     }
-    private ValueEventListener countListener = new ValueEventListener() {
+    public ValueEventListener countListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             admins = dataSnapshot.child(email).child("ChoreManager").child("adminUsers").getChildrenCount();
@@ -130,7 +130,7 @@ public class UserMenu extends AppCompatActivity {
 
         }
     };
-    private ValueEventListener usersListener = new ValueEventListener() {
+    public ValueEventListener usersListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             if(!(dataSnapshot.child(email).child("ChoreManager").child("adminUsers").getChildrenCount()==0)){

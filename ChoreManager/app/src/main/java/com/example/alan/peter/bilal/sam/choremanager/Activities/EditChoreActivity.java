@@ -222,7 +222,7 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
     }
 
     // listening if Delete button is clicked
-    protected void deleteOnClick(View view){
+    public void deleteOnClick(View view){
         // Build an alert dialog
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         // create a new view that inflates the custom shoppping list layout
@@ -265,7 +265,7 @@ public class EditChoreActivity extends AppCompatActivity implements AdapterView.
         });
     }
     // listening if Save and Exit button is clicked
-    protected void saveExitOnClick(View view){
+    public void saveExitOnClick(View view){
         //Clear Stack and Make MenuScreen and Go back to Chore List
         Intent mainIntent = new Intent(EditChoreActivity.this, MenuActivity.class);
 

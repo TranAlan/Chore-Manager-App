@@ -38,26 +38,26 @@ public class MenuActivity extends AppCompatActivity {
     // all the button listeners that direct to appropriate activities
 
     //UserMenu Activity
-    protected void userImageOnClick(View view){
+    public void userImageOnClick(View view){
         Intent intent = new Intent(this, UserMenu.class);
         startActivity(intent);
     }
 
     //Settings Activity
-    protected void settingImageOnClick(View view){
+    public void settingImageOnClick(View view){
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
 
     //Materials Activity
-    protected void materialsImageOnClick(View view){
+    public void materialsImageOnClick(View view){
         Intent intent = new Intent(this, MaterialsActivity.class);
         startActivity(intent);
     }
 
     //ChoreList Activity
-    protected void choreListImageOnClick(View view){
+    public void choreListImageOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
         startActivity(intent);
 
@@ -69,28 +69,28 @@ public class MenuActivity extends AppCompatActivity {
         return manager;
     }
 
-    protected void groceriesImageOnClick(View view){
+    public void groceriesImageOnClick(View view){
         Intent intent = new Intent(this, Groceries.class);
         startActivity(intent);
     }
 
-    protected void shoppingImageOnClick(View view){
+    public void shoppingImageOnClick(View view){
         Intent intent = new Intent(this, ShoppingListActivity.class);
         startActivity(intent);
     }
 
     //Get the database reference
-    protected static DatabaseReference getFbRef(){
+    public static DatabaseReference getFbRef(){
         return fbRef;
     }
 
     //get email of the family
-    protected static String getEmail(){
+    public static String getEmail(){
         return email;
     }
 
     //The FirebaseUser
-    protected static FirebaseUser getFbUser(){
+    public static FirebaseUser getFbUser(){
         return fbUser;
     }
 }

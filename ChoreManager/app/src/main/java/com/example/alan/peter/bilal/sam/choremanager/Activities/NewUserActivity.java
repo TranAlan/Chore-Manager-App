@@ -87,7 +87,7 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     }
     // Adapted from SEG 2105 Lab - Sports Manager
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 
         if (resultCode == RESULT_CANCELED) return;
@@ -164,7 +164,7 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     }
 
     // Creates new user and updates ChoreManager in database
-    private ValueEventListener listener = new ValueEventListener() {
+    public ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             EditText username = (EditText)findViewById(R.id.usernameText);

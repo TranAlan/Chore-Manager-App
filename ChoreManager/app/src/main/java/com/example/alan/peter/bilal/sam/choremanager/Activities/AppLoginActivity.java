@@ -90,7 +90,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
@@ -115,7 +115,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         }
     }
 
-    private ValueEventListener emailListener = new ValueEventListener() {
+    public ValueEventListener emailListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             if (!(dataSnapshot.hasChild(emailEscaped))) {
@@ -129,7 +129,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         }
     };
 
-    private ValueEventListener managerListener = new ValueEventListener() {
+    public ValueEventListener managerListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             if (dataSnapshot.child(emailEscaped).hasChild("ChoreManager")) {
@@ -146,7 +146,7 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         }
     };
 
-    private ValueEventListener childListener = new ValueEventListener() {
+    public ValueEventListener childListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             if((dataSnapshot.child(emailEscaped).child("ChoreManager").child("adminUsers").getChildrenCount()==0)&& counter==0) {

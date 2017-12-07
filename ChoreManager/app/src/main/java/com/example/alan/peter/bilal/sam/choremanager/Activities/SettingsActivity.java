@@ -60,7 +60,7 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
 
     }
 
-    protected void resetDataOnClick(View view) {
+    public void resetDataOnClick(View view) {
         if(MenuActivity.getManager().isCurrentUserAdmin()){
             // Build an alert dialog
             AlertDialog.Builder alert = new AlertDialog.Builder(this);

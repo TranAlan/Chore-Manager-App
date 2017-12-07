@@ -178,7 +178,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
     }
 
     // listening if Save and Exit button is clicked
-    protected void saveExitOnClick(View view){
+    public void saveExitOnClick(View view){
         Intent intent = new Intent(this, ChoreListActivity.class);
 
         // Linking objects to XML

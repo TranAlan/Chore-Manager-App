@@ -341,7 +341,7 @@ public class ChoreListActivity extends AppCompatActivity {
         }); //closing the setOnClickListener method
 
     }
-    protected void createNewChoreButton(View view){
+    public void createNewChoreButton(View view){
         if(MenuActivity.getManager().isCurrentUserAdmin()){
             Intent intent = new Intent(this, NewChoreActivity.class);
             startActivity(intent);
@@ -354,7 +354,7 @@ public class ChoreListActivity extends AppCompatActivity {
 
     }
 
-    protected void viewAssignedResourcesButton(View view){
+    public void viewAssignedResourcesButton(View view){
         Intent intent = new Intent(this, AssignedResourcesActivity.class);
         startActivity(intent);
     }

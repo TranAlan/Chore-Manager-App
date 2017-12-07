@@ -60,7 +60,7 @@ public class SpecialAdminUserCreationActivity extends AppCompatActivity {
     }
     // Adapted from SEG 2105 Lab - Sports Manager
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         // Adapted from SEG Lab
         if (resultCode == RESULT_CANCELED) return;
@@ -130,7 +130,7 @@ public class SpecialAdminUserCreationActivity extends AppCompatActivity {
 
     }
 
-    private ValueEventListener listener = new ValueEventListener() {
+    public ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             EditText username = (EditText)findViewById(R.id.usernameText);

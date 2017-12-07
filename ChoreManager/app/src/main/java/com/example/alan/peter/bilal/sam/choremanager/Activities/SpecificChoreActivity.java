@@ -186,7 +186,7 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
     }
 
     //Starts next activity where Admin users can edit the info of a chore.
-    protected void editChoreOnClick(View view)
+    public void editChoreOnClick(View view)
     {
         Intent intent = new Intent(this, EditChoreActivity.class);
         Intent i = getIntent();
