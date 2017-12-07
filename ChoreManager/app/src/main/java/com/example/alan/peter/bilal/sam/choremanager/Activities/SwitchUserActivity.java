@@ -1,4 +1,4 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.Activities;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
@@ -11,6 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.alan.peter.bilal.sam.choremanager.Classes.AdminUser;
+import com.example.alan.peter.bilal.sam.choremanager.Classes.ChoreManagerProfile;
+import com.example.alan.peter.bilal.sam.choremanager.R;
+import com.example.alan.peter.bilal.sam.choremanager.Classes.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

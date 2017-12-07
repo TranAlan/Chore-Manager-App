@@ -1,15 +1,13 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
+import com.example.alan.peter.bilal.sam.choremanager.Classes.ChoreManagerProfile;
+import com.example.alan.peter.bilal.sam.choremanager.R;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 
 /* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760

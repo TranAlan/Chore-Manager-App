@@ -1,4 +1,4 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.Activities;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import com.example.alan.peter.bilal.sam.choremanager.R;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.Activities;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,11 +19,17 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.alan.peter.bilal.sam.choremanager.Classes.AdminUser;
+import com.example.alan.peter.bilal.sam.choremanager.Classes.Chore;
+import com.example.alan.peter.bilal.sam.choremanager.CustomAdapters.CustomMaterialListAdapter;
+import com.example.alan.peter.bilal.sam.choremanager.R;
+import com.example.alan.peter.bilal.sam.choremanager.CustomAdapters.StateVO;
+import com.example.alan.peter.bilal.sam.choremanager.Classes.User;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran

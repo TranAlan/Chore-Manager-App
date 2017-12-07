@@ -1,4 +1,4 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.CustomAdapters;
 
 import android.app.Activity;
 import android.support.annotation.Nullable;
@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.ls.LSException;
+import com.example.alan.peter.bilal.sam.choremanager.Activities.MenuActivity;
+import com.example.alan.peter.bilal.sam.choremanager.R;
+import com.example.alan.peter.bilal.sam.choremanager.Classes.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +38,7 @@ public class CustomUserListView extends ArrayAdapter<User>
 
     public CustomUserListView(Activity context, List<User> users)
     {
-        super(context,R.layout.user_layout,users);
+        super(context, R.layout.user_layout,users);
         this.context= context;
         this.users = users;
     }

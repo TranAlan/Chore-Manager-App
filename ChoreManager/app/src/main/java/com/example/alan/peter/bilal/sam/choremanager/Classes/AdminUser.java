@@ -1,12 +1,14 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.Classes;
 
-import android.media.Image;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * Created by Alan on 11/27/2017.
+ */
+
+public class AdminUser extends User {
 
 /* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
  * Student numbers: 8670663 ,   8881891,     8589066,    8580760
@@ -15,7 +17,6 @@ import java.util.List;
  * Assignment: Project
  * Class: AdminUser
 */
-public class AdminUser extends User{
 
     public AdminUser(){
         super();
@@ -24,12 +25,12 @@ public class AdminUser extends User{
         super(username, password, userId, imageID);
     }
 
+    public Chore createChore(String name, String desc, String note, int points, String type, Date due, List<String> reqResources , int choreId, User user){
     /** Creates a chore and assignes it to a user
      *
      * all attributes of chore needed to create an assigned chore
      * @return the chore created
      */
-    public Chore createChore(String name, String desc, String note, int points,String type, Date due, List<String> reqResources , int choreId, User user){
         Chore chore = new Chore(name, desc, note, points, type, due, reqResources, choreId, user.getUserId());
         if (user!= null){
             assignChore(user, chore);

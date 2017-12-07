@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.alan.peter.bilal.sam.choremanager.EditChoreActivity">
+    tools:context="com.example.alan.peter.bilal.sam.choremanager.Activities.EditChoreActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -227,7 +227,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/note_hint"
                     android:inputType="textMultiLine"
-                    android:maxLength="26"
                     tools:layout_editor_absoluteX="69dp"
                     tools:layout_editor_absoluteY="318dp" />
 

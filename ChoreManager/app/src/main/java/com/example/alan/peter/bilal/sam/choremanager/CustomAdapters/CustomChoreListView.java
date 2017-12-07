@@ -1,4 +1,4 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.CustomAdapters;
 
 import android.app.Activity;
 import android.support.annotation.Nullable;
@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.alan.peter.bilal.sam.choremanager.Activities.MenuActivity;
+import com.example.alan.peter.bilal.sam.choremanager.Classes.Chore;
+import com.example.alan.peter.bilal.sam.choremanager.R;
 
 import java.text.DateFormat;
 import java.util.List;
@@ -38,7 +40,7 @@ public class CustomChoreListView extends ArrayAdapter<Chore> {
     public CustomChoreListView(Activity context, List<Chore> choreList)
     {
 
-        super(context,R.layout.chore_list_item, choreList);
+        super(context, R.layout.chore_list_item, choreList);
         this.context= context;
         this.choreList = choreList;
     }

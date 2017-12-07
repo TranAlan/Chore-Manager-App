@@ -1,21 +1,21 @@
-package com.example.alan.peter.bilal.sam.choremanager;
+package com.example.alan.peter.bilal.sam.choremanager.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.alan.peter.bilal.sam.choremanager.Classes.Chore;
+import com.example.alan.peter.bilal.sam.choremanager.R;
+import com.example.alan.peter.bilal.sam.choremanager.Classes.User;
+
 import java.util.Calendar;
 
 /* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
