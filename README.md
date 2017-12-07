@@ -23,7 +23,7 @@
 
 **Files included:**
 * README.md - Instructions
-* ChoreManager.apk - APK fFiles for Andorid Download
+* ChoreManager.apk - APK files for Andorid Download
 * ChoreManager Source code 
 
 **[Screenshots](https://imgur.com/a/zoQRE)**
