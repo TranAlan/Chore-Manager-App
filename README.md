@@ -24,7 +24,5 @@
 **Files included:**
 * README.md - Instructions
 
-**Screenshots**
- <img src="https://imgur.com/SFRzTWg" width="20%"/>
- <img src="https://imgur.com/xUiYWcm" width="20%"/> 
- <img src="https://imgur.com/7zQahvH" width="20%"/>
+**[Screenshots](https://imgur.com/a/zoQRE)**
+
