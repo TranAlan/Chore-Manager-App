@@ -17,6 +17,19 @@ import com.example.alan.peter.bilal.sam.choremanager.R;
 
 import java.util.ArrayList;
 
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: ShoppingListActivity
+ */
+
+/**
+ * A activity where users can add materials or groceries that need to be purchased.
+ * Once purchased got to their respectible activity.
+ * You can delete or purchase items if the item no longer needs to be bought or already been bought.
+ */
 public class ShoppingListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     //variables

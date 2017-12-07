@@ -17,6 +17,20 @@ import com.example.alan.peter.bilal.sam.choremanager.R;
 import com.example.alan.peter.bilal.sam.choremanager.Classes.User;
 
 import java.util.Calendar;
+
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: SpecificChoreActivity
+ */
+
+/**
+ * An activity that provides all information associated to a Chore.
+ * In here, Admin users can edit chores or go regular users can find more info about their chore.
+ */
+
 public class SpecificChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
@@ -88,6 +102,7 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
 
     }
 
+    //Allows the user to complete their asigned chore.
     public void onClickCompleteChore(View view){
 
         Intent i = getIntent();
@@ -122,6 +137,7 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
         MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
     }
 
+    //users have not completed their chore and will get 0 points
     public void onClickIncompleteChore(View view){
 
         Intent i = getIntent();
@@ -169,6 +185,7 @@ public class SpecificChoreActivity extends AppCompatActivity implements AdapterV
 
     }
 
+    //Starts next activity where Admin users can edit the info of a chore.
     protected void editChoreOnClick(View view)
     {
         Intent intent = new Intent(this, EditChoreActivity.class);

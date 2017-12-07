@@ -2,6 +2,7 @@ package com.example.alan.peter.bilal.sam.choremanager.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,6 +22,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
+
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: NewUserActivity
+ */
+
+/**
+ * Screen where users can write information, choose a profile pic, to create a new user.
+ */
 public class NewUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     // Creating variables to link to XML and other private variables
@@ -134,11 +148,18 @@ public class NewUserActivity extends AppCompatActivity implements AdapterView.On
     }
     // if user presses create new User, create this
     public void createUserOnClick(View view)
-    {
-        fbRef.addListenerForSingleValueEvent(listener);
-        finish();
-        startActivity(new Intent(NewUserActivity.this, UserMenu.class));
-
+    {   EditText username = (EditText)findViewById(R.id.usernameText);
+        name = username.getText().toString();
+        List<String> listOfUsernames = MenuActivity.getManager().getListOfUsernames();
+        if(listOfUsernames.contains(name)){
+            Snackbar.make(view, "Name already exists! Please choose a different name.", Snackbar.LENGTH_LONG)
+                    .setAction("Action",null).show();
+        }
+        else{
+            fbRef.addListenerForSingleValueEvent(listener);
+            finish();
+            startActivity(new Intent(NewUserActivity.this, UserMenu.class));
+        }
 
     }
 

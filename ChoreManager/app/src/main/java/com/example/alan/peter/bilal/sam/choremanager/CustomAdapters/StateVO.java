@@ -3,7 +3,19 @@ package com.example.alan.peter.bilal.sam.choremanager.CustomAdapters;
 /**
  * Created by peter on 2017-11-30.
  */
-// Adaated from https://stackoverflow.com/questions/19027843/android-get-text-of-all-checked-checkboxes-in-listview
+
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: StateVO
+ */
+
+/**
+ * A class that carrys the state of a textbox and the title.
+ */
+// Adapted from https://stackoverflow.com/questions/19027843/android-get-text-of-all-checked-checkboxes-in-listview
 public class StateVO
 {
     private String title;

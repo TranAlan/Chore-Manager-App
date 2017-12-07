@@ -2,6 +2,7 @@ package com.example.alan.peter.bilal.sam.choremanager.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: SpecialAdminUserCreationActivity
+ */
+
+/**
+ * A special screen to create a user for the VERY FIRST TIME.
+ * This screen must have the user enter a name in the textview.
+ */
 public class SpecialAdminUserCreationActivity extends AppCompatActivity {
 
     private DatabaseReference fbRef = AppLoginActivity.databaseFamilies;
@@ -103,10 +116,17 @@ public class SpecialAdminUserCreationActivity extends AppCompatActivity {
 
     // if user presses create new User, create this
     public void createUserOnClick(View view)
-    {
-        fbRef.addListenerForSingleValueEvent(listener);
-        finish();
-        startActivity(new Intent(SpecialAdminUserCreationActivity.this, MenuActivity.class));
+    {   EditText username = (EditText)findViewById(R.id.usernameText);
+        if(username.getText().toString().equals("")){
+            Snackbar.make(view, "Please enter a name.", Snackbar.LENGTH_LONG)
+                    .setAction("Action",null).show();
+        }
+        else{
+            fbRef.addListenerForSingleValueEvent(listener);
+            finish();
+            startActivity(new Intent(SpecialAdminUserCreationActivity.this, MenuActivity.class));
+        }
+
 
     }
 

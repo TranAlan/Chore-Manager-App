@@ -30,6 +30,17 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: NewChoreActivity
+ */
+
+/**
+ * A screen where users can enter information to create a chore and assign to a user if they wish.
+ */
 public class NewChoreActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // creating variables to link with xml
     DateFormat formatDateTime = DateFormat.getDateTimeInstance();
@@ -175,13 +186,13 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
         Spinner grabAssignedTo = findViewById(R.id.assignToSpiner); //Who the Chore is assigned to
         Spinner grabChoreType = findViewById(R.id.choreTypeSpinner); // THe type of chore
         Spinner grabPoints = findViewById(R.id.totalPointsSpinner); // The points the chore is worth
-        //Requried matierals
         Spinner grabResources = findViewById(R.id.requiredMaterialsSpinner); //The list of materials
         EditText grabDesc = (EditText) findViewById(R.id.descTextView2); //Description of Chore
         EditText grabNote = (EditText) findViewById(R.id.notesTextView); //Note of Chore
 
 
         //Simple variables from newChoreActivity
+        //All information needed to create a chore.
         String choreName = grabChoreName.getText().toString();
         String choreAssignedTo = (String) grabAssignedTo.getSelectedItem();
         String choreType = (String) grabChoreType.getSelectedItem();
@@ -199,11 +210,13 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
             }
         }
 
-        //Gets the user the chore is assigne to and the current user.
+        //Gets the user the chore is assigned to and the current user.
         User assignedUser = MenuActivity.getManager().getUserFromName(choreAssignedTo);
+
         //Administrator user
         AdminUser currentUser = MenuActivity.getManager().getAdminUserFromId(MenuActivity.getManager().getCurrentUserId());
-        Chore newChore;
+
+        Chore newChore; //Chore being made.
 
         if (assignedUser == null || assignedUser.getUsername().equals("None")){ //UNASSIGNED CHORE
 
@@ -216,7 +229,7 @@ public class NewChoreActivity extends AppCompatActivity implements AdapterView.O
                     dateTime.getTime(), resources, MenuActivity.getManager().nextSerialNumber(), assignedUser);
         }
 
-
+        //Writing to database
        MenuActivity.getFbRef().child(MenuActivity.getEmail()).child("ChoreManager").setValue(MenuActivity.getManager());
 
         startActivity(intent);

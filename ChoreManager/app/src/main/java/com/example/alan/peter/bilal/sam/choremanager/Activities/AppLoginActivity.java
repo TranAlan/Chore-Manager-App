@@ -34,6 +34,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: AppLoginActivity
+ */
+
 /**
  * A login screen that offers login via email/password.
  */
@@ -159,12 +167,6 @@ public class AppLoginActivity extends AppCompatActivity implements LoaderCallbac
         }
     };
 
-
-   /* private void goToLogin(){
-        Intent intent = new Intent(this, UserMenu.class);
-        startActivity(intent);
-        finish();
-    }*/
 
     /**
      * Shows the progress UI and hides the login form.

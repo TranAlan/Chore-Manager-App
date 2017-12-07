@@ -18,6 +18,18 @@ import java.util.List;
  * Created by peter on 2017-11-30.
  */
 
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: CustomMaterialListAdapter
+ */
+
+/**
+ * An custom adapter class to store a list of materials in a ListView
+ */
+
 public class CustomMaterialListAdapter extends ArrayAdapter<StateVO> {
 
     private Context mContext;
@@ -61,10 +73,6 @@ public class CustomMaterialListAdapter extends ArrayAdapter<StateVO> {
         }
 
         holder.mTextView.setText(listState.get(position).getTitle());
-        // To check weather checked event fire from getview() or user input
-        //isFromView = true;
-        //holder.mCheckBox.setChecked(listState.get(position).isSelected());
-        //isFromView = false;
 
         if (position == 0) {
             holder.mCheckBox.setVisibility(View.VISIBLE);
@@ -77,6 +85,7 @@ public class CustomMaterialListAdapter extends ArrayAdapter<StateVO> {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //If box is clicked, set it to true;
                 int getPosition = (Integer) buttonView.getTag();
                 if (isChecked){
                     listState.get(getPosition).setSelected(true);

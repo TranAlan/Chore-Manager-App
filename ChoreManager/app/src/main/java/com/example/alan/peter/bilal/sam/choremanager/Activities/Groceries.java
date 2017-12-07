@@ -15,6 +15,17 @@ import com.example.alan.peter.bilal.sam.choremanager.R;
 
 import java.util.ArrayList;
 
+/* Authors:       Peter Lam ,  Sam Rennie, Bilal Khalid, Alan Tran
+ * Student numbers: 8670663 ,   8881891,     8589066,    8580760
+ * Course: SEG2105_C
+ * Instructor: Dr. Miguel A. Garzón
+ * Assignment: Project
+ * Class: Groceries
+ */
+
+/**
+ * A screen where users can add/delete grocceries they already have/don't-have
+ */
 public class Groceries extends AppCompatActivity {
 
 
