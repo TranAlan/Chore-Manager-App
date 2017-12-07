@@ -227,7 +227,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/note_hint"
                     android:inputType="textMultiLine"
-                    android:maxLength="26"
                     tools:layout_editor_absoluteX="69dp"
                     tools:layout_editor_absoluteY="318dp" />
 
