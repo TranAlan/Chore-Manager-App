@@ -25,6 +25,7 @@
 * README.md - Instructions
 * ChoreManager.apk - APK files for Andorid Download
 * ChoreManager Source code 
+* Design Process Report.pdf - The Design Process of creating thisq app, includes UML diagrams, user requirements, USE cases, and screenshots
 
 **[Screenshots](https://imgur.com/a/zoQRE)**
 
