@@ -106,7 +106,6 @@
                 android:id="@+id/notesTextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="26"
                 android:minHeight="100dp"
                 tools:layout_editor_absoluteX="69dp"
                 tools:layout_editor_absoluteY="318dp" />
