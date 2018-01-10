@@ -13,7 +13,7 @@
 
 **Description:** A household chore management application for android devices.
 
-**Background:** Group project for SEG2105, a second year Software Development course at the University of Ottawa.
+**Background:** Group project for SEG2105, a second year Software Engineering course at the University of Ottawa.
 
 **Contributors:**
 * Bilal Khalid
